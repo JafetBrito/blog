@@ -5,7 +5,8 @@ pubDate: 2024-02-10
 tags: ["web", "ctf", "exploit"]
 author: "Jafet Brito"
 heroImage: "https://picsum.photos/seed/xss-web-security/1200/630"
-draft: false
+lang: "es"
+draft: true
 ---
 
 ## ¿Qué es XSS?

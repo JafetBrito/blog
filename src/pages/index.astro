@@ -145,4 +145,28 @@ const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
     </div>
   </section>
 
+
+<script is:inline>
+  /* Filtra los artículos por idioma activo.
+     Si no hay artículos en ese idioma, muestra todos (fallback). */
+  window.__filterPosts = function () {
+    var lang = window.__lang || 'es';
+    var cards = document.querySelectorAll('article[data-post-lang]');
+    var matchCount = 0;
+    cards.forEach(function (el) {
+      if ((el.getAttribute('data-post-lang') || 'es') === lang) matchCount++;
+    });
+    cards.forEach(function (el) {
+      var postLang = el.getAttribute('data-post-lang') || 'es';
+      var show = matchCount === 0 || postLang === lang;
+      el.style.display = show ? '' : 'none';
+      /* también ocultar el wrapper .mb-6 del post destacado para evitar margen huérfano */
+      var parent = el.parentElement;
+      if (parent && parent.classList.contains('mb-6')) {
+        parent.style.display = show ? '' : 'none';
+      }
+    });
+  };
+</script>
+
 </BaseLayout>

@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Bash(npx wrangler *)"
+      "Bash(npx wrangler *)",
+      "Bash(npx astro *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4322/)"
     ]
   }
 }

@@ -5,7 +5,8 @@ pubDate: 2024-01-15
 tags: ["linux", "ctf"]
 author: "Jafet Brito"
 heroImage: "https://picsum.photos/seed/bienvenido-cyber/1200/630"
-draft: false
+lang: "es"
+draft: true
 ---
 
 ## Por qué este blog

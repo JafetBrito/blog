@@ -4,16 +4,18 @@ import TagBadge from '../components/TagBadge.astro';
 import ContactButtons from '../components/ContactButtons.astro';
 
 interface Props {
-  title:        string;
-  description:  string;
-  pubDate:      Date;
-  updatedDate?: Date;
-  tags:         string[];
-  author:       string;
-  heroImage?:   string;
+  title:            string;
+  description:      string;
+  pubDate:          Date;
+  updatedDate?:     Date;
+  tags:             string[];
+  author:           string;
+  heroImage?:       string;
+  lang?:            'es' | 'en';
+  translationSlug?: string | null;
 }
 
-const { title, description, pubDate, updatedDate, tags, author, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, author, heroImage, lang = 'es', translationSlug } = Astro.props;
 
 const dateISO   = pubDate.toISOString().slice(0, 10);
 const dateLong  = pubDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -46,6 +48,26 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
       <span class="text-gray-600 dark:text-zinc-400 truncate">{slug}</span>
     </nav>
 
+    <!-- Translation banner (shown via JS only when UI lang ≠ post lang) -->
+    {translationSlug && (
+      <div
+        id="translation-banner"
+        data-post-lang={lang}
+        data-translation-href={`/posts/${translationSlug}`}
+        class="hidden mb-6 px-4 py-3 rounded-xl border border-green-200 dark:border-terminal-green/30
+               bg-green-50 dark:bg-terminal-green/5
+               text-sm text-gray-600 dark:text-zinc-300 flex items-center justify-between gap-3"
+      >
+        <span class="flex items-center gap-2">
+          <span class="text-lg">🌐</span>
+          <span id="translation-banner-text"></span>
+        </span>
+        <a id="translation-banner-link" href={`/posts/${translationSlug}`}
+           class="font-semibold text-green-700 dark:text-terminal-green hover:underline flex-shrink-0">
+        </a>
+      </div>
+    )}
+
     <!-- Post header -->
     <header class="mb-10">
       <!-- Tags -->
@@ -73,9 +95,11 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
           </div>
         </div>
         <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end">
-          <time datetime={dateISO}>{dateLong}</time>
+          <time datetime={dateISO} data-fmt-date={dateISO} data-fmt="long">{dateLong}</time>
           {updatedDate && (
-            <span class="text-xs">Actualizado: {updatedDate.toISOString().slice(0, 10)}</span>
+            <span class="text-xs">
+              <span data-t="post.updated">Actualizado</span>: {updatedDate.toISOString().slice(0, 10)}
+            </span>
           )}
         </div>
       </div>
@@ -131,5 +155,70 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
 
     </footer>
   </div>
+
+
+<script is:inline>
+  /* Muestra el banner de traducción si el idioma de la UI ≠ el idioma del post */
+  (function updateTranslationBanner() {
+    var banner = document.getElementById('translation-banner');
+    if (!banner) return;
+    var uiLang   = window.__lang || 'es';
+    var postLang = banner.getAttribute('data-post-lang') || 'es';
+    var href     = banner.getAttribute('data-translation-href') || '/';
+    var dict     = (window.__ui && window.__ui[uiLang]) || {};
+
+    if (uiLang !== postLang) {
+      banner.classList.remove('hidden');
+      banner.classList.add('flex');
+      var textEl = document.getElementById('translation-banner-text');
+      var linkEl = document.getElementById('translation-banner-link');
+      if (textEl) {
+        textEl.textContent = postLang === 'es'
+          ? 'Este post está en español.'
+          : 'This post is in English.';
+      }
+      if (linkEl) {
+        linkEl.textContent = postLang === 'es'
+          ? (dict['post.read.en'] || 'Read in English →')
+          : (dict['post.read.es'] || 'Leer en español →');
+        linkEl.href = href;
+      }
+    } else {
+      banner.classList.add('hidden');
+      banner.classList.remove('flex');
+    }
+  })();
+
+  /* Re-evaluar el banner cuando cambia el idioma */
+  var _origApply = window.__applyTranslations;
+  window.__applyTranslations = function() {
+    if (_origApply) _origApply();
+    /* pequeño delay para que __lang ya esté actualizado */
+    setTimeout(function() {
+      var banner = document.getElementById('translation-banner');
+      if (!banner) return;
+      var uiLang   = window.__lang || 'es';
+      var postLang = banner.getAttribute('data-post-lang') || 'es';
+      var href     = banner.getAttribute('data-translation-href') || '/';
+      var dict     = (window.__ui && window.__ui[uiLang]) || {};
+      if (uiLang !== postLang) {
+        banner.classList.remove('hidden');
+        banner.classList.add('flex');
+        var textEl = document.getElementById('translation-banner-text');
+        var linkEl = document.getElementById('translation-banner-link');
+        if (textEl) textEl.textContent = postLang === 'es' ? 'Este post está en español.' : 'This post is in English.';
+        if (linkEl) {
+          linkEl.textContent = postLang === 'es'
+            ? (dict['post.read.en'] || 'Read in English →')
+            : (dict['post.read.es'] || 'Leer en español →');
+          linkEl.href = href;
+        }
+      } else {
+        banner.classList.add('hidden');
+        banner.classList.remove('flex');
+      }
+    }, 0);
+  };
+</script>
 
 </BaseLayout>

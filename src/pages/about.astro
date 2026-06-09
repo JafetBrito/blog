@@ -4,10 +4,32 @@ import ContactButtons from '../components/ContactButtons.astro';
 import TagBadge from '../components/TagBadge.astro';
 
 const skills = [
-  { cat: 'Ofensiva',     catKey: 'about.skills.cat.1', items: ['Pentesting Web', 'Explotación de binarios', 'Ingeniería inversa', 'Red Teaming'] },
-  { cat: 'Análisis',     catKey: 'about.skills.cat.2', items: ['Análisis de malware', 'Forense digital', 'OSINT', 'Threat intelligence'] },
-  { cat: 'Plataformas',  catKey: 'about.skills.cat.3', items: ['HackTheBox', 'TryHackMe', 'PicoCTF', 'VulnHub'] },
-  { cat: 'Herramientas', catKey: 'about.skills.cat.4', items: ['Burp Suite', 'Metasploit', 'Ghidra', 'Wireshark', 'nmap', 'gdb/pwndbg'] },
+  { cat: 'Ofensiva',     catKey: 'about.skills.cat.1', items: [
+    { text: 'Pentesting Web' },
+    { text: 'Explotación de binarios', tKey: 'about.skill.binex'    },
+    { text: 'Ingeniería inversa',      tKey: 'about.skill.re'       },
+    { text: 'Red Teaming' },
+  ]},
+  { cat: 'Análisis',     catKey: 'about.skills.cat.2', items: [
+    { text: 'Análisis de malware', tKey: 'about.skill.malware'   },
+    { text: 'Forense digital',     tKey: 'about.skill.forensics' },
+    { text: 'OSINT' },
+    { text: 'Threat intelligence' },
+  ]},
+  { cat: 'Plataformas',  catKey: 'about.skills.cat.3', items: [
+    { text: 'HackTheBox' },
+    { text: 'TryHackMe'  },
+    { text: 'PicoCTF'    },
+    { text: 'VulnHub'    },
+  ]},
+  { cat: 'Herramientas', catKey: 'about.skills.cat.4', items: [
+    { text: 'Burp Suite'  },
+    { text: 'Metasploit'  },
+    { text: 'Ghidra'      },
+    { text: 'Wireshark'   },
+    { text: 'nmap'        },
+    { text: 'gdb/pwndbg'  },
+  ]},
 ];
 ---
 
@@ -88,7 +110,10 @@ const skills = [
               {items.map(item => (
                 <li class="flex items-center gap-2 text-gray-600 dark:text-zinc-300 text-sm">
                   <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green-dim flex-shrink-0"></span>
-                  {item}
+                  {item.tKey
+                    ? <span data-t={item.tKey}>{item.text}</span>
+                    : item.text
+                  }
                 </li>
               ))}
             </ul>

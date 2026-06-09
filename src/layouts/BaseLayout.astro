@@ -93,10 +93,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
           'home.cta.title': '¿Tienes alguna pregunta?',
           'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
           /* posts */
-          'post.readmore': 'Leer más',
-          'post.minread':  'min de lectura',
-          'post.back':     'Volver al inicio',
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
           'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
           /* footer */
           'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
           'footer.nav':     'Navegación',
@@ -120,6 +123,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
           'about.skills.cat.2': 'Análisis',
           'about.skills.cat.3': 'Plataformas',
           'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
           'about.topics': 'Temas del blog',
           'about.setup':  'Mi setup',
           'about.cta.title': 'Hablemos',
@@ -148,10 +155,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
           'home.latest':    'Latest posts',
           'home.cta.title': 'Have a question?',
           'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
-          'post.readmore': 'Read more',
-          'post.minread':  'min read',
-          'post.back':     'Back to home',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
           'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
           'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
           'footer.nav':     'Navigation',
           'footer.contact': 'Contact',
@@ -172,6 +182,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
           'about.skills.cat.2': 'Analysis',
           'about.skills.cat.3': 'Platforms',
           'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
           'about.topics': 'Blog topics',
           'about.setup':  'My setup',
           'about.cta.title': "Let's talk",
@@ -185,25 +199,45 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
         }
       };
 
-      /* Aplica traducciones a todos los [data-t] y [data-th] elementos */
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
       function applyTranslations() {
         var lang = window.__lang || 'es';
         var dict = window.__ui[lang] || window.__ui['es'];
+
         /* data-t  → textContent (seguro, sin HTML) */
         document.querySelectorAll('[data-t]').forEach(function (el) {
           var key = el.getAttribute('data-t');
           if (dict[key] !== undefined) el.textContent = dict[key];
         });
+
         /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
         document.querySelectorAll('[data-th]').forEach(function (el) {
           var key = el.getAttribute('data-th');
           if (dict[key] !== undefined) el.innerHTML = dict[key];
         });
+
         /* actualizar atributos aria/title */
         document.querySelectorAll('[data-t-title]').forEach(function (el) {
           var key = el.getAttribute('data-t-title');
           if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
         });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* filtrar posts por idioma (si la página lo soporta) */
+        if (typeof window.__filterPosts === 'function') window.__filterPosts();
       }
 
       /* Ejecutar lo antes posible */

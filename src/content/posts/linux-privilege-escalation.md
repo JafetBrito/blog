@@ -5,7 +5,8 @@ pubDate: 2024-03-05
 tags: ["linux", "ctf", "exploit"]
 author: "Jafet Brito"
 heroImage: "https://picsum.photos/seed/linux-terminal-root/1200/630"
-draft: false
+lang: "es"
+draft: true
 ---
 
 ## El objetivo

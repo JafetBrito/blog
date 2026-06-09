@@ -8,15 +8,16 @@ interface Props {
 }
 
 const { post, featured = false } = Astro.props;
-const { title, description, pubDate, tags, author, heroImage } = post.data;
+const { title, description, pubDate, tags, author, heroImage, lang = 'es' } = post.data;
 
-const dateStr = pubDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+const dateStr  = pubDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+const dateISO  = pubDate.toISOString().slice(0, 10);
 const readMin = Math.ceil((post.body?.split(/\s+/).length ?? 200) / 200);
 const href    = `/posts/${post.slug}`;
 const imgSrc  = heroImage ?? `https://picsum.photos/seed/${post.slug}/800/450`;
 ---
 
-<article class="group bg-white dark:bg-zinc-900/50
+<article data-post-lang={lang} class="group bg-white dark:bg-zinc-900/50
                 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
                 shadow-sm hover:shadow-lg dark:shadow-none
                 hover:border-green-300 dark:hover:border-terminal-green/40
@@ -40,7 +41,7 @@ const imgSrc  = heroImage ?? `https://picsum.photos/seed/${post.slug}/800/450`;
 
     <!-- Meta -->
     <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-zinc-500 mb-3 font-mono">
-      <time datetime={pubDate.toISOString().slice(0, 10)}>{dateStr}</time>
+      <time datetime={dateISO} data-fmt-date={dateISO}>{dateStr}</time>
       <span aria-hidden="true">·</span>
       <span>
         {readMin}&thinsp;<span data-t="post.minread">min de lectura</span>

@@ -8,9 +8,11 @@ const posts = defineCollection({
     pubDate:     z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     tags:        z.array(z.string()).default([]),
-    author:      z.string().default('Jafet Brito'),
-    draft:       z.boolean().default(false),
-    heroImage:   z.string().optional(),
+    author:        z.string().default('Jafet Brito'),
+    draft:         z.boolean().default(false),
+    heroImage:     z.string().optional(),
+    lang:          z.enum(['es', 'en']).default('es'),
+    translationOf: z.string().optional(), // slug of the primary-language version
   }),
 });
 
