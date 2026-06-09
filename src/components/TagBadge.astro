@@ -1,0 +1,29 @@
+---
+interface Props {
+  tag: string;
+  linked?: boolean;
+}
+
+const { tag, linked = false } = Astro.props;
+
+/* Light / Dark colors per tag */
+const palette: Record<string, string> = {
+  web:       'bg-sky-50 text-sky-700 ring-sky-200 dark:bg-sky-900/20 dark:text-sky-300 dark:ring-sky-700/40',
+  reversing: 'bg-red-50 text-red-700 ring-red-200 dark:bg-red-900/20 dark:text-red-400 dark:ring-red-700/40',
+  malware:   'bg-red-50 text-red-700 ring-red-200 dark:bg-red-900/20 dark:text-red-400 dark:ring-red-700/40',
+  exploit:   'bg-orange-50 text-orange-700 ring-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:ring-orange-700/40',
+  ctf:       'bg-yellow-50 text-yellow-700 ring-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:ring-yellow-700/40',
+  osint:     'bg-purple-50 text-purple-700 ring-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:ring-purple-700/40',
+  network:   'bg-blue-50 text-blue-700 ring-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:ring-blue-700/40',
+  forense:   'bg-blue-50 text-blue-700 ring-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:ring-blue-700/40',
+  linux:     'bg-green-50 text-green-700 ring-green-200 dark:bg-green-900/20 dark:text-green-400 dark:ring-green-700/40',
+};
+
+const cls = palette[tag.toLowerCase()] ?? 'bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700';
+const base = `inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset ${cls}`;
+---
+
+{linked
+  ? <a href={`/tags/${tag}`} class={`${base} hover:opacity-80 transition-opacity`}>#{tag}</a>
+  : <span class={base}>#{tag}</span>
+}

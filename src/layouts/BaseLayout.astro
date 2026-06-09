@@ -1,0 +1,98 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title:        string;
+  description?: string;
+  heroImage?:   string;
+}
+
+const {
+  title,
+  description = 'Blog de ciberseguridad por Jafet Brito — writeups, análisis y técnicas de seguridad ofensiva.',
+  heroImage,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhost:4321');
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots"      content="index, follow" />
+    <meta name="author"      content="Jafet Brito" />
+    <link rel="canonical"    href={canonicalURL} />
+
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonicalURL} />
+    {heroImage && <meta property="og:image" content={heroImage} />}
+
+    <meta name="twitter:card"        content={heroImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    {heroImage && <meta name="twitter:image" content={heroImage} />}
+
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Leer tema ANTES de pintar — evita el flash blanco/negro.
+      Prioridad: localStorage → preferencia del sistema.
+    -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = stored !== null ? stored === 'dark' : prefersDark;
+          if (isDark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  ">
+
+    <!-- Dark-mode CRT scan line -->
+    <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block">
+      <div class="absolute left-0 right-0 h-px
+                  bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent
+                  animate-scan-line"></div>
+    </div>
+
+    <!-- Dark-mode vignette -->
+    <div aria-hidden="true"
+         class="fixed inset-0 pointer-events-none z-40 hidden dark:block
+                bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]">
+    </div>
+
+    <Header />
+
+    <main class="flex-1 w-full animate-fade-in">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,135 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TagBadge from '../components/TagBadge.astro';
+import ContactButtons from '../components/ContactButtons.astro';
+
+interface Props {
+  title:        string;
+  description:  string;
+  pubDate:      Date;
+  updatedDate?: Date;
+  tags:         string[];
+  author:       string;
+  heroImage?:   string;
+}
+
+const { title, description, pubDate, updatedDate, tags, author, heroImage } = Astro.props;
+
+const dateISO   = pubDate.toISOString().slice(0, 10);
+const dateLong  = pubDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+const slug      = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
+---
+
+<BaseLayout title={`${title} — Jafet Brito`} description={description} heroImage={imgSrc}>
+
+  <!-- Hero image -->
+  <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900">
+    <img
+      src={imgSrc}
+      alt={title}
+      width="1200" height="630"
+      loading="eager"
+      decoding="async"
+      class="w-full object-cover max-h-[480px]"
+    />
+  </div>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono">
+      <a href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a>
+      <span>/</span>
+      <span class="text-gray-600 dark:text-zinc-400 truncate">{slug}</span>
+    </nav>
+
+    <!-- Post header -->
+    <header class="mb-10">
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-4">
+        {tags.map(tag => <TagBadge tag={tag} linked />)}
+      </div>
+
+      <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4">
+        {title}
+      </h1>
+      <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed">{description}</p>
+
+      <!-- Author + date row -->
+      <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800">
+        <div class="flex items-center gap-3">
+          <img
+            src="https://picsum.photos/seed/jafet-brito-avatar/80/80"
+            alt="Jafet Brito"
+            width="40" height="40"
+            class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"
+          />
+          <div>
+            <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">{author}</p>
+            <p class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p>
+          </div>
+        </div>
+        <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end">
+          <time datetime={dateISO}>{dateLong}</time>
+          {updatedDate && (
+            <span class="text-xs">Actualizado: {updatedDate.toISOString().slice(0, 10)}</span>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <!-- Post body -->
+    <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">
+      <slot />
+    </div>
+
+    <!-- Post footer -->
+    <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800">
+
+      <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center">
+        <img
+          src="https://picsum.photos/seed/jafet-brito-avatar/80/80"
+          alt="Jafet Brito"
+          width="64" height="64"
+          class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"
+        />
+        <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p>
+        <p class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+          ¿Tienes preguntas sobre este post? Escríbeme.
+        </p>
+        <div class="flex justify-center">
+          <ContactButtons size="sm" />
+        </div>
+      </div>
+
+      <div class="mt-6 flex items-center justify-between gap-4">
+        <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">
+          <span class="group-hover:-translate-x-0.5 transition-transform">←</span>
+          Volver al inicio
+        </a>
+      </div>
+
+    </footer>
+  </div>
+
+</BaseLayout>

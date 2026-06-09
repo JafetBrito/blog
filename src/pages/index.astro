@@ -1,0 +1,148 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import ContactButtons from '../components/ContactButtons.astro';
+import TagBadge from '../components/TagBadge.astro';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const posts    = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const featured = posts[0];
+const rest     = posts.slice(1);
+const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+---
+
+<BaseLayout title="Jafet Brito — Blog de Ciberseguridad">
+
+  <!-- ── HERO ──────────────────────────────────────────────── -->
+  <section class="bg-gradient-to-br from-white via-green-50/40 to-white
+                  dark:from-terminal-bg dark:via-terminal-surface dark:to-terminal-bg
+                  border-b border-gray-200 dark:border-terminal-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-10">
+
+        <!-- Avatar -->
+        <div class="flex-shrink-0">
+          <div class="relative">
+            <img
+              src="https://picsum.photos/seed/jafet-brito-hero/200/200"
+              alt="Jafet Brito"
+              width="160" height="160"
+              class="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl object-cover shadow-xl
+                     ring-4 ring-green-200 dark:ring-terminal-green/30"
+            />
+            <span class="absolute -bottom-2 -right-2 bg-green-500 dark:bg-terminal-green
+                         text-white dark:text-black text-xs font-bold font-mono
+                         px-2 py-0.5 rounded-full shadow">
+              root
+            </span>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="text-center sm:text-left">
+          <p class="text-sm font-mono text-green-700 dark:text-terminal-green mb-2 tracking-widest uppercase">
+            Security Researcher
+          </p>
+          <h1 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 dark:text-zinc-50 mb-4 leading-tight">
+            Jafet Brito
+          </h1>
+          <p class="text-lg text-gray-500 dark:text-zinc-400 leading-relaxed max-w-xl mb-6">
+            Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs,
+            análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.
+          </p>
+
+          <div class="flex flex-wrap justify-center sm:justify-start gap-3 mb-6">
+            {['web', 'reversing', 'ctf', 'linux', 'osint'].map(tag => (
+              <TagBadge tag={tag} linked />
+            ))}
+          </div>
+
+          <ContactButtons size="md" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ─────────────────────────────────────────────── -->
+  <section class="border-b border-gray-200 dark:border-terminal-border bg-white dark:bg-terminal-surface/20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+      <div class="grid grid-cols-3 gap-4 sm:gap-8 text-center">
+        {[
+          { n: posts.length,  label: 'Posts publicados' },
+          { n: allTags.length, label: 'Categorías' },
+          { n: '24/7',        label: 'Investigando' },
+        ].map(({ n, label }) => (
+          <div>
+            <p class="font-display font-bold text-2xl sm:text-3xl text-green-700 dark:text-terminal-green">{n}</p>
+            <p class="text-xs sm:text-sm text-gray-400 dark:text-zinc-500 mt-1">{label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── POSTS ─────────────────────────────────────────────── -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+
+    <!-- Section header + tag filter -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <h2 class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50">Últimos posts</h2>
+      <div class="flex flex-wrap gap-1.5">
+        {allTags.map(tag => (
+          <a
+            href={`/tags/${tag}`}
+            class="px-2.5 py-1 text-xs font-mono rounded-lg border border-gray-200 dark:border-zinc-700
+                   text-gray-500 dark:text-zinc-400 hover:border-green-500 hover:text-green-700
+                   dark:hover:border-terminal-green dark:hover:text-terminal-green transition-colors"
+          >
+            #{tag}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    {posts.length === 0 ? (
+      <div class="text-center py-16 text-gray-400 dark:text-zinc-500">
+        <p class="text-lg font-mono">// sin posts todavía</p>
+        <p class="text-sm mt-2 font-mono opacity-60">$ touch src/content/posts/primer-post.md</p>
+      </div>
+    ) : (
+      <>
+        {/* Featured post */}
+        {featured && (
+          <div class="mb-6">
+            <PostCard post={featured} featured />
+          </div>
+        )}
+
+        {/* Rest in grid */}
+        {rest.length > 0 && (
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {rest.map(post => <PostCard post={post} />)}
+          </div>
+        )}
+      </>
+    )}
+
+  </section>
+
+  <!-- ── CONTACT CTA ───────────────────────────────────────── -->
+  <section class="border-t border-gray-200 dark:border-terminal-border
+                  bg-gradient-to-br from-green-50 to-white
+                  dark:from-terminal-surface/40 dark:to-terminal-bg">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14 text-center">
+      <h2 class="font-display font-bold text-3xl text-gray-900 dark:text-zinc-50 mb-3">
+        ¿Tienes alguna pregunta?
+      </h2>
+      <p class="text-lg text-gray-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto">
+        Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.
+      </p>
+      <div class="flex justify-center">
+        <ContactButtons size="lg" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

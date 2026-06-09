@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagBadge from '../../components/TagBadge.astro';
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+const tagMap = posts.reduce<Record<string, number>>((acc, post) => {
+  post.data.tags.forEach(tag => { acc[tag] = (acc[tag] ?? 0) + 1; });
+  return acc;
+}, {});
+
+const tags = Object.entries(tagMap).sort(([, a], [, b]) => b - a);
+---
+
+<BaseLayout title="Categorías — Jafet Brito" description="Explora los posts por categoría">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+
+    <h1 class="font-display font-bold text-3xl text-gray-900 dark:text-zinc-50 mb-2">Categorías</h1>
+    <p class="text-gray-500 dark:text-zinc-400 mb-10">Filtra los posts por tema de seguridad.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {tags.map(([tag, count]) => (
+        <a
+          href={`/tags/${tag}`}
+          class="group flex items-center justify-between p-5
+                 bg-white dark:bg-zinc-900/60
+                 border border-gray-200 dark:border-zinc-800
+                 hover:border-green-400 dark:hover:border-terminal-green/50
+                 hover:shadow-md dark:shadow-none
+                 rounded-xl transition-all duration-200"
+        >
+          <TagBadge tag={tag} />
+          <span class="text-sm text-gray-400 dark:text-zinc-500 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors font-mono">
+            {count} post{count !== 1 ? 's' : ''}  →
+          </span>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</BaseLayout>
