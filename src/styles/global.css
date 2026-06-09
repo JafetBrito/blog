@@ -44,12 +44,18 @@
   html { color-scheme: light dark; }
 
   /* ── Sistema bilingüe — ES/EN content blocks ────────────── */
-  /* Por defecto muestra ES, oculta EN */
-  .lang-en { display: none; }
+  /*
+    IMPORTANTE: NO usar ".lang-en { display: none }" porque esa
+    regla se aplicaría también al elemento <html> cuando recibe
+    la clase lang-en, poniendo TODA la página en display:none.
 
-  /* Cuando el usuario eligió inglés (html.lang-en):
-     oculta ES y muestra EN. Esto se aplica antes del
-     primer frame gracias al script is:inline del head. */
+    En cambio, usamos selectores descendientes que solo afectan
+    a los bloques de contenido dentro de <html>, nunca a <html> mismo.
+  */
+
+  /* Modo ES (por defecto): oculta bloques EN */
+  html:not(.lang-en) .lang-en { display: none; }
+
+  /* Modo EN (html.lang-en): oculta bloques ES */
   html.lang-en .lang-es { display: none; }
-  html.lang-en .lang-en { display: block; }
 }
