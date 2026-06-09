@@ -155,6 +155,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"welcome.md": {
+	id: "welcome.md";
+  slug: "welcome";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "xss-cross-site-scripting.md": {
 	id: "xss-cross-site-scripting.md";
   slug: "xss-cross-site-scripting";

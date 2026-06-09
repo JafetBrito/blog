@@ -6,7 +6,7 @@ tags: ["linux", "ctf"]
 author: "Jafet Brito"
 heroImage: "https://picsum.photos/seed/bienvenido-cyber/1200/630"
 lang: "es"
-draft: true
+draft: false
 ---
 
 ## Por qué este blog
