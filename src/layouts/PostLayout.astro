@@ -39,9 +39,9 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
 
     <!-- Breadcrumb -->
     <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono">
-      <a href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a>
+      <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a>
       <span>/</span>
-      <a href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a>
+      <a data-t="post.breadcrumb.posts" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a>
       <span>/</span>
       <span class="text-gray-600 dark:text-zinc-400 truncate">{slug}</span>
     </nav>
@@ -69,7 +69,7 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
           />
           <div>
             <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">{author}</p>
-            <p class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p>
+            <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p>
           </div>
         </div>
         <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end">
@@ -114,7 +114,7 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
           class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"
         />
         <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p>
-        <p class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+        <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
           ¿Tienes preguntas sobre este post? Escríbeme.
         </p>
         <div class="flex justify-center">
@@ -125,7 +125,7 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
       <div class="mt-6 flex items-center justify-between gap-4">
         <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">
           <span class="group-hover:-translate-x-0.5 transition-transform">←</span>
-          Volver al inicio
+          <span data-t="post.back">Volver al inicio</span>
         </a>
       </div>
 

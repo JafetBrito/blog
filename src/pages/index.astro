@@ -41,13 +41,13 @@ const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 
         <!-- Info -->
         <div class="text-center sm:text-left">
-          <p class="text-sm font-mono text-green-700 dark:text-terminal-green mb-2 tracking-widest uppercase">
+          <p data-t="hero.role" class="text-sm font-mono text-green-700 dark:text-terminal-green mb-2 tracking-widest uppercase">
             Security Researcher
           </p>
           <h1 class="font-display font-bold text-4xl sm:text-5xl text-gray-900 dark:text-zinc-50 mb-4 leading-tight">
             Jafet Brito
           </h1>
-          <p class="text-lg text-gray-500 dark:text-zinc-400 leading-relaxed max-w-xl mb-6">
+          <p data-t="hero.bio" class="text-lg text-gray-500 dark:text-zinc-400 leading-relaxed max-w-xl mb-6">
             Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs,
             análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.
           </p>
@@ -70,13 +70,13 @@ const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
       <div class="grid grid-cols-3 gap-4 sm:gap-8 text-center">
         {[
-          { n: posts.length,  label: 'Posts publicados' },
-          { n: allTags.length, label: 'Categorías' },
-          { n: '24/7',        label: 'Investigando' },
-        ].map(({ n, label }) => (
+          { n: posts.length,   label: 'Posts publicados', tKey: 'hero.posts'  },
+          { n: allTags.length, label: 'Categorías',       tKey: 'hero.cats'   },
+          { n: '24/7',         label: 'Investigando',     tKey: 'hero.active' },
+        ].map(({ n, label, tKey }) => (
           <div>
             <p class="font-display font-bold text-2xl sm:text-3xl text-green-700 dark:text-terminal-green">{n}</p>
-            <p class="text-xs sm:text-sm text-gray-400 dark:text-zinc-500 mt-1">{label}</p>
+            <p data-t={tKey} class="text-xs sm:text-sm text-gray-400 dark:text-zinc-500 mt-1">{label}</p>
           </div>
         ))}
       </div>
@@ -88,7 +88,7 @@ const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 
     <!-- Section header + tag filter -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-      <h2 class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50">Últimos posts</h2>
+      <h2 data-t="home.latest" class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50">Últimos posts</h2>
       <div class="flex flex-wrap gap-1.5">
         {allTags.map(tag => (
           <a
@@ -105,7 +105,7 @@ const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 
     {posts.length === 0 ? (
       <div class="text-center py-16 text-gray-400 dark:text-zinc-500">
-        <p class="text-lg font-mono">// sin posts todavía</p>
+        <p data-t="home.empty" class="text-lg font-mono">// sin posts todavía</p>
         <p class="text-sm mt-2 font-mono opacity-60">$ touch src/content/posts/primer-post.md</p>
       </div>
     ) : (
@@ -133,10 +133,10 @@ const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
                   bg-gradient-to-br from-green-50 to-white
                   dark:from-terminal-surface/40 dark:to-terminal-bg">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14 text-center">
-      <h2 class="font-display font-bold text-3xl text-gray-900 dark:text-zinc-50 mb-3">
+      <h2 data-t="home.cta.title" class="font-display font-bold text-3xl text-gray-900 dark:text-zinc-50 mb-3">
         ¿Tienes alguna pregunta?
       </h2>
-      <p class="text-lg text-gray-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto">
+      <p data-t="home.cta.body" class="text-lg text-gray-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto">
         Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.
       </p>
       <div class="flex justify-center">

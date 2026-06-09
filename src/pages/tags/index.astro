@@ -16,8 +16,8 @@ const tags = Object.entries(tagMap).sort(([, a], [, b]) => b - a);
 <BaseLayout title="Categorías — Jafet Brito" description="Explora los posts por categoría">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
 
-    <h1 class="font-display font-bold text-3xl text-gray-900 dark:text-zinc-50 mb-2">Categorías</h1>
-    <p class="text-gray-500 dark:text-zinc-400 mb-10">Filtra los posts por tema de seguridad.</p>
+    <h1 data-t="tags.title" class="font-display font-bold text-3xl text-gray-900 dark:text-zinc-50 mb-2">Categorías</h1>
+    <p data-t="tags.sub" class="text-gray-500 dark:text-zinc-400 mb-10">Filtra los posts por tema de seguridad.</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {tags.map(([tag, count]) => (

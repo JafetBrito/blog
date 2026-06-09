@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import TagBadge from './TagBadge.astro';
 
 interface Props {
-  post: CollectionEntry<'posts'>;
+  post:      CollectionEntry<'posts'>;
   featured?: boolean;
 }
 
@@ -13,16 +13,16 @@ const { title, description, pubDate, tags, author, heroImage } = post.data;
 const dateStr = pubDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
 const readMin = Math.ceil((post.body?.split(/\s+/).length ?? 200) / 200);
 const href    = `/posts/${post.slug}`;
-
-const fallbackImg = `https://picsum.photos/seed/${post.slug}/800/450`;
-const imgSrc = heroImage ?? fallbackImg;
+const imgSrc  = heroImage ?? `https://picsum.photos/seed/${post.slug}/800/450`;
 ---
 
-<article class="group bg-white dark:bg-zinc-900/50 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
-                shadow-sm hover:shadow-lg dark:shadow-none hover:border-green-300 dark:hover:border-terminal-green/40
+<article class="group bg-white dark:bg-zinc-900/50
+                border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
+                shadow-sm hover:shadow-lg dark:shadow-none
+                hover:border-green-300 dark:hover:border-terminal-green/40
                 transition-all duration-300">
 
-  <!-- Hero image -->
+  <!-- Image -->
   <a href={href} class="block overflow-hidden" tabindex="-1" aria-hidden="true">
     <img
       src={imgSrc}
@@ -38,11 +38,13 @@ const imgSrc = heroImage ?? fallbackImg;
   <!-- Content -->
   <div class={`p-5 ${featured ? 'sm:p-7' : ''}`}>
 
-    <!-- Meta row -->
+    <!-- Meta -->
     <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-zinc-500 mb-3 font-mono">
       <time datetime={pubDate.toISOString().slice(0, 10)}>{dateStr}</time>
       <span aria-hidden="true">·</span>
-      <span>{readMin} min de lectura</span>
+      <span>
+        {readMin}&thinsp;<span data-t="post.minread">min de lectura</span>
+      </span>
       <span aria-hidden="true">·</span>
       <span>{author}</span>
     </div>
@@ -53,7 +55,9 @@ const imgSrc = heroImage ?? fallbackImg;
     </h2>
 
     <!-- Description -->
-    <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4">{description}</p>
+    <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4">
+      {description}
+    </p>
 
     <!-- Footer row -->
     <div class="flex items-center justify-between gap-2 flex-wrap">
@@ -61,9 +65,10 @@ const imgSrc = heroImage ?? fallbackImg;
         {tags.slice(0, 3).map(tag => <TagBadge tag={tag} linked />)}
       </div>
       <a href={href}
-         class="text-sm font-semibold text-green-700 dark:text-terminal-green hover:text-green-800 dark:hover:text-terminal-green-dim
+         class="text-sm font-semibold text-green-700 dark:text-terminal-green
+                hover:text-green-800 dark:hover:text-terminal-green-dim
                 flex items-center gap-1 transition-colors flex-shrink-0">
-        Leer más
+        <span data-t="post.readmore">Leer más</span>
         <span aria-hidden="true" class="group-hover:translate-x-0.5 transition-transform inline-block">→</span>
       </a>
     </div>

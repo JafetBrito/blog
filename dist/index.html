@@ -1,16 +1,132 @@
-<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Blog de ciberseguridad por Jafet Brito — writeups, análisis y técnicas de seguridad ofensiva."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/"><meta property="og:title" content="Jafet Brito — Blog de Ciberseguridad"><meta property="og:description" content="Blog de ciberseguridad por Jafet Brito — writeups, análisis y técnicas de seguridad ofensiva."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Jafet Brito — Blog de Ciberseguridad"><meta name="twitter:description" content="Blog de ciberseguridad por Jafet Brito — writeups, análisis y técnicas de seguridad ofensiva."><title>Jafet Brito — Blog de Ciberseguridad</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!--
-      Leer tema ANTES de pintar — evita el flash blanco/negro.
-      Prioridad: localStorage → preferencia del sistema.
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Blog de ciberseguridad por Jafet Brito — writeups, análisis y técnicas de seguridad ofensiva."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/"><meta property="og:title" content="Jafet Brito — Blog de Ciberseguridad"><meta property="og:description" content="Blog de ciberseguridad por Jafet Brito — writeups, análisis y técnicas de seguridad ofensiva."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Jafet Brito — Blog de Ciberseguridad"><meta name="twitter:description" content="Blog de ciberseguridad por Jafet Brito — writeups, análisis y técnicas de seguridad ofensiva."><title>Jafet Brito — Blog de Ciberseguridad</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
     --><script>
-      (function () {
-        try {
-          var stored = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var isDark = stored !== null ? stored === 'dark' : prefersDark;
-          if (isDark) document.documentElement.classList.add('dark');
-        } catch (e) {}
-      })();
-    </script><link rel="stylesheet" href="/_assets/_slug_.8WeTaXTp.css"><script type="module">const e=document.getElementById("theme-toggle"),c=document.documentElement;e?.addEventListener("click",()=>{const t=c.classList.toggle("dark");try{localStorage.setItem("theme",t?"dark":"light")}catch{}});
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* el <html lang> lo fijamos también aquí */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore': 'Leer más',
+          'post.minread':  'min de lectura',
+          'post.back':     '← Volver al inicio',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.title': 'Mi historia',
+          'about.skills.title': 'Especialidades',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore': 'Read more',
+          'post.minread':  'min read',
+          'post.back':     '← Back to home',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.title': 'My story',
+          'about.skills.title': 'Specialties',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t] elementos */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_._Xx6sssf.css"><script type="module">const n=document.documentElement,a=document.getElementById("lang-toggle"),e=document.getElementById("lang-label"),o=document.getElementById("theme-toggle"),s=window.__lang||"es";e&&(e.textContent=s.toUpperCase());a?.addEventListener("click",()=>{const t=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",t)}catch{}window.__lang=t,n.lang=t,e&&(e.textContent=t.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});o?.addEventListener("click",()=>{const t=n.classList.toggle("dark");try{localStorage.setItem("theme",t?"dark":"light")}catch{}});
 </script></head> <body class="
     bg-white              text-gray-900
     dark:bg-terminal-bg   dark:text-zinc-100
@@ -18,10 +134,7 @@
     selection:bg-green-200 selection:text-green-900
     dark:selection:bg-terminal-green dark:selection:text-black
     antialiased transition-colors duration-200
-  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px
-                  bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent
-                  animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block
-                bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
   bg-white/90 dark:bg-terminal-bg/95
   border-b border-gray-200 dark:border-terminal-border
   backdrop-blur-md shadow-sm dark:shadow-none
@@ -29,13 +142,12 @@
 Jafet Brito
 </span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
 security researcher
-</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 bg-green-50 text-green-700 dark:bg-terminal-green/10 dark:text-terminal-green"> Inicio </a><a href="/tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right side: contact icons + theme toggle --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50
-                 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10
-                 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50
-                 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10
-                 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <!-- Divisor --> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- ☀ / ☾ Theme toggle --> <button id="theme-toggle" type="button" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100
-                 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800
-                 transition-colors duration-150 flex items-center justify-center"> <!-- Sol — visible en dark mode (para pasar a light) --> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <!-- Luna — visible en light mode (para pasar a dark) --> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <section class="bg-gradient-to-br from-white via-green-50/40 to-white
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 bg-green-50 text-green-700 dark:bg-terminal-green/10 dark:text-terminal-green"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <section class="bg-gradient-to-br from-white via-green-50/40 to-white
                   dark:from-terminal-bg dark:via-terminal-surface dark:to-terminal-bg
                   border-b border-gray-200 dark:border-terminal-border"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20"> <div class="flex flex-col sm:flex-row items-center sm:items-start gap-10"> <!-- Avatar --> <div class="flex-shrink-0"> <div class="relative"> <img src="https://picsum.photos/seed/jafet-brito-hero/200/200" alt="Jafet Brito" width="160" height="160" class="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl object-cover shadow-xl
                      ring-4 ring-green-200 dark:ring-terminal-green/30"> <span class="absolute -bottom-2 -right-2 bg-green-500 dark:bg-terminal-green
@@ -69,22 +181,25 @@ Telegram
 #linux </a><a href="/tags/web" class="px-2.5 py-1 text-xs font-mono rounded-lg border border-gray-200 dark:border-zinc-700
                    text-gray-500 dark:text-zinc-400 hover:border-green-500 hover:text-green-700
                    dark:hover:border-terminal-green dark:hover:text-terminal-green transition-colors">
-#web </a> </div> </div> <div class="mb-6"> <article class="group bg-white dark:bg-zinc-900/50 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
-                shadow-sm hover:shadow-lg dark:shadow-none hover:border-green-300 dark:hover:border-terminal-green/40
-                transition-all duration-300"> <!-- Hero image --> <a href="/posts/linux-privilege-escalation" class="block overflow-hidden" tabindex="-1" aria-hidden="true"> <img src="https://picsum.photos/seed/linux-terminal-root/1200/630" alt="" width="800" height="450" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" style="aspect-ratio:16/9;"> </a> <!-- Content --> <div class="p-5 sm:p-7"> <!-- Meta row --> <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-zinc-500 mb-3 font-mono"> <time datetime="2024-03-05">4 mar 2024</time> <span aria-hidden="true">·</span> <span>3 min de lectura</span> <span aria-hidden="true">·</span> <span>Jafet Brito</span> </div> <!-- Title --> <h2 class="font-display font-semibold text-gray-900 dark:text-zinc-50 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors mb-2 leading-snug text-2xl"> <a href="/posts/linux-privilege-escalation">Linux Privilege Escalation: de www-data a root</a> </h2> <!-- Description --> <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4">Metodología completa de escalada de privilegios en Linux — vectores comunes, herramientas y técnicas usadas en CTFs y pentesting real.</p> <!-- Footer row --> <div class="flex items-center justify-between gap-2 flex-wrap"> <div class="flex flex-wrap gap-1.5"> <a href="/tags/linux" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-green-50 text-green-700 ring-green-200 dark:bg-green-900/20 dark:text-green-400 dark:ring-green-700/40 hover:opacity-80 transition-opacity">#linux</a><a href="/tags/ctf" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:ring-yellow-700/40 hover:opacity-80 transition-opacity">#ctf</a><a href="/tags/exploit" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-orange-50 text-orange-700 ring-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:ring-orange-700/40 hover:opacity-80 transition-opacity">#exploit</a> </div> <a href="/posts/linux-privilege-escalation" class="text-sm font-semibold text-green-700 dark:text-terminal-green hover:text-green-800 dark:hover:text-terminal-green-dim
-                flex items-center gap-1 transition-colors flex-shrink-0">
-Leer más
-<span aria-hidden="true" class="group-hover:translate-x-0.5 transition-transform inline-block">→</span> </a> </div> </div> </article> </div><div class="grid grid-cols-1 sm:grid-cols-2 gap-5"> <article class="group bg-white dark:bg-zinc-900/50 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
-                shadow-sm hover:shadow-lg dark:shadow-none hover:border-green-300 dark:hover:border-terminal-green/40
-                transition-all duration-300"> <!-- Hero image --> <a href="/posts/xss-cross-site-scripting" class="block overflow-hidden" tabindex="-1" aria-hidden="true"> <img src="https://picsum.photos/seed/xss-web-security/1200/630" alt="" width="800" height="450" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" style="aspect-ratio:16/9;"> </a> <!-- Content --> <div class="p-5 "> <!-- Meta row --> <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-zinc-500 mb-3 font-mono"> <time datetime="2024-02-10">9 feb 2024</time> <span aria-hidden="true">·</span> <span>3 min de lectura</span> <span aria-hidden="true">·</span> <span>Jafet Brito</span> </div> <!-- Title --> <h2 class="font-display font-semibold text-gray-900 dark:text-zinc-50 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors mb-2 leading-snug text-xl"> <a href="/posts/xss-cross-site-scripting">XSS: Cross-Site Scripting desde cero hasta explotación</a> </h2> <!-- Description --> <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4">Guía completa de XSS — tipos, payloads, bypass de filtros y mitigación. Con ejemplos reales de CTFs.</p> <!-- Footer row --> <div class="flex items-center justify-between gap-2 flex-wrap"> <div class="flex flex-wrap gap-1.5"> <a href="/tags/web" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-sky-50 text-sky-700 ring-sky-200 dark:bg-sky-900/20 dark:text-sky-300 dark:ring-sky-700/40 hover:opacity-80 transition-opacity">#web</a><a href="/tags/ctf" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:ring-yellow-700/40 hover:opacity-80 transition-opacity">#ctf</a><a href="/tags/exploit" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-orange-50 text-orange-700 ring-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:ring-orange-700/40 hover:opacity-80 transition-opacity">#exploit</a> </div> <a href="/posts/xss-cross-site-scripting" class="text-sm font-semibold text-green-700 dark:text-terminal-green hover:text-green-800 dark:hover:text-terminal-green-dim
-                flex items-center gap-1 transition-colors flex-shrink-0">
-Leer más
-<span aria-hidden="true" class="group-hover:translate-x-0.5 transition-transform inline-block">→</span> </a> </div> </div> </article><article class="group bg-white dark:bg-zinc-900/50 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
-                shadow-sm hover:shadow-lg dark:shadow-none hover:border-green-300 dark:hover:border-terminal-green/40
-                transition-all duration-300"> <!-- Hero image --> <a href="/posts/bienvenido" class="block overflow-hidden" tabindex="-1" aria-hidden="true"> <img src="https://picsum.photos/seed/bienvenido-cyber/1200/630" alt="" width="800" height="450" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" style="aspect-ratio:16/9;"> </a> <!-- Content --> <div class="p-5 "> <!-- Meta row --> <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-zinc-500 mb-3 font-mono"> <time datetime="2024-01-15">14 ene 2024</time> <span aria-hidden="true">·</span> <span>2 min de lectura</span> <span aria-hidden="true">·</span> <span>Jafet Brito</span> </div> <!-- Title --> <h2 class="font-display font-semibold text-gray-900 dark:text-zinc-50 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors mb-2 leading-snug text-xl"> <a href="/posts/bienvenido">Bienvenido a mi blog de ciberseguridad</a> </h2> <!-- Description --> <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4">Por qué empecé este blog y qué tipo de contenido vas a encontrar aquí.</p> <!-- Footer row --> <div class="flex items-center justify-between gap-2 flex-wrap"> <div class="flex flex-wrap gap-1.5"> <a href="/tags/linux" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-green-50 text-green-700 ring-green-200 dark:bg-green-900/20 dark:text-green-400 dark:ring-green-700/40 hover:opacity-80 transition-opacity">#linux</a><a href="/tags/ctf" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:ring-yellow-700/40 hover:opacity-80 transition-opacity">#ctf</a> </div> <a href="/posts/bienvenido" class="text-sm font-semibold text-green-700 dark:text-terminal-green hover:text-green-800 dark:hover:text-terminal-green-dim
-                flex items-center gap-1 transition-colors flex-shrink-0">
-Leer más
-<span aria-hidden="true" class="group-hover:translate-x-0.5 transition-transform inline-block">→</span> </a> </div> </div> </article> </div> </section>  <section class="border-t border-gray-200 dark:border-terminal-border
+#web </a> </div> </div> <div class="mb-6"> <article class="group bg-white dark:bg-zinc-900/50
+                border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
+                shadow-sm hover:shadow-lg dark:shadow-none
+                hover:border-green-300 dark:hover:border-terminal-green/40
+                transition-all duration-300"> <!-- Image --> <a href="/posts/linux-privilege-escalation" class="block overflow-hidden" tabindex="-1" aria-hidden="true"> <img src="https://picsum.photos/seed/linux-terminal-root/1200/630" alt="" width="800" height="450" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" style="aspect-ratio:16/9;"> </a> <!-- Content --> <div class="p-5 sm:p-7"> <!-- Meta --> <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-zinc-500 mb-3 font-mono"> <time datetime="2024-03-05">4 mar 2024</time> <span aria-hidden="true">·</span> <span> 3&thinsp;<span data-t="post.minread">min de lectura</span> </span> <span aria-hidden="true">·</span> <span>Jafet Brito</span> </div> <!-- Title --> <h2 class="font-display font-semibold text-gray-900 dark:text-zinc-50 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors mb-2 leading-snug text-2xl"> <a href="/posts/linux-privilege-escalation">Linux Privilege Escalation: de www-data a root</a> </h2> <!-- Description --> <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4"> Metodología completa de escalada de privilegios en Linux — vectores comunes, herramientas y técnicas usadas en CTFs y pentesting real. </p> <!-- Footer row --> <div class="flex items-center justify-between gap-2 flex-wrap"> <div class="flex flex-wrap gap-1.5"> <a href="/tags/linux" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-green-50 text-green-700 ring-green-200 dark:bg-green-900/20 dark:text-green-400 dark:ring-green-700/40 hover:opacity-80 transition-opacity">#linux</a><a href="/tags/ctf" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:ring-yellow-700/40 hover:opacity-80 transition-opacity">#ctf</a><a href="/tags/exploit" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-orange-50 text-orange-700 ring-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:ring-orange-700/40 hover:opacity-80 transition-opacity">#exploit</a> </div> <a href="/posts/linux-privilege-escalation" class="text-sm font-semibold text-green-700 dark:text-terminal-green
+                hover:text-green-800 dark:hover:text-terminal-green-dim
+                flex items-center gap-1 transition-colors flex-shrink-0"> <span data-t="post.readmore">Leer más</span> <span aria-hidden="true" class="group-hover:translate-x-0.5 transition-transform inline-block">→</span> </a> </div> </div> </article> </div><div class="grid grid-cols-1 sm:grid-cols-2 gap-5"> <article class="group bg-white dark:bg-zinc-900/50
+                border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
+                shadow-sm hover:shadow-lg dark:shadow-none
+                hover:border-green-300 dark:hover:border-terminal-green/40
+                transition-all duration-300"> <!-- Image --> <a href="/posts/xss-cross-site-scripting" class="block overflow-hidden" tabindex="-1" aria-hidden="true"> <img src="https://picsum.photos/seed/xss-web-security/1200/630" alt="" width="800" height="450" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" style="aspect-ratio:16/9;"> </a> <!-- Content --> <div class="p-5 "> <!-- Meta --> <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-zinc-500 mb-3 font-mono"> <time datetime="2024-02-10">9 feb 2024</time> <span aria-hidden="true">·</span> <span> 3&thinsp;<span data-t="post.minread">min de lectura</span> </span> <span aria-hidden="true">·</span> <span>Jafet Brito</span> </div> <!-- Title --> <h2 class="font-display font-semibold text-gray-900 dark:text-zinc-50 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors mb-2 leading-snug text-xl"> <a href="/posts/xss-cross-site-scripting">XSS: Cross-Site Scripting desde cero hasta explotación</a> </h2> <!-- Description --> <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4"> Guía completa de XSS — tipos, payloads, bypass de filtros y mitigación. Con ejemplos reales de CTFs. </p> <!-- Footer row --> <div class="flex items-center justify-between gap-2 flex-wrap"> <div class="flex flex-wrap gap-1.5"> <a href="/tags/web" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-sky-50 text-sky-700 ring-sky-200 dark:bg-sky-900/20 dark:text-sky-300 dark:ring-sky-700/40 hover:opacity-80 transition-opacity">#web</a><a href="/tags/ctf" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:ring-yellow-700/40 hover:opacity-80 transition-opacity">#ctf</a><a href="/tags/exploit" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-orange-50 text-orange-700 ring-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:ring-orange-700/40 hover:opacity-80 transition-opacity">#exploit</a> </div> <a href="/posts/xss-cross-site-scripting" class="text-sm font-semibold text-green-700 dark:text-terminal-green
+                hover:text-green-800 dark:hover:text-terminal-green-dim
+                flex items-center gap-1 transition-colors flex-shrink-0"> <span data-t="post.readmore">Leer más</span> <span aria-hidden="true" class="group-hover:translate-x-0.5 transition-transform inline-block">→</span> </a> </div> </div> </article><article class="group bg-white dark:bg-zinc-900/50
+                border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
+                shadow-sm hover:shadow-lg dark:shadow-none
+                hover:border-green-300 dark:hover:border-terminal-green/40
+                transition-all duration-300"> <!-- Image --> <a href="/posts/bienvenido" class="block overflow-hidden" tabindex="-1" aria-hidden="true"> <img src="https://picsum.photos/seed/bienvenido-cyber/1200/630" alt="" width="800" height="450" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" style="aspect-ratio:16/9;"> </a> <!-- Content --> <div class="p-5 "> <!-- Meta --> <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-zinc-500 mb-3 font-mono"> <time datetime="2024-01-15">14 ene 2024</time> <span aria-hidden="true">·</span> <span> 2&thinsp;<span data-t="post.minread">min de lectura</span> </span> <span aria-hidden="true">·</span> <span>Jafet Brito</span> </div> <!-- Title --> <h2 class="font-display font-semibold text-gray-900 dark:text-zinc-50 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors mb-2 leading-snug text-xl"> <a href="/posts/bienvenido">Bienvenido a mi blog de ciberseguridad</a> </h2> <!-- Description --> <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4"> Por qué empecé este blog y qué tipo de contenido vas a encontrar aquí. </p> <!-- Footer row --> <div class="flex items-center justify-between gap-2 flex-wrap"> <div class="flex flex-wrap gap-1.5"> <a href="/tags/linux" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-green-50 text-green-700 ring-green-200 dark:bg-green-900/20 dark:text-green-400 dark:ring-green-700/40 hover:opacity-80 transition-opacity">#linux</a><a href="/tags/ctf" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-yellow-50 text-yellow-700 ring-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:ring-yellow-700/40 hover:opacity-80 transition-opacity">#ctf</a> </div> <a href="/posts/bienvenido" class="text-sm font-semibold text-green-700 dark:text-terminal-green
+                hover:text-green-800 dark:hover:text-terminal-green-dim
+                flex items-center gap-1 transition-colors flex-shrink-0"> <span data-t="post.readmore">Leer más</span> <span aria-hidden="true" class="group-hover:translate-x-0.5 transition-transform inline-block">→</span> </a> </div> </div> </article> </div> </section>  <section class="border-t border-gray-200 dark:border-terminal-border
                   bg-gradient-to-br from-green-50 to-white
                   dark:from-terminal-surface/40 dark:to-terminal-bg"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14 text-center"> <h2 class="font-display font-bold text-3xl text-gray-900 dark:text-zinc-50 mb-3">
 ¿Tienes alguna pregunta?
@@ -99,9 +214,9 @@ Email
   dark:bg-sky-600 dark:hover:bg-sky-700 px-6 py-3 text-lg gap-2.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
 Telegram
 </a> </div> </div> </div> </section>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
-               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand column --> <div> <div class="flex items-center gap-2 mb-3"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center"> <span class="text-white dark:text-black font-bold font-mono text-sm">JB</span> </div> <span class="font-display font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</span> </div> <p class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-2 mb-3"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center"> <span class="text-white dark:text-black font-bold font-mono text-sm">JB</span> </div> <span class="font-display font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</span> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
 Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
-</p> </div> <!-- Links column --> <div> <h3 class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li> <a href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> Inicio </a> </li><li> <a href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> Tags </a> </li><li> <a href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> Sobre mí </a> </li> </ul> </div> <!-- Contact column --> <div> <h3 class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
   border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
   dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
 Email
@@ -109,8 +224,6 @@ Email
   border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
   dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
 Telegram
-</a> </div> <p class="text-xs text-gray-400 dark:text-zinc-500 mt-3">
-Respondo en menos de 48h
-</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito — Todos los derechos reservados</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
-Generado con Astro + Tailwind CSS
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
 </span> </div> </div> </footer> </body></html>

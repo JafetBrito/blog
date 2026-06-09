@@ -9,7 +9,7 @@ const year = new Date().getFullYear();
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
 
-      <!-- Brand column -->
+      <!-- Brand -->
       <div>
         <div class="flex items-center gap-2 mb-3">
           <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center">
@@ -17,41 +17,35 @@ const year = new Date().getFullYear();
           </div>
           <span class="font-display font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</span>
         </div>
-        <p class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+        <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
           Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
         </p>
       </div>
 
-      <!-- Links column -->
+      <!-- Nav links -->
       <div>
-        <h3 class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3>
+        <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3>
         <ul class="space-y-2">
-          {[['Inicio', '/'], ['Tags', '/tags'], ['Sobre mí', '/about']].map(([label, href]) => (
-            <li>
-              <a href={href} class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">
-                {label}
-              </a>
-            </li>
-          ))}
+          <li><a data-t="nav.home"  href="/"      class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li>
+          <li><a data-t="nav.tags"  href="/tags"  class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li>
+          <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li>
         </ul>
       </div>
 
-      <!-- Contact column -->
+      <!-- Contact -->
       <div>
-        <h3 class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3>
+        <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3>
         <ContactButtons size="sm" variant="outline" />
-        <p class="text-xs text-gray-400 dark:text-zinc-500 mt-3">
-          Respondo en menos de 48h
-        </p>
+        <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p>
       </div>
 
     </div>
 
     <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500">
-      <span>© {year} Jafet Brito — Todos los derechos reservados</span>
+      <span>© {year} Jafet Brito</span>
       <span class="flex items-center gap-1.5">
         <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
-        Generado con Astro + Tailwind CSS
+        Astro + Tailwind CSS
       </span>
     </div>
 

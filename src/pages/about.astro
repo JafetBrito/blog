@@ -4,10 +4,10 @@ import ContactButtons from '../components/ContactButtons.astro';
 import TagBadge from '../components/TagBadge.astro';
 
 const skills = [
-  { cat: 'Ofensiva', items: ['Pentesting Web', 'Explotación de binarios', 'Ingeniería inversa', 'Red Teaming'] },
-  { cat: 'Análisis',  items: ['Análisis de malware', 'Forense digital', 'OSINT', 'Threat intelligence'] },
-  { cat: 'Plataformas', items: ['HackTheBox', 'TryHackMe', 'PicoCTF', 'VulnHub'] },
-  { cat: 'Herramientas', items: ['Burp Suite', 'Metasploit', 'Ghidra', 'Wireshark', 'nmap', 'gdb/pwndbg'] },
+  { cat: 'Ofensiva',     catKey: 'about.skills.cat.1', items: ['Pentesting Web', 'Explotación de binarios', 'Ingeniería inversa', 'Red Teaming'] },
+  { cat: 'Análisis',     catKey: 'about.skills.cat.2', items: ['Análisis de malware', 'Forense digital', 'OSINT', 'Threat intelligence'] },
+  { cat: 'Plataformas',  catKey: 'about.skills.cat.3', items: ['HackTheBox', 'TryHackMe', 'PicoCTF', 'VulnHub'] },
+  { cat: 'Herramientas', catKey: 'about.skills.cat.4', items: ['Burp Suite', 'Metasploit', 'Ghidra', 'Wireshark', 'nmap', 'gdb/pwndbg'] },
 ];
 ---
 
@@ -33,8 +33,8 @@ const skills = [
         <div class="text-center sm:text-left">
           <p class="text-sm font-mono text-green-700 dark:text-terminal-green mb-2 tracking-widest uppercase">whoami</p>
           <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 mb-4">Jafet Brito</h1>
-          <p class="text-xl text-gray-500 dark:text-zinc-400 mb-2 font-mono">Security Researcher · CTF Player</p>
-          <p class="text-base text-gray-500 dark:text-zinc-400 max-w-lg leading-relaxed">
+          <p data-t="about.subtitle" class="text-xl text-gray-500 dark:text-zinc-400 mb-2 font-mono">Security Researcher · CTF Player</p>
+          <p data-t="about.bio.short" class="text-base text-gray-500 dark:text-zinc-400 max-w-lg leading-relaxed">
             Apasionado por encontrar vulnerabilidades antes que los atacantes.
             Llevo años estudiando seguridad ofensiva de forma autodidacta,
             participando en CTFs internacionales y analizando malware en mi laboratorio.
@@ -51,20 +51,20 @@ const skills = [
     <section>
       <h2 class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50 mb-6 flex items-center gap-3">
         <span class="w-1 h-7 bg-green-500 dark:bg-terminal-green rounded-full inline-block"></span>
-        Mi historia
+        <span data-t="about.bio.title">Mi historia</span>
       </h2>
       <div class="prose prose-gray prose-lg max-w-none dark:prose-invert">
-        <p>
+        <p data-th="about.bio.p1">
           Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro.
           Esa misma curiosidad me llevó a la ciberseguridad: necesito entender
           <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.
         </p>
-        <p>
+        <p data-t="about.bio.p2">
           Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo —
           técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales —
           porque enseñar es la mejor forma de aprender.
         </p>
-        <p>
+        <p data-t="about.bio.p3">
           Todo el contenido es con fines educativos y de investigación.
           Creo firmemente en la divulgación responsable y en usar el conocimiento
           de seguridad para proteger sistemas, no para dañarlos.
@@ -76,12 +76,12 @@ const skills = [
     <section>
       <h2 class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50 mb-6 flex items-center gap-3">
         <span class="w-1 h-7 bg-green-500 dark:bg-terminal-green rounded-full inline-block"></span>
-        Especialidades
+        <span data-t="about.skills.title">Especialidades</span>
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {skills.map(({ cat, items }) => (
+        {skills.map(({ cat, catKey, items }) => (
           <div class="bg-white dark:bg-zinc-900/60 border border-gray-200 dark:border-zinc-800 rounded-xl p-5 shadow-sm">
-            <h3 class="font-display font-semibold text-green-700 dark:text-terminal-green mb-3 text-sm uppercase tracking-wide">
+            <h3 data-t={catKey} class="font-display font-semibold text-green-700 dark:text-terminal-green mb-3 text-sm uppercase tracking-wide">
               {cat}
             </h3>
             <ul class="space-y-1.5">
@@ -101,7 +101,7 @@ const skills = [
     <section>
       <h2 class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50 mb-6 flex items-center gap-3">
         <span class="w-1 h-7 bg-green-500 dark:bg-terminal-green rounded-full inline-block"></span>
-        Temas del blog
+        <span data-t="about.topics">Temas del blog</span>
       </h2>
       <div class="flex flex-wrap gap-2">
         {['web', 'reversing', 'ctf', 'osint', 'malware', 'network', 'linux', 'exploit', 'forense'].map(tag => (
@@ -114,7 +114,7 @@ const skills = [
     <section>
       <h2 class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50 mb-6 flex items-center gap-3">
         <span class="w-1 h-7 bg-green-500 dark:bg-terminal-green rounded-full inline-block"></span>
-        Mi setup
+        <span data-t="about.setup">Mi setup</span>
       </h2>
       <div class="relative rounded-2xl overflow-hidden shadow-xl mb-5">
         <img
@@ -135,8 +135,8 @@ const skills = [
     <!-- Contact -->
     <section class="bg-gradient-to-br from-green-50 to-white dark:from-terminal-surface/40 dark:to-terminal-bg
                     border border-green-200 dark:border-terminal-green/20 rounded-2xl p-8 text-center">
-      <h2 class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50 mb-3">Hablemos</h2>
-      <p class="text-gray-500 dark:text-zinc-400 mb-6 max-w-md mx-auto">
+      <h2 data-t="about.cta.title" class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50 mb-3">Hablemos</h2>
+      <p data-t="about.cta.body" class="text-gray-500 dark:text-zinc-400 mb-6 max-w-md mx-auto">
         Disponible para consultas de seguridad, proyectos de pentesting
         o simplemente para intercambiar ideas sobre CTFs.
       </p>
