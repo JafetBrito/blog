@@ -5,7 +5,7 @@ pubDate: 2024-02-20
 category: "Anniversary"
 tags: ["anniversary"]
 author: "Jafet Brito"
-heroImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80"
+heroImage: "https://avatars.githubusercontent.com/u/73570144?v=4"
 lang: "en"
 translationOf: "bienvenido"
 draft: false

@@ -4,7 +4,7 @@ description: "Metodología completa de escalada de privilegios en Linux — vect
 pubDate: 2024-03-05
 tags: ["linux", "ctf", "exploit"]
 author: "Jafet Brito"
-heroImage: "https://picsum.photos/seed/linux-terminal-root/1200/630"
+heroImage: "https://avatars.githubusercontent.com/u/73570144?v=4"
 lang: "es"
 draft: true
 ---
