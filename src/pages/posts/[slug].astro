@@ -4,29 +4,16 @@ import PostLayout from '../../layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
-
-  return posts.map(post => {
-    // Find a translation for this post:
-    // - If this is the ES version, find a post whose translationOf === this post's slug
-    // - If this is an EN version, the translationOf field points to the ES slug
-    const translation = posts.find(p =>
-      p.slug !== post.slug && (
-        p.data.translationOf === post.slug ||
-        post.data.translationOf === p.slug
-      )
-    );
-
-    return {
-      params: { slug: post.slug },
-      props:  { post, translationSlug: translation?.slug ?? null },
-    };
-  });
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props:  { post },
+  }));
 }
 
-const { post, translationSlug } = Astro.props;
+const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<PostLayout {...post.data} translationSlug={translationSlug}>
+<PostLayout {...post.data}>
   <Content />
 </PostLayout>

@@ -50,8 +50,19 @@ const rawPath = Astro.url.pathname.replace(/\/$/, '') || '/';
         ))}
       </nav>
 
-      <!-- Right: contact + lang + theme -->
+      <!-- Right: search + contact + lang + theme -->
       <div class="flex items-center gap-1 flex-shrink-0">
+
+        <!-- Search -->
+        <a href="/search"
+           class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors"
+           title="Buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+
+        <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div>
 
         <!-- Email -->
         <a href="mailto:hola@jafetbrito.com"
@@ -128,6 +139,9 @@ const rawPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     try { localStorage.setItem('lang', next); } catch (e) {}
     (window as any).__lang = next;
     html.lang = next;
+    /* activa/desactiva clase CSS para bloques .lang-es/.lang-en */
+    if (next === 'en') html.classList.add('lang-en');
+    else html.classList.remove('lang-en');
     if (langLbl) langLbl.textContent = next.toUpperCase();
     if ((window as any).__applyTranslations) (window as any).__applyTranslations();
   });

@@ -5,7 +5,6 @@ pubDate: 2024-02-10
 tags: ["web", "ctf", "exploit"]
 author: "Jafet Brito"
 heroImage: "https://avatars.githubusercontent.com/u/73570144?v=4"
-lang: "es"
 draft: true
 ---
 

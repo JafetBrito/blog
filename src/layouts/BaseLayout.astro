@@ -66,10 +66,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
         if (localStorage.getItem('theme') === 'dark') {
           document.documentElement.classList.add('dark');
         }
-        /* el <html lang> lo fijamos también aquí */
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
         var lang = localStorage.getItem('lang') || 'es';
         document.documentElement.lang = lang;
         window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
       } catch (e) {
         window.__lang = 'es';
       }
@@ -139,6 +142,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
           /* buttons */
           'btn.email':    'Email',
           'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
           /* guide */
           'guide.title': 'Guía del blog',
         },
@@ -195,6 +203,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
           'post.breadcrumb.posts': 'Posts',
           'btn.email':    'Email',
           'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
           'guide.title': 'Blog guide',
         }
       };
@@ -236,8 +248,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://localhos
           } catch(e) {}
         });
 
-        /* filtrar posts por idioma (si la página lo soporta) */
-        if (typeof window.__filterPosts === 'function') window.__filterPosts();
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
       }
 
       /* Ejecutar lo antes posible */

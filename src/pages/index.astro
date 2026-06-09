@@ -86,45 +86,58 @@ const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
   <!-- ── POSTS ─────────────────────────────────────────────── -->
   <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
 
-    <!-- Section header + tag filter -->
+    <!-- Section header + live tag filter -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-      <h2 data-t="home.latest" class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50">Últimos posts</h2>
-      <div class="flex flex-wrap gap-1.5">
+      <h2 data-t="home.latest" class="font-display font-bold text-2xl text-gray-900 dark:text-zinc-50">
+        Últimos posts
+      </h2>
+      <div id="tag-filters" class="flex flex-wrap gap-1.5">
         {allTags.map(tag => (
-          <a
-            href={`/tags/${tag}`}
-            class="px-2.5 py-1 text-xs font-mono rounded-lg border border-gray-200 dark:border-zinc-700
-                   text-gray-500 dark:text-zinc-400 hover:border-green-500 hover:text-green-700
-                   dark:hover:border-terminal-green dark:hover:text-terminal-green transition-colors"
+          <button
+            type="button"
+            data-filter-tag={tag}
+            class="tag-filter-btn px-2.5 py-1 text-xs font-mono rounded-lg border
+                   border-gray-200 dark:border-zinc-700
+                   text-gray-500 dark:text-zinc-400
+                   hover:border-green-500 hover:text-green-700
+                   dark:hover:border-terminal-green dark:hover:text-terminal-green
+                   transition-colors"
           >
             #{tag}
-          </a>
+          </button>
         ))}
       </div>
     </div>
 
-    {posts.length === 0 ? (
-      <div class="text-center py-16 text-gray-400 dark:text-zinc-500">
-        <p data-t="home.empty" class="text-lg font-mono">// sin posts todavía</p>
-        <p class="text-sm mt-2 font-mono opacity-60">$ touch src/content/posts/primer-post.md</p>
-      </div>
-    ) : (
-      <>
-        {/* Featured post */}
-        {featured && (
-          <div class="mb-6">
-            <PostCard post={featured} featured />
-          </div>
-        )}
+    <!-- Posts grid (all rendered; tag/search filter runs client-side) -->
+    <div id="posts-container">
+      {posts.length === 0 ? (
+        <div class="text-center py-16 text-gray-400 dark:text-zinc-500">
+          <p data-t="home.empty" class="text-lg font-mono">// sin posts todavía</p>
+          <p class="text-sm mt-2 font-mono opacity-60">$ touch src/content/posts/primer-post.md</p>
+        </div>
+      ) : (
+        <>
+          {/* Featured post */}
+          {featured && (
+            <div class="mb-6" id="featured-wrapper">
+              <PostCard post={featured} featured />
+            </div>
+          )}
+          {/* Rest in grid */}
+          {rest.length > 0 && (
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {rest.map(post => <PostCard post={post} />)}
+            </div>
+          )}
+        </>
+      )}
+    </div>
 
-        {/* Rest in grid */}
-        {rest.length > 0 && (
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {rest.map(post => <PostCard post={post} />)}
-          </div>
-        )}
-      </>
-    )}
+    <!-- Empty state when all filtered out -->
+    <p id="no-posts-msg" class="hidden text-center py-12 text-gray-400 dark:text-zinc-500 font-mono text-sm">
+      // sin resultados para este filtro
+    </p>
 
   </section>
 
@@ -145,28 +158,61 @@ const allTags  = [...new Set(posts.flatMap(p => p.data.tags))].sort();
     </div>
   </section>
 
+</BaseLayout>
 
 <script is:inline>
-  /* Filtra los artículos por idioma activo.
-     Si no hay artículos en ese idioma, muestra todos (fallback). */
-  window.__filterPosts = function () {
-    var lang = window.__lang || 'es';
-    var cards = document.querySelectorAll('article[data-post-lang]');
-    var matchCount = 0;
-    cards.forEach(function (el) {
-      if ((el.getAttribute('data-post-lang') || 'es') === lang) matchCount++;
+(function () {
+  var activeTag = null;
+
+  /* ── Tag filter ─────────────────────────────────────────── */
+  document.querySelectorAll('.tag-filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tag = this.getAttribute('data-filter-tag');
+      if (activeTag === tag) {
+        /* deselect */
+        activeTag = null;
+        document.querySelectorAll('.tag-filter-btn').forEach(function (b) {
+          b.classList.remove('border-green-500', 'text-green-700',
+                             'dark:border-terminal-green', 'dark:text-terminal-green');
+          b.classList.add('border-gray-200', 'dark:border-zinc-700',
+                          'text-gray-500', 'dark:text-zinc-400');
+        });
+      } else {
+        activeTag = tag;
+        document.querySelectorAll('.tag-filter-btn').forEach(function (b) {
+          var isActive = b.getAttribute('data-filter-tag') === tag;
+          b.classList.toggle('border-green-500',      isActive);
+          b.classList.toggle('text-green-700',        isActive);
+          b.classList.toggle('dark:border-terminal-green', isActive);
+          b.classList.toggle('dark:text-terminal-green',   isActive);
+          b.classList.toggle('border-gray-200',      !isActive);
+          b.classList.toggle('dark:border-zinc-700', !isActive);
+          b.classList.toggle('text-gray-500',        !isActive);
+          b.classList.toggle('dark:text-zinc-400',   !isActive);
+        });
+      }
+      applyFilter();
     });
+  });
+
+  function applyFilter() {
+    var cards     = document.querySelectorAll('article[data-post-tags]');
+    var noMsg     = document.getElementById('no-posts-msg');
+    var featured  = document.getElementById('featured-wrapper');
+    var visible   = 0;
+
     cards.forEach(function (el) {
-      var postLang = el.getAttribute('data-post-lang') || 'es';
-      var show = matchCount === 0 || postLang === lang;
+      var tags   = (el.getAttribute('data-post-tags') || '').split(',');
+      var show   = !activeTag || tags.includes(activeTag);
       el.style.display = show ? '' : 'none';
-      /* también ocultar el wrapper .mb-6 del post destacado para evitar margen huérfano */
-      var parent = el.parentElement;
-      if (parent && parent.classList.contains('mb-6')) {
-        parent.style.display = show ? '' : 'none';
+      if (show) visible++;
+      /* hide featured wrapper when its card is hidden */
+      if (featured && featured.contains(el)) {
+        featured.style.display = show ? '' : 'none';
       }
     });
-  };
-</script>
 
-</BaseLayout>
+    if (noMsg) noMsg.classList.toggle('hidden', visible > 0);
+  }
+})();
+</script>

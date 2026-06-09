@@ -42,4 +42,14 @@
 
   /* Evitar flash de tema al cargar */
   html { color-scheme: light dark; }
+
+  /* ── Sistema bilingüe — ES/EN content blocks ────────────── */
+  /* Por defecto muestra ES, oculta EN */
+  .lang-en { display: none; }
+
+  /* Cuando el usuario eligió inglés (html.lang-en):
+     oculta ES y muestra EN. Esto se aplica antes del
+     primer frame gracias al script is:inline del head. */
+  html.lang-en .lang-es { display: none; }
+  html.lang-en .lang-en { display: block; }
 }

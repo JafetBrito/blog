@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const posts    = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Buscar — Jafet Brito" description="Busca posts en el blog de Jafet Brito">
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 data-t="search.title" class="font-display font-bold text-3xl text-gray-900 dark:text-zinc-50 mb-6">
+        Buscar
+      </h1>
+
+      <!-- Search input -->
+      <div class="relative">
+        <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+               class="w-5 h-5 text-gray-400 dark:text-zinc-500">
+            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <input
+          id="search-input"
+          type="search"
+          autofocus
+          data-t-placeholder="search.placeholder"
+          placeholder="Buscar posts..."
+          class="w-full pl-12 pr-5 py-4 rounded-2xl border-2 border-gray-200 dark:border-zinc-700
+                 bg-white dark:bg-zinc-900 text-gray-900 dark:text-zinc-100
+                 font-sans text-lg placeholder:text-gray-400 dark:placeholder:text-zinc-600
+                 focus:outline-none focus:border-green-500 dark:focus:border-terminal-green
+                 transition-colors shadow-sm"
+        />
+      </div>
+
+      <!-- Result count -->
+      <p id="result-count" class="mt-3 text-sm text-gray-400 dark:text-zinc-500 font-mono hidden">
+        <span id="count-num">0</span> resultado(s)
+      </p>
+    </div>
+
+    <!-- Posts grid -->
+    <div id="results" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {posts.map(post => <PostCard post={post} />)}
+    </div>
+
+    <!-- Empty state -->
+    <div id="no-results" class="hidden text-center py-20">
+      <p data-t="search.empty" class="text-2xl font-mono text-gray-400 dark:text-zinc-500 mb-3">
+        // sin resultados
+      </p>
+      <a href="/" data-t="search.all" class="text-sm text-green-700 dark:text-terminal-green hover:underline font-mono">
+        Ver todos los posts →
+      </a>
+    </div>
+
+  </div>
+
+</BaseLayout>
+
+<script is:inline>
+(function () {
+  var input    = document.getElementById('search-input');
+  var noRes    = document.getElementById('no-results');
+  var countEl  = document.getElementById('result-count');
+  var countNum = document.getElementById('count-num');
+
+  function runSearch() {
+    var q     = (input.value || '').toLowerCase().trim();
+    var cards = document.querySelectorAll('article[data-search-text]');
+    var shown = 0;
+
+    cards.forEach(function (el) {
+      var text = el.getAttribute('data-search-text') || '';
+      var show = !q || text.includes(q);
+      el.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+
+    if (noRes)    noRes.classList.toggle('hidden', !q || shown > 0);
+    if (countEl)  countEl.classList.toggle('hidden', !q);
+    if (countNum) countNum.textContent = String(shown);
+  }
+
+  if (input) {
+    input.addEventListener('input', runSearch);
+    /* If navigated with a ?q= param, pre-fill */
+    var params = new URLSearchParams(window.location.search);
+    var q0 = params.get('q');
+    if (q0) { input.value = q0; runSearch(); }
+  }
+})();
+</script>

@@ -148,16 +148,9 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
-"flipper-es.md": {
-	id: "flipper-es.md";
-  slug: "flipper-es";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".md"] };
-"flipper.md": {
-	id: "flipper.md";
-  slug: "flipper";
+"flipper-one.md": {
+	id: "flipper-one.md";
+  slug: "flipper-one";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -165,13 +158,6 @@ declare module 'astro:content' {
 "linux-privilege-escalation.md": {
 	id: "linux-privilege-escalation.md";
   slug: "linux-privilege-escalation";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".md"] };
-"welcome.md": {
-	id: "welcome.md";
-  slug: "welcome";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

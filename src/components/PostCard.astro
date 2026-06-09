@@ -8,16 +8,23 @@ interface Props {
 }
 
 const { post, featured = false } = Astro.props;
-const { title, description, pubDate, tags, author, heroImage, lang = 'es' } = post.data;
+const { title, title_en, description, description_en, pubDate, tags, author, heroImage } = post.data;
 
 const dateStr  = pubDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
 const dateISO  = pubDate.toISOString().slice(0, 10);
-const readMin = Math.ceil((post.body?.split(/\s+/).length ?? 200) / 200);
-const href    = `/posts/${post.slug}`;
-const imgSrc  = heroImage ?? `https://picsum.photos/seed/${post.slug}/800/450`;
+const readMin  = Math.ceil((post.body?.split(/\s+/).length ?? 200) / 200);
+const href     = `/posts/${post.slug}`;
+const imgSrc   = heroImage ?? `https://picsum.photos/seed/${post.slug}/800/450`;
+
+// Build searchable text blob (includes both languages so search works in either)
+const searchText = [title, title_en, description, description_en, ...tags]
+  .filter(Boolean).join(' ').toLowerCase();
 ---
 
-<article data-post-lang={lang} class="group bg-white dark:bg-zinc-900/50
+<article
+  data-search-text={searchText}
+  data-post-tags={tags.join(',')}
+  class="group bg-white dark:bg-zinc-900/50
                 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden
                 shadow-sm hover:shadow-lg dark:shadow-none
                 hover:border-green-300 dark:hover:border-terminal-green/40
@@ -50,13 +57,19 @@ const imgSrc  = heroImage ?? `https://picsum.photos/seed/${post.slug}/800/450`;
       <span>{author}</span>
     </div>
 
-    <!-- Title -->
+    <!-- Title (bilingual swap) -->
     <h2 class={`font-display font-semibold text-gray-900 dark:text-zinc-50 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors mb-2 leading-snug ${featured ? 'text-2xl' : 'text-xl'}`}>
-      <a href={href}>{title}</a>
+      <a href={href}
+         data-text-es={title}
+         data-text-en={title_en ?? title}>
+        {title}
+      </a>
     </h2>
 
-    <!-- Description -->
-    <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4">
+    <!-- Description (bilingual swap) -->
+    <p class="text-gray-500 dark:text-zinc-400 text-base leading-relaxed line-clamp-2 mb-4"
+       data-text-es={description}
+       data-text-en={description_en ?? description}>
       {description}
     </p>
 

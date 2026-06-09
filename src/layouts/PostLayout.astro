@@ -4,23 +4,23 @@ import TagBadge from '../components/TagBadge.astro';
 import ContactButtons from '../components/ContactButtons.astro';
 
 interface Props {
-  title:            string;
-  description:      string;
-  pubDate:          Date;
-  updatedDate?:     Date;
-  tags:             string[];
-  author:           string;
-  heroImage?:       string;
-  lang?:            'es' | 'en';
-  translationSlug?: string | null;
+  title:          string;
+  title_en?:      string;
+  description:    string;
+  description_en?: string;
+  pubDate:        Date;
+  updatedDate?:   Date;
+  tags:           string[];
+  author:         string;
+  heroImage?:     string;
 }
 
-const { title, description, pubDate, updatedDate, tags, author, heroImage, lang = 'es', translationSlug } = Astro.props;
+const { title, title_en, description, description_en, pubDate, updatedDate, tags, author, heroImage } = Astro.props;
 
-const dateISO   = pubDate.toISOString().slice(0, 10);
-const dateLong  = pubDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-const slug      = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
+const dateISO  = pubDate.toISOString().slice(0, 10);
+const dateLong = pubDate.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+const slug     = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+const imgSrc   = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
 ---
 
 <BaseLayout title={`${title} — Jafet Brito`} description={description} heroImage={imgSrc}>
@@ -43,30 +43,10 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
     <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono">
       <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a>
       <span>/</span>
-      <a data-t="post.breadcrumb.posts" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a>
+      <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a>
       <span>/</span>
       <span class="text-gray-600 dark:text-zinc-400 truncate">{slug}</span>
     </nav>
-
-    <!-- Translation banner (shown via JS only when UI lang ≠ post lang) -->
-    {translationSlug && (
-      <div
-        id="translation-banner"
-        data-post-lang={lang}
-        data-translation-href={`/posts/${translationSlug}`}
-        class="hidden mb-6 px-4 py-3 rounded-xl border border-green-200 dark:border-terminal-green/30
-               bg-green-50 dark:bg-terminal-green/5
-               text-sm text-gray-600 dark:text-zinc-300 flex items-center justify-between gap-3"
-      >
-        <span class="flex items-center gap-2">
-          <span class="text-lg">🌐</span>
-          <span id="translation-banner-text"></span>
-        </span>
-        <a id="translation-banner-link" href={`/posts/${translationSlug}`}
-           class="font-semibold text-green-700 dark:text-terminal-green hover:underline flex-shrink-0">
-        </a>
-      </div>
-    )}
 
     <!-- Post header -->
     <header class="mb-10">
@@ -75,16 +55,25 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
         {tags.map(tag => <TagBadge tag={tag} linked />)}
       </div>
 
-      <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4">
+      <!-- Title with bilingual swap -->
+      <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4"
+          data-text-es={title}
+          data-text-en={title_en ?? title}>
         {title}
       </h1>
-      <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed">{description}</p>
+
+      <!-- Description with bilingual swap -->
+      <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed"
+         data-text-es={description}
+         data-text-en={description_en ?? description}>
+        {description}
+      </p>
 
       <!-- Author + date row -->
       <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800">
         <div class="flex items-center gap-3">
           <img
-            src="https://picsum.photos/seed/jafet-brito-avatar/80/80"
+            src="https://avatars.githubusercontent.com/u/73570144?v=4"
             alt="Jafet Brito"
             width="40" height="40"
             class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"
@@ -132,7 +121,7 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
 
       <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center">
         <img
-          src="https://picsum.photos/seed/jafet-brito-avatar/80/80"
+          src="https://avatars.githubusercontent.com/u/73570144?v=4"
           alt="Jafet Brito"
           width="64" height="64"
           class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"
@@ -155,70 +144,5 @@ const imgSrc    = heroImage ?? `https://picsum.photos/seed/${slug}/1200/630`;
 
     </footer>
   </div>
-
-
-<script is:inline>
-  /* Muestra el banner de traducción si el idioma de la UI ≠ el idioma del post */
-  (function updateTranslationBanner() {
-    var banner = document.getElementById('translation-banner');
-    if (!banner) return;
-    var uiLang   = window.__lang || 'es';
-    var postLang = banner.getAttribute('data-post-lang') || 'es';
-    var href     = banner.getAttribute('data-translation-href') || '/';
-    var dict     = (window.__ui && window.__ui[uiLang]) || {};
-
-    if (uiLang !== postLang) {
-      banner.classList.remove('hidden');
-      banner.classList.add('flex');
-      var textEl = document.getElementById('translation-banner-text');
-      var linkEl = document.getElementById('translation-banner-link');
-      if (textEl) {
-        textEl.textContent = postLang === 'es'
-          ? 'Este post está en español.'
-          : 'This post is in English.';
-      }
-      if (linkEl) {
-        linkEl.textContent = postLang === 'es'
-          ? (dict['post.read.en'] || 'Read in English →')
-          : (dict['post.read.es'] || 'Leer en español →');
-        linkEl.href = href;
-      }
-    } else {
-      banner.classList.add('hidden');
-      banner.classList.remove('flex');
-    }
-  })();
-
-  /* Re-evaluar el banner cuando cambia el idioma */
-  var _origApply = window.__applyTranslations;
-  window.__applyTranslations = function() {
-    if (_origApply) _origApply();
-    /* pequeño delay para que __lang ya esté actualizado */
-    setTimeout(function() {
-      var banner = document.getElementById('translation-banner');
-      if (!banner) return;
-      var uiLang   = window.__lang || 'es';
-      var postLang = banner.getAttribute('data-post-lang') || 'es';
-      var href     = banner.getAttribute('data-translation-href') || '/';
-      var dict     = (window.__ui && window.__ui[uiLang]) || {};
-      if (uiLang !== postLang) {
-        banner.classList.remove('hidden');
-        banner.classList.add('flex');
-        var textEl = document.getElementById('translation-banner-text');
-        var linkEl = document.getElementById('translation-banner-link');
-        if (textEl) textEl.textContent = postLang === 'es' ? 'Este post está en español.' : 'This post is in English.';
-        if (linkEl) {
-          linkEl.textContent = postLang === 'es'
-            ? (dict['post.read.en'] || 'Read in English →')
-            : (dict['post.read.es'] || 'Leer en español →');
-          linkEl.href = href;
-        }
-      } else {
-        banner.classList.add('hidden');
-        banner.classList.remove('flex');
-      }
-    }, 0);
-  };
-</script>
 
 </BaseLayout>
