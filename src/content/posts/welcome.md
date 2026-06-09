@@ -7,7 +7,7 @@ tags: ["anniversary"]
 author: "Jafet Brito"
 heroImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80"
 lang: "en"
-translationOf: "nombre-de-tu-archivo-en-espanol"
+translationOf: "bienvenido"
 draft: false
 ---
 
