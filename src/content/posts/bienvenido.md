@@ -3,7 +3,7 @@ title: "🚀 Bienvenidos a la Nueva Era: 5 Años Redefiniendo la Tecnología y l
 title_en: "🚀 Welcome to the New Era: 5 Years Redefining Technology and Security"
 description: "Celebramos media década de aprendizaje continuo. Renovamos la casa, importamos la historia y comenzamos un capítulo fresco enfocado en el desarrollo, la seguridad y la privacidad."
 description_en: "We celebrate half a decade of continuous learning. We renovate the house, import history, and start a fresh chapter focused on development, security, and privacy."
-pubDate: 2024-02-20
+pubDate: 2026-06-09
 tags: ["anniversary"]
 author: "Jafet Brito"
 heroImage: "https://avatars.githubusercontent.com/u/73570144?v=4"
