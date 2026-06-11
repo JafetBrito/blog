@@ -183,6 +183,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"prompt_engineering.md": {
+	id: "prompt_engineering.md";
+  slug: "prompt_engineering";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "xss-cross-site-scripting.md": {
 	id: "xss-cross-site-scripting.md";
   slug: "xss-cross-site-scripting";
