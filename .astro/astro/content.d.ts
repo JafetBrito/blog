@@ -162,9 +162,9 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
-"fable.md": {
-	id: "fable.md";
-  slug: "fable";
+"fable5.md": {
+	id: "fable5.md";
+  slug: "fable5";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -193,13 +193,6 @@ declare module 'astro:content' {
 "social.md": {
 	id: "social.md";
   slug: "social";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".md"] };
-"xss-cross-site-scripting.md": {
-	id: "xss-cross-site-scripting.md";
-  slug: "xss-cross-site-scripting";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
