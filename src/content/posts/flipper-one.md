@@ -12,7 +12,7 @@ tags:
   - linux
   - cybersecurity
 author: "Jafet Brito"
-heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80"
+heroImage: "https://sm.pcmag.com/t/pcmag_ca/news/n/new-flippe/new-flipper-one-multi-tool-computer-is-built-for-tinkerers_vmwk.3840.jpg"
 draft: false
 ---
 
@@ -24,7 +24,7 @@ draft: false
 
 Si eres investigador de seguridad, entusiasta del hardware o simplemente alguien que lleva el hacking en la sangre, este artículo es para ti. El **21 de mayo de 2026**, Flipper Devices anunció oficialmente el **Flipper One** — y lo que han construido va mucho más allá de una simple actualización.
 
-![Hardware hacking setup](https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80)
+![Hardware hacking setup](https://sm.pcmag.com/t/pcmag_ca/news/n/new-flippe/new-flipper-one-multi-tool-computer-is-built-for-tinkerers_vmwk.3840.jpg)
 
 ---
 
@@ -131,7 +131,7 @@ El Flipper Zero democratizó el hardware hacking. El **Flipper One lo profesiona
 
 If you're a security researcher, hardware enthusiast, or simply someone who bleeds hacking, this article is for you. On **May 21, 2026**, Flipper Devices officially announced the **Flipper One** — and what they've built goes far beyond a simple upgrade.
 
-![Hardware hacking setup](https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80)
+![Hardware hacking setup](https://sm.pcmag.com/t/pcmag_ca/news/n/new-flippe/new-flipper-one-multi-tool-computer-is-built-for-tinkerers_vmwk.3840.jpg)
 
 ---
 
