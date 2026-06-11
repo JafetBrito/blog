@@ -146,42 +146,49 @@ declare module 'astro:content' {
   slug: "ai_2026";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
+} & { render(): Render[".md"] };
+"OSINT.md": {
+	id: "OSINT.md";
+  slug: "osint";
+  body: string;
+  collection: "posts";
+  data: any
 } & { render(): Render[".md"] };
 "bienvenido.md": {
 	id: "bienvenido.md";
   slug: "bienvenido";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "fable.md": {
 	id: "fable.md";
   slug: "fable";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "flipper-one.md": {
 	id: "flipper-one.md";
   slug: "flipper-one";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "linux-privilege-escalation.md": {
 	id: "linux-privilege-escalation.md";
   slug: "linux-privilege-escalation";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "xss-cross-site-scripting.md": {
 	id: "xss-cross-site-scripting.md";
   slug: "xss-cross-site-scripting";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 };
 
@@ -193,5 +200,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("./../../src/content/config.js");
+	export type ContentConfig = never;
 }
