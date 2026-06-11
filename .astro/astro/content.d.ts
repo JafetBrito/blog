@@ -146,56 +146,63 @@ declare module 'astro:content' {
   slug: "ai_2026";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "OSINT.md": {
 	id: "OSINT.md";
   slug: "osint";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "bienvenido.md": {
 	id: "bienvenido.md";
   slug: "bienvenido";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "fable.md": {
 	id: "fable.md";
   slug: "fable";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "flipper-one.md": {
 	id: "flipper-one.md";
   slug: "flipper-one";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "linux-privilege-escalation.md": {
 	id: "linux-privilege-escalation.md";
   slug: "linux-privilege-escalation";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "prompt_engineering.md": {
 	id: "prompt_engineering.md";
   slug: "prompt_engineering";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"social.md": {
+	id: "social.md";
+  slug: "social";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "xss-cross-site-scripting.md": {
 	id: "xss-cross-site-scripting.md";
   slug: "xss-cross-site-scripting";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 };
 
@@ -207,5 +214,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("./../../src/content/config.js");
 }
