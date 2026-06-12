@@ -1,10 +1,10 @@
 ---
 title: "🐱 Git con Oliver 2026: De Script Kitty a Hacker Cat — La Guía Completa"
 title_en: "🐱 Git with Oliver 2026: From Script Kitty to Hacker Cat — The Complete Guide"
-description: "La guía de Git más divertida del internet: Oliver the Hacker Cat salva a Script Kitty del despido en cada capítulo mientras aprende Git desde cero hasta GitHub Actions, rebase, cherry-pick y CI/CD. Porque Git es un viaje en el tiempo — y alguien tiene que saber conducir."
-description_en: "The most fun Git guide on the internet: Oliver the Hacker Cat saves Script Kitty from getting fired in every chapter while learning Git from zero to GitHub Actions, rebase, cherry-pick and CI/CD. Because Git is time travel — and someone has to know how to drive."
+description: "La guía de Git más divertida del internet: Oliver the Hacker Cat salva a Script Kitty del despido en cada capítulo mientras aprende Git desde cero hasta GitHub Actions, rebase, cherry-pick y CI-CD. Porque Git es un viaje en el tiempo — y alguien tiene que saber conducir."
+description_en: "The most fun Git guide on the internet: Oliver the Hacker Cat saves Script Kitty from getting fired in every chapter while learning Git from zero to GitHub Actions, rebase, cherry-pick and CI-CD. Because Git is time travel — and someone has to know how to drive."
 pubDate: 2026-06-11
-tags: ["Git", "GitHub", "Control de Versiones", "Tutorial", "DevOps", "CI/CD", "Programacion", "Humor", "OliverTheHackerCat"]
+tags: ["Git", "GitHub", "Control de Versiones", "Tutorial", "DevOps", "CI-CD", "Programacion", "Humor", "OliverTheHackerCat"]
 author: "Jafet Brito"
 heroImage: "https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?w=1200&q=80"
 draft: false
@@ -253,7 +253,7 @@ git commit -m "chore: actualizar dependencias a versiones seguras"
 | `test` | Añadir o corregir tests |
 | `chore` | Tareas de mantenimiento, dependencias |
 | `perf` | Mejora de rendimiento |
-| `ci` | Cambios en CI/CD |
+| `ci` | Cambios en CI-CD |
 
 ### El .gitignore — Lo Que Git Debe Olvidar
 
@@ -1565,7 +1565,7 @@ formateados con la coma como separador decimal.
 
 ---
 
-# 🎬 EPISODIO 13: GitHub Actions — CI/CD Desde Cero
+# 🎬 EPISODIO 13: GitHub Actions — CI-CD Desde Cero
 
 *El mismo día del lanzamiento de v2.0.0...*
 
@@ -1573,9 +1573,9 @@ formateados con la coma como separador decimal.
 
 **Script Kitty:** 😱 *"OLIVER. Subí código que rompe los tests a main. Los tests no están corriendo automáticamente. El build de producción está fallando."*
 
-**Oliver:** 🐱 *"Eso es porque no tienes CI/CD. Hoy lo configuramos."*
+**Oliver:** 🐱 *"Eso es porque no tienes CI-CD. Hoy lo configuramos."*
 
-**Script Kitty:** 🤔 *"¿CI/CD? ¿Es una enfermedad?"*
+**Script Kitty:** 🤔 *"¿CI-CD? ¿Es una enfermedad?"*
 
 **Oliver:** 🐱 *"Continous Integration / Continuous Deployment. Cada vez que haces push, una máquina en la nube corre tus tests automáticamente. Si fallan, el deploy se cancela."*
 
@@ -1587,13 +1587,13 @@ formateados con la coma como separador decimal.
 
 ---
 
-### GitHub Actions — El Motor de CI/CD de GitHub
+### GitHub Actions — El Motor de CI-CD de GitHub
 
 ```yaml
 # .github/workflows/ci.yml
-# Este archivo define el pipeline de CI/CD
+# Este archivo define el pipeline de CI-CD
 
-name: CI/CD Pipeline
+name: CI-CD Pipeline
 
 on:                           # Cuándo se ejecuta
   push:
@@ -1722,7 +1722,7 @@ jobs:
 
 **Script Kitty:** 😎 *"¡Bien! Porque los tests fallaban por razones reales. Los arreglé antes del merge. Ningún bug llegó a producción."*
 
-**Oliver:** 🐱 *"...Eso es exactamente para qué sirve el CI/CD."*
+**Oliver:** 🐱 *"...Eso es exactamente para qué sirve el CI-CD."*
 
 **Script Kitty:** 😎 *"¿Estás orgulloso de mí?"*
 
@@ -1763,7 +1763,7 @@ Reglas:
 - Branches de muy corta vida (máximo 1-2 días)
 - Features grandes → Feature Flags en el código
 - Deploy continuo a producción
-- Requiere: tests sólidos, CI/CD maduro
+- Requiere: tests sólidos, CI-CD maduro
 ```
 
 ```bash
@@ -1834,7 +1834,7 @@ git flow hotfix finish fix-vulnerabilidad-critica
 | **Tamaño del equipo** | Cualquiera | Mediano-grande |
 | **Tipo de software** | Web/SaaS/APIs | Apps con versiones |
 | **Frecuencia de release** | Continua | Programada |
-| **Requiere** | CI/CD sólido | Disciplina de branching |
+| **Requiere** | CI-CD sólido | Disciplina de branching |
 | **Ejemplos** | Google, Facebook | Proyectos open source, apps |
 
 > 💡 **La recomendación de Oliver para startups:** Trunk-Based Development + Feature Flags. Deploy continuo, historial limpio, equipos pequeños pueden moverse rápido. Solo migra a GitFlow si tienes múltiples versiones soportadas simultáneamente.
@@ -2113,7 +2113,7 @@ EPISODE 9:  Cherry-Pick — "I only want THAT commit"
 EPISODE 10: Tags & Releases — "Which version is in production?"
 EPISODE 11: Hooks — "I pushed code with 47 linting errors"
 EPISODE 12: GitHub — PRs, Issues and Code Review
-EPISODE 13: GitHub Actions — CI/CD from scratch
+EPISODE 13: GitHub Actions — CI-CD from scratch
 EPISODE 14: Professional Workflow — GitFlow and Trunk-Based
 BONUS:      Oliver's Aliases — Work like a pro
 ```
@@ -2442,11 +2442,11 @@ pre-commit install
 
 ---
 
-## 🎬 EPISODE 13: GitHub Actions CI/CD
+## 🎬 EPISODE 13: GitHub Actions CI-CD
 
 ```yaml
 # .github/workflows/ci.yml
-name: CI/CD Pipeline
+name: CI-CD Pipeline
 
 on:
   push:

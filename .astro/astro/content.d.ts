@@ -197,9 +197,9 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
-"git_roadmap.md": {
-	id: "git_roadmap.md";
-  slug: "git_roadmap";
+"git.md": {
+	id: "git.md";
+  slug: "git";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
