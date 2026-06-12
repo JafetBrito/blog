@@ -190,6 +190,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"gemini_roadmap.md": {
+	id: "gemini_roadmap.md";
+  slug: "gemini_roadmap";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "linux-privilege-escalation.md": {
 	id: "linux-privilege-escalation.md";
   slug: "linux-privilege-escalation";
