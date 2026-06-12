@@ -197,6 +197,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"git.md": {
+	id: "git.md";
+  slug: "git";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "linux-privilege-escalation.md": {
 	id: "linux-privilege-escalation.md";
   slug: "linux-privilege-escalation";
