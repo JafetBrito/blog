@@ -211,6 +211,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"python.md": {
+	id: "python.md";
+  slug: "python";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "roadmap_cybersecurity.md": {
 	id: "roadmap_cybersecurity.md";
   slug: "roadmap_cybersecurity";
