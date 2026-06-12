@@ -197,9 +197,9 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
-"git.md": {
-	id: "git.md";
-  slug: "git";
+"git_roadmap.md": {
+	id: "git_roadmap.md";
+  slug: "git_roadmap";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -235,6 +235,13 @@ declare module 'astro:content' {
 "social.md": {
 	id: "social.md";
   slug: "social";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"test.md": {
+	id: "test.md";
+  slug: "test";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
