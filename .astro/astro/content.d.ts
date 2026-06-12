@@ -169,6 +169,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"claude_roadmap.md": {
+	id: "claude_roadmap.md";
+  slug: "claude_roadmap";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "fable5.md": {
 	id: "fable5.md";
   slug: "fable5";
