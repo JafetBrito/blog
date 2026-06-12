@@ -146,63 +146,70 @@ declare module 'astro:content' {
   slug: "42";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "AI_2026.md": {
 	id: "AI_2026.md";
   slug: "ai_2026";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "OSINT.md": {
 	id: "OSINT.md";
   slug: "osint";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "bienvenido.md": {
 	id: "bienvenido.md";
   slug: "bienvenido";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "fable5.md": {
 	id: "fable5.md";
   slug: "fable5";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "flipper-one.md": {
 	id: "flipper-one.md";
   slug: "flipper-one";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "linux-privilege-escalation.md": {
 	id: "linux-privilege-escalation.md";
   slug: "linux-privilege-escalation";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 "prompt_engineering.md": {
 	id: "prompt_engineering.md";
   slug: "prompt_engineering";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
+} & { render(): Render[".md"] };
+"roadmap_cybersecurity.md": {
+	id: "roadmap_cybersecurity.md";
+  slug: "roadmap_cybersecurity";
+  body: string;
+  collection: "posts";
+  data: any
 } & { render(): Render[".md"] };
 "social.md": {
 	id: "social.md";
   slug: "social";
   body: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">
+  data: any
 } & { render(): Render[".md"] };
 };
 
@@ -214,5 +221,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("./../../src/content/config.js");
+	export type ContentConfig = never;
 }
