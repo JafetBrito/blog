@@ -7,6 +7,6 @@ pubDate: 2026-06-11
 tags: ["SocialEngineering", "SpearPhishing", "IA", "Filosofia", "Sociologia", "KevinMitnick", "Psicologia", "ZeroTrust", "Defensa", "Educacion"]
 author: "Jafet Brito"
 heroImage: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&q=80"
-draft: false
+draft: true
 ---
- 
+ <div class="lang-es">

@@ -1,6 +1,6 @@
 ---
-title: "🐱 Git con Oliver: De Script Kitty a Hacker Cat — La Guía Completa"
-title_en: "🐱 Git with Oliver: From Script Kitty to Hacker Cat — The Complete Guide"
+title: "🐱 Git con Oliver 2026: De Script Kitty a Hacker Cat — La Guía Completa"
+title_en: "🐱 Git with Oliver 2026: From Script Kitty to Hacker Cat — The Complete Guide"
 description: "La guía de Git más divertida del internet: Oliver the Hacker Cat salva a Script Kitty del despido en cada capítulo mientras aprende Git desde cero hasta GitHub Actions, rebase, cherry-pick y CI/CD. Porque Git es un viaje en el tiempo — y alguien tiene que saber conducir."
 description_en: "The most fun Git guide on the internet: Oliver the Hacker Cat saves Script Kitty from getting fired in every chapter while learning Git from zero to GitHub Actions, rebase, cherry-pick and CI/CD. Because Git is time travel — and someone has to know how to drive."
 pubDate: 2026-06-11
