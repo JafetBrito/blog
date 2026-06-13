@@ -204,9 +204,30 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"google.md": {
+	id: "google.md";
+  slug: "google";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "linux-privilege-escalation.md": {
 	id: "linux-privilege-escalation.md";
   slug: "linux-privilege-escalation";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"oliver1.md": {
+	id: "oliver1.md";
+  slug: "oliver1";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"oliver2.md": {
+	id: "oliver2.md";
+  slug: "oliver2";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -235,6 +256,13 @@ declare module 'astro:content' {
 "social.md": {
 	id: "social.md";
   slug: "social";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"social_1.md": {
+	id: "social_1.md";
+  slug: "social_1";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

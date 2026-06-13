@@ -5,11 +5,33 @@ import PostCard from '../components/PostCard.astro';
 
 const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 const posts    = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Build a plain-text search index of each post's body (ES + EN content)
+// so the search can find and show *where* a term appears, not just
+// whether it's in the title/description.
+function stripMarkdown(md: string): string {
+  return md
+    .replace(/```[\s\S]*?```/g, ' ')            // code blocks
+    .replace(/<[^>]+>/g, ' ')                   // html tags (e.g. <div class="lang-es">)
+    .replace(/!\[.*?\]\(.*?\)/g, ' ')           // images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')    // [text](url) -> text
+    .replace(/[#>*_~`|-]/g, ' ')                // markdown punctuation
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const searchIndex = posts.map(post => ({
+  slug: post.slug,
+  text: stripMarkdown(post.body ?? ''),
+}));
+
+// Escape "</" so the JSON can't break out of the <script> tag
+const searchIndexJson = JSON.stringify(searchIndex).replace(/</g, '\\u003c');
 ---
 
 <BaseLayout title="Buscar — Jafet Brito" description="Busca posts en el blog de Jafet Brito">
 
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
 
     <!-- Header -->
     <div class="mb-8">
@@ -45,9 +67,14 @@ const posts    = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
       </p>
     </div>
 
-    <!-- Posts grid -->
-    <div id="results" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {posts.map(post => <PostCard post={post} />)}
+    <!-- Posts list -->
+    <div id="results" class="grid grid-cols-1 gap-5">
+      {posts.map(post => (
+        <div class="search-result-item" data-slug={post.slug}>
+          <PostCard post={post} />
+          <p class="search-snippet hidden mt-2 px-2 text-sm text-gray-500 dark:text-zinc-400 font-mono leading-relaxed"></p>
+        </div>
+      ))}
     </div>
 
     <!-- Empty state -->
@@ -62,6 +89,8 @@ const posts    = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 
   </div>
 
+  <script type="application/json" id="search-index" set:html={searchIndexJson} />
+
 </BaseLayout>
 
 <script is:inline>
@@ -70,16 +99,74 @@ const posts    = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   var noRes    = document.getElementById('no-results');
   var countEl  = document.getElementById('result-count');
   var countNum = document.getElementById('count-num');
+  var indexEl  = document.getElementById('search-index');
+
+  /* slug -> plain-text body content, for snippet matching */
+  var bodyBySlug = {};
+  try {
+    var raw = JSON.parse((indexEl && indexEl.textContent) || '[]');
+    raw.forEach(function (item) { bodyBySlug[item.slug] = item.text; });
+  } catch (e) {}
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  /* Build a highlighted snippet of `text` around the first match of `q` */
+  function buildSnippet(text, q) {
+    var lower = text.toLowerCase();
+    var idx = lower.indexOf(q);
+    if (idx === -1) return '';
+
+    var radius = 70;
+    var start  = Math.max(0, idx - radius);
+    var end    = Math.min(text.length, idx + q.length + radius);
+
+    var snippet = escapeHtml(text.slice(start, end));
+    if (start > 0) snippet = '… ' + snippet;
+    if (end < text.length) snippet = snippet + ' …';
+
+    var re = new RegExp('(' + escapeRegExp(q) + ')', 'ig');
+    snippet = snippet.replace(re, '<mark class="bg-yellow-200 dark:bg-terminal-green/30 text-gray-900 dark:text-zinc-50 rounded px-0.5">$1</mark>');
+
+    return snippet;
+  }
 
   function runSearch() {
     var q     = (input.value || '').toLowerCase().trim();
-    var cards = document.querySelectorAll('article[data-search-text]');
+    var items = document.querySelectorAll('.search-result-item');
     var shown = 0;
 
-    cards.forEach(function (el) {
-      var text = el.getAttribute('data-search-text') || '';
-      var show = !q || text.includes(q);
-      el.style.display = show ? '' : 'none';
+    items.forEach(function (item) {
+      var article    = item.querySelector('article[data-search-text]');
+      var snippetEl  = item.querySelector('.search-snippet');
+      var titleText  = (article && article.getAttribute('data-search-text')) || '';
+      var bodyText   = bodyBySlug[item.getAttribute('data-slug')] || '';
+
+      var titleMatch = !!q && titleText.includes(q);
+      var bodySnippet = q ? buildSnippet(bodyText, q) : '';
+      var bodyMatch  = !!bodySnippet;
+
+      var show = !q || titleMatch || bodyMatch;
+      item.style.display = show ? '' : 'none';
+
+      if (snippetEl) {
+        if (q && bodyMatch) {
+          snippetEl.innerHTML = '🔎 ' + bodySnippet;
+          snippetEl.classList.remove('hidden');
+        } else {
+          snippetEl.innerHTML = '';
+          snippetEl.classList.add('hidden');
+        }
+      }
+
       if (show) shown++;
     });
 
