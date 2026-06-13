@@ -1,0 +1,1890 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="La guía más completa sobre Claude AI: 18 temas que van desde elegir el modelo correcto hasta conectar Claude con tus apps, crear tu propio agente y entender por qué la clave no es Claude — eres tú. Con roadmap visual, imágenes, ejemplos reales y tips que nadie más te cuenta."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/claude_roadm4p/"><meta property="og:title" content="🤖 La Guía Definitiva de Claude 2026: De Cero a Superhéroe de la IA — Jafet Brito"><meta property="og:description" content="La guía más completa sobre Claude AI: 18 temas que van desde elegir el modelo correcto hasta conectar Claude con tus apps, crear tu propio agente y entender por qué la clave no es Claude — eres tú. Con roadmap visual, imágenes, ejemplos reales y tips que nadie más te cuenta."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/claude_roadm4p/"><meta property="og:image" content="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="🤖 La Guía Definitiva de Claude 2026: De Cero a Superhéroe de la IA — Jafet Brito"><meta name="twitter:description" content="La guía más completa sobre Claude AI: 18 temas que van desde elegir el modelo correcto hasta conectar Claude con tus apps, crear tu propio agente y entender por qué la clave no es Claude — eres tú. Con roadmap visual, imágenes, ejemplos reales y tips que nadie más te cuenta."><meta name="twitter:image" content="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80"><title>🤖 La Guía Definitiva de Claude 2026: De Cero a Superhéroe de la IA — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80" alt="🤖 La Guía Definitiva de Claude 2026: De Cero a Superhéroe de la IA" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">-la-gua-definitiva-de-claude-2026-de-cero-a-superhroe-de-la-ia</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/Claude" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Claude</a><a href="/tags/Anthropic" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Anthropic</a><a href="/tags/GuiaClaude" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#GuiaClaude</a><a href="/tags/IA" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#IA</a><a href="/tags/Productividad" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Productividad</a><a href="/tags/MCP" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#MCP</a><a href="/tags/ClaudeCode" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#ClaudeCode</a><a href="/tags/Cowork" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Cowork</a><a href="/tags/Prompts" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Prompts</a><a href="/tags/Tutorial" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Tutorial</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="🤖 La Guía Definitiva de Claude 2026: De Cero a Superhéroe de la IA" data-text-en="🤖 The Definitive Claude Guide 2026: From Zero to AI Superhero"> 🤖 La Guía Definitiva de Claude 2026: De Cero a Superhéroe de la IA </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="La guía más completa sobre Claude AI: 18 temas que van desde elegir el modelo correcto hasta conectar Claude con tus apps, crear tu propio agente y entender por qué la clave no es Claude — eres tú. Con roadmap visual, imágenes, ejemplos reales y tips que nadie más te cuenta." data-text-en="The most complete guide to Claude AI: 18 topics from choosing the right model to connecting Claude with your apps, building your own agent, and understanding why the key isn't Claude — it's you. With visual roadmap, images, real examples, and tips nobody else tells you."> La guía más completa sobre Claude AI: 18 temas que van desde elegir el modelo correcto hasta conectar Claude con tus apps, crear tu propio agente y entender por qué la clave no es Claude — eres tú. Con roadmap visual, imágenes, ejemplos reales y tips que nadie más te cuenta. </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-11" data-fmt-date="2026-06-11" data-fmt="long">miércoles, 10 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+<h2 id="-la-guía-definitiva-de-claude-2026-de-cero-a-superhéroe-de-la-ia">🤖 La Guía Definitiva de Claude 2026: De Cero a Superhéroe de la IA</h2>
+<p><strong>Por Jafet Brito</strong> · Security Researcher · <em>Publicado el 11 de junio de 2026</em></p>
+<hr>
+<blockquote>
+<p><em>“La herramienta más poderosa no es el modelo de IA. Es la persona que sabe cómo usarlo.”</em>
+— Filosofía Zero Trust aplicada a la productividad</p>
+</blockquote>
+<hr>
+<h3 id="️-el-roadmap-visual--tu-mapa-del-tesoro">🗺️ El Roadmap Visual — Tu Mapa del Tesoro</h3>
+<p>Antes de entrar en detalle, aquí está la foto completa. Claude no es solo un chatbot — es un ecosistema. Este mapa muestra cómo encajan las 18 piezas:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>╔══════════════════════════════════════════════════════════════════╗</span></span>
+<span class="line"><span>║                     🌐 EL UNIVERSO CLAUDE                        ║</span></span>
+<span class="line"><span>╠══════════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  📚 CONOCER CLAUDE        🧠 ELEGIR EL MODELO                   ║</span></span>
+<span class="line"><span>║  └─ Qué es, historia,     └─ Haiku / Sonnet / Opus              ║</span></span>
+<span class="line"><span>║     filosofía, planes        Fable 5 / Mythos                   ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>╠══════════════ NIVEL 1: USUARIO CASUAL ═══════════════════════════╣</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  ✍️ PROMPTS EFECTIVOS      🔍 BÚSQUEDA WEB                      ║</span></span>
+<span class="line"><span>║  └─ Framework RCTFO        └─ Activar, usar bien                 ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  🧩 PENSAMIENT EXTENDIDO   🔬 DEEP RESEARCH                     ║</span></span>
+<span class="line"><span>║  └─ Razonamiento profundo  └─ Investigación autónoma             ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>╠══════════════ NIVEL 2: POWER USER ═══════════════════════════════╣</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  📄 DOCS E IMÁGENES        📊 EXCEL + K-MEANS                   ║</span></span>
+<span class="line"><span>║  └─ Análisis multimodal    └─ Data science integrado             ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  📊 POWERPOINT             🎨 ARTEFACTOS                        ║</span></span>
+<span class="line"><span>║  └─ Presentaciones con IA  └─ Apps, webs, juegos                 ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  📁 PROYECTOS              ✍️ ESTILOS ESCRITURA                 ║</span></span>
+<span class="line"><span>║  └─ Contexto persistente   └─ Tu voz, tu marca                   ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>╠══════════════ NIVEL 3: POWER DEV / PRO ══════════════════════════╣</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  🧠 MEMORIA                🔌 CONECTORES MCP                    ║</span></span>
+<span class="line"><span>║  └─ Claude te recuerda     └─ Integra todo tu stack              ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  🛠️ SKILLS CUSTOM          💻 CLAUDE CODE                      ║</span></span>
+<span class="line"><span>║  └─ Enseña a Claude        └─ Agente de código                   ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  🤝 COWORK                 🔑 LA CLAVE ERES TÚ                 ║</span></span>
+<span class="line"><span>║  └─ Tu agente personal     └─ Filosofía final                    ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>╚══════════════════════════════════════════════════════════════════╝</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="-índice-rápido">📋 Índice Rápido</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Tema</th><th>Nivel</th><th>Tiempo de lectura</th></tr></thead><tbody><tr><td>1</td><td>Conoce Claude AI</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>2</td><td>Qué es Claude y qué lo hace diferente</td><td>🟢 Todos</td><td>4 min</td></tr><tr><td>3</td><td>Elegir Haiku, Sonnet u Opus</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>4</td><td>Prompts efectivos en Claude</td><td>🟡 Intermedio</td><td>5 min</td></tr><tr><td>5</td><td>Búsqueda web en Claude</td><td>🟢 Todos</td><td>2 min</td></tr><tr><td>6</td><td>Pensamiento extendido</td><td>🟡 Intermedio</td><td>3 min</td></tr><tr><td>7</td><td>Deep Research</td><td>🟡 Intermedio</td><td>3 min</td></tr><tr><td>8</td><td>Análisis de documentos e imágenes</td><td>🟢 Todos</td><td>4 min</td></tr><tr><td>9</td><td>Excel con Claude y K-Means</td><td>🔴 Técnico</td><td>4 min</td></tr><tr><td>10</td><td>PowerPoint con Claude</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>11</td><td>Artefactos: Crea apps con Claude</td><td>🟡 Intermedio</td><td>4 min</td></tr><tr><td>12</td><td>Proyectos en Claude</td><td>🟡 Intermedio</td><td>3 min</td></tr><tr><td>13</td><td>Estilos de escritura personalizados</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>14</td><td>Memoria de Claude</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>15</td><td>Conectores MCP</td><td>🔴 Técnico</td><td>5 min</td></tr><tr><td>16</td><td>Skills personalizadas</td><td>🔴 Técnico</td><td>4 min</td></tr><tr><td>17</td><td>Claude Code: el agente de código</td><td>🔴 Técnico</td><td>5 min</td></tr><tr><td>18</td><td>Cowork: tu agente personal</td><td>🟡 Intermedio</td><td>4 min</td></tr><tr><td>★</td><td>La clave eres tú — Reflexión final</td><td>🟢 Todos</td><td>2 min</td></tr></tbody></table>
+<hr>
+<h2 id="-tema-1-conoce-claude-ai">📘 Tema 1: Conoce Claude AI</h2>
+<p><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&#x26;q=80" alt="Claude interface on laptop"></p>
+<p>Claude es la IA conversacional creada por <strong>Anthropic</strong>, una empresa de seguridad en IA fundada en 2021 por ex-investigadores de OpenAI — incluyendo a Dario Amodei y Daniela Amodei.</p>
+<p>Lo que hace único a Anthropic es su filosofía fundacional: la empresa fue creada con la premisa de que la IA avanzada <strong>puede ser peligrosa</strong>, y que la mejor manera de reducir ese riesgo es estar en la vanguardia del desarrollo — pero hacerlo de forma responsable.</p>
+<p><strong>La línea del tiempo rápida:</strong></p>
+<ul>
+<li>🗓️ <strong>2021</strong> — Fundación de Anthropic</li>
+<li>🗓️ <strong>Marzo 2023</strong> — Lanzamiento de Claude 1 (solo API)</li>
+<li>🗓️ <strong>2024</strong> — Claude 3 (Haiku, Sonnet, Opus) llega al público</li>
+<li>🗓️ <strong>2025</strong> — Claude 3.5, Extended Thinking, Claude Code, MCP</li>
+<li>🗓️ <strong>2026</strong> — Claude 4.x (Haiku 4.5, Sonnet 4.6, Opus 4.8), <strong>Fable 5</strong>, Cowork, Skills</li>
+</ul>
+<p><strong>Los planes disponibles hoy:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plan</th><th>Precio</th><th>Para quién</th></tr></thead><tbody><tr><td><strong>Free</strong></td><td>$0</td><td>Uso casual — memoria, web search, Sonnet 4.6</td></tr><tr><td><strong>Pro</strong></td><td>~$20/mes</td><td>Usuario frecuente — más mensajes, Extended Thinking</td></tr><tr><td><strong>Max</strong></td><td>$100-200/mes</td><td>Power user — Opus, límites máximos, Cowork</td></tr><tr><td><strong>Team</strong></td><td>~$30/seat</td><td>Equipos — espacios compartidos</td></tr><tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Organizaciones — compliance, SSO, privacidad</td></tr></tbody></table>
+<blockquote>
+<p>💡 <strong>El tier gratuito en 2026 es sorprendentemente generoso:</strong> incluye memoria persistente, búsqueda web, artefactos y acceso a Sonnet 4.6. No actualices hasta que sientas el límite real.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-2-qué-es-claude-y-qué-lo-hace-diferente">🧬 Tema 2: Qué es Claude y Qué Lo Hace Diferente</h2>
+<p>Claude no es “otro ChatGPT”. Las diferencias son filosóficas y técnicas:</p>
+<h3 id="️-constitucional-ai--la-ética-integrada-en-el-modelo">🛡️ Constitucional AI — La Ética Integrada en el Modelo</h3>
+<p>Anthropic desarrolló una técnica llamada <strong>Constitutional AI</strong>: en lugar de solo filtrar outputs problemáticos <em>después</em> de generarlos, Claude fue entrenado con un conjunto de <strong>principios éticos integrados</strong> en su proceso de razonamiento. Claude no solo evita el daño — está diseñado para querer evitarlo.</p>
+<h3 id="-las-3-palabras-que-definen-a-claude">🎯 Las 3 Palabras que Definen a Claude</h3>
+<p>Anthropic describe a Claude con tres palabras: <strong>Helpful, Harmless, Honest</strong>. Y en la práctica:</p>
+<ul>
+<li>🤝 <strong>Helpful:</strong> No te da respuestas vagas para “estar seguro” — intenta ser genuinamente útil, incluso en temas complejos</li>
+<li>🔒 <strong>Harmless:</strong> Tiene límites claros, pero no está sobre-restringido para preguntas legítimas</li>
+<li>✅ <strong>Honest:</strong> Admite cuando no sabe algo o cuando puede estar equivocado — no alucina con confianza falsa</li>
+</ul>
+<h3 id="-lo-que-claude-hace-mejor-que-la-competencia">📊 Lo Que Claude Hace Mejor que la Competencia</h3>
+<ul>
+<li>📝 <strong>Escritura larga y coherente</strong> — mantiene el hilo en textos de miles de palabras</li>
+<li>🔍 <strong>Análisis de documentos complejos</strong> — PDFs técnicos, contratos, reportes financieros</li>
+<li>💻 <strong>Código con razonamiento</strong> — no solo completa código, explica el <em>por qué</em></li>
+<li>🔐 <strong>Seguridad y privacidad</strong> — Anthropic tiene las políticas de datos más estrictas entre los grandes modelos</li>
+<li>🧠 <strong>Razonamiento nuanced</strong> — maneja ambigüedad y matices mejor que la mayoría</li>
+</ul>
+<h3 id="️-lo-que-claude-no-hace">⚠️ Lo Que Claude NO Hace</h3>
+<ul>
+<li>❌ No genera imágenes (usa Midjourney/DALL-E para eso)</li>
+<li>❌ No genera audio ni video</li>
+<li>❌ No tiene acceso a internet en tiempo real <em>por defecto</em> (debes activar la búsqueda web)</li>
+</ul>
+<hr>
+<h2 id="️-tema-3-elegir-haiku-sonnet-u-opus--la-guía-definitiva">⚖️ Tema 3: Elegir Haiku, Sonnet u Opus — La Guía Definitiva</h2>
+<p>Esta es la pregunta que más confunde a los usuarios nuevos. La respuesta corta: <strong>Sonnet para casi todo, Haiku para velocidad, Opus para los problemas más difíciles de tu vida</strong>.</p>
+<p><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&#x26;q=80" alt="Model comparison diagram"></p>
+<h3 id="la-metáfora-del-taller">La Metáfora del Taller</h3>
+<p>Imagina que tienes tres herramientas:</p>
+<ul>
+<li>🔧 <strong>Haiku</strong> = Destornillador eléctrico → Rápido, ligero, perfecto para tareas repetitivas</li>
+<li>🔨 <strong>Sonnet</strong> = Taladro inalámbrico → El balance perfecto para 90% del trabajo</li>
+<li>⚙️ <strong>Opus</strong> = Torno industrial → Overkill para la mayoría, indispensable para los proyectos grandes</li>
+</ul>
+<h3 id="la-comparativa-real-2026">La Comparativa Real (2026)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>Haiku 4.5</th><th>Sonnet 4.6</th><th>Opus 4.8</th><th>Fable 5</th></tr></thead><tbody><tr><td><strong>Velocidad</strong></td><td>⚡⚡⚡⚡⚡</td><td>⚡⚡⚡⚡</td><td>⚡⚡⚡</td><td>⚡⚡</td></tr><tr><td><strong>Calidad</strong></td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>🌟🌟🌟🌟🌟</td></tr><tr><td><strong>Costo (API)</strong></td><td>💰</td><td>💰💰</td><td>💰💰💰</td><td>💰💰💰💰</td></tr><tr><td><strong>Contexto</strong></td><td>200k tokens</td><td>1M tokens</td><td>200k tokens</td><td>1M tokens</td></tr><tr><td><strong>Ideal para</strong></td><td>Tareas simples, alto volumen</td><td>Uso diario, todo tipo</td><td>Análisis complejo</td><td>Long-horizon tasks</td></tr></tbody></table>
+<h3 id="el-árbol-de-decisión">El Árbol de Decisión</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>¿Qué necesitas hacer?</span></span>
+<span class="line"><span>        │</span></span>
+<span class="line"><span>        ├─► Respuesta rápida / clasificación / traducción simple</span></span>
+<span class="line"><span>        │   └─► 🔧 HAIKU — máxima velocidad</span></span>
+<span class="line"><span>        │</span></span>
+<span class="line"><span>        ├─► Escritura, análisis, código, conversación general</span></span>
+<span class="line"><span>        │   └─► 🔨 SONNET — tu caballo de batalla diario</span></span>
+<span class="line"><span>        │</span></span>
+<span class="line"><span>        ├─► Análisis profundo / estrategia / investigación</span></span>
+<span class="line"><span>        │   └─► ⚙️ OPUS — cuando la calidad importa más que la velocidad</span></span>
+<span class="line"><span>        │</span></span>
+<span class="line"><span>        └─► Tareas de días / codebases enormes / proyectos científicos</span></span>
+<span class="line"><span>            └─► 🌟 FABLE 5 — la nueva frontera (ver nuestro artículo dedicado)</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 <strong>Tip de power user:</strong> En la API, nunca fijes el modelo a una versión específica como <code>claude-opus-4-6</code> — usa el alias <code>claude-opus-latest</code> para recibir automáticamente las mejoras sin cambiar tu código.</p>
+</blockquote>
+<hr>
+<h2 id="️-tema-4-cómo-armar-prompts-efectivos-en-claude">✍️ Tema 4: Cómo Armar Prompts Efectivos en Claude</h2>
+<blockquote>
+<p>Ver nuestra <a href="/blog/gigo-prompt-engineering-guide"><strong>Guía Completa de Prompt Engineering</strong></a> para el tratamiento exhaustivo. Aquí el resumen ejecutivo específico para Claude.</p>
+</blockquote>
+<p>Claude tiene características específicas que lo hacen responder mejor a ciertos estilos de prompting:</p>
+<h3 id="lo-que-claude-ama-️">Lo Que Claude Ama ❤️</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="xml"><code><span class="line"><span style="color:#6A737D">&#x3C;!-- Claude entiende y sigue XML tags con alta fidelidad --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">tarea</span><span style="color:#E1E4E8">>Analiza este contrato&#x3C;/</span><span style="color:#85E89D">tarea</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">contexto</span><span style="color:#E1E4E8">>Soy abogado corporativo, cliente es startup SaaS&#x3C;/</span><span style="color:#85E89D">contexto</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">formato</span><span style="color:#E1E4E8">>Bullet points por cláusula de riesgo&#x3C;/</span><span style="color:#85E89D">formato</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">documento</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">[texto del contrato aquí]</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">documento</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>✅ <strong>XML tags</strong> — Claude fue entrenado extensamente con XML, lo sigue con altísima precisión</li>
+<li>✅ <strong>Instrucciones al principio</strong> — Las instrucciones antes del contenido tienen más peso</li>
+<li>✅ <strong>Delimitadores claros</strong> — Separa instrucciones de datos con tags o lineas</li>
+<li>✅ <strong>Ejemplos concretos</strong> — Few-shot funciona muy bien con Claude</li>
+</ul>
+<h3 id="lo-que-claude-no-ama">Lo Que Claude NO Ama 😬</h3>
+<ul>
+<li>❌ <strong>ALL CAPS agresivo</strong> — “NUNCA HAGAS ESTO” — degrada la calidad del output</li>
+<li>❌ <strong>Instrucciones contradictorias</strong> — Claude intentará resolver la contradicción pero puede fallar</li>
+<li>❌ <strong>Prompts vagos</strong> — “Ayúdame con esto” sin contexto → respuesta genérica garantizada</li>
+</ul>
+<h3 id="la-plantilla-mínima-efectiva-para-claude">La Plantilla Mínima Efectiva para Claude</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Rol: [Quién eres / qué experto necesitas]</span></span>
+<span class="line"><span>Contexto: [Situación actual, restricciones, nivel técnico]</span></span>
+<span class="line"><span>Tarea: [Qué específicamente necesitas]</span></span>
+<span class="line"><span>Formato: [Cómo quieres la respuesta]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[CONTENIDO / DATOS AQUÍ]</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-tema-5-cómo-activar-búsqueda-web-en-claude">🔍 Tema 5: Cómo Activar Búsqueda Web en Claude</h2>
+<p><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&#x26;q=80" alt="Web search toggle illustration"></p>
+<p>Por defecto, Claude solo tiene acceso al conocimiento de su entrenamiento (hasta enero 2026). Para preguntas sobre eventos recientes, precios actuales, o cualquier cosa que cambia — necesitas activar la búsqueda web.</p>
+<h3 id="cómo-activarla">¿Cómo Activarla?</h3>
+<p><strong>En Claude.ai:</strong></p>
+<ol>
+<li>Abre una conversación nueva</li>
+<li>Busca el ícono 🌐 o el toggle de herramientas en la barra inferior</li>
+<li>Activa “Search the web” — verás el ícono iluminarse</li>
+</ol>
+<p><strong>Desde Settings → Feature Preview:</strong></p>
+<ul>
+<li>Puedes activarla de forma persistente para todas las conversaciones</li>
+</ul>
+<h3 id="cuándo-usarla-y-cuándo-no">Cuándo Usarla (y Cuándo No)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Úsala para</th><th>No la necesitas para</th></tr></thead><tbody><tr><td>Noticias y eventos recientes</td><td>Conceptos atemporales</td></tr><tr><td>Precios de productos</td><td>Historia conocida</td></tr><tr><td>Lanzamientos de software</td><td>Código y algoritmos</td></tr><tr><td>Estadísticas actualizadas</td><td>Análisis de tus documentos</td></tr><tr><td>¿Quién es el CEO de X ahora?</td><td>Explicaciones matemáticas</td></tr></tbody></table>
+<blockquote>
+<p>⚠️ <strong>Nota Zero Trust:</strong> Cuando Claude busca en la web, los resultados son datos externos — aplica el mismo escepticismo que aplicarías a cualquier fuente. Claude cita sus fuentes; verifica las importantes.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-6-pensamiento-extendido-en-claude">🧠 Tema 6: Pensamiento Extendido en Claude</h2>
+<p>El <strong>Pensamiento Extendido</strong> (Extended Thinking) es la característica más poderosa de Claude para usuarios que necesitan razonamiento profundo — y la más subutilizada.</p>
+<h3 id="qué-es-exactamente">¿Qué es Exactamente?</h3>
+<p>En modo normal, Claude genera una respuesta directamente. Con Extended Thinking activado, Claude primero <strong>razona internamente durante un tiempo prolongado</strong> — explorando múltiples enfoques, revisando su propia lógica, identificando errores — antes de darte la respuesta final.</p>
+<p>Piénsalo así:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Modo Normal:     Pregunta → 💬 Respuesta</span></span>
+<span class="line"><span>                 (2 segundos, razonamiento implícito)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Extended Thinking: Pregunta → 🧠🧠🧠 Razonamiento profundo → 💬 Respuesta</span></span>
+<span class="line"><span>                   (30-120 segundos, mucho más preciso)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cuándo-vale-la-pena-esperar">Cuándo Vale la Pena Esperar</h3>
+<ul>
+<li>📐 <strong>Matemáticas y lógica complejas</strong> — problemas con múltiples pasos</li>
+<li>⚖️ <strong>Análisis legal o estratégico</strong> — donde los matices importan</li>
+<li>🔬 <strong>Investigación técnica</strong> — que requiere considerar múltiples perspectivas</li>
+<li>🏗️ <strong>Diseño de sistemas</strong> — arquitecturas complejas con trade-offs</li>
+<li>🐛 <strong>Debugging difícil</strong> — cuando el error no es obvio</li>
+</ul>
+<h3 id="cómo-activarlo">Cómo Activarlo</h3>
+<p>En Claude.ai, busca el ícono 🧠 o el toggle “Extended thinking” antes de enviar tu mensaje. Solo disponible en planes Pro, Max y Enterprise.</p>
+<blockquote>
+<p>💡 <strong>Tip:</strong> No actives Extended Thinking para preguntas simples — es como usar un bisturí para cortar pan. Guárdalo para cuando el problema genuinamente lo requiera.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-7-deep-research-en-claude">🔬 Tema 7: Deep Research en Claude</h2>
+<p><strong>Deep Research</strong> lleva el pensamiento extendido un paso más allá: Claude no solo razona más profundo, sino que <strong>ejecuta múltiples búsquedas web, lee fuentes, y sintetiza todo</strong> en un reporte estructurado — de forma autónoma.</p>
+<p><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&#x26;q=80" alt="Research visualization"></p>
+<h3 id="el-proceso-detrás-de-escena">El Proceso Detrás de Escena</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Tu pregunta</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Claude formula 5-10 queries de búsqueda relevantes</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Ejecuta las búsquedas simultáneamente</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Lee y evalúa cada fuente encontrada</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Identifica contradicciones y gaps</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Sintetiza en un reporte estructurado con citas</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Resultado: 5-15 minutos después, un análisis de investigador</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cómo-usarlo-bien">Cómo Usarlo Bien</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>❌ Mal uso:</span></span>
+<span class="line"><span>"Investiga IA"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>✅ Buen uso:</span></span>
+<span class="line"><span>"Haz una investigación profunda sobre el estado actual</span></span>
+<span class="line"><span>de los modelos de lenguaje para aplicaciones de diagnóstico</span></span>
+<span class="line"><span>médico. Necesito: panorama de jugadores principales,</span></span>
+<span class="line"><span>regulaciones FDA/EMA actuales, casos de uso aprobados,</span></span>
+<span class="line"><span>y los principales riesgos identificados por la comunidad</span></span>
+<span class="line"><span>científica. Audiencia: directorio de hospital regional."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="disponibilidad">Disponibilidad</h3>
+<p>Deep Research está disponible en planes <strong>Pro, Max, Team y Enterprise</strong> (no en el tier gratuito).</p>
+<hr>
+<h2 id="-tema-8-análisis-de-documentos-e-imágenes-con-claude">📄 Tema 8: Análisis de Documentos e Imágenes con Claude</h2>
+<p>Esta es una de las capacidades más prácticas y menos exploradas de Claude. Puedes cargar <strong>PDFs, Word docs, imágenes, spreadsheets, código</strong> y Claude los analiza en contexto.</p>
+<h3 id="-documentos--lo-que-puedes-hacer">📑 Documentos — Lo Que Puedes Hacer</h3>
+<p>Tipos de archivos soportados: PDF, DOCX, TXT, MD, código fuente, CSV</p>
+<p><strong>Casos de uso reales:</strong></p>
+<ul>
+<li>🔍 “Analiza este contrato de 80 páginas y dame las 5 cláusulas con mayor riesgo para el cliente”</li>
+<li>📊 “Lee este reporte financiero y compara el Q3 2025 vs Q3 2024”</li>
+<li>🐛 “Aquí está el codebase completo. Encuentra vulnerabilidades de seguridad”</li>
+<li>📚 “Resume este paper académico para una audiencia no técnica”</li>
+<li>✉️ “Extrae todos los action items de esta cadena de emails”</li>
+</ul>
+<h3 id="️-imágenes--lo-que-puedes-hacer">🖼️ Imágenes — Lo Que Puedes Hacer</h3>
+<p>Claude tiene visión nativa — puede analizar cualquier imagen que subas.</p>
+<p><strong>Casos de uso reales:</strong></p>
+<ul>
+<li>📸 “¿Qué muestra esta gráfica? Dame los datos numéricos que puedas extraer”</li>
+<li>🔧 “Aquí hay un screenshot del error. ¿Qué está fallando?”</li>
+<li>🏗️ “Analiza este diagrama de arquitectura y sugiere mejoras”</li>
+<li>🎨 “Describe este diseño de UI e identifica problemas de UX”</li>
+<li>📝 “Transcribe el texto de esta foto de pizarrón”</li>
+</ul>
+<h3 id="el-límite-de-contexto-importa">El Límite de Contexto Importa</h3>
+<p>Con Sonnet 4.6 y Fable 5, tienes hasta <strong>1 millón de tokens</strong> de contexto. Para referencia:</p>
+<ul>
+<li>1M tokens ≈ 750,000 palabras ≈ los primeros 3 libros de El Señor de los Anillos</li>
+<li>Suficiente para analizar codebases enteros, reportes anuales completos, o múltiples PDFs a la vez</li>
+</ul>
+<hr>
+<h2 id="-tema-9-análisis-de-excel-con-claude-y-k-means">📊 Tema 9: Análisis de Excel con Claude y K-Means</h2>
+<p><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&#x26;q=80" alt="Data analysis visualization"></p>
+<p>Este es el tema más técnico de la guía — y uno de los más poderosos para profesionales de datos.</p>
+<h3 id="claude-para-excel-el-addon">Claude para Excel: El Addon</h3>
+<p>Claude tiene una integración nativa con Microsoft Excel via <strong>Claude for Excel</strong> (addon). Con él puedes:</p>
+<ul>
+<li>🔢 Generar fórmulas complejas describiéndolas en lenguaje natural</li>
+<li>🧹 Limpiar datos sucios automáticamente</li>
+<li>📊 Crear visualizaciones</li>
+<li>🔍 Analizar datasets y encontrar patrones</li>
+<li>🤖 Ejecutar análisis estadísticos sin código</li>
+</ul>
+<h3 id="k-means-con-claude-clustering-para-todos">K-Means con Claude: Clustering para Todos</h3>
+<p>K-Means es un algoritmo de agrupación (clustering) que divide datos en K grupos basados en similitudes. Claude puede implementarlo directamente en Python o R y explicar los resultados.</p>
+<p><strong>Ejemplo de prompt para K-Means:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Tengo este dataset de clientes con columnas:</span></span>
+<span class="line"><span>[edad, ingresos_anuales, frecuencia_compra, ticket_promedio]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. Carga el CSV adjunto</span></span>
+<span class="line"><span>2. Normaliza las variables</span></span>
+<span class="line"><span>3. Aplica K-Means con K=4</span></span>
+<span class="line"><span>4. Visualiza los clusters con matplotlib</span></span>
+<span class="line"><span>5. Describe en lenguaje de negocio qué tipo de cliente</span></span>
+<span class="line"><span>   representa cada cluster</span></span>
+<span class="line"><span>6. Dame recomendaciones de marketing para cada segmento</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[ADJUNTAR CSV]</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Claude generará el código Python completo, lo ejecutará, y te dará:</strong></p>
+<ul>
+<li>El script reutilizable</li>
+<li>Las visualizaciones</li>
+<li>La interpretación de negocio de cada cluster</li>
+<li>Recomendaciones accionables</li>
+</ul>
+<hr>
+<h2 id="-tema-10-powerpoint-con-claude">📊 Tema 10: PowerPoint con Claude</h2>
+<p>Con el addon <strong>Claude for PowerPoint</strong>, puedes crear presentaciones completas desde texto, transformar documentos en decks, o mejorar presentaciones existentes.</p>
+<h3 id="lo-que-puedes-hacer">Lo Que Puedes Hacer</h3>
+<ul>
+<li>🎨 “Crea una presentación de 15 slides sobre nuestra estrategia Q3 basada en este documento”</li>
+<li>🔄 “Transforma este reporte PDF en un deck ejecutivo de 10 slides”</li>
+<li>✏️ “Mejora el contenido de estas slides — hazlas más concisas y persuasivas”</li>
+<li>🎯 “Genera los speaker notes para cada slide”</li>
+<li>🖼️ “Sugiere imágenes para complementar cada slide de esta presentación”</li>
+</ul>
+<h3 id="el-prompt-de-powerpoint-perfecto">El Prompt de PowerPoint Perfecto</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Crea una presentación de [N] slides para [audiencia]</span></span>
+<span class="line"><span>sobre [tema].</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Estructura requerida:</span></span>
+<span class="line"><span>- Slide 1: Portada con [título], [subtítulo]</span></span>
+<span class="line"><span>- Slides 2-4: Contexto y problema</span></span>
+<span class="line"><span>- Slides 5-8: Solución/hallazgos con datos</span></span>
+<span class="line"><span>- Slide 9: Próximos pasos</span></span>
+<span class="line"><span>- Slide 10: Q&#x26;A</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Tono: [ejecutivo / técnico / casual]</span></span>
+<span class="line"><span>Incluir: datos de [fuente], métricas de [tipo]</span></span>
+<span class="line"><span>Evitar: jerga técnica, slides con más de 5 bullets</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 Claude para PowerPoint está disponible como addon de Microsoft Office. Búscalo en la tienda de add-ins de Microsoft 365.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-11-artefactos-de-claude--crea-apps-webs-y-más">🎨 Tema 11: Artefactos de Claude — Crea Apps, Webs y Más</h2>
+<p>Los <strong>Artefactos</strong> son una de las características más impresionantes de Claude: puede crear aplicaciones completas, páginas web interactivas, visualizaciones de datos, juegos, y herramientas — todo en el navegador, sin instalación.</p>
+<p><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&#x26;q=80" alt="App creation visualization"></p>
+<h3 id="tipos-de-artefactos-que-claude-crea">Tipos de Artefactos que Claude Crea</h3>
+<ul>
+<li>⚛️ <strong>React apps</strong> — Aplicaciones interactivas completas con estado y lógica</li>
+<li>🌐 <strong>HTML/CSS/JS</strong> — Páginas web estáticas o interactivas</li>
+<li>📊 <strong>Visualizaciones de datos</strong> — Charts, dashboards, gráficas con D3 o Recharts</li>
+<li>🎮 <strong>Juegos</strong> — Snake, Tetris, Wordle, y cualquier juego que describes</li>
+<li>🧮 <strong>Calculadoras y herramientas</strong> — Convertidores, simuladores, dashboards</li>
+<li>📝 <strong>Documentos</strong> — Markdown, reportes, templates</li>
+</ul>
+<h3 id="ejemplos-reales-de-qué-puedes-crear">Ejemplos Reales de Qué Puedes Crear</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Crea una calculadora de ROI para campañas de marketing</span></span>
+<span class="line"><span>con sliders para: inversión, tasa de conversión, </span></span>
+<span class="line"><span>ticket promedio, y tasa de retención. Muestra el </span></span>
+<span class="line"><span>resultado en tiempo real con una gráfica."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"Hazme un juego de Wordle en español con palabras </span></span>
+<span class="line"><span>de ciberseguridad"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"Crea un dashboard de seguimiento de hábitos con </span></span>
+<span class="line"><span>7 hábitos configurables, calendario mensual, </span></span>
+<span class="line"><span>y gráfica de racha"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"Construye una app para calcular el presupuesto </span></span>
+<span class="line"><span>de un road trip: ciudades, distancia, gasolina, </span></span>
+<span class="line"><span>hoteles. Que exporte a PDF."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="la-magia-del-storage-persistente-en-artefactos">La Magia del Storage Persistente en Artefactos</h3>
+<p>Los artefactos ahora tienen acceso a almacenamiento persistente — pueden guardar datos entre sesiones. Esto significa que puedes crear:</p>
+<ul>
+<li>📓 Diarios digitales que se guardan</li>
+<li>🏆 Leaderboards compartidos</li>
+<li>📋 Trackers de proyectos con datos reales</li>
+<li>🎯 Aplicaciones con usuarios y progreso</li>
+</ul>
+<hr>
+<h2 id="-tema-12-proyectos-en-claude--el-contexto-que-nunca-se-pierde">📁 Tema 12: Proyectos en Claude — El Contexto que Nunca se Pierde</h2>
+<p>Los <strong>Proyectos</strong> son espacios de trabajo persistentes donde Claude recuerda el contexto de todo lo que has trabajado juntos en ese contexto — sin límite de tiempo.</p>
+<h3 id="por-qué-importan">¿Por Qué Importan?</h3>
+<p>Sin proyectos, cada conversación empieza desde cero. Con proyectos:</p>
+<ul>
+<li>📚 Claude recuerda <strong>todos los documentos</strong> que subiste al proyecto</li>
+<li>💬 Recuerda el <strong>historial de conversaciones</strong> del proyecto</li>
+<li>🎭 Mantiene las <strong>instrucciones de comportamiento</strong> que definiste</li>
+<li>🔗 Todo el equipo puede acceder al mismo contexto (en Team/Enterprise)</li>
+</ul>
+<h3 id="cómo-usar-proyectos-efectivamente">Cómo Usar Proyectos Efectivamente</h3>
+<p><strong>Estructura recomendada por tipo de proyecto:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>📁 PROYECTO: Mi Empresa</span></span>
+<span class="line"><span>├── 📄 Contexto base (system prompt del proyecto)</span></span>
+<span class="line"><span>│   "Somos una startup de fintech en México. </span></span>
+<span class="line"><span>│    El tono es profesional pero accesible..."</span></span>
+<span class="line"><span>├── 📎 Documentos clave</span></span>
+<span class="line"><span>│   ├── Brand Guidelines.pdf</span></span>
+<span class="line"><span>│   ├── Pitch Deck 2026.pptx</span></span>
+<span class="line"><span>│   └── Roadmap Q3.xlsx</span></span>
+<span class="line"><span>└── 💬 Conversaciones del proyecto</span></span>
+<span class="line"><span>    ├── Estrategia de contenido</span></span>
+<span class="line"><span>    ├── Análisis de competencia</span></span>
+<span class="line"><span>    └── Redacción de propuestas</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>El system prompt del proyecto es tu arma secreta</strong> — define ahí el contexto permanente que no quieres repetir en cada conversación:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Este proyecto es para [empresa/rol].</span></span>
+<span class="line"><span>Contexto permanente: [industria, producto, equipo]</span></span>
+<span class="line"><span>Audiencia de nuestro contenido: [descripción]</span></span>
+<span class="line"><span>Tono de comunicación: [estilo]</span></span>
+<span class="line"><span>Restricciones: [qué no hacer]</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="️-tema-13-estilos-de-escritura-personalizados-en-claude">✍️ Tema 13: Estilos de Escritura Personalizados en Claude</h2>
+<p>Claude puede <strong>aprender y replicar tu estilo de escritura</strong> — o cualquier estilo que le enseñes. Esto es transformador para creadores de contenido, writers, y cualquiera que produzca texto regularmente.</p>
+<h3 id="cómo-entrenar-a-claude-en-tu-estilo">Cómo Entrenar a Claude en Tu Estilo</h3>
+<p><strong>Método 1: Por descripción</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Escribe con mi estilo personal:</span></span>
+<span class="line"><span>- Oraciones cortas. Directas. Sin relleno.</span></span>
+<span class="line"><span>- Uso de preguntas retóricas para crear ritmo</span></span>
+<span class="line"><span>- Analogías técnicas pero accesibles</span></span>
+<span class="line"><span>- Termina con una reflexión filosófica breve</span></span>
+<span class="line"><span>- Emojis estratégicos, no decorativos</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Método 2: Por ejemplo (Few-Shot)</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Aquí hay 3 ejemplos de mi estilo de escritura:</span></span>
+<span class="line"><span>[Ejemplo 1]</span></span>
+<span class="line"><span>[Ejemplo 2]</span></span>
+<span class="line"><span>[Ejemplo 3]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Ahora escribe sobre [nuevo tema] con exactamente </span></span>
+<span class="line"><span>ese mismo estilo, vocabulario y estructura.</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Método 3: Via Settings → Styles (la forma más permanente)</strong></p>
+<p>En Claude.ai puedes crear <strong>Estilos guardados</strong> que se aplican automáticamente:</p>
+<ol>
+<li>Ve a Settings → Your Styles</li>
+<li>Haz click en “Create a style”</li>
+<li>Describe tu estilo o pega ejemplos de tu escritura</li>
+<li>Dale un nombre (ej: “Mi blog”, “Emails corporativos”, “Posts LinkedIn”)</li>
+<li>Actívalo con un click en cualquier conversación</li>
+</ol>
+<hr>
+<h2 id="-tema-14-memoria-de-claude--el-ai-que-te-recuerda">🧠 Tema 14: Memoria de Claude — El AI Que Te Recuerda</h2>
+<p>Desde marzo de 2026, Claude tiene <strong>memoria persistente entre conversaciones</strong> para todos los usuarios, incluyendo el tier gratuito. Esto cambia fundamentalmente la experiencia.</p>
+<p><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&#x26;q=80" alt="Memory concept visualization"></p>
+<h3 id="qué-recuerda-claude-de-ti">Qué Recuerda Claude de Ti</h3>
+<ul>
+<li>👤 Tu nombre y cómo prefieres que te llame</li>
+<li>💼 Tu rol profesional y contexto laboral</li>
+<li>📝 Preferencias de formato y estilo de respuesta</li>
+<li>🗂️ Proyectos en curso que hayas mencionado</li>
+<li>🎯 Objetivos y metas que hayas compartido</li>
+<li>💡 Preferencias técnicas (lenguaje de programación, frameworks)</li>
+</ul>
+<h3 id="cómo-gestionar-tu-memoria">Cómo Gestionar tu Memoria</h3>
+<p><strong>Ver qué recuerda Claude:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"¿Qué sabes sobre mí? Muéstrame tu memoria."</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Actualizar información:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Recuerda que ya no trabajo en [empresa anterior],</span></span>
+<span class="line"><span>ahora trabajo en [nueva empresa] como [nuevo rol]."</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Eliminar información:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Olvida la información sobre mi proyecto X."</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>En Settings → Memory:</strong> Puedes ver, editar y eliminar cualquier elemento de tu memoria manualmente.</p>
+<blockquote>
+<p>🔐 <strong>Privacy note:</strong> La memoria es privada, vinculada a tu cuenta, y puedes eliminarla en cualquier momento. Anthropic no usa tu conversación para entrenar modelos sin consentimiento explícito.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-15-conectores-mcp--integra-claude-con-tus-aplicaciones">🔌 Tema 15: Conectores MCP — Integra Claude con Tus Aplicaciones</h2>
+<p>El <strong>Model Context Protocol (MCP)</strong> es el cambio más transformador de Claude en 2026. Convierte a Claude de un chatbot poderoso en un <strong>colaborador que vive en tu ecosistema de trabajo</strong>.</p>
+<h3 id="la-analogía-perfecta">La Analogía Perfecta</h3>
+<p>Sin MCP: Le preguntas a Claude sobre tu proyecto → copias y pegas datos entre apps → recibes la respuesta → copias y pegas de vuelta.</p>
+<p>Con MCP: Claude <strong>accede directamente</strong> a tus herramientas, lee el contexto real, y actúa en ellas.</p>
+<h3 id="el-ecosistema-mcp-en-2026">El Ecosistema MCP en 2026</h3>
+<p>Claude se puede conectar nativamente con más de <strong>200 servicios</strong>, incluyendo:</p>
+<p><strong>Productividad:</strong></p>
+<ul>
+<li>📧 Gmail, Outlook</li>
+<li>📅 Google Calendar, Outlook Calendar</li>
+<li>📝 Notion, Confluence, Google Docs</li>
+<li>💬 Slack, Microsoft Teams</li>
+</ul>
+<p><strong>Desarrollo:</strong></p>
+<ul>
+<li>🐙 GitHub, GitLab</li>
+<li>🎯 Jira, Linear, Asana</li>
+<li>🚀 Vercel, AWS, GCP</li>
+</ul>
+<p><strong>Diseño:</strong></p>
+<ul>
+<li>🎨 Figma, Canva</li>
+</ul>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>📊 Google Sheets, Airtable</li>
+<li>🗄️ PostgreSQL, MySQL (via connector)</li>
+<li>⚡ Zapier (6,000+ apps)</li>
+</ul>
+<h3 id="cómo-conectar-un-mcp-en-claudeai">Cómo Conectar un MCP en Claude.ai</h3>
+<ol>
+<li>Ve a <strong>Settings → Integrations</strong> (o busca el ícono de puzzle 🧩 en la conversación)</li>
+<li>Busca el servicio que quieres conectar</li>
+<li>Haz click en “Connect” → autoriza el acceso OAuth</li>
+<li>¡Listo! Claude ahora puede leer y escribir en ese servicio</li>
+</ol>
+<h3 id="ejemplo-de-flujo-con-mcp">Ejemplo de Flujo con MCP</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Tú: "Revisa mis emails de esta semana, identifica los que</span></span>
+<span class="line"><span>     requieren acción urgente, y crea tareas en Jira</span></span>
+<span class="line"><span>     para cada uno con la prioridad correcta."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude (con Gmail + Jira conectados):</span></span>
+<span class="line"><span>→ Lee tus emails de los últimos 7 días</span></span>
+<span class="line"><span>→ Clasifica por urgencia y tipo de acción</span></span>
+<span class="line"><span>→ Crea 4 tareas en Jira con títulos, descripciones y prioridades</span></span>
+<span class="line"><span>→ Te muestra un resumen de lo que hizo</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Esto antes tomaba 30-45 minutos. Con MCP: 2 minutos.</p>
+<hr>
+<h2 id="️-tema-16-skills-personalizadas-en-claude--enseña-a-claude-a-ser-tuyo">🛠️ Tema 16: Skills Personalizadas en Claude — Enseña a Claude a Ser Tuyo</h2>
+<p>Las <strong>Skills</strong> son instrucciones personalizadas que defines tú, guardadas como “habilidades especializadas” que Claude activa cuando las necesita. Es como darle a Claude un manual de operaciones específico para tus tareas.</p>
+<h3 id="qué-son-las-skills">¿Qué Son las Skills?</h3>
+<p>Una Skill es esencialmente un <strong>documento de instrucciones</strong> que le dice a Claude:</p>
+<ul>
+<li>Cómo abordar cierto tipo de tarea</li>
+<li>Qué herramientas usar y en qué orden</li>
+<li>Qué formato producir</li>
+<li>Qué restricciones respetar</li>
+</ul>
+<h3 id="ejemplo-skill-para-code-review">Ejemplo: Skill para Code Review</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># SKILL: Code Review de Seguridad</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Cuándo aplicar</span></span>
+<span class="line"><span style="color:#E1E4E8">Cuando el usuario pida revisar código o analizar</span></span>
+<span class="line"><span style="color:#E1E4E8">vulnerabilidades de seguridad.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Proceso obligatorio</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> Analiza SIEMPRE en este orden: CRÍTICO → ALTO → MEDIO → BAJO</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> Para cada problema encontrado:</span></span>
+<span class="line"><span style="color:#FFAB70">   -</span><span style="color:#E1E4E8"> Línea exacta</span></span>
+<span class="line"><span style="color:#FFAB70">   -</span><span style="color:#E1E4E8"> Descripción del riesgo</span></span>
+<span class="line"><span style="color:#FFAB70">   -</span><span style="color:#E1E4E8"> CVSS score estimado</span></span>
+<span class="line"><span style="color:#FFAB70">   -</span><span style="color:#E1E4E8"> Código corregido</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> Termina con: veredicto (APROBADO/RECHAZADO) + resumen ejecutivo</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Herramientas a consultar</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> OWASP Top 10 como referencia de categorías</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> CWE para clasificación estándar</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Restricciones</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Nunca marcar como bajo riesgo un hardcoded credential</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Siempre incluir el fix, no solo el problema</span></span>
+<span class="line"></span></code></pre>
+<h3 id="cómo-crear-skills-en-claudeai">Cómo Crear Skills en Claude.ai</h3>
+<ol>
+<li>Ve a <strong>Settings → Skills</strong> (o “Custom Instructions”)</li>
+<li>Click en “Create New Skill”</li>
+<li>Escribe el nombre, descripción, y las instrucciones detalladas</li>
+<li>Guarda — Claude la tendrá disponible en tus conversaciones</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Para devs:</strong> Si usas la API, las Skills se implementan como system prompts guardados con versión control. Tratalos como código — versionalos en Git.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-17-claude-code--el-agente-de-código">💻 Tema 17: Claude Code — El Agente de Código</h2>
+<p><strong>Claude Code</strong> es una herramienta de línea de comandos que convierte a Claude en un <strong>agente autónomo de desarrollo</strong>. No es un autocomplete de código — es un agente que puede leer tu codebase, entender el contexto, y hacer cambios reales en tu proyecto.</p>
+<p><img src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=800&#x26;q=80" alt="Developer coding environment"></p>
+<h3 id="la-diferencia-fundamental">La Diferencia Fundamental</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>GitHub Copilot / Cursor:  Sugiere mientras escribes</span></span>
+<span class="line"><span>                          (Autocomplete inteligente)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude Code:              Tú describes el objetivo</span></span>
+<span class="line"><span>                          Claude lee TODO el proyecto</span></span>
+<span class="line"><span>                          Claude hace los cambios</span></span>
+<span class="line"><span>                          Tú revisas y apruebas</span></span>
+<span class="line"><span>                          (Agente autónomo)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="lo-que-claude-code-puede-hacer">Lo Que Claude Code Puede Hacer</h3>
+<ul>
+<li>📖 <strong>Leer</strong> archivos y entender la arquitectura del proyecto</li>
+<li>✏️ <strong>Editar</strong> múltiples archivos para implementar una feature</li>
+<li>🐛 <strong>Debuggear</strong> siguiendo el stack trace hasta la raíz</li>
+<li>🧪 <strong>Escribir tests</strong> basados en el código existente</li>
+<li>📚 <strong>Documentar</strong> funciones y módulos completos</li>
+<li>🔄 <strong>Refactorizar</strong> código siguiendo las convenciones del proyecto</li>
+<li>⚙️ <strong>Ejecutar comandos</strong> de terminal con tu permiso</li>
+</ul>
+<h3 id="cómo-instalarlo">Cómo Instalarlo</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Requiere Node.js 18+</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -g</span><span style="color:#9ECBFF"> @anthropic-ai/claude-code</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Navega a tu proyecto</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> mi-proyecto</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Inicia Claude Code</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Primera tarea</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> Analiza la arquitectura de este proyecto y dame </span></span>
+<span class="line"><span style="color:#B392F0">  un</span><span style="color:#9ECBFF"> resumen</span><span style="color:#9ECBFF"> de</span><span style="color:#9ECBFF"> cómo</span><span style="color:#9ECBFF"> está</span><span style="color:#9ECBFF"> organizado</span></span>
+<span class="line"></span></code></pre>
+<h3 id="un-flujo-de-trabajo-real">Un Flujo de Trabajo Real</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> Hay un bug: cuando el usuario tiene más de 100 items</span></span>
+<span class="line"><span style="color:#B392F0">  en</span><span style="color:#9ECBFF"> su</span><span style="color:#9ECBFF"> carrito,</span><span style="color:#9ECBFF"> el</span><span style="color:#9ECBFF"> total</span><span style="color:#9ECBFF"> se</span><span style="color:#9ECBFF"> calcula</span><span style="color:#9ECBFF"> mal.</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#B392F0">  Encuéntrado</span><span style="color:#9ECBFF"> y</span><span style="color:#9ECBFF"> corrígelo.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Claude</span><span style="color:#9ECBFF"> Code:</span></span>
+<span class="line"><span style="color:#B392F0">1.</span><span style="color:#9ECBFF"> Lee</span><span style="color:#9ECBFF"> todos</span><span style="color:#9ECBFF"> los</span><span style="color:#9ECBFF"> archivos</span><span style="color:#9ECBFF"> de</span><span style="color:#9ECBFF"> cart/</span><span style="color:#9ECBFF"> y</span><span style="color:#9ECBFF"> checkout/</span></span>
+<span class="line"><span style="color:#B392F0">2.</span><span style="color:#9ECBFF"> Identifica</span><span style="color:#9ECBFF"> la</span><span style="color:#9ECBFF"> función</span><span style="color:#9ECBFF"> calculateTotal</span><span style="color:#E1E4E8">() </span><span style="color:#9ECBFF">en</span><span style="color:#9ECBFF"> cart.js:53</span></span>
+<span class="line"><span style="color:#B392F0">3.</span><span style="color:#9ECBFF"> Encuentra</span><span style="color:#9ECBFF"> el</span><span style="color:#9ECBFF"> bug:</span><span style="color:#9ECBFF"> overflow</span><span style="color:#9ECBFF"> en</span><span style="color:#9ECBFF"> parseInt</span><span style="color:#9ECBFF"> para</span><span style="color:#9ECBFF"> números</span><span style="color:#9ECBFF"> grandes</span></span>
+<span class="line"><span style="color:#B392F0">4.</span><span style="color:#9ECBFF"> Propone</span><span style="color:#9ECBFF"> el</span><span style="color:#9ECBFF"> fix</span><span style="color:#9ECBFF"> con</span><span style="color:#9ECBFF"> BigInt</span></span>
+<span class="line"><span style="color:#B392F0">5.</span><span style="color:#9ECBFF"> Muestra</span><span style="color:#9ECBFF"> el</span><span style="color:#9ECBFF"> diff</span><span style="color:#9ECBFF"> para</span><span style="color:#9ECBFF"> tu</span><span style="color:#9ECBFF"> aprobación</span></span>
+<span class="line"><span style="color:#B392F0">6.</span><span style="color:#9ECBFF"> Aplica</span><span style="color:#9ECBFF"> el</span><span style="color:#9ECBFF"> cambio</span><span style="color:#9ECBFF"> con</span><span style="color:#9ECBFF"> tu</span><span style="color:#9ECBFF"> OK</span></span>
+<span class="line"><span style="color:#B392F0">7.</span><span style="color:#9ECBFF"> Ejecuta</span><span style="color:#9ECBFF"> los</span><span style="color:#9ECBFF"> tests:</span><span style="color:#9ECBFF"> todos</span><span style="color:#9ECBFF"> pasan</span><span style="color:#9ECBFF"> ✅</span></span>
+<span class="line"></span></code></pre>
+<blockquote>
+<p>🔐 <strong>Claude Code nunca hace cambios sin tu aprobación</strong> para acciones irreversibles. El modelo Zero Trust está integrado en su diseño.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-18-cowork--tu-agente-de-ia-personal">🤝 Tema 18: Cowork — Tu Agente de IA Personal</h2>
+<p><strong>Cowork</strong> es la característica más ambiciosa de Claude: un agente autónomo que puede tomar control de tu computadora para ejecutar tareas completas mientras tú haces otra cosa.</p>
+<h3 id="la-diferencia-entre-chat-y-cowork">La Diferencia Entre Chat y Cowork</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Chat con Claude:     Tú → Claude → Respuesta → Tú actúas</span></span>
+<span class="line"><span>                     (Conversacional, tú ejecutas)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Cowork:              Tú describes la tarea → Claude actúa</span></span>
+<span class="line"><span>                     Claude abre apps, navega webs,</span></span>
+<span class="line"><span>                     lee archivos, escribe documentos,</span></span>
+<span class="line"><span>                     envía emails (con tu permiso)</span></span>
+<span class="line"><span>                     → Tú revisas el resultado</span></span>
+<span class="line"><span>                     (Agente autónomo, Claude ejecuta)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="tareas-que-cowork-puede-hacer">Tareas que Cowork Puede Hacer</h3>
+<ul>
+<li>📊 “Descarga las últimas 3 facturas de [proveedor], extrae los totales y actualiza esta hoja de cálculo”</li>
+<li>📧 “Revisa mi bandeja de entrada, clasifica los emails por urgencia y borra los newsletters que no he abierto en 30 días”</li>
+<li>🔍 “Investiga los 5 mejores CRMs para una startup de 10 personas, compara precios y features, y dame una presentación lista”</li>
+<li>📁 “Organiza los archivos de descargas de este mes en carpetas por tipo”</li>
+<li>📝 “Toma estas notas de la reunión y genera el reporte formal con action items asignados”</li>
+</ul>
+<h3 id="cómo-acceder-a-cowork">Cómo Acceder a Cowork</h3>
+<p>Disponible en Claude Desktop (aplicación de escritorio) en planes Pro, Max, Team y Enterprise.</p>
+<ol>
+<li>Descarga <a href="https://claude.ai/download">Claude Desktop</a></li>
+<li>Inicia sesión con tu cuenta</li>
+<li>Haz click en el tab “Cowork”</li>
+<li>Describe tu tarea y confirma los permisos que necesita Claude</li>
+</ol>
+<blockquote>
+<p>🔐 <strong>Zero Trust en Cowork:</strong> Claude siempre pide confirmación antes de acciones irreversibles (enviar emails, eliminar archivos, hacer compras). Nunca ejecuta de forma silenciosa sin que sepas qué está haciendo.</p>
+</blockquote>
+<hr>
+<h2 id="-la-clave-no-es-claude--la-clave-eres-tú">🔑 La Clave No Es Claude — La Clave Eres Tú</h2>
+<p>Hemos cubierto 18 características. Puede sentirse abrumador. Antes de cerrar, quiero dejarte con la idea más importante de toda esta guía:</p>
+<blockquote>
+<p><strong>La brecha entre alguien que obtiene resultados mediocres de Claude y alguien que obtiene resultados extraordinarios no está en las características que usan. Está en la calidad de lo que preguntan.</strong></p>
+</blockquote>
+<p>Claude es Deep Thought. Es la computadora más avanzada jamás construida. Puede procesar millones de tokens, razonar por horas, conectarse con todas tus herramientas, y ejecutar tareas autónomamente.</p>
+<p>Pero si le preguntas “¿Cómo mejoro mi empresa?” vas a obtener <strong>42</strong>.</p>
+<p>La respuesta correcta no tiene que ver con activar más features o usar modelos más grandes. Tiene que ver con:</p>
+<ul>
+<li>🧠 <strong>Saber qué quieres</strong> antes de escribir el prompt</li>
+<li>📍 <strong>Dar el contexto</strong> que el modelo necesita para ser útil</li>
+<li>🎯 <strong>Ser específico</strong> sobre el problema real, no la versión genérica</li>
+<li>🔁 <strong>Iterar</strong> cuando la primera respuesta no es lo que necesitabas</li>
+<li>🤝 <strong>Tratar a Claude como un colaborador</strong>, no como un motor de búsqueda</li>
+</ul>
+<p>El mejor uso de Claude no es el más sofisticado técnicamente — es el más intencional humanamente.</p>
+<p><strong>Las herramientas son neutrales. Lo que haces con ellas define si son una calculadora o un superpoder.</strong></p>
+<p>Bienvenido al viaje. 🚀</p>
+<hr>
+<h3 id="-recursos-adicionales">📚 Recursos Adicionales</h3>
+<ul>
+<li>🌐 <a href="https://claude.ai"><strong>Claude.ai</strong></a> — Empieza aquí</li>
+<li>📖 <a href="https://docs.anthropic.com"><strong>Anthropic Docs</strong></a> — Documentación técnica oficial</li>
+<li>🔧 <a href="https://platform.claude.com"><strong>Claude API Platform</strong></a> — Para desarrolladores</li>
+<li>💻 <a href="https://github.com/anthropics/claude-code"><strong>Claude Code GitHub</strong></a> — Repositorio oficial</li>
+<li>🔌 <a href="https://claude.ai/integrations"><strong>MCP Connectors Directory</strong></a> — Todos los conectores disponibles</li>
+<li>📧 <a href="https://www.anthropic.com/news"><strong>Anthropic Newsletter</strong></a> — Actualizaciones oficiales</li>
+</ul>
+<hr>
+<p><em>Escrito por <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Esta guía se actualiza conforme Anthropic lanza nuevas características. Última actualización: junio 2026.</em></p>
+</div>
+<hr>
+<hr>
+<div class="lang-en">
+<h2 id="-the-definitive-claude-guide-2026-from-zero-to-ai-superhero">🤖 The Definitive Claude Guide 2026: From Zero to AI Superhero</h2>
+<p><strong>By Jafet Brito</strong> · Security Researcher · <em>Published June 11, 2026</em></p>
+<hr>
+<blockquote>
+<p><em>“The most powerful tool is not the AI model. It’s the person who knows how to use it.”</em>
+— Zero Trust applied to productivity</p>
+</blockquote>
+<hr>
+<h3 id="️-the-visual-roadmap--your-treasure-map">🗺️ The Visual Roadmap — Your Treasure Map</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>╔══════════════════════════════════════════════════════════════════╗</span></span>
+<span class="line"><span>║                    🌐 THE CLAUDE UNIVERSE                        ║</span></span>
+<span class="line"><span>╠══════════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║  📚 KNOW CLAUDE           🧠 CHOOSE YOUR MODEL                  ║</span></span>
+<span class="line"><span>║  └─ What it is, history   └─ Haiku / Sonnet / Opus              ║</span></span>
+<span class="line"><span>║                              Fable 5 / Mythos                   ║</span></span>
+<span class="line"><span>╠══════════════ LEVEL 1: CASUAL USER ══════════════════════════════╣</span></span>
+<span class="line"><span>║  ✍️ EFFECTIVE PROMPTS     🔍 WEB SEARCH                         ║</span></span>
+<span class="line"><span>║  🧩 EXTENDED THINKING     🔬 DEEP RESEARCH                      ║</span></span>
+<span class="line"><span>╠══════════════ LEVEL 2: POWER USER ═══════════════════════════════╣</span></span>
+<span class="line"><span>║  📄 DOCS &#x26; IMAGES         📊 EXCEL + K-MEANS                    ║</span></span>
+<span class="line"><span>║  📊 POWERPOINT            🎨 ARTIFACTS                          ║</span></span>
+<span class="line"><span>║  📁 PROJECTS              ✍️ WRITING STYLES                     ║</span></span>
+<span class="line"><span>╠══════════════ LEVEL 3: POWER DEV / PRO ══════════════════════════╣</span></span>
+<span class="line"><span>║  🧠 MEMORY                🔌 MCP CONNECTORS                     ║</span></span>
+<span class="line"><span>║  🛠️ CUSTOM SKILLS         💻 CLAUDE CODE                       ║</span></span>
+<span class="line"><span>║  🤝 COWORK                🔑 THE KEY IS YOU                     ║</span></span>
+<span class="line"><span>╚══════════════════════════════════════════════════════════════════╝</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="-quick-index">📋 Quick Index</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Topic</th><th>Level</th><th>Read time</th></tr></thead><tbody><tr><td>1</td><td>Know Claude AI</td><td>🟢 All</td><td>3 min</td></tr><tr><td>2</td><td>What Claude is &#x26; what makes it different</td><td>🟢 All</td><td>4 min</td></tr><tr><td>3</td><td>Choosing Haiku, Sonnet, or Opus</td><td>🟢 All</td><td>3 min</td></tr><tr><td>4</td><td>Effective prompts in Claude</td><td>🟡 Intermediate</td><td>5 min</td></tr><tr><td>5</td><td>Web search in Claude</td><td>🟢 All</td><td>2 min</td></tr><tr><td>6</td><td>Extended thinking</td><td>🟡 Intermediate</td><td>3 min</td></tr><tr><td>7</td><td>Deep Research</td><td>🟡 Intermediate</td><td>3 min</td></tr><tr><td>8</td><td>Document and image analysis</td><td>🟢 All</td><td>4 min</td></tr><tr><td>9</td><td>Excel with Claude and K-Means</td><td>🔴 Technical</td><td>4 min</td></tr><tr><td>10</td><td>PowerPoint with Claude</td><td>🟢 All</td><td>3 min</td></tr><tr><td>11</td><td>Artifacts: Create apps with Claude</td><td>🟡 Intermediate</td><td>4 min</td></tr><tr><td>12</td><td>Projects in Claude</td><td>🟡 Intermediate</td><td>3 min</td></tr><tr><td>13</td><td>Custom writing styles</td><td>🟢 All</td><td>3 min</td></tr><tr><td>14</td><td>Claude’s memory</td><td>🟢 All</td><td>3 min</td></tr><tr><td>15</td><td>MCP connectors</td><td>🔴 Technical</td><td>5 min</td></tr><tr><td>16</td><td>Custom skills</td><td>🔴 Technical</td><td>4 min</td></tr><tr><td>17</td><td>Claude Code: the coding agent</td><td>🔴 Technical</td><td>5 min</td></tr><tr><td>18</td><td>Cowork: your personal agent</td><td>🟡 Intermediate</td><td>4 min</td></tr><tr><td>★</td><td>The key is you — Final reflection</td><td>🟢 All</td><td>2 min</td></tr></tbody></table>
+<hr>
+<h2 id="-topic-1-know-claude-ai">📘 Topic 1: Know Claude AI</h2>
+<p>Claude is the conversational AI created by <strong>Anthropic</strong>, an AI safety company founded in 2021 by former OpenAI researchers — including Dario and Daniela Amodei.</p>
+<p><strong>Quick timeline:</strong></p>
+<ul>
+<li>🗓️ <strong>2021</strong> — Anthropic founded</li>
+<li>🗓️ <strong>March 2023</strong> — Claude 1 launches (API only)</li>
+<li>🗓️ <strong>2024</strong> — Claude 3 (Haiku, Sonnet, Opus) goes public</li>
+<li>🗓️ <strong>2025</strong> — Extended Thinking, Claude Code, MCP ecosystem</li>
+<li>🗓️ <strong>2026</strong> — Claude 4.x family, <strong>Fable 5</strong>, Cowork, Skills, 1M token context</li>
+</ul>
+<p><strong>Available plans today:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plan</th><th>Price</th><th>For whom</th></tr></thead><tbody><tr><td><strong>Free</strong></td><td>$0</td><td>Casual use — memory, web search, Sonnet 4.6</td></tr><tr><td><strong>Pro</strong></td><td>~$20/mo</td><td>Frequent users — more messages, Extended Thinking</td></tr><tr><td><strong>Max</strong></td><td>$100-200/mo</td><td>Power users — Opus, max limits, Cowork</td></tr><tr><td><strong>Team</strong></td><td>~$30/seat</td><td>Teams — shared workspaces</td></tr><tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Organizations — compliance, SSO, privacy</td></tr></tbody></table>
+<blockquote>
+<p>💡 <strong>The free tier in 2026 is genuinely impressive:</strong> persistent memory, web search, artifacts, and Sonnet 4.6 at $0. Don’t upgrade until you hit real friction.</p>
+</blockquote>
+<hr>
+<h2 id="-topic-2-what-claude-is-and-what-makes-it-different">🧬 Topic 2: What Claude Is and What Makes It Different</h2>
+<h3 id="️-constitutional-ai--ethics-built-into-the-model">🛡️ Constitutional AI — Ethics Built Into the Model</h3>
+<p>Anthropic developed <strong>Constitutional AI</strong>: instead of just filtering problematic outputs after generation, Claude was trained with ethical principles integrated into its reasoning process. Claude isn’t just programmed to avoid harm — it’s designed to want to avoid it.</p>
+<h3 id="-the-three-words-that-define-claude-helpful-harmless-honest">🎯 The Three Words That Define Claude: Helpful, Harmless, Honest</h3>
+<ul>
+<li>🤝 <strong>Helpful:</strong> Genuinely tries to be useful, doesn’t hedge with vague responses “to be safe”</li>
+<li>🔒 <strong>Harmless:</strong> Clear limits, but not over-restricted for legitimate questions</li>
+<li>✅ <strong>Honest:</strong> Admits when it doesn’t know something — doesn’t hallucinate with false confidence</li>
+</ul>
+<h3 id="where-claude-excels">Where Claude Excels</h3>
+<ul>
+<li>📝 Long-form coherent writing</li>
+<li>🔍 Complex document analysis (PDFs, contracts, financial reports)</li>
+<li>💻 Code with reasoning (explains the <em>why</em>, not just the <em>what</em>)</li>
+<li>🔐 Data privacy (strictest policies among major models)</li>
+<li>🧠 Nuanced reasoning — handles ambiguity better than most</li>
+</ul>
+<h3 id="what-claude-does-not-do">What Claude Does NOT Do</h3>
+<ul>
+<li>❌ No image generation (use Midjourney/DALL-E for that)</li>
+<li>❌ No audio or video generation</li>
+<li>❌ No real-time internet by default (activate web search manually)</li>
+</ul>
+<hr>
+<h2 id="️-topic-3-choosing-haiku-sonnet-or-opus--the-definitive-guide">⚖️ Topic 3: Choosing Haiku, Sonnet, or Opus — The Definitive Guide</h2>
+<h3 id="the-workshop-metaphor">The Workshop Metaphor</h3>
+<ul>
+<li>🔧 <strong>Haiku</strong> = Electric screwdriver → Fast, light, perfect for repetitive tasks</li>
+<li>🔨 <strong>Sonnet</strong> = Cordless drill → Perfect balance for 90% of work</li>
+<li>⚙️ <strong>Opus</strong> = Industrial lathe → Overkill for most, indispensable for big projects</li>
+<li>🌟 <strong>Fable 5</strong> = CNC machine → For the most ambitious long-horizon work</li>
+</ul>
+<h3 id="the-real-comparison-2026">The Real Comparison (2026)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>Haiku 4.5</th><th>Sonnet 4.6</th><th>Opus 4.8</th><th>Fable 5</th></tr></thead><tbody><tr><td><strong>Speed</strong></td><td>⚡⚡⚡⚡⚡</td><td>⚡⚡⚡⚡</td><td>⚡⚡⚡</td><td>⚡⚡</td></tr><tr><td><strong>Quality</strong></td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>🌟🌟🌟🌟🌟</td></tr><tr><td><strong>Context</strong></td><td>200k tokens</td><td>1M tokens</td><td>200k tokens</td><td>1M tokens</td></tr><tr><td><strong>Best for</strong></td><td>Simple tasks, high volume</td><td>Daily use, everything</td><td>Deep analysis</td><td>Days-long tasks</td></tr></tbody></table>
+<h3 id="decision-tree">Decision Tree</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>What do you need?</span></span>
+<span class="line"><span>    ├─► Quick answer / classification / simple translation</span></span>
+<span class="line"><span>    │   └─► 🔧 HAIKU</span></span>
+<span class="line"><span>    ├─► Writing, analysis, code, general conversation</span></span>
+<span class="line"><span>    │   └─► 🔨 SONNET (your daily workhorse)</span></span>
+<span class="line"><span>    ├─► Deep analysis / strategy / research</span></span>
+<span class="line"><span>    │   └─► ⚙️ OPUS</span></span>
+<span class="line"><span>    └─► Multi-day tasks / massive codebases / scientific projects</span></span>
+<span class="line"><span>        └─► 🌟 FABLE 5</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="️-topic-4-effective-prompts-in-claude">✍️ Topic 4: Effective Prompts in Claude</h2>
+<p>Claude specifically responds better to certain prompting styles:</p>
+<h3 id="what-claude-loves-️">What Claude Loves ❤️</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="xml"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">task</span><span style="color:#E1E4E8">>Analyze this contract&#x3C;/</span><span style="color:#85E89D">task</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">context</span><span style="color:#E1E4E8">>I'm a corporate lawyer, client is a SaaS startup&#x3C;/</span><span style="color:#85E89D">context</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">format</span><span style="color:#E1E4E8">>Bullet points per risk clause&#x3C;/</span><span style="color:#85E89D">format</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">document</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">[contract text here]</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">document</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>✅ <strong>XML tags</strong> — Claude was trained extensively with XML, follows it with high fidelity</li>
+<li>✅ <strong>Instructions first</strong> — Instructions before content carry more weight</li>
+<li>✅ <strong>Clear delimiters</strong> — Separate instructions from data</li>
+<li>✅ <strong>Concrete examples</strong> — Few-shot works very well with Claude</li>
+</ul>
+<h3 id="what-claude-doesnt-love">What Claude Doesn’t Love 😬</h3>
+<ul>
+<li>❌ <strong>Aggressive ALL CAPS</strong> — Degrades output quality</li>
+<li>❌ <strong>Contradictory instructions</strong> — Claude will try to resolve but may fail</li>
+<li>❌ <strong>Vague prompts</strong> — “Help me with this” → guaranteed generic response</li>
+</ul>
+<h3 id="the-minimal-effective-template-for-claude">The Minimal Effective Template for Claude</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Role: [Who you are / what expert you need]</span></span>
+<span class="line"><span>Context: [Current situation, constraints, technical level]</span></span>
+<span class="line"><span>Task: [What specifically you need]</span></span>
+<span class="line"><span>Format: [How you want the response]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[CONTENT / DATA HERE]</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-5-how-to-activate-web-search-in-claude">🔍 Topic 5: How to Activate Web Search in Claude</h2>
+<p>By default, Claude only has its training knowledge (up to January 2026). For recent events, current prices, or anything that changes — activate web search.</p>
+<p><strong>In Claude.ai:</strong></p>
+<ol>
+<li>Open a new conversation</li>
+<li>Find the 🌐 icon or tools toggle in the bottom bar</li>
+<li>Enable “Search the web”</li>
+</ol>
+<p><strong>In Settings → Feature Preview:</strong> Enable persistently for all conversations.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Use it for</th><th>You don’t need it for</th></tr></thead><tbody><tr><td>Recent news and events</td><td>Timeless concepts</td></tr><tr><td>Product prices</td><td>Known history</td></tr><tr><td>Software releases</td><td>Code and algorithms</td></tr><tr><td>Updated statistics</td><td>Your document analysis</td></tr></tbody></table>
+<hr>
+<h2 id="-topic-6-extended-thinking-in-claude">🧠 Topic 6: Extended Thinking in Claude</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Normal Mode:       Question → 💬 Answer</span></span>
+<span class="line"><span>                   (2 seconds, implicit reasoning)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Extended Thinking: Question → 🧠🧠🧠 Deep reasoning → 💬 Answer</span></span>
+<span class="line"><span>                   (30-120 seconds, much more accurate)</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>When it’s worth the wait:</strong></p>
+<ul>
+<li>📐 Complex math and logic</li>
+<li>⚖️ Legal or strategic analysis</li>
+<li>🔬 Technical research with multiple perspectives</li>
+<li>🏗️ System design with trade-offs</li>
+<li>🐛 Hard debugging</li>
+</ul>
+<p>Available on Pro, Max, and Enterprise plans.</p>
+<hr>
+<h2 id="-topic-7-deep-research-in-claude">🔬 Topic 7: Deep Research in Claude</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Your question</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Claude formulates 5-10 relevant search queries</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Executes searches simultaneously</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Reads and evaluates each source</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Identifies contradictions and gaps</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Synthesizes into structured report with citations</span></span>
+<span class="line"><span>     ↓</span></span>
+<span class="line"><span>Result: 5-15 minutes later, a researcher-quality analysis</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Good usage:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Do deep research on the current state of LLMs</span></span>
+<span class="line"><span>for medical diagnosis applications. I need: major</span></span>
+<span class="line"><span>players, current FDA/EMA regulations, approved use</span></span>
+<span class="line"><span>cases, and main risks identified by the scientific</span></span>
+<span class="line"><span>community. Audience: regional hospital board."</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Available on Pro, Max, Team, and Enterprise plans.</p>
+<hr>
+<h2 id="-topic-8-document-and-image-analysis-with-claude">📄 Topic 8: Document and Image Analysis with Claude</h2>
+<p><strong>Document use cases:</strong></p>
+<ul>
+<li>🔍 “Analyze this 80-page contract and give me the 5 highest-risk clauses”</li>
+<li>📊 “Read this financial report and compare Q3 2025 vs Q3 2024”</li>
+<li>🐛 “Here’s the full codebase. Find security vulnerabilities”</li>
+<li>📚 “Summarize this academic paper for a non-technical audience”</li>
+</ul>
+<p><strong>Image use cases:</strong></p>
+<ul>
+<li>📸 “What does this chart show? Give me the numerical data you can extract”</li>
+<li>🔧 “Here’s a screenshot of the error. What’s failing?”</li>
+<li>🏗️ “Analyze this architecture diagram and suggest improvements”</li>
+<li>📝 “Transcribe the text from this whiteboard photo”</li>
+</ul>
+<p><strong>Context window:</strong> Sonnet 4.6 and Fable 5 support up to <strong>1 million tokens</strong> — enough for entire codebases, full annual reports, or multiple PDFs simultaneously.</p>
+<hr>
+<h2 id="-topic-9-excel-with-claude-and-k-means">📊 Topic 9: Excel with Claude and K-Means</h2>
+<p><strong>Claude for Excel addon lets you:</strong></p>
+<ul>
+<li>🔢 Generate complex formulas from natural language descriptions</li>
+<li>🧹 Clean messy data automatically</li>
+<li>📊 Create visualizations</li>
+<li>🤖 Run statistical analyses without code</li>
+</ul>
+<p><strong>K-Means prompt example:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>I have a customer dataset with columns:</span></span>
+<span class="line"><span>[age, annual_income, purchase_frequency, avg_ticket]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. Load the attached CSV</span></span>
+<span class="line"><span>2. Normalize variables</span></span>
+<span class="line"><span>3. Apply K-Means with K=4</span></span>
+<span class="line"><span>4. Visualize clusters with matplotlib</span></span>
+<span class="line"><span>5. Describe in business language what type of customer</span></span>
+<span class="line"><span>   each cluster represents</span></span>
+<span class="line"><span>6. Give me marketing recommendations for each segment</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[ATTACH CSV]</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Claude generates the complete Python code, executes it, and gives you: the reusable script, visualizations, business interpretation of each cluster, and actionable recommendations.</p>
+<hr>
+<h2 id="-topic-10-powerpoint-with-claude">📊 Topic 10: PowerPoint with Claude</h2>
+<p>With the <strong>Claude for PowerPoint</strong> addon:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Create a [N]-slide presentation for [audience]</span></span>
+<span class="line"><span>about [topic].</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Required structure:</span></span>
+<span class="line"><span>- Slide 1: Cover with [title], [subtitle]</span></span>
+<span class="line"><span>- Slides 2-4: Context and problem</span></span>
+<span class="line"><span>- Slides 5-8: Solution/findings with data</span></span>
+<span class="line"><span>- Slide 9: Next steps</span></span>
+<span class="line"><span>- Slide 10: Q&#x26;A</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Tone: [executive / technical / casual]</span></span>
+<span class="line"><span>Include: data from [source], metrics of [type]</span></span>
+<span class="line"><span>Avoid: technical jargon, slides with more than 5 bullets</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Available as a Microsoft Office add-in from the Microsoft 365 store.</p>
+<hr>
+<h2 id="-topic-11-artifacts--create-apps-with-claude">🎨 Topic 11: Artifacts — Create Apps with Claude</h2>
+<p>Artifacts are one of Claude’s most impressive features: complete applications, interactive web pages, data visualizations, games, and tools — all in the browser, no installation needed.</p>
+<p><strong>Types of artifacts Claude creates:</strong></p>
+<ul>
+<li>⚛️ React apps with state and logic</li>
+<li>🌐 HTML/CSS/JS interactive pages</li>
+<li>📊 Data visualizations with D3 or Recharts</li>
+<li>🎮 Games (Snake, Tetris, Wordle, anything you describe)</li>
+<li>🧮 Calculators, simulators, dashboards</li>
+<li>📝 Markdown documents and reports</li>
+</ul>
+<p><strong>Real examples:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Create a marketing ROI calculator with sliders for:</span></span>
+<span class="line"><span>investment, conversion rate, average ticket, and</span></span>
+<span class="line"><span>retention rate. Show result in real time with a chart."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"Build a Wordle game with cybersecurity terms"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"Create a road trip budget app: cities, distance,</span></span>
+<span class="line"><span>gas, hotels. Export to PDF."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-12-projects-in-claude">📁 Topic 12: Projects in Claude</h2>
+<p>Projects are persistent workspaces where Claude remembers everything you’ve worked on together — without time limits.</p>
+<p><strong>Without projects:</strong> Every conversation starts from zero.
+<strong>With projects:</strong> Claude remembers all documents you uploaded, conversation history, and behavior instructions you defined.</p>
+<p><strong>Recommended project structure:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>📁 PROJECT: My Company</span></span>
+<span class="line"><span>├── 📄 Base context (project system prompt)</span></span>
+<span class="line"><span>│   "We're a fintech startup in Mexico.</span></span>
+<span class="line"><span>│    Tone is professional but accessible..."</span></span>
+<span class="line"><span>├── 📎 Key documents</span></span>
+<span class="line"><span>│   ├── Brand Guidelines.pdf</span></span>
+<span class="line"><span>│   ├── Pitch Deck 2026.pptx</span></span>
+<span class="line"><span>│   └── Q3 Roadmap.xlsx</span></span>
+<span class="line"><span>└── 💬 Project conversations</span></span>
+<span class="line"><span>    ├── Content strategy</span></span>
+<span class="line"><span>    ├── Competitive analysis</span></span>
+<span class="line"><span>    └── Proposal writing</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="️-topic-13-custom-writing-styles-in-claude">✍️ Topic 13: Custom Writing Styles in Claude</h2>
+<p><strong>Method 1: By description</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Write with my personal style:</span></span>
+<span class="line"><span>- Short sentences. Direct. No filler.</span></span>
+<span class="line"><span>- Rhetorical questions for rhythm</span></span>
+<span class="line"><span>- Technical but accessible analogies</span></span>
+<span class="line"><span>- End with a brief philosophical reflection</span></span>
+<span class="line"><span>- Strategic emojis, not decorative</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Method 2: By example (Few-Shot)</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Here are 3 examples of my writing style:</span></span>
+<span class="line"><span>[Example 1]</span></span>
+<span class="line"><span>[Example 2]</span></span>
+<span class="line"><span>[Example 3]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Now write about [new topic] with exactly that</span></span>
+<span class="line"><span>same style, vocabulary, and structure.</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Method 3: Via Settings → Styles (most permanent)</strong></p>
+<p>In Claude.ai: Settings → Your Styles → Create a style → describe or paste examples → name it → activate with one click in any conversation.</p>
+<hr>
+<h2 id="-topic-14-claudes-memory">🧠 Topic 14: Claude’s Memory</h2>
+<p>Since March 2026, Claude has <strong>persistent memory across conversations</strong> for all users, including the free tier.</p>
+<p><strong>What Claude remembers:</strong></p>
+<ul>
+<li>👤 Your name and preferred communication style</li>
+<li>💼 Your professional role and work context</li>
+<li>📝 Format and response style preferences</li>
+<li>🗂️ Ongoing projects you’ve mentioned</li>
+<li>🎯 Goals you’ve shared</li>
+<li>💡 Technical preferences (programming language, frameworks)</li>
+</ul>
+<p><strong>Managing your memory:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"What do you know about me? Show me your memory."</span></span>
+<span class="line"><span>"Remember that I no longer work at [old company],</span></span>
+<span class="line"><span>I now work at [new company] as [new role]."</span></span>
+<span class="line"><span>"Forget the information about my project X."</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>In Settings → Memory: view, edit, and delete any memory item manually.</p>
+<hr>
+<h2 id="-topic-15-mcp-connectors--integrate-claude-with-your-apps">🔌 Topic 15: MCP Connectors — Integrate Claude with Your Apps</h2>
+<p>MCP (Model Context Protocol) turns Claude from a powerful chatbot into a <strong>collaborator that lives inside your work ecosystem</strong>.</p>
+<p><strong>Without MCP:</strong> Ask Claude → copy-paste data between apps → get answer → copy-paste back.</p>
+<p><strong>With MCP:</strong> Claude directly accesses your tools, reads real context, and acts in them.</p>
+<p><strong>The 2026 MCP ecosystem (200+ services):</strong></p>
+<ul>
+<li>📧 Gmail, Outlook, Slack, Teams</li>
+<li>📝 Notion, Confluence, Google Docs</li>
+<li>🐙 GitHub, GitLab, Jira, Linear, Asana</li>
+<li>🎨 Figma, Canva</li>
+<li>📊 Google Sheets, Airtable</li>
+<li>⚡ Zapier (6,000+ apps)</li>
+</ul>
+<p><strong>Connecting a connector:</strong></p>
+<ol>
+<li>Settings → Integrations (or puzzle icon 🧩 in chat)</li>
+<li>Find the service you want</li>
+<li>Click “Connect” → authorize OAuth access</li>
+<li>Done!</li>
+</ol>
+<p><strong>Real workflow example:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Review my emails this week, identify ones needing</span></span>
+<span class="line"><span>urgent action, and create Jira tasks for each</span></span>
+<span class="line"><span>with the correct priority."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>→ Claude reads your emails (Gmail connected)</span></span>
+<span class="line"><span>→ Classifies by urgency and action type</span></span>
+<span class="line"><span>→ Creates 4 Jira tasks with titles, descriptions, priorities</span></span>
+<span class="line"><span>→ Shows you a summary of what it did</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>This used to take 30-45 minutes. With MCP: 2 minutes.</p>
+<hr>
+<h2 id="️-topic-16-custom-skills-in-claude">🛠️ Topic 16: Custom Skills in Claude</h2>
+<p>A <strong>Skill</strong> is an instructions document that tells Claude: how to approach certain task types, which tools to use and in what order, what format to produce, and which constraints to respect.</p>
+<p><strong>Example: Security Code Review Skill</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># SKILL: Security Code Review</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## When to apply</span></span>
+<span class="line"><span style="color:#E1E4E8">When user asks to review code or analyze security vulnerabilities.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Required process</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> ALWAYS analyze in this order: CRITICAL → HIGH → MEDIUM → LOW</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> For each found issue:</span></span>
+<span class="line"><span style="color:#FFAB70">   -</span><span style="color:#E1E4E8"> Exact line number</span></span>
+<span class="line"><span style="color:#FFAB70">   -</span><span style="color:#E1E4E8"> Risk description</span></span>
+<span class="line"><span style="color:#FFAB70">   -</span><span style="color:#E1E4E8"> Estimated CVSS score</span></span>
+<span class="line"><span style="color:#FFAB70">   -</span><span style="color:#E1E4E8"> Corrected code</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> End with: verdict (APPROVED/REJECTED) + executive summary</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Constraints</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Never mark hardcoded credentials as low risk</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Always include the fix, not just the problem</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Creating skills in Claude.ai:</strong></p>
+<ol>
+<li>Settings → Skills (or “Custom Instructions”)</li>
+<li>“Create New Skill”</li>
+<li>Write name, description, and detailed instructions</li>
+<li>Save — Claude will have it available in your conversations</li>
+</ol>
+<hr>
+<h2 id="-topic-17-claude-code--the-coding-agent">💻 Topic 17: Claude Code — The Coding Agent</h2>
+<p>Claude Code is a command-line tool that turns Claude into an <strong>autonomous development agent</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>GitHub Copilot / Cursor:  Suggests while you type</span></span>
+<span class="line"><span>                          (Smart autocomplete)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude Code:              You describe the goal</span></span>
+<span class="line"><span>                          Claude reads the WHOLE project</span></span>
+<span class="line"><span>                          Claude makes the changes</span></span>
+<span class="line"><span>                          You review and approve</span></span>
+<span class="line"><span>                          (Autonomous agent)</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Installation:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -g</span><span style="color:#9ECBFF"> @anthropic-ai/claude-code</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-project</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Real workflow:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> There</span><span style="color:#9ECBFF">'s a bug: when a user has more than 100 items</span></span>
+<span class="line"><span style="color:#9ECBFF">  in their cart, the total is calculated incorrectly.</span></span>
+<span class="line"><span style="color:#9ECBFF">  Find and fix it.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">Claude Code:</span></span>
+<span class="line"><span style="color:#9ECBFF">1. Reads all cart/ and checkout/ files</span></span>
+<span class="line"><span style="color:#9ECBFF">2. Finds the bug: parseInt overflow in cart.js:53</span></span>
+<span class="line"><span style="color:#9ECBFF">3. Proposes fix using BigInt</span></span>
+<span class="line"><span style="color:#9ECBFF">4. Shows diff for your approval</span></span>
+<span class="line"><span style="color:#9ECBFF">5. Applies change with your OK</span></span>
+<span class="line"><span style="color:#9ECBFF">6. Runs tests: all pass ✅</span></span>
+<span class="line"></span></code></pre>
+<blockquote>
+<p>🔐 Claude Code never makes changes without your approval for irreversible actions.</p>
+</blockquote>
+<hr>
+<h2 id="-topic-18-cowork--your-personal-ai-agent">🤝 Topic 18: Cowork — Your Personal AI Agent</h2>
+<p>Cowork is an autonomous agent that can take control of your computer to execute complete tasks while you do something else.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Chat with Claude: You → Claude → Response → You act</span></span>
+<span class="line"><span>                  (Conversational, you execute)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Cowork:           You describe task → Claude acts</span></span>
+<span class="line"><span>                  Claude opens apps, browses webs,</span></span>
+<span class="line"><span>                  reads files, writes documents,</span></span>
+<span class="line"><span>                  sends emails (with your permission)</span></span>
+<span class="line"><span>                  → You review the result</span></span>
+<span class="line"><span>                  (Autonomous agent, Claude executes)</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Tasks Cowork can do:</strong></p>
+<ul>
+<li>📊 “Download the last 3 invoices from [vendor], extract totals and update this spreadsheet”</li>
+<li>📧 “Review my inbox, classify emails by urgency and delete newsletters I haven’t opened in 30 days”</li>
+<li>🔍 “Research the 5 best CRMs for a 10-person startup, compare prices and features, give me a ready presentation”</li>
+</ul>
+<p>Available in Claude Desktop on Pro, Max, Team, and Enterprise plans.</p>
+<hr>
+<h2 id="-the-key-isnt-claude--the-key-is-you">🔑 The Key Isn’t Claude — The Key Is You</h2>
+<p>We’ve covered 18 features. It can feel overwhelming. Before closing, here’s the most important idea in this entire guide:</p>
+<blockquote>
+<p><strong>The gap between someone who gets mediocre results from Claude and someone who gets extraordinary results isn’t in the features they use. It’s in the quality of what they ask.</strong></p>
+</blockquote>
+<p>Claude is Deep Thought. It’s the most advanced computer ever built for you. But if you ask it “How do I improve my business?” you’ll get <strong>42</strong>.</p>
+<p>The right answer has nothing to do with activating more features or using bigger models. It has to do with:</p>
+<ul>
+<li>🧠 <strong>Knowing what you want</strong> before writing the prompt</li>
+<li>📍 <strong>Giving the context</strong> the model needs to be useful</li>
+<li>🎯 <strong>Being specific</strong> about the real problem, not the generic version</li>
+<li>🔁 <strong>Iterating</strong> when the first response isn’t what you needed</li>
+<li>🤝 <strong>Treating Claude as a collaborator</strong>, not a search engine</li>
+</ul>
+<p><strong>The tools are neutral. What you do with them defines whether they’re a calculator or a superpower.</strong></p>
+<p>Welcome to the journey. 🚀</p>
+<hr>
+<h3 id="-additional-resources">📚 Additional Resources</h3>
+<ul>
+<li>🌐 <a href="https://claude.ai"><strong>Claude.ai</strong></a> — Start here</li>
+<li>📖 <a href="https://docs.anthropic.com"><strong>Anthropic Docs</strong></a> — Official technical documentation</li>
+<li>🔧 <a href="https://platform.claude.com"><strong>Claude API Platform</strong></a> — For developers</li>
+<li>💻 <a href="https://github.com/anthropics/claude-code"><strong>Claude Code GitHub</strong></a> — Official repository</li>
+<li>🔌 <a href="https://claude.ai/integrations"><strong>MCP Connectors Directory</strong></a> — All available connectors</li>
+</ul>
+<hr>
+<p><em>Written by <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>This guide updates as Anthropic ships new features. Last updated: June 2026.</em></p>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>

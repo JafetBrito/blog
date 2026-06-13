@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía del Blog — Jafet Brito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 17px; }
+
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --bg:        #ffffff;
+      --bg2:       #f9fafb;
+      --bg3:       #f3f4f6;
+      --surface:   #ffffff;
+      --border:    #e5e7eb;
+      --border2:   #d1d5db;
+      --text:      #111827;
+      --text2:     #374151;
+      --muted:     #6b7280;
+      --faint:     #9ca3af;
+      --green:     #16a34a;
+      --green-bg:  #f0fdf4;
+      --green-bd:  #bbf7d0;
+      --cyan:      #0284c7;
+      --red:       #dc2626;
+      --yellow:    #d97706;
+      --purple:    #7c3aed;
+      --orange:    #ea580c;
+      --blue:      #2563eb;
+      --code-bg:   #030712;
+      --code-text: #e2e8f0;
+      --radius:    12px;
+      --shadow:    0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+    }
+    .dark {
+      --bg:        #09090b;
+      --bg2:       #111115;
+      --bg3:       #18181b;
+      --surface:   #18181b;
+      --border:    #27272a;
+      --border2:   #3f3f46;
+      --text:      #f4f4f5;
+      --text2:     #d4d4d8;
+      --muted:     #a1a1aa;
+      --faint:     #71717a;
+      --green:     #00ff41;
+      --green-bg:  rgba(0,255,65,.06);
+      --green-bd:  rgba(0,255,65,.2);
+      --cyan:      #00e5ff;
+      --red:       #ff2050;
+      --yellow:    #ffd700;
+      --purple:    #bd00ff;
+      --orange:    #ff6b35;
+      --blue:      #60a5fa;
+      --code-bg:   #0f0f0f;
+      --code-text: #c8c8c8;
+      --shadow:    none;
+      --shadow-md: none;
+    }
+
+    /* ── Base ───────────────────────────────────────────── */
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      transition: background .2s, color .2s;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1,h2,h3,h4 { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 700; line-height: 1.25; color: var(--text); }
+    code, pre { font-family: 'JetBrains Mono', Consolas, monospace; }
+
+    /* ── Layout ─────────────────────────────────────────── */
+    .wrapper { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* ── Top bar ────────────────────────────────────────── */
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .6rem 0;
+    }
+    .topbar .wrapper {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: .6rem; }
+    .brand-logo {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--green); display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .8rem;
+      color: #fff; flex-shrink: 0;
+    }
+    .dark .brand-logo { color: #000; }
+    .brand-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--text); }
+    .brand-sub  { font-size: .7rem; color: var(--faint); font-family: 'JetBrains Mono', monospace; display: block; margin-top: 1px; }
+    .topbar-right { display: flex; align-items: center; gap: .4rem; }
+    .back-link {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .8rem; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 8px; padding: .35rem .75rem;
+      transition: color .15s, border-color .15s;
+    }
+    .back-link:hover { color: var(--green); border-color: var(--green); text-decoration: none; }
+    .icon-btn {
+      width: 34px; height: 34px; border-radius: 8px;
+      border: 1px solid var(--border); background: transparent;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--muted);
+      transition: color .15s, border-color .15s, background .15s;
+    }
+    .icon-btn:hover { color: var(--green); border-color: var(--green); background: var(--green-bg); }
+    .icon-btn svg { width: 18px; height: 18px; }
+
+    /* ── Hero ───────────────────────────────────────────── */
+    .hero {
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--bg) 60%, var(--green-bg));
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .3rem .9rem; border-radius: 999px;
+      background: var(--green-bg); border: 1px solid var(--green-bd);
+      color: var(--green); font-size: .8rem; font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 1.2rem;
+    }
+    .hero-badge span { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: .75rem; }
+    .hero p { font-size: 1.1rem; color: var(--muted); max-width: 580px; }
+
+    /* ── TOC ────────────────────────────────────────────── */
+    .toc {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem; margin: 2.5rem 0;
+    }
+    .toc-title { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); margin-bottom: 1rem; }
+    .toc ol { list-style: none; counter-reset: toc; }
+    .toc li { counter-increment: toc; margin-bottom: .5rem; }
+    .toc a {
+      display: flex; align-items: center; gap: .6rem;
+      font-family: 'JetBrains Mono', monospace; font-size: .85rem; color: var(--muted);
+      transition: color .15s;
+    }
+    .toc a::before {
+      content: counter(toc, decimal-leading-zero) ".";
+      color: var(--green); font-weight: 600; flex-shrink: 0;
+    }
+    .toc a:hover { color: var(--green); text-decoration: none; }
+
+    /* ── Section ────────────────────────────────────────── */
+    section { margin-bottom: 4rem; scroll-margin-top: 5rem; }
+    .section-header { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.75rem; }
+    .section-num {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--green); color: #fff;
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .85rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .dark .section-num { color: #000; }
+    .section-header h2 { font-size: 1.6rem; }
+
+    /* ── Cards / Panels ─────────────────────────────────── */
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); margin-bottom: 1rem;
+    }
+    .card-head {
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+      padding: .6rem 1rem; font-size: .8rem; font-weight: 600; color: var(--text2);
+    }
+    .card-body { padding: 1.25rem; }
+    .card-body p { color: var(--text2); font-size: .9rem; margin-bottom: .9rem; }
+
+    /* ── Code block ─────────────────────────────────────── */
+    .code-block {
+      background: var(--code-bg); border: 1px solid #1e293b;
+      border-radius: var(--radius); overflow-x: auto; margin: .75rem 0;
+    }
+    .dark .code-block { border-color: var(--border); }
+    .code-block pre {
+      padding: 1rem 1.25rem;
+      font-size: .82rem; line-height: 1.7;
+      color: var(--code-text);
+      white-space: pre; tab-size: 2;
+    }
+    .c-green  { color: #4ade80; }
+    .c-yellow { color: #fbbf24; }
+    .c-sky    { color: #38bdf8; }
+    .c-gray   { color: #64748b; }
+    .c-red    { color: #f87171; }
+    .c-prompt { color: #4ade80; user-select: none; }
+
+    /* ── Steps ──────────────────────────────────────────── */
+    .steps { display: flex; flex-direction: column; gap: 1.25rem; }
+    .step  { display: flex; gap: 1rem; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: var(--bg3); border: 1px solid var(--border);
+      color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: .75rem;
+      display: flex; align-items: center; justify-content: center; margin-top: .25rem;
+    }
+    .step-body { flex: 1; }
+    .step-body h4 { font-size: 1rem; margin-bottom: .5rem; color: var(--text); }
+    .step-body p  { font-size: .9rem; color: var(--muted); margin-top: .5rem; }
+
+    /* ── Table ──────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    thead tr { background: var(--bg2); }
+    th { padding: .75rem 1rem; text-align: left; font-weight: 600; color: var(--text2); border-bottom: 1px solid var(--border); }
+    td { padding: .65rem 1rem; color: var(--text2); border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--bg2); }
+    .mono { font-family: 'JetBrains Mono', monospace; font-size: .78rem; color: var(--cyan); }
+    .req-yes { color: var(--green); font-size: .85rem; }
+    .req-no  { color: var(--faint); font-size: .85rem; }
+
+    /* ── Markdown grid ──────────────────────────────────── */
+    .md-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    @media (max-width: 600px) { .md-grid { grid-template-columns: 1fr; } }
+    .md-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+    .md-card-head { background: var(--bg2); border-bottom: 1px solid var(--border); padding: .5rem .9rem; font-size: .8rem; font-weight: 600; color: var(--text2); }
+    .md-card pre  { padding: .75rem .9rem; font-size: .76rem; color: var(--code-text); background: var(--code-bg); overflow-x: auto; line-height: 1.65; }
+
+    /* ── FAQ accordion ──────────────────────────────────── */
+    details {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--surface); overflow: hidden; margin-bottom: .6rem;
+    }
+    summary {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.25rem; font-weight: 600; cursor: pointer;
+      list-style: none; color: var(--text); transition: background .15s;
+    }
+    summary:hover { background: var(--bg2); }
+    summary::after { content: '+'; font-size: 1.2rem; color: var(--green); flex-shrink: 0; transition: transform .2s; }
+    details[open] summary::after { content: '−'; }
+    details > div { padding: .75rem 1.25rem 1.25rem; font-size: .9rem; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border); }
+    details > div code { background: var(--bg3); padding: .1rem .4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--cyan); }
+
+    /* ── Alert boxes ────────────────────────────────────── */
+    .alert { border-radius: var(--radius); padding: 1rem 1.25rem; font-size: .9rem; margin: 1rem 0; }
+    .alert-blue   { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+    .alert-green  { background: var(--green-bg); border: 1px solid var(--green-bd); color: var(--green); }
+    .alert-yellow { background: #fffbeb; border: 1px solid #fed7aa; color: #92400e; }
+    .dark .alert-blue   { background: rgba(37,99,235,.12); border-color: rgba(37,99,235,.3); color: #93c5fd; }
+    .dark .alert-green  { background: var(--green-bg); border-color: var(--green-bd); color: var(--green); }
+    .dark .alert-yellow { background: rgba(217,119,6,.12); border-color: rgba(217,119,6,.3); color: #fcd34d; }
+    .alert strong { font-weight: 700; }
+
+    /* ── Tag pills ──────────────────────────────────────── */
+    .tag-pill {
+      display: inline-flex; align-items: center;
+      padding: .2rem .6rem; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 500;
+      border: 1px solid; margin: .15rem;
+    }
+
+    /* ── Helpers ────────────────────────────────────────── */
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .gap-2 { gap: .5rem; }
+    .gap-3 { gap: .75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mt-2 { margin-top: .5rem; }
+    .text-muted { color: var(--muted); font-size: .85rem; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    .page-footer {
+      border-top: 1px solid var(--border); background: var(--bg2);
+      padding: 2rem 0; margin-top: 4rem;
+    }
+    .page-footer .wrapper {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; font-size: .8rem; color: var(--faint);
+    }
+    .online-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: .4rem; animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  </style>
+</head>
+<body>
+
+<!-- ── TOP BAR ──────────────────────────────────────── -->
+<div class="topbar">
+  <div class="wrapper">
+    <div class="brand">
+      <div class="brand-logo">JB</div>
+      <div>
+        <span class="brand-name">Jafet Brito</span>
+        <span class="brand-sub">Guía del blog</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <a href="/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd"/></svg>
+        Volver al blog
+      </a>
+      <button class="icon-btn" id="theme-btn" title="Cambiar tema" aria-label="Cambiar tema">
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"/></svg>
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <div class="hero" style="padding-left:0;padding-right:0;">
+    <div class="hero-badge"><span></span> Documentación interna</div>
+    <h1>Guía del blog</h1>
+    <p>Todo lo que necesitas saber para crear artículos, gestionar contenido y publicar en Hostinger.</p>
+  </div>
+
+  <!-- ── TOC ──────────────────────────────────────────── -->
+  <nav class="toc" aria-label="Tabla de contenido">
+    <div class="toc-title">Contenido</div>
+    <ol>
+      <li><a href="#estructura">Estructura del proyecto</a></li>
+      <li><a href="#nuevo-post">Crear un nuevo artículo</a></li>
+      <li><a href="#frontmatter">Referencia de frontmatter</a></li>
+      <li><a href="#markdown">Sintaxis Markdown</a></li>
+      <li><a href="#imagenes">Imágenes</a></li>
+      <li><a href="#tags">Tags disponibles</a></li>
+      <li><a href="#hostinger">Publicar en Hostinger</a></li>
+      <li><a href="#faq">Preguntas frecuentes</a></li>
+    </ol>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════
+       1. ESTRUCTURA
+  ════════════════════════════════════════════════════ -->
+  <section id="estructura">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>Estructura del proyecto</h2>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="c-green">blog/</span>
+├── <span class="c-yellow">public/</span>
+│   ├── <span class="c-sky">favicon.svg</span>
+│   └── <span class="c-sky">guia.html</span>          <span class="c-gray"># ← este archivo</span>
+├── <span class="c-yellow">src/</span>
+│   ├── <span class="c-yellow">content/</span>
+│   │   ├── <span class="c-sky">config.ts</span>          <span class="c-gray"># esquema de posts</span>
+│   │   └── <span class="c-yellow">posts/</span>             <span class="c-gray"># ← aquí van tus artículos .md</span>
+│   │       ├── <span class="c-green">bienvenido.md</span>
+│   │       └── <span class="c-green">xss-cross-site-scripting.md</span>
+│   ├── <span class="c-yellow">components/</span>        <span class="c-gray"># Header, Footer, PostCard…</span>
+│   ├── <span class="c-yellow">layouts/</span>           <span class="c-gray"># BaseLayout, PostLayout</span>
+│   └── <span class="c-yellow">pages/</span>
+│       ├── <span class="c-sky">index.astro</span>        <span class="c-gray"># homepage</span>
+│       ├── <span class="c-sky">about.astro</span>
+│       ├── <span class="c-yellow">posts/</span>
+│       │   └── <span class="c-sky">[slug].astro</span>   <span class="c-gray"># ruta dinámica</span>
+│       └── <span class="c-yellow">tags/</span>
+├── <span class="c-sky">astro.config.mjs</span>
+├── <span class="c-sky">tailwind.config.mjs</span>
+└── <span class="c-sky">package.json</span></pre>
+    </div>
+
+    <div class="alert alert-blue">
+      <strong>Regla de oro:</strong> solo necesitas tocar <code style="background:rgba(37,99,235,.15);padding:.1rem .4rem;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:.8rem;">src/content/posts/</code> para publicar nuevos artículos. El resto es automático.
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       2. NUEVO POST
+  ════════════════════════════════════════════════════ -->
+  <section id="nuevo-post">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>Crear un nuevo artículo</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Crea un archivo <code style="font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--cyan)">.md</code> en la carpeta de posts</h4>
+          <div class="code-block">
+            <pre><span class="c-prompt">$</span> touch src/content/posts/<span class="c-yellow">mi-nuevo-articulo.md</span></pre>
+          </div>
+          <p>El nombre del archivo define la URL: <code style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--cyan)">/posts/mi-nuevo-articulo</code></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Pega esta plantilla y rellena los campos</h4>
+          <div class="code-block">
+            <pre>---
+<span class="c-sky">title</span>:       <span class="c-yellow">"Título del artículo"</span>
+<span class="c-sky">description</span>: <span class="c-yellow">"Resumen breve para SEO y la tarjeta."</span>
+<span class="c-sky">pubDate</span>:     <span class="c-yellow">2024-06-15</span>
+<span class="c-sky">tags</span>:        <span class="c-yellow">["web", "ctf"]</span>
+<span class="c-sky">author</span>:      <span class="c-yellow">"Jafet Brito"</span>
+<span class="c-sky">heroImage</span>:   <span class="c-yellow">"https://picsum.photos/seed/mi-post/1200/630"</span>
+<span class="c-sky">draft</span>:       <span class="c-green">false</span>
+---
+
+## Introducción
+
+Escribe el contenido aquí en Markdown normal.</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Previsualiza en local</h4>
+          <div class="code-block">
+            <pre><span class="c-prompt">$</span> npm run dev
+<span class="c-gray"># → http://localhost:4321</span></pre>
+          </div>
+          <p>El servidor recarga automáticamente al guardar el archivo.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Compila y sube a Hostinger</h4>
+          <div class="code-block">
+            <pre><span class="c-prompt">$</span> npm run build
+<span class="c-gray"># → genera la carpeta ./dist/ lista para subir</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       3. FRONTMATTER
+  ════════════════════════════════════════════════════ -->
+  <section id="frontmatter">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>Referencia de frontmatter</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Req.</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">title</td>       <td class="mono">string</td>     <td class="req-yes">✅</td><td>Título. Aparece en la tarjeta, la página y el SEO.</td></tr>
+          <tr><td class="mono">description</td> <td class="mono">string</td>     <td class="req-yes">✅</td><td>Resumen de 1–2 frases. Usado en la meta description de Google.</td></tr>
+          <tr><td class="mono">pubDate</td>      <td class="mono">YYYY-MM-DD</td><td class="req-yes">✅</td><td>Fecha de publicación. Determina el orden cronológico.</td></tr>
+          <tr><td class="mono">tags</td>         <td class="mono">string[]</td>  <td class="req-yes">✅</td><td>Array de etiquetas. Ej: <code>["web", "ctf"]</code>. Ver sección §6.</td></tr>
+          <tr><td class="mono">author</td>       <td class="mono">string</td>    <td class="req-no">—</td> <td>Por defecto "Jafet Brito". Cambiar solo si hay otro autor.</td></tr>
+          <tr><td class="mono">heroImage</td>    <td class="mono">string</td>    <td class="req-no">—</td> <td>URL de la imagen de portada. Si se omite, se genera automáticamente.</td></tr>
+          <tr><td class="mono">updatedDate</td>  <td class="mono">YYYY-MM-DD</td><td class="req-no">—</td><td>Fecha de última actualización. Se muestra en el post.</td></tr>
+          <tr><td class="mono">draft</td>        <td class="mono">boolean</td>   <td class="req-no">—</td> <td>Si es <code>true</code>, el post NO se publica. Útil para borradores.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       4. MARKDOWN
+  ════════════════════════════════════════════════════ -->
+  <section id="markdown">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>Sintaxis Markdown</h2>
+    </div>
+
+    <div class="md-grid">
+      <div class="md-card">
+        <div class="md-card-head">Encabezados</div>
+        <pre class="md-card pre">## H2 — sección principal
+### H3 — subsección
+#### H4 — detalle</pre>
+      </div>
+      <div class="md-card">
+        <div class="md-card-head">Énfasis</div>
+        <pre class="md-card pre">**negrita**
+*cursiva*
+~~tachado~~
+`código inline`</pre>
+      </div>
+      <div class="md-card">
+        <div class="md-card-head">Listas</div>
+        <pre class="md-card pre">- Elemento uno
+- Elemento dos
+  - Sub-elemento
+
+1. Paso uno
+2. Paso dos</pre>
+      </div>
+      <div class="md-card">
+        <div class="md-card-head">Bloque de código</div>
+        <pre class="md-card pre">```bash
+nmap -sV -p- target.htb
+```
+
+```python
+print("hello, hacker")
+```</pre>
+      </div>
+      <div class="md-card">
+        <div class="md-card-head">Cita</div>
+        <pre class="md-card pre">> Nota importante
+> puede ser multilínea</pre>
+      </div>
+      <div class="md-card">
+        <div class="md-card-head">Enlace e imagen</div>
+        <pre class="md-card pre">[Texto](https://url.com)
+
+![Alt](https://url.com/img.jpg)</pre>
+      </div>
+      <div class="md-card">
+        <div class="md-card-head">Tabla</div>
+        <pre class="md-card pre">| Col A   | Col B   |
+|---------|---------|
+| valor 1 | valor 2 |</pre>
+      </div>
+      <div class="md-card">
+        <div class="md-card-head">Separador horizontal</div>
+        <pre class="md-card pre">---
+
+Texto después del separador.</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       5. IMÁGENES
+  ════════════════════════════════════════════════════ -->
+  <section id="imagenes">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>Imágenes</h2>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-head">Opción A — URL externa (recomendado para empezar)</div>
+      <div class="card-body">
+        <p>No sube nada a Hostinger. Usa picsum.photos como placeholder o Unsplash para imágenes reales.</p>
+        <div class="code-block">
+          <pre><span class="c-sky">heroImage</span>: <span class="c-yellow">"https://picsum.photos/seed/MI-TEMA/1200/630"</span>
+<span class="c-gray"># Cambia MI-TEMA por cualquier palabra — siempre devuelve la misma imagen</span>
+
+<span class="c-gray"># En el cuerpo del artículo:</span>
+![descripción](<span class="c-yellow">https://picsum.photos/seed/MI-TEMA/800/400</span>)</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">Opción B — Imagen propia en /public/images/</div>
+      <div class="card-body">
+        <p>Copia la imagen en <code style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--cyan)">public/images/</code> y referencia así:</p>
+        <div class="code-block">
+          <pre><span class="c-sky">heroImage</span>: <span class="c-yellow">"/images/mi-portada.jpg"</span>
+
+<span class="c-gray"># En el cuerpo del artículo:</span>
+![captura de burpsuite](<span class="c-yellow">/images/captura.png</span>)</pre>
+        </div>
+        <p style="margin-top:.75rem;margin-bottom:0;">Tamaño recomendado: <strong>1200×630 px</strong> (ratio 16:9). Formato: JPG o WebP.</p>
+      </div>
+    </div>
+
+    <div class="alert alert-yellow" style="margin-top:1rem;">
+      <strong>💡 Tip:</strong> Para posts de hacking, una screenshot de terminal o de Burp Suite como hero image queda genial y es 100% original.
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       6. TAGS
+  ════════════════════════════════════════════════════ -->
+  <section id="tags">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>Tags disponibles</h2>
+    </div>
+
+    <div style="margin-bottom:1.25rem;">
+      <span class="tag-pill" style="background:#e0f2fe;color:#0369a1;border-color:#bae6fd;">#web</span>
+      <span class="tag-pill" style="background:#fee2e2;color:#dc2626;border-color:#fecaca;">#reversing</span>
+      <span class="tag-pill" style="background:#fee2e2;color:#dc2626;border-color:#fecaca;">#malware</span>
+      <span class="tag-pill" style="background:#ffedd5;color:#ea580c;border-color:#fed7aa;">#exploit</span>
+      <span class="tag-pill" style="background:#fefce8;color:#ca8a04;border-color:#fde68a;">#ctf</span>
+      <span class="tag-pill" style="background:#f5f3ff;color:#7c3aed;border-color:#ddd6fe;">#osint</span>
+      <span class="tag-pill" style="background:#eff6ff;color:#2563eb;border-color:#bfdbfe;">#network</span>
+      <span class="tag-pill" style="background:#eff6ff;color:#2563eb;border-color:#bfdbfe;">#forense</span>
+      <span class="tag-pill" style="background:#f0fdf4;color:#16a34a;border-color:#bbf7d0;">#linux</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tag</th><th>Usar para...</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">"web"</td>      <td>XSS, SQLi, SSRF, IDOR, RCE, vulnerabilidades web.</td></tr>
+          <tr><td class="mono">"reversing"</td><td>Ingeniería inversa de binarios, cracking, análisis estático.</td></tr>
+          <tr><td class="mono">"malware"</td>  <td>Análisis de malware, ransomware, RATs, análisis dinámico.</td></tr>
+          <tr><td class="mono">"exploit"</td>  <td>Buffer overflow, ROP chains, shellcode, heap exploitation.</td></tr>
+          <tr><td class="mono">"ctf"</td>      <td>Writeups de HackTheBox, TryHackMe, PicoCTF, etc.</td></tr>
+          <tr><td class="mono">"osint"</td>    <td>Reconocimiento, footprinting, inteligencia abierta.</td></tr>
+          <tr><td class="mono">"network"</td>  <td>Sniffing, MITM, pivoting, tunneling, seguridad de red.</td></tr>
+          <tr><td class="mono">"forense"</td>  <td>Forense digital, análisis de memoria, Volatility, Autopsy.</td></tr>
+          <tr><td class="mono">"linux"</td>    <td>Linux, privilege escalation, scripting bash, sysadmin seguro.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-muted font-mono" style="margin-top:.75rem;">// Agrega tags nuevos en <code style="color:var(--cyan)">src/components/TagBadge.astro</code> → objeto <code style="color:var(--cyan)">palette</code></p>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       7. HOSTINGER
+  ════════════════════════════════════════════════════ -->
+  <section id="hostinger">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>Publicar en Hostinger</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Genera los archivos estáticos</h4>
+          <div class="code-block">
+            <pre><span class="c-prompt">$</span> npm run build
+<span class="c-gray"># → carpeta ./dist/ lista para subir. No necesita Node.js en servidor.</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Abre el File Manager de Hostinger</h4>
+          <p>Panel de Hostinger → <strong>Administrador de archivos</strong> → carpeta <code style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--cyan)">public_html/</code></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Sube el contenido de <code style="font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--cyan)">./dist/</code></h4>
+          <p>Selecciona <strong>todos los archivos dentro</strong> de <code style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--cyan)">dist/</code> (no la carpeta en sí) y súbelos a <code style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--cyan)">public_html/</code></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Verifica en el navegador</h4>
+          <p>Abre tu dominio. No necesitas PHP ni Node.js en el servidor — es HTML puro.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-green" style="margin-top:1.5rem;">
+      <strong>⚡ FTP rápido con FileZilla:</strong>
+      <div class="code-block" style="margin-top:.75rem;">
+        <pre>Host:          ftp.tu-dominio.com
+Usuario/Pass:  (en el panel de Hostinger → FTP)
+Puerto:        21 (FTP)  ó  22 (SFTP recomendado)
+
+Carpeta local:  ./dist/
+Carpeta remota: /public_html/</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       8. FAQ
+  ════════════════════════════════════════════════════ -->
+  <section id="faq">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+
+    <details>
+      <summary>¿Cómo borro un post ya publicado?</summary>
+      <div>Pon <code>draft: true</code> en el frontmatter para ocultarlo sin borrarlo, o elimina el archivo <code>.md</code> directamente. Luego <code>npm run build</code> y sube el <code>dist/</code> actualizado a Hostinger.</div>
+    </details>
+
+    <details>
+      <summary>¿Puedo usar HTML dentro del Markdown?</summary>
+      <div>Sí. El HTML inline funciona dentro de los archivos <code>.md</code>. Puedes pegar tablas HTML complejas, <code>&lt;iframe&gt;</code>, o cualquier elemento HTML directamente.</div>
+    </details>
+
+    <details>
+      <summary>¿Cómo cambio el email y el Telegram de contacto?</summary>
+      <div>Busca <code>hola@jafetbrito.com</code> y <code>jafetbrito</code> en estos archivos y reemplaza por los tuyos:<br><br>
+        • <code>src/components/Header.astro</code><br>
+        • <code>src/components/Footer.astro</code><br>
+        • <code>src/components/ContactButtons.astro</code>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Cómo agrego un nuevo tag con su color?</summary>
+      <div>Abre <code>src/components/TagBadge.astro</code> → objeto <code>palette</code> → agrega:<br><br>
+        <code>'mi-tag': 'bg-sky-50 text-sky-700 ring-sky-200 dark:bg-sky-900/20 dark:text-sky-300 dark:ring-sky-700/40'</code><br><br>
+        Cambia <code>sky</code> por cualquier color de Tailwind (red, yellow, purple, green, orange…).
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Cómo cambio el dominio en la configuración?</summary>
+      <div>Abre <code>astro.config.mjs</code> y edita:<br><br>
+        <code>site: 'https://tu-dominio.com'</code><br><br>
+        Esto activa los canonical URLs y el Open Graph correctos para SEO.
+      </div>
+    </details>
+
+    <details>
+      <summary>¿El blog necesita base de datos o Node.js en el servidor?</summary>
+      <div>No. El blog es 100% estático. Los posts son archivos Markdown, Astro genera HTML puro durante el build. Hostinger solo sirve archivos estáticos — funciona con el plan más básico.</div>
+    </details>
+
+    <details>
+      <summary>¿Cómo activo el modo oscuro por defecto para todos?</summary>
+      <div>En <code>src/layouts/BaseLayout.astro</code>, en el <code>&lt;script is:inline&gt;</code>, cambia la línea del tema a:<br><br>
+        <code>if (stored !== 'light') document.documentElement.classList.add('dark');</code><br><br>
+        Esto hace que dark sea el default y light requiera acción explícita del usuario.
+      </div>
+    </details>
+  </section>
+
+  <hr class="divider" />
+
+</div><!-- /wrapper -->
+
+<!-- ── PAGE FOOTER ───────────────────────────────────── -->
+<div class="page-footer">
+  <div class="wrapper">
+    <span>© <span id="year"></span> Jafet Brito — Guía del blog</span>
+    <span><span class="online-dot"></span>guia.html — archivo independiente</span>
+  </div>
+</div>
+
+<script>
+  /* ── Año ─────────────────────────────────────────────── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ── Tema — por defecto light ──────────────────────── */
+  (function () {
+    var html = document.documentElement;
+    var moon = document.getElementById('icon-moon');
+    var sun  = document.getElementById('icon-sun');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        html.classList.add('dark');
+        if (moon) moon.style.display = 'none';
+        if (sun)  sun.style.display  = 'block';
+      } else {
+        html.classList.remove('dark');
+        if (moon) moon.style.display = 'block';
+        if (sun)  sun.style.display  = 'none';
+      }
+    }
+
+    /* Leer preferencia guardada — default: light */
+    try {
+      applyTheme(localStorage.getItem('guia-theme') === 'dark');
+    } catch (e) { applyTheme(false); }
+
+    document.getElementById('theme-btn').addEventListener('click', function () {
+      var isDark = !html.classList.contains('dark');
+      applyTheme(isDark);
+      try { localStorage.setItem('guia-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>

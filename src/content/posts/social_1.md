@@ -1,3 +1,16 @@
+---
+title: "Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad"
+title_en: "Chapter 1: The Wolf's Voice — Vishing and the Authority Principle"
+description: "CatCorp sufre un ataque de vishing por suplantación de autoridad. Análisis del incidente, sesgos cognitivos explotados y protocolo de mitigación PVIC."
+description_en: "CatCorp suffers a vishing attack via authority impersonation. Incident analysis, exploited cognitive biases, and the CIVP mitigation protocol."
+pubDate: 2026-06-13
+tags: ["social-engineering", "vishing", "pentesting"]
+author: "Jafet Brito"
+draft: false
+---
+
+<div class="lang-es">
+
 # Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad
 
 > *"El primero de los atributos de un príncipe es saber cuándo la voz que habla con autoridad no proviene de ningún trono legítimo."*
@@ -295,6 +308,8 @@ Oliver esperó tres segundos exactos antes de pronunciar, sin apartar los ojos d
 - Platón — *Apología de Sócrates*: "Solo sé que no sé nada" como fundamento de la vigilancia epistémica
 
 ---
+
+</div>
 
 <div class="lang-en">
 
@@ -595,7 +610,3 @@ Oliver waited exactly three seconds before pronouncing, without taking his eyes 
 - Plato — *Apology of Socrates*: "I know that I know nothing" as foundation of epistemic vigilance
 
 </div>
-
----
-
-**¿Deseas que avancemos al siguiente capítulo o prefieres ajustar algo en este incidente de CatCorp?**

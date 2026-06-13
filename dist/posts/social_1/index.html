@@ -1,0 +1,752 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="CatCorp sufre un ataque de vishing por suplantación de autoridad. Análisis del incidente, sesgos cognitivos explotados y protocolo de mitigación PVIC."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/social_1/"><meta property="og:title" content="Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad — Jafet Brito"><meta property="og:description" content="CatCorp sufre un ataque de vishing por suplantación de autoridad. Análisis del incidente, sesgos cognitivos explotados y protocolo de mitigación PVIC."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/social_1/"><meta property="og:image" content="https://picsum.photos/seed/captulo-1-la-voz-del-lobo--vishing-y-el-principio-de-autoridad/1200/630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad — Jafet Brito"><meta name="twitter:description" content="CatCorp sufre un ataque de vishing por suplantación de autoridad. Análisis del incidente, sesgos cognitivos explotados y protocolo de mitigación PVIC."><meta name="twitter:image" content="https://picsum.photos/seed/captulo-1-la-voz-del-lobo--vishing-y-el-principio-de-autoridad/1200/630"><title>Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://picsum.photos/seed/captulo-1-la-voz-del-lobo--vishing-y-el-principio-de-autoridad/1200/630" alt="Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">captulo-1-la-voz-del-lobo--vishing-y-el-principio-de-autoridad</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/social-engineering" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#social-engineering</a><a href="/tags/vishing" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#vishing</a><a href="/tags/pentesting" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#pentesting</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad" data-text-en="Chapter 1: The Wolf's Voice — Vishing and the Authority Principle"> Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="CatCorp sufre un ataque de vishing por suplantación de autoridad. Análisis del incidente, sesgos cognitivos explotados y protocolo de mitigación PVIC." data-text-en="CatCorp suffers a vishing attack via authority impersonation. Incident analysis, exploited cognitive biases, and the CIVP mitigation protocol."> CatCorp sufre un ataque de vishing por suplantación de autoridad. Análisis del incidente, sesgos cognitivos explotados y protocolo de mitigación PVIC. </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-13" data-fmt-date="2026-06-13" data-fmt="long">viernes, 12 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+<h1 id="capítulo-1-la-voz-del-lobo--vishing-y-el-principio-de-autoridad">Capítulo 1: La Voz del Lobo — Vishing y el Principio de Autoridad</h1>
+<blockquote>
+<p><em>“El primero de los atributos de un príncipe es saber cuándo la voz que habla con autoridad no proviene de ningún trono legítimo.”</em>
+— Nicolás Maquiavelo, <em>El Príncipe</em> (1532), adaptación</p>
+</blockquote>
+<hr>
+<h2 id="reporte-de-incidente-catcorp--caso-0001">Reporte de Incidente CatCorp — Caso #0001</h2>
+<p><strong>Clasificación:</strong> Crítico
+<strong>Vector de Ataque:</strong> Vishing (Voice Phishing) con suplantación de autoridad
+<strong>Activo Comprometido:</strong> Credenciales de acceso al sistema de nómina
+<strong>Perpetrador Involuntario:</strong> Script Kittie, Practicante de Desarrollo
+<strong>Pérdida Estimada:</strong> Acceso no autorizado a datos de 47 empleados
+<strong>Estado:</strong> Contenido — pendiente de análisis forense</p>
+<ul>
+<li><strong>Vector primario:</strong> Llamada telefónica entrante con Caller ID falsificado</li>
+<li><strong>Pretexto:</strong> Suplantación del Director de IT durante “auditoría de emergencia”</li>
+<li><strong>Principio de Cialdini explotado:</strong> Autoridad + Urgencia (Escasez de tiempo)</li>
+<li><strong>Sesgo cognitivo activado:</strong> Efecto de halo + Obediencia a la autoridad (Milgram)</li>
+<li><strong>Técnica de presión:</strong> “Account lockout inminente en 15 minutos”</li>
+<li><strong>Dato de inteligencia usado:</strong> Nombre real del Director IT (obtenido de LinkedIn)</li>
+<li><strong>Duración del ataque:</strong> 4 minutos, 23 segundos</li>
+<li><strong>Credenciales entregadas:</strong> Usuario + contraseña + código 2FA verbal</li>
+</ul>
+<hr>
+<p>La mañana del martes comenzó con la fragancia familiar del café colombiano recorriendo las instalaciones de <strong>CatCorp</strong> — la firma boutique de seguridad corporativa y desarrollo que Jafet Brito y su socio Oliver dirigían desde un edificio discreto en el corazón de la ciudad. La recepción lucía el mismo orden meticuloso que Jafet exigía: pantallas de monitoreo activas, bitácoras de acceso visibles, y una planta de bambú que Oliver había nombrado, con su habitual desdén poético, “el único ser vivo en esta oficina que no ha cometido aún un error de seguridad.”</p>
+<p>Jafet revisaba el informe de amenazas de la semana cuando el teléfono de su escritorio interrumpió el silencio con la cadencia nerviosa de algo urgente.</p>
+<p>Era Pixel Paws, la contadora del equipo, con voz entrecortada.</p>
+<p>— Script Kittie le dio sus credenciales del sistema de nómina a alguien que llamó diciendo ser el Director de IT — pronunció cada sílaba como si cada una doliera —. Incluyendo el código de autenticación de dos factores. Verbalmente. Por teléfono.</p>
+<p>El silencio que siguió duró exactamente tres segundos.</p>
+<p>Desde el sillón en la esquina, Oliver — un gato naranja de tamaño mediocre y reputación exorbitante — levantó la vista de su pantalla, donde compilaba un análisis de threat intelligence con la misma expresión con la que Sócrates debió haber mirado a los sofistas: una mezcla perfecta de asombro intelectual y fatiga moral profunda.</p>
+<p>— <em>“What a piece of work is a man”</em>, murmuró en un inglés impecable, citando a Hamlet sin apartar los ojos de la pantalla. — Qué pieza de trabajo es el hombre. Capaz de diseñar arquitecturas de cero-conocimiento y, simultáneamente, incapaz de colgar un teléfono.</p>
+<hr>
+<p>Script Kittie esperaba en la sala de reuniones con la postura de alguien que sabe que ha hecho algo irreversible pero todavía no comprende exactamente <em>qué</em>. Era joven — demasiado, para el tipo de confianza que se le había otorgado — y tenía esa cualidad particular de los novatos brillantes: suficiente inteligencia para llegar a las puertas equivocadas, insuficiente experiencia para saber que están equivocadas.</p>
+<p>Jafet entró con una tableta y la bitácora de la llamada. Oliver entró con el café.</p>
+<p>— Cuéntame qué pasó — dijo Jafet, sentándose frente a él con la ecuanimidad de un médico ante un diagnóstico que ya conoce.</p>
+<p>— Me llamaron del número interno del Director Martínez — comenzó Script Kittie —. Al menos, eso mostraba el ID. Dijo que había una auditoría de emergencia del CNBV y que el sistema detectó actividad sospechosa en mi cuenta. Que si no verificaba mis credenciales en los próximos quince minutos, el sistema me iba a bloquear y eso comprometería toda la auditoría. Sonaba exactamente como el Director Martínez. Sabía mi nombre. Sabía en qué proyecto estaba trabajando.</p>
+<p>Oliver posó la taza lentamente sobre la mesa.</p>
+<p>— ¿Sabía en qué proyecto estabas trabajando — repitió, no como pregunta sino como el momento en que un forense identifica el punto de entrada —. ¿Y eso te pareció tranquilizador?</p>
+<p>— Me pareció que era él.</p>
+<p>— Naturalmente — dijo Oliver —. Eso es exactamente lo que debía parecerte.</p>
+<p>Jafet extendió la tableta sobre la mesa. En la pantalla, una cronología: el número desde el que llamaron correspondía al interno del Director Martínez porque había sido <em>falsificado</em> — caller ID spoofing, una técnica tan vieja como las telecomunicaciones y tan efectiva como el día en que fue inventada. El nombre del proyecto lo habían obtenido del perfil de LinkedIn de Script Kittie, actualizado cuatro días antes con entusiasmo profesional. El nombre del Director Martínez: también LinkedIn. El tono de urgencia, el reloj corriendo, la auditoría regulatoria: un guión. Un guión antiguo, ejecutado con precisión quirúrgica.</p>
+<p>— Maquiavelo — dijo Jafet, apoyando los codos en la mesa — escribió que el príncipe hábil siempre aparenta poseer las virtudes que más se valoran, aunque no las tenga. El atacante no <em>era</em> el Director Martínez. Solo necesitaba <em>parecer</em> serlo durante cuatro minutos con veintitrés segundos.</p>
+<p>— El tiempo exacto — añadió Oliver — que tarda el cerebro humano en proceder irreflexivamente cuando se combinan tres estímulos simultáneos: una figura de autoridad reconocida, una amenaza a la continuidad laboral, y un reloj que corre. Pavlov no necesitó teléfonos. Nosotros se los dimos.</p>
+<p>Script Kittie miraba la cronología con una expresión que Jafet había aprendido a reconocer: la del momento en que el mapa mental de alguien se reconfigura permanentemente.</p>
+<p>— ¿Cómo sabían tanto de mí?</p>
+<p>— Porque tú se lo dijiste — respondió Oliver, sin crueldad pero sin piedad —. Tu LinkedIn, actualizado hace cuatro días, era un currículum operativo completo para cualquier atacante con paciencia de treinta minutos. Nombre completo, cargo, empresa, proyecto activo, nombre de tu gerente. — Hizo una pausa. — Lo único que faltaba era tu tipo sanguíneo, y apostaría a que eso también estaba en tus redes sociales en algún formulario de donación.</p>
+<hr>
+<p>La reunión de análisis post-incidente duró noventa minutos. Jafet la condujo con la metodología que había desarrollado a lo largo de años: no buscar culpables sino <em>arquitecturas de fallo</em>. El error de Script Kittie no era personal — era sistémico. CatCorp no tenía un protocolo documentado de verificación de identidad para llamadas internas. No tenía una política de código de palabra. No tenía un principio explícito de <em>Never Verify by Voice Alone</em>.</p>
+<p>— Shakespeare — dijo Jafet mientras proyectaba el diagrama del ataque — escribió en <em>Otelo</em> que el engaño más perfecto no necesita mentir sobre los hechos. Solo necesita reordenar la percepción de los hechos. El atacante no mintió sobre el número del Director Martínez: lo falsificó. No mintió sobre el nombre de tu proyecto: lo investigó. La mentira estuvo solo en el pretexto — la auditoría, la urgencia. Y ese pretexto funcionó porque ningún sistema humano o técnico en CatCorp estaba diseñado para cuestionarlo.</p>
+<p>Oliver añadió, desde la esquina donde había permanecido observando con la atención concentrada de quien toma notas sin lápiz:</p>
+<p>— Sócrates dijo que el primer paso de la sabiduría es reconocer lo que no sabemos. Lo que Script Kittie no sabía — y que ahora sabe — es que la voz humana, en el contexto de una llamada telefónica empresarial, es el vector de ataque menos verificado y más confiado en cualquier organización. Las empresas blindan sus correos, parchean sus sistemas, monitorizan su tráfico. Y luego ponen a recibir llamadas a personas sin ningún protocolo de verificación de identidad en tiempo real. — Tomó un sorbo de café. — Es el equivalente de instalar una caja fuerte con biométrico en la puerta principal y dejar una ventana abierta en el tercer piso.</p>
+<hr>
+<h3 id="políticas-de-mitigación--defensa-corporativa-contra-vishing">Políticas de Mitigación — Defensa Corporativa contra Vishing</h3>
+<p>La defensa efectiva contra vishing no es tecnológica en primera instancia. Es <strong>arquitectónica y conductual</strong>. Los controles técnicos son el segundo perímetro; el primero es el protocolo humano.</p>
+<h4 id="1-el-protocolo-de-verificación-de-identidad-por-llamada-pvic">1. El Protocolo de Verificación de Identidad por Llamada (PVIC)</h4>
+<p>Ninguna solicitud sensible — credenciales, accesos, transferencias, cambios de configuración — debe procesarse por voz sin verificación independiente por canal separado.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PROTOCOLO PVIC — CatCorp Standard v1.0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ANTE CUALQUIER LLAMADA QUE SOLICITE:</span></span>
+<span class="line"><span>  - Credenciales (usuario, contraseña, PIN, OTP)</span></span>
+<span class="line"><span>  - Accesos a sistemas</span></span>
+<span class="line"><span>  - Transferencias o aprobaciones financieras</span></span>
+<span class="line"><span>  - Cambios de configuración crítica</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 1: CUELGA LA LLAMADA</span></span>
+<span class="line"><span>  No importa quién diga ser. No importa la urgencia.</span></span>
+<span class="line"><span>  La urgencia fabricada es una señal de ataque, no una</span></span>
+<span class="line"><span>  razón para saltarse el protocolo.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 2: VERIFICA POR CANAL INDEPENDIENTE</span></span>
+<span class="line"><span>  - Busca el número en el directorio INTERNO de la empresa</span></span>
+<span class="line"><span>    (no en el caller ID — puede estar falsificado)</span></span>
+<span class="line"><span>  - Llama TÚ al número conocido de la persona</span></span>
+<span class="line"><span>  - Usa el canal oficial alternativo (Slack interno, Teams)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 3: CÓDIGO DE PALABRA DE SESIÓN</span></span>
+<span class="line"><span>  Si la persona es quien dice ser, sabrá el código</span></span>
+<span class="line"><span>  de verificación del período (rotado mensualmente,</span></span>
+<span class="line"><span>  distribuido en persona o canal cifrado)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 4: DOCUMENTA EL INCIDENTE</span></span>
+<span class="line"><span>  Toda solicitud sospechosa = reporte inmediato al</span></span>
+<span class="line"><span>  equipo de seguridad, independientemente del resultado.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>REGLA DE ORO:</span></span>
+<span class="line"><span>  "La urgencia legítima puede esperar 3 minutos de</span></span>
+<span class="line"><span>   verificación. La urgencia fabricada no puede."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="2-política-de-mínimo-privilegio-vocal">2. Política de Mínimo Privilegio Vocal</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>INFORMACIÓN QUE NUNCA SE ENTREGA POR TELÉFONO:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CATEGORÍA ROJA — PROHIBICIÓN ABSOLUTA:</span></span>
+<span class="line"><span>  - Contraseñas (parciales o completas)</span></span>
+<span class="line"><span>  - Códigos OTP / 2FA / MFA</span></span>
+<span class="line"><span>  - PINs de acceso</span></span>
+<span class="line"><span>  - Tokens de sesión</span></span>
+<span class="line"><span>  - Respuestas a preguntas de seguridad</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CATEGORÍA AMARILLA — SOLO CON VERIFICACIÓN COMPLETA:</span></span>
+<span class="line"><span>  - Confirmación de identidad de usuarios</span></span>
+<span class="line"><span>  - Estado de tickets o incidentes activos</span></span>
+<span class="line"><span>  - Información de configuración de sistemas</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CATEGORÍA VERDE — INFORMACIÓN PÚBLICA:</span></span>
+<span class="line"><span>  - Horarios de atención</span></span>
+<span class="line"><span>  - Datos de contacto del directorio público</span></span>
+<span class="line"><span>  - Estado general de servicios</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NOTA: Un representante legítimo de IT NUNCA solicitará</span></span>
+<span class="line"><span>tu contraseña. Si lo solicita, el ataque ya está en curso.</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="3-hardening-de-identidad-digital-osint-propio">3. Hardening de Identidad Digital (OSINT Propio)</h4>
+<p>El ataque a Script Kittie fue habilitado por OSINT básico en LinkedIn. La defensa incluye auditar la huella digital de todos los empleados con acceso a sistemas sensibles.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Búsqueda de OSINT propio — ejecutar trimestralmente</span></span>
+<span class="line"><span style="color:#6A737D"># Evalúa qué información tuya es públicamente accesible</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># En Google:</span></span>
+<span class="line"><span style="color:#B392F0">site:linkedin.com</span><span style="color:#9ECBFF"> "[Nombre Empleado]"</span><span style="color:#9ECBFF"> "[Empresa]"</span></span>
+<span class="line"><span style="color:#B392F0">site:github.com</span><span style="color:#9ECBFF"> "[Nombre Empleado]"</span></span>
+<span class="line"><span style="color:#B392F0">"[Nombre Empleado]"</span><span style="color:#9ECBFF"> "[Empresa]"</span><span style="color:#9ECBFF"> proyecto</span><span style="color:#9ECBFF"> OR</span><span style="color:#9ECBFF"> sistema</span><span style="color:#9ECBFF"> OR</span><span style="color:#9ECBFF"> acceso</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Información que NUNCA debe ser pública en RRSS:</span></span>
+<span class="line"><span style="color:#6A737D"># - Nombre de proyectos activos</span></span>
+<span class="line"><span style="color:#6A737D"># - Nombre de herramientas o sistemas internos</span></span>
+<span class="line"><span style="color:#6A737D"># - Nombres de superiores directos con relación de reporte</span></span>
+<span class="line"><span style="color:#6A737D"># - Horarios de trabajo o patrones de presencia</span></span>
+<span class="line"><span style="color:#6A737D"># - Menciones a procesos de auditoría o compliance activos</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Política recomendada para empleados con acceso privilegiado:</span></span>
+<span class="line"><span style="color:#6A737D"># LinkedIn: solo título de cargo genérico, sin proyectos específicos</span></span>
+<span class="line"><span style="color:#6A737D"># No publicar actualizaciones de proyectos en tiempo real</span></span>
+<span class="line"><span style="color:#6A737D"># Revisar conexiones: ¿son personas verificadas o contactos desconocidos?</span></span>
+<span class="line"></span></code></pre>
+<h4 id="4-simulaciones-de-vishing--entrenamiento-muscular">4. Simulaciones de Vishing — Entrenamiento Muscular</h4>
+<p>El entrenamiento de concienciación basado en diapositivas no construye los reflejos necesarios para resistir un ataque de vishing en tiempo real. La evidencia indica que los programas de simulación de vishing reducen la susceptibilidad hasta en un 80% con tres simulaciones anuales.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PROGRAMA DE SIMULACIÓN CATCORP — Frecuencia: trimestral</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>FASE 1 — Pre-awareness (sin aviso):</span></span>
+<span class="line"><span>  Simular una llamada de vishing real a empleados</span></span>
+<span class="line"><span>  aleatoriamente seleccionados. Registrar:</span></span>
+<span class="line"><span>  - ¿Colgaron para verificar? ✓</span></span>
+<span class="line"><span>  - ¿Entregaron información parcial? ⚠</span></span>
+<span class="line"><span>  - ¿Entregaron credenciales? ✗</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>FASE 2 — Debriefing inmediato:</span></span>
+<span class="line"><span>  Inmediatamente después: sesión de 20 min explicando</span></span>
+<span class="line"><span>  el vector de ataque, los sesgos activados, y el protocolo</span></span>
+<span class="line"><span>  correcto. Sin nombres públicos, sin humillación.</span></span>
+<span class="line"><span>  El objetivo es aprendizaje, no punición.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>FASE 3 — Re-test (30 días después):</span></span>
+<span class="line"><span>  Segunda simulación con variación del pretexto.</span></span>
+<span class="line"><span>  Medir mejora en tasa de detección.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MÉTRICAS DE ÉXITO:</span></span>
+<span class="line"><span>  Target: >85% de empleados cuelgan y verifican</span></span>
+<span class="line"><span>  Red flag: &#x3C;60% → programa de entrenamiento reforzado</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="5-controles-técnicos-complementarios">5. Controles Técnicos Complementarios</h4>
+<p>Los controles técnicos no reemplazan el protocolo humano, pero añaden capas de detección:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#6A737D"># Política de Caller ID y Autenticación de Llamadas</span></span>
+<span class="line"><span style="color:#6A737D"># Basada en STIR/SHAKEN framework (RFC 8224)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">call_authentication</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stir_shaken_verification</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">enabled</span></span>
+<span class="line"><span style="color:#6A737D">  # Verifica la autenticidad del Caller ID</span></span>
+<span class="line"><span style="color:#6A737D">  # Los operadores certificados firman las llamadas</span></span>
+<span class="line"><span style="color:#6A737D">  # Las llamadas no certificadas se marcan como "Posible Spoofing"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">internal_directory</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  source_of_truth</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">active_directory_only</span></span>
+<span class="line"><span style="color:#6A737D">  # El directorio de números internos solo puede ser</span></span>
+<span class="line"><span style="color:#6A737D">  # consultado desde la red corporativa</span></span>
+<span class="line"><span style="color:#6A737D">  # Evita que un atacante identifique números internos por OSINT</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">sensitive_system_access</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  voice_authentication</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">never_sole_factor</span></span>
+<span class="line"><span style="color:#6A737D">  # La voz nunca puede ser el único factor de autenticación</span></span>
+<span class="line"><span style="color:#6A737D">  # para sistemas con datos sensibles</span></span>
+<span class="line"><span style="color:#85E89D">  required_factors</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">something_you_know</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">password</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">something_you_have</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">hardware_token OR authenticator_app</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">something_you_are</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">biometric (para acceso físico)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">incident_reporting</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  suspicious_call_hotline</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">enabled</span></span>
+<span class="line"><span style="color:#85E89D">  anonymous_reporting</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">enabled</span></span>
+<span class="line"><span style="color:#85E89D">  sla_initial_response</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">15_minutes</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<p>La reunión terminó cuando el sol de mediodía atravesaba las persianas de la sala de CatCorp con esa luz de confesionario que, pensó Jafet, era apropiada para la ocasión.</p>
+<p>Script Kittie salió con la bitácora del incidente en una mano y, en la otra, el <em>Protocolo PVIC v1.0</em> impreso. En su rostro había algo que Jafet había aprendido a valorar por encima de la experiencia técnica: la cara específica de quien ha entendido no solo <em>qué</em> salió mal, sino <em>por qué</em> el cerebro humano está arquitectónicamente predispuesto a que salga mal.</p>
+<p>— ¿Estaré mejor preparado la próxima vez? — preguntó desde la puerta.</p>
+<p>Oliver, que ya había vuelto a su pantalla, respondió sin levantar la vista:</p>
+<p>— Eso depende de si lo que llevas en la mano lo guardas en un cajón o en la cabeza. Los protocolos impresos no protegen a nadie. Los protocolos <em>internalizados</em> sí.</p>
+<p>Jafet añadió, con una sonrisa que era al mismo tiempo amistad y pedagogía:</p>
+<p>— Sócrates dijo que la educación no es llenar un balde sino encender un fuego. Hoy encendimos uno. La próxima llamada determinará si siguió ardiendo.</p>
+<p>Script Kittie asintió. Cerró la puerta.</p>
+<p>Oliver esperó tres segundos exactos antes de pronunciar, sin apartar los ojos de la pantalla:</p>
+<p>— Va a volver a caer.</p>
+<p>— Probablemente — concedió Jafet.</p>
+<p>— Pero la próxima vez sabrá exactamente cómo lo hizo.</p>
+<p>— Eso es todo lo que podemos pedir.</p>
+<hr>
+<h3 id="referencias-de-catcorp--capítulo-1">Referencias de CatCorp — Capítulo 1</h3>
+<p><strong>Fuentes Técnicas y Estadísticas:</strong></p>
+<ul>
+<li>Verizon Data Breach Investigations Report (DBIR) 2025 — Pretexting como vector inicial en el 6% de brechas; 19% de brechas con componente de vishing/smishing</li>
+<li>CrowdStrike Global Threat Report 2025 — Incremento del 442% en ataques de vishing de H1 a H2 2024</li>
+<li>Keepnet Labs Voice Phishing Response Report 2024 — 6.5% de usuarios entregaron información sensible en llamadas simuladas</li>
+<li>Right Hand Cybersecurity Report 2025 — Deepfake vishing: incremento del 1,600% en Q1 2025 vs fin de 2024</li>
+<li>NIST Special Publication 800-61 Rev. 3 (2025) — Recomendaciones para gestión de incidentes y respuesta</li>
+<li>STIR/SHAKEN Framework — RFC 8224 / RFC 8588 — Autenticación de llamadas y verificación de Caller ID</li>
+<li>Hoxhunt Vishing Simulation Report 2026 — Reducción de susceptibilidad con programas de simulación activa</li>
+<li>MITRE ATT&#x26;CK Framework — Tactic: Initial Access / Technique: Phishing: Spearphishing via Service (T1566.003)</li>
+</ul>
+<p><strong>Sesgos Cognitivos Documentados:</strong></p>
+<ul>
+<li>Principio de Autoridad — Robert B. Cialdini, <em>Influence: The Psychology of Persuasion</em> (1984, rev. 2021)</li>
+<li>Efecto de Halo — Edward Thorndike, <em>A Constant Error in Psychological Ratings</em> (1920)</li>
+<li>Experimentos de Obediencia a la Autoridad — Stanley Milgram, <em>Obedience to Authority</em> (1974)</li>
+<li>Sesgo de Urgencia / Escasez temporal — Cialdini, principio de Scarcity aplicado a tiempo limitado</li>
+</ul>
+<p><strong>Obras Literarias y Filosóficas Referenciadas:</strong></p>
+<ul>
+<li>Nicolás Maquiavelo — <em>El Príncipe</em> (1532): apariencia de virtud como herramienta de poder</li>
+<li>William Shakespeare — <em>Hamlet</em>, Acto II, Escena 2: “What a piece of work is a man”</li>
+<li>William Shakespeare — <em>Otelo</em> (1603): manipulación de la percepción sin falsificar los hechos</li>
+<li>Sócrates / Platón — <em>Meno</em> y <em>República</em>: el conocimiento como iluminación, no acumulación</li>
+<li>Platón — <em>Apología de Sócrates</em>: “Solo sé que no sé nada” como fundamento de la vigilancia epistémica</li>
+</ul>
+<hr>
+</div>
+<div class="lang-en">
+<h1 id="chapter-1-the-wolfs-voice--vishing-and-the-authority-principle">Chapter 1: The Wolf’s Voice — Vishing and the Authority Principle</h1>
+<blockquote>
+<p><em>“The first attribute of a prince is to know when the voice that speaks with authority comes from no legitimate throne.”</em>
+— Niccolò Machiavelli, <em>The Prince</em> (1532), adaptation</p>
+</blockquote>
+<hr>
+<h2 id="catcorp-incident-report--case-0001">CatCorp Incident Report — Case #0001</h2>
+<p><strong>Classification:</strong> Critical
+<strong>Attack Vector:</strong> Vishing (Voice Phishing) with authority impersonation
+<strong>Compromised Asset:</strong> Payroll system access credentials
+<strong>Involuntary Perpetrator:</strong> Script Kittie, Development Intern
+<strong>Estimated Loss:</strong> Unauthorized access to data of 47 employees
+<strong>Status:</strong> Contained — pending forensic analysis</p>
+<ul>
+<li><strong>Primary vector:</strong> Incoming call with spoofed Caller ID</li>
+<li><strong>Pretext:</strong> Impersonation of IT Director during “emergency audit”</li>
+<li><strong>Cialdini principle exploited:</strong> Authority + Urgency (Time Scarcity)</li>
+<li><strong>Cognitive bias activated:</strong> Halo Effect + Obedience to Authority (Milgram)</li>
+<li><strong>Pressure technique:</strong> “Account lockout imminent in 15 minutes”</li>
+<li><strong>Intelligence used:</strong> Real IT Director name (obtained from LinkedIn)</li>
+<li><strong>Attack duration:</strong> 4 minutes, 23 seconds</li>
+<li><strong>Credentials surrendered:</strong> Username + password + 2FA code (verbal)</li>
+</ul>
+<hr>
+<p>Tuesday morning arrived carrying the familiar fragrance of Colombian coffee drifting through the corridors of <strong>CatCorp</strong> — the boutique security and software firm that Jafet Brito and his partner Oliver ran from a discreet building in the heart of the city. The reception area carried the same meticulous order Jafet demanded: monitoring screens active, access logs visible, and a bamboo plant Oliver had named, with his habitual poetic disdain, “the only living entity in this office that hasn’t committed a security error yet.”</p>
+<p>Jafet was reviewing the week’s threat intelligence report when his desk phone interrupted the silence with the nervous cadence of something urgent.</p>
+<p>It was Pixel Paws, the team’s accountant, her voice fractured.</p>
+<p>— Script Kittie gave his payroll system credentials to someone who called claiming to be the IT Director — she pronounced each syllable as if each one hurt —. Including the two-factor authentication code. Verbally. Over the phone.</p>
+<p>The silence that followed lasted exactly three seconds.</p>
+<p>From the corner armchair, Oliver — an orange cat of modest size and exorbitant reputation — looked up from his screen, where he was compiling a threat intelligence analysis with the same expression Socrates must have worn while observing the sophists: a perfect mixture of intellectual astonishment and profound moral fatigue.</p>
+<p>— <em>“What a piece of work is a man,”</em> he murmured in impeccable English, quoting Hamlet without taking his eyes off the screen. — Capable of designing zero-knowledge architectures and, simultaneously, incapable of hanging up a telephone.</p>
+<hr>
+<p>Script Kittie waited in the conference room with the posture of someone who knows they have done something irreversible but doesn’t yet fully understand <em>what</em>. He was young — too young, for the level of trust he’d been granted — and possessed that particular quality of brilliant novices: enough intelligence to arrive at the wrong doors, insufficient experience to know they are wrong.</p>
+<p>Jafet entered with a tablet and the call log. Oliver entered with coffee.</p>
+<p>— Tell me what happened — said Jafet, sitting across from him with the equanimity of a physician before a diagnosis he already knows.</p>
+<p>— They called from Director Martínez’s internal number — Script Kittie began —. At least, that’s what the Caller ID showed. He said there was an emergency CNBV audit and that the system had detected suspicious activity in my account. That if I didn’t verify my credentials in the next fifteen minutes, the system would lock me out and compromise the entire audit. He sounded exactly like Director Martínez. He knew my name. He knew what project I was working on.</p>
+<p>Oliver set his cup down slowly on the table.</p>
+<p>— He knew which project you were working on — he repeated, not as a question but as the moment a forensic examiner identifies the entry point —. And that struck you as reassuring?</p>
+<p>— It struck me as proof it was him.</p>
+<p>— Naturally — said Oliver —. That is precisely what it was designed to make you feel.</p>
+<p>Jafet extended the tablet across the table. On the screen, a timeline: the number they had called from matched Director Martínez’s internal extension because it had been <em>spoofed</em> — caller ID spoofing, a technique as old as telecommunications and as effective as the day it was invented. The project name had been harvested from Script Kittie’s LinkedIn profile, updated four days earlier with professional enthusiasm. Director Martínez’s name: also LinkedIn. The urgency, the running clock, the regulatory audit: a script. An old script, executed with surgical precision.</p>
+<p>— Machiavelli — said Jafet, resting his elbows on the table — wrote that the skillful prince always appears to possess the virtues most valued, even if he doesn’t have them. The attacker was not <em>Director Martínez</em>. He only needed to <em>seem</em> like him for four minutes and twenty-three seconds.</p>
+<p>— The exact time — added Oliver — it takes the human brain to act without reflection when three simultaneous stimuli are combined: a recognized authority figure, a threat to professional continuity, and a running clock. Pavlov didn’t need telephones. We gave them to him.</p>
+<p>Script Kittie looked at the timeline with an expression Jafet had learned to recognize: the moment when someone’s mental map permanently reconfigures.</p>
+<p>— How did they know so much about me?</p>
+<p>— Because you told them — replied Oliver, without cruelty but without mercy —. Your LinkedIn, updated four days ago, was a complete operational curriculum for any attacker with thirty minutes of patience. Full name, role, company, active project, manager’s name. — He paused. — The only thing missing was your blood type, and I’d wager that was somewhere in your social media on some donation form.</p>
+<hr>
+<p>The post-incident analysis meeting lasted ninety minutes. Jafet conducted it with the methodology he had developed over years: not seeking culprits but <em>failure architectures</em>. Script Kittie’s error was not personal — it was systemic. CatCorp had no documented identity verification protocol for internal calls. No codeword policy. No explicit <em>Never Verify by Voice Alone</em> principle.</p>
+<p>— Shakespeare — said Jafet while projecting the attack diagram — wrote in <em>Othello</em> that the most perfect deception doesn’t need to lie about the facts. It only needs to reorder the perception of facts. The attacker didn’t lie about Director Martínez’s number: he spoofed it. He didn’t lie about your project name: he researched it. The only lie was in the pretext — the audit, the urgency. And that pretext worked because no human or technical system at CatCorp was designed to question it.</p>
+<p>Oliver added, from the corner where he had remained watching with the concentrated attention of someone taking notes without a pencil:</p>
+<p>— Socrates said that the first step of wisdom is recognizing what we do not know. What Script Kittie did not know — and now does — is that the human voice, in the context of a business phone call, is the least verified and most trusted attack vector in any organization. Companies harden their emails, patch their systems, monitor their traffic. And then they put people on the phones with no real-time identity verification protocol. — He took a sip of coffee. — It’s the equivalent of installing a biometric safe at the front door and leaving a third-floor window open.</p>
+<hr>
+<h3 id="mitigation-policies--corporate-defense-against-vishing">Mitigation Policies — Corporate Defense Against Vishing</h3>
+<p>Effective defense against vishing is not primarily technological. It is <strong>architectural and behavioral</strong>. Technical controls are the second perimeter; the first is human protocol.</p>
+<h4 id="1-the-call-identity-verification-protocol-civp">1. The Call Identity Verification Protocol (CIVP)</h4>
+<p>No sensitive request — credentials, access, transfers, configuration changes — should be processed by voice without independent verification through a separate channel.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CIVP PROTOCOL — CatCorp Standard v1.0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>FOR ANY CALL REQUESTING:</span></span>
+<span class="line"><span>  - Credentials (username, password, PIN, OTP)</span></span>
+<span class="line"><span>  - System access</span></span>
+<span class="line"><span>  - Financial transfers or approvals</span></span>
+<span class="line"><span>  - Critical configuration changes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>STEP 1: HANG UP THE CALL</span></span>
+<span class="line"><span>  Regardless of who they claim to be. Regardless of urgency.</span></span>
+<span class="line"><span>  Fabricated urgency is an attack signal, not a reason</span></span>
+<span class="line"><span>  to bypass the protocol.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>STEP 2: VERIFY VIA INDEPENDENT CHANNEL</span></span>
+<span class="line"><span>  - Look up the number in the INTERNAL company directory</span></span>
+<span class="line"><span>    (not Caller ID — it may be spoofed)</span></span>
+<span class="line"><span>  - You call the person at their known number</span></span>
+<span class="line"><span>  - Use the official alternate channel (internal Slack, Teams)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>STEP 3: SESSION CODEWORD</span></span>
+<span class="line"><span>  If the person is who they claim to be, they will know</span></span>
+<span class="line"><span>  the period verification code (rotated monthly,</span></span>
+<span class="line"><span>  distributed in person or via encrypted channel)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>STEP 4: DOCUMENT THE INCIDENT</span></span>
+<span class="line"><span>  All suspicious requests = immediate security team report,</span></span>
+<span class="line"><span>  regardless of outcome.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>GOLDEN RULE:</span></span>
+<span class="line"><span>  "Legitimate urgency can wait 3 minutes of verification.</span></span>
+<span class="line"><span>   Fabricated urgency cannot."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="2-vocal-minimum-privilege-policy">2. Vocal Minimum Privilege Policy</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>INFORMATION NEVER SHARED BY PHONE:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>RED CATEGORY — ABSOLUTE PROHIBITION:</span></span>
+<span class="line"><span>  - Passwords (partial or complete)</span></span>
+<span class="line"><span>  - OTP / 2FA / MFA codes</span></span>
+<span class="line"><span>  - Access PINs</span></span>
+<span class="line"><span>  - Session tokens</span></span>
+<span class="line"><span>  - Security question answers</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>YELLOW CATEGORY — ONLY WITH FULL VERIFICATION:</span></span>
+<span class="line"><span>  - User identity confirmation</span></span>
+<span class="line"><span>  - Active ticket or incident status</span></span>
+<span class="line"><span>  - System configuration information</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>GREEN CATEGORY — PUBLIC INFORMATION:</span></span>
+<span class="line"><span>  - Business hours</span></span>
+<span class="line"><span>  - Public directory contact data</span></span>
+<span class="line"><span>  - General service status</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NOTE: A legitimate IT representative will NEVER ask for</span></span>
+<span class="line"><span>your password. If they do, the attack is already underway.</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="3-digital-identity-hardening-own-osint">3. Digital Identity Hardening (Own OSINT)</h4>
+<p>The attack on Script Kittie was enabled by basic LinkedIn OSINT. Defense includes auditing the digital footprint of all employees with access to sensitive systems.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Own OSINT search — run quarterly</span></span>
+<span class="line"><span style="color:#6A737D"># Assess what information about you is publicly accessible</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># On Google:</span></span>
+<span class="line"><span style="color:#B392F0">site:linkedin.com</span><span style="color:#9ECBFF"> "[Employee Name]"</span><span style="color:#9ECBFF"> "[Company]"</span></span>
+<span class="line"><span style="color:#B392F0">site:github.com</span><span style="color:#9ECBFF"> "[Employee Name]"</span></span>
+<span class="line"><span style="color:#B392F0">"[Employee Name]"</span><span style="color:#9ECBFF"> "[Company]"</span><span style="color:#9ECBFF"> project</span><span style="color:#9ECBFF"> OR</span><span style="color:#9ECBFF"> system</span><span style="color:#9ECBFF"> OR</span><span style="color:#9ECBFF"> access</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Information that should NEVER be public on social media:</span></span>
+<span class="line"><span style="color:#6A737D"># - Names of active projects</span></span>
+<span class="line"><span style="color:#6A737D"># - Names of internal tools or systems</span></span>
+<span class="line"><span style="color:#6A737D"># - Direct manager names with reporting relationships</span></span>
+<span class="line"><span style="color:#6A737D"># - Work schedules or presence patterns</span></span>
+<span class="line"><span style="color:#6A737D"># - Mentions of active audit or compliance processes</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Recommended policy for employees with privileged access:</span></span>
+<span class="line"><span style="color:#6A737D"># LinkedIn: generic job title only, no specific projects</span></span>
+<span class="line"><span style="color:#6A737D"># Don't post real-time project updates</span></span>
+<span class="line"><span style="color:#6A737D"># Review connections: verified people or unknown contacts?</span></span>
+<span class="line"></span></code></pre>
+<h4 id="4-vishing-simulations--muscle-memory-training">4. Vishing Simulations — Muscle Memory Training</h4>
+<p>Slide-based security awareness training does not build the reflexes needed to resist a real-time vishing attack. Evidence indicates that vishing simulation programs reduce susceptibility by up to 80% with three annual simulations.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CATCORP SIMULATION PROGRAM — Frequency: quarterly</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PHASE 1 — Pre-awareness (unannounced):</span></span>
+<span class="line"><span>  Simulate a real vishing call to randomly selected employees.</span></span>
+<span class="line"><span>  Record:</span></span>
+<span class="line"><span>  - Did they hang up to verify? ✓</span></span>
+<span class="line"><span>  - Did they deliver partial information? ⚠</span></span>
+<span class="line"><span>  - Did they surrender credentials? ✗</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PHASE 2 — Immediate debriefing:</span></span>
+<span class="line"><span>  Immediately after: 20-min session explaining the attack</span></span>
+<span class="line"><span>  vector, the biases activated, and the correct protocol.</span></span>
+<span class="line"><span>  No public naming, no humiliation.</span></span>
+<span class="line"><span>  Objective is learning, not punishment.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PHASE 3 — Re-test (30 days later):</span></span>
+<span class="line"><span>  Second simulation with pretext variation.</span></span>
+<span class="line"><span>  Measure improvement in detection rate.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>SUCCESS METRICS:</span></span>
+<span class="line"><span>  Target: >85% of employees hang up and verify</span></span>
+<span class="line"><span>  Red flag: &#x3C;60% → reinforced training program</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="5-complementary-technical-controls">5. Complementary Technical Controls</h4>
+<p>Technical controls don’t replace human protocol, but add detection layers:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#6A737D"># Caller ID Authentication and Call Verification Policy</span></span>
+<span class="line"><span style="color:#6A737D"># Based on STIR/SHAKEN framework (RFC 8224)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">call_authentication</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stir_shaken_verification</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">enabled</span></span>
+<span class="line"><span style="color:#6A737D">  # Verifies Caller ID authenticity</span></span>
+<span class="line"><span style="color:#6A737D">  # Certified carriers sign calls</span></span>
+<span class="line"><span style="color:#6A737D">  # Uncertified calls flagged as "Possible Spoofing"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">internal_directory</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  source_of_truth</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">active_directory_only</span></span>
+<span class="line"><span style="color:#6A737D">  # Internal number directory only accessible</span></span>
+<span class="line"><span style="color:#6A737D">  # from corporate network</span></span>
+<span class="line"><span style="color:#6A737D">  # Prevents attacker from identifying internal numbers via OSINT</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">sensitive_system_access</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  voice_authentication</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">never_sole_factor</span></span>
+<span class="line"><span style="color:#6A737D">  # Voice can never be the sole authentication factor</span></span>
+<span class="line"><span style="color:#6A737D">  # for systems containing sensitive data</span></span>
+<span class="line"><span style="color:#85E89D">  required_factors</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">something_you_know</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">password</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">something_you_have</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">hardware_token OR authenticator_app</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">something_you_are</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">biometric (for physical access)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">incident_reporting</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  suspicious_call_hotline</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">enabled</span></span>
+<span class="line"><span style="color:#85E89D">  anonymous_reporting</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">enabled</span></span>
+<span class="line"><span style="color:#85E89D">  sla_initial_response</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">15_minutes</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<p>The meeting ended when the midday sun cut through the CatCorp conference room blinds with that confessional light that, thought Jafet, was appropriate for the occasion.</p>
+<p>Script Kittie left with the incident log in one hand and, in the other, the printed <em>CIVP Protocol v1.0</em>. His face carried something Jafet had learned to value above technical experience: the specific look of someone who has understood not only <em>what</em> went wrong, but <em>why</em> the human brain is architecturally predisposed to let it go wrong.</p>
+<p>— Will I be better prepared next time? — he asked from the doorway.</p>
+<p>Oliver, already back at his screen, answered without looking up:</p>
+<p>— That depends on whether what you’re holding ends up in a drawer or in your head. Printed protocols protect no one. <em>Internalized</em> protocols do.</p>
+<p>Jafet added, with a smile that was simultaneously friendship and pedagogy:</p>
+<p>— Socrates said that education is not the filling of a bucket but the lighting of a fire. Today we lit one. The next call will determine whether it kept burning.</p>
+<p>Script Kittie nodded. He closed the door.</p>
+<p>Oliver waited exactly three seconds before pronouncing, without taking his eyes off the screen:</p>
+<p>— He’s going to fall for it again.</p>
+<p>— Probably — Jafet conceded.</p>
+<p>— But next time he’ll know exactly how he did it.</p>
+<p>— That’s all we can ask.</p>
+<hr>
+<h3 id="catcorp-references--chapter-1">CatCorp References — Chapter 1</h3>
+<p><strong>Technical Sources &#x26; Statistics:</strong></p>
+<ul>
+<li>Verizon Data Breach Investigations Report (DBIR) 2025 — Pretexting as initial vector in 6% of breaches; 19% of breaches involving vishing/smishing component</li>
+<li>CrowdStrike Global Threat Report 2025 — 442% surge in vishing attacks from H1 to H2 2024</li>
+<li>Keepnet Labs Voice Phishing Response Report 2024 — 6.5% of users surrendered sensitive information in simulated vishing calls</li>
+<li>Right Hand Cybersecurity Report 2025 — Deepfake vishing: 1,600% surge in Q1 2025 vs end of 2024</li>
+<li>NIST Special Publication 800-61 Rev. 3 (2025) — Incident management and response recommendations</li>
+<li>STIR/SHAKEN Framework — RFC 8224 / RFC 8588 — Call authentication and Caller ID verification</li>
+<li>Hoxhunt Vishing Simulation Report 2026 — Susceptibility reduction with active simulation programs</li>
+<li>MITRE ATT&#x26;CK Framework — Tactic: Initial Access / Technique: Phishing: Spearphishing via Service (T1566.003)</li>
+</ul>
+<p><strong>Documented Cognitive Biases:</strong></p>
+<ul>
+<li>Authority Principle — Robert B. Cialdini, <em>Influence: The Psychology of Persuasion</em> (1984, rev. 2021)</li>
+<li>Halo Effect — Edward Thorndike, <em>A Constant Error in Psychological Ratings</em> (1920)</li>
+<li>Obedience to Authority Experiments — Stanley Milgram, <em>Obedience to Authority</em> (1974)</li>
+<li>Urgency Bias / Temporal Scarcity — Cialdini, Scarcity principle applied to time pressure</li>
+</ul>
+<p><strong>Literary &#x26; Philosophical Works Referenced:</strong></p>
+<ul>
+<li>Niccolò Machiavelli — <em>The Prince</em> (1532): appearance of virtue as an instrument of power</li>
+<li>William Shakespeare — <em>Hamlet</em>, Act II, Scene 2: “What a piece of work is a man”</li>
+<li>William Shakespeare — <em>Othello</em> (1603): perception manipulation without falsifying facts</li>
+<li>Socrates / Plato — <em>Meno</em> and <em>Republic</em>: knowledge as illumination, not accumulation</li>
+<li>Plato — <em>Apology of Socrates</em>: “I know that I know nothing” as foundation of epistemic vigilance</li>
+</ul>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>

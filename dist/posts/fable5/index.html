@@ -1,0 +1,849 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Todo lo que necesitas saber sobre Claude Fable 5: qué es, de dónde viene, sus capacidades técnicas, el sistema de salvaguardas, precios y cómo usarlo de forma segura bajo una mentalidad Zero Trust."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/fable5/"><meta property="og:title" content="🦋 Claude Fable 5: La Guía Completa del Modelo de IA Más Poderoso de Anthropic — Jafet Brito"><meta property="og:description" content="Todo lo que necesitas saber sobre Claude Fable 5: qué es, de dónde viene, sus capacidades técnicas, el sistema de salvaguardas, precios y cómo usarlo de forma segura bajo una mentalidad Zero Trust."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/fable5/"><meta property="og:image" content="https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fb7055119423427c40a0e4d84054aed17682b50a2-2880x1620.png&w=3840&q=75"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="🦋 Claude Fable 5: La Guía Completa del Modelo de IA Más Poderoso de Anthropic — Jafet Brito"><meta name="twitter:description" content="Todo lo que necesitas saber sobre Claude Fable 5: qué es, de dónde viene, sus capacidades técnicas, el sistema de salvaguardas, precios y cómo usarlo de forma segura bajo una mentalidad Zero Trust."><meta name="twitter:image" content="https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fb7055119423427c40a0e4d84054aed17682b50a2-2880x1620.png&w=3840&q=75"><title>🦋 Claude Fable 5: La Guía Completa del Modelo de IA Más Poderoso de Anthropic — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fb7055119423427c40a0e4d84054aed17682b50a2-2880x1620.png&w=3840&q=75" alt="🦋 Claude Fable 5: La Guía Completa del Modelo de IA Más Poderoso de Anthropic" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">-claude-fable-5-la-gua-completa-del-modelo-de-ia-ms-poderoso-de-anthropic</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/Claude" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Claude</a><a href="/tags/Anthropic" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Anthropic</a><a href="/tags/LLM" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#LLM</a><a href="/tags/Fable5" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Fable5</a><a href="/tags/Mythos" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Mythos</a><a href="/tags/AI" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#AI</a><a href="/tags/ZeroTrust" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#ZeroTrust</a><a href="/tags/Seguridad" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Seguridad</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="🦋 Claude Fable 5: La Guía Completa del Modelo de IA Más Poderoso de Anthropic" data-text-en="🦋 Claude Fable 5: The Complete Guide to Anthropic's Most Powerful AI Model"> 🦋 Claude Fable 5: La Guía Completa del Modelo de IA Más Poderoso de Anthropic </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="Todo lo que necesitas saber sobre Claude Fable 5: qué es, de dónde viene, sus capacidades técnicas, el sistema de salvaguardas, precios y cómo usarlo de forma segura bajo una mentalidad Zero Trust." data-text-en="Everything you need to know about Claude Fable 5: what it is, where it comes from, its technical capabilities, the safety guardrails system, pricing, and how to use it responsibly under a Zero Trust mindset."> Todo lo que necesitas saber sobre Claude Fable 5: qué es, de dónde viene, sus capacidades técnicas, el sistema de salvaguardas, precios y cómo usarlo de forma segura bajo una mentalidad Zero Trust. </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-11" data-fmt-date="2026-06-11" data-fmt="long">miércoles, 10 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+## 🦋 Claude Fable 5: La Guía Completa del Modelo de IA Más Poderoso de Anthropic
+<p><strong>Por Jafet Brito</strong> · Security Researcher · <em>Publicado el 11 de junio de 2026</em></p>
+<hr>
+<blockquote>
+<p>⚠️ <strong>Nota del autor:</strong> Este artículo fue escrito bajo una filosofía <strong>Zero Trust</strong>: toda la información aquí presentada fue verificada directamente desde fuentes primarias de Anthropic. El lanzamiento de Claude Fable 5 ocurrió el <strong>9 de junio de 2026</strong> y representa uno de los hitos más significativos en la historia de la IA generativa. Con poder viene responsabilidad — y este artículo también cubre los riesgos reales que este modelo implica.</p>
+</blockquote>
+<hr>
+<h3 id="️-qué-encontrarás-en-esta-guía">🗺️ ¿Qué encontrarás en esta guía?</h3>
+<ul>
+<li>🔍 <strong>Qué es Claude Fable 5</strong> y de dónde viene</li>
+<li>🧬 <strong>Su relación con Claude Mythos</strong> — la familia de modelos más avanzada de Anthropic</li>
+<li>⚙️ <strong>Capacidades técnicas</strong> — benchmarks, contexto, y rendimiento real</li>
+<li>🛡️ <strong>El sistema de salvaguardas</strong> — cómo Anthropic lo hizo seguro para uso general</li>
+<li>💰 <strong>Precios y disponibilidad</strong> — quién puede usarlo y cómo</li>
+<li>🔐 <strong>Implicaciones de seguridad</strong> — una lectura obligatoria bajo la lente Zero Trust</li>
+<li>🚀 <strong>Cómo empezar</strong> — recursos y pasos concretos</li>
+</ul>
+<hr>
+<h2 id="-parte-1-el-contexto--de-dónde-viene-fable-5">🌐 Parte 1: El Contexto — ¿De Dónde Viene Fable 5?</h2>
+<h3 id="️-la-familia-mythos-el-nivel-más-alto-de-claude">🏛️ La Familia Mythos: El Nivel Más Alto de Claude</h3>
+<p>Para entender Claude Fable 5, primero hay que entender la arquitectura de modelos de Anthropic en 2026.</p>
+<p>Históricamente, la línea principal de Claude se dividía en tres niveles de capacidad: <strong>Haiku</strong> (rápido y ligero), <strong>Sonnet</strong> (equilibrado), y <strong>Opus</strong> (el más capaz). Pero en abril de 2026, Anthropic introdujo una categoría completamente nueva y superior: los <strong>modelos de clase Mythos</strong>.</p>
+<blockquote>
+<p>💡 <strong>Dato etimológico:</strong> El nombre es deliberado. <em>Fable</em> viene del latín <em>fabula</em>, que significa “aquello que se cuenta” — cognado del griego <em>mythos</em>. Los dos nombres del mismo modelo subyacente no son casualidad: son una declaración filosófica sobre la narrativa del conocimiento.</p>
+</blockquote>
+<p>La clase Mythos sienta encima de Opus en la jerarquía de capacidades. Su primera iteración, <strong>Claude Mythos Preview</strong>, fue lanzada en abril de 2026 de forma extremadamente restringida a través del <a href="https://www.anthropic.com/glasswing"><strong>Proyecto Glasswing</strong></a> — un programa de Anthropic en colaboración con el gobierno de EE.UU. orientado exclusivamente a ciberdefensores y proveedores de infraestructura crítica. La razón: las capacidades del modelo en ciberseguridad eran tan avanzadas que Anthropic consideró que liberarlo al público sería irresponsable.</p>
+<p>Hoy, el 9 de junio de 2026, Anthropic dio el siguiente paso: <strong>Claude Fable 5 y Claude Mythos 5</strong>.</p>
+<hr>
+<h3 id="-fable-5-vs-mythos-5--cuál-es-la-diferencia">🔄 Fable 5 vs. Mythos 5 — ¿Cuál es la diferencia?</h3>
+<p>Esta distinción es crítica y demuestra la seriedad con la que Anthropic aborda la seguridad:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Característica</th><th>Claude Fable 5</th><th>Claude Mythos 5</th></tr></thead><tbody><tr><td><strong>Modelo base</strong></td><td>Idéntico</td><td>Idéntico</td></tr><tr><td><strong>Clasificadores de seguridad</strong></td><td>✅ Activados</td><td>❌ Desactivados en algunas áreas</td></tr><tr><td><strong>Disponibilidad</strong></td><td>General (API, suscripciones)</td><td>Solo Project Glasswing</td></tr><tr><td><strong>Audiencia</strong></td><td>Desarrolladores y usuarios en general</td><td>Ciberdefensores de confianza y gobierno</td></tr><tr><td><strong>Capacidades de ciberseguridad</strong></td><td>Restringidas en zonas de alto riesgo</td><td>Sin restricciones (las más fuertes del mundo)</td></tr></tbody></table>
+<blockquote>
+<p>🔐 <strong>Perspectiva Zero Trust:</strong> La decisión de lanzar <em>dos versiones del mismo modelo</em> con diferentes niveles de acceso y restricciones es un ejemplo concreto de <strong>segmentación por privilegio mínimo</strong> aplicada al desarrollo de IA. No todos los usuarios necesitan — ni deben tener — acceso al mismo nivel de capacidad.</p>
+</blockquote>
+<hr>
+<h2 id="️-parte-2-capacidades-técnicas--lo-que-fable-5-puede-hacer">⚙️ Parte 2: Capacidades Técnicas — Lo Que Fable 5 Puede Hacer</h2>
+<h3 id="-especificaciones-técnicas">📊 Especificaciones Técnicas</h3>
+<p>Antes de entrar en las capacidades, aquí están los números que importan:</p>
+<ul>
+<li>🪟 <strong>Ventana de contexto:</strong> 1,000,000 tokens (1 millón)</li>
+<li>📤 <strong>Máximo de tokens de salida:</strong> 128,000 por solicitud</li>
+<li>📅 <strong>Fecha de corte de conocimiento:</strong> Enero de 2026</li>
+<li>🔌 <strong>API model ID:</strong> <code>claude-fable-5</code></li>
+<li>💲 <strong>Precio:</strong> $10 por millón de tokens de entrada / $50 por millón de tokens de salida
+Una ventana de contexto de <strong>1 millón de tokens</strong> no es un detalle menor. Para ponerlo en perspectiva, eso equivale aproximadamente a <strong>750,000 palabras</strong> — más que el contenido combinado de los tres primeros libros de El Señor de los Anillos. Esto permite que el modelo trabaje con codebases enteras, repositorios completos, o análisis de documentos masivos sin perder el hilo.</li>
+</ul>
+<hr>
+<h3 id="-ingeniería-de-software--la-capacidad-estrella">💻 Ingeniería de Software — La Capacidad Estrella</h3>
+<p>Fable 5 no solo mejora en tareas de código: las <strong>transforma cualitativamente</strong>. El salto más revelador viene de un caso de uso real reportado por <a href="https://stripe.com/">Stripe</a>:</p>
+<blockquote>
+<p>En un codebase de <strong>50 millones de líneas de Ruby</strong>, Fable 5 realizó una migración completa del codebase en <strong>un día</strong> — una tarea que normalmente requeriría a todo un equipo de ingenieros <strong>más de dos meses</strong> de trabajo manual.</p>
+</blockquote>
+<p>Otros benchmarks relevantes:</p>
+<ul>
+<li>🏆 <strong>FrontierCode (Cognition):</strong> Fable 5 ocupa el primer lugar entre los modelos frontera, evaluando si los modelos pueden completar tareas de código difíciles mientras mantienen los estándares de codebases de producción de alta calidad — incluso en esfuerzo medio.</li>
+<li>🖱️ <strong>Cursor (CursorBench):</strong> El CEO de Cursor, Michael Truell, reportó que Fable 5 es el modelo estado del arte y que “ha abierto una clase de problemas de largo horizonte que antes eran inalcanzables”.</li>
+<li>⚡ <strong>Eficiencia de tokens:</strong> Fable 5 es más eficiente que modelos anteriores — produce mejores resultados con menos tokens, lo que en producción se traduce en menor costo real por tarea.</li>
+<li>📱 <strong>One-shotting apps completas:</strong> Plataformas como Base44 reportaron que Fable 5 es significativamente mejor construyendo aplicaciones completas en un solo intento (<em>one-shotting full apps</em>).</li>
+</ul>
+<hr>
+<h3 id="-trabajo-de-conocimiento-y-razonamiento">🧠 Trabajo de Conocimiento y Razonamiento</h3>
+<p>Fable 5 no es solo para código. Su rendimiento en razonamiento analítico complejo representa un salto generacional:</p>
+<ul>
+<li>📈 <strong>Finance Benchmark (Hebbia):</strong> Fable 5 obtuvo la puntuación más alta de cualquier modelo en el benchmark de razonamiento de nivel senior de Hebbia, con ganancias sustanciales en razonamiento basado en documentos, interpretación de gráficos y tablas, y resolución de problemas.</li>
+<li>📊 <strong>IMC Trading Analysis:</strong> La firma de trading IMC reportó que Fable 5 superó casi todos sus benchmarks de análisis, incluyendo búsqueda factual, razonamiento conceptual, análisis de causa raíz y análisis de valor esperado.</li>
+<li>⚖️ <strong>Análisis legal:</strong> Harvey AI, plataforma de IA legal, reportó que sus abogados, en revisiones ciegas, encontraron que las ediciones de Fable 5 igualaron o superaron a su modelo actual en cada prueba.</li>
+</ul>
+<hr>
+<h3 id="️-visión--estado-del-arte">👁️ Visión — Estado del Arte</h3>
+<p>Las capacidades de visión de Fable 5 son igualmente impresionantes y marcan un nuevo estándar:</p>
+<ul>
+<li>📸 <strong>Reconstrucción de código desde screenshots:</strong> Fable 5 puede reconstruir el código fuente de una aplicación web mirando únicamente capturas de pantalla.</li>
+<li>🎮 <strong>Pokémon FireRed con solo visión:</strong> Modelos anteriores de Claude necesitaban un arnés complejo con herramientas adicionales para jugar Pokémon. Fable 5 completó Pokémon FireRed usando <strong>únicamente imágenes crudas del juego</strong> — sin mapas, sin información adicional del estado del juego.</li>
+<li>🔬 <strong>Figuras científicas:</strong> Puede extraer números precisos de figuras científicas detalladas, una capacidad crítica para investigación.</li>
+</ul>
+<hr>
+<h3 id="-investigación-científica--el-impacto-más-profundo">🧬 Investigación Científica — El Impacto Más Profundo</h3>
+<p>Aquí es donde Mythos 5 (la versión sin restricciones de seguridad) muestra su potencial más transformador — y también el más inquietante:</p>
+<ul>
+<li>💊 <strong>Diseño de fármacos:</strong> Expertos internos de Anthropic en diseño de proteínas reportaron que Mythos 5 aceleró aspectos del proceso de diseño de fármacos <strong>aproximadamente diez veces</strong>. El modelo ejecuta todas las tareas que normalmente completa un científico: elegir sitios de unión, seleccionar y ejecutar herramientas de diseño de proteínas, y recuperarse de fallas. De 14 objetivos proteicos estudiados, <strong>9 generaron candidatos fuertes</strong> para diseño de fármacos actualmente en investigación.</li>
+<li>🔬 <strong>Hipótesis novelosas en biología molecular:</strong> Mythos 5 es el primer modelo de Anthropic en producir consistentemente hipótesis científicas novedosas y convincentes. En comparaciones directas ciegas contra modelos de clase Opus, los científicos prefirieron las hipótesis de Mythos ~80% del tiempo.</li>
+<li>🧫 <strong>Investigación autónoma en genómica:</strong> Mythos 5 realizó investigación genuinamente novedosa en genómica durante más de una semana de trabajo en gran parte autónomo, diseñando y entrenando un modelo de machine learning personalizado que superó a un modelo publicado en la revista <em>Science</em> — siendo 100 veces más pequeño.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Nota de seguridad:</strong> El mismo nivel de capacidad que permite acelerar el diseño de medicamentos puede ser aprovechado maliciosamente. Esto es exactamente por qué Anthropic implementó salvaguardas estrictas en Fable 5 y limitó Mythos 5 a actores de confianza.</p>
+</blockquote>
+<hr>
+<h3 id="-memoria-y-tareas-de-largo-horizonte">🎮 Memoria y Tareas de Largo Horizonte</h3>
+<p>Una de las mejoras más significativas de Fable 5 es su capacidad de <strong>mantener coherencia y mejorar su rendimiento en tareas largas</strong>:</p>
+<ul>
+<li>🃏 <strong>Slay the Spire:</strong> Cuando Anthropic hizo que el modelo jugara el juego de construcción de mazos <em>Slay the Spire</em>, darle acceso a memoria persistente basada en archivos mejoró su rendimiento <strong>tres veces más</strong> de lo que lo hacía en Opus 4.8. Fable 5 también alcanzó el acto final del juego tres veces con más frecuencia.</li>
+<li>🏭 <strong>Factorio autónomo:</strong> Fable 5 jugó Factorio (el complejo juego de construcción de fábricas) de forma autónoma, estrategizando y construyendo una fábrica automatizada por su cuenta.</li>
+<li>🌌 <strong>Simulación del sistema solar:</strong> Fable 5 construyó una simulación del sistema solar derivando el movimiento orbital de los planetas desde primeros principios físicos y usándola para predecir eclipses solares.</li>
+</ul>
+<hr>
+<h2 id="️-parte-3-el-sistema-de-salvaguardas--seguridad-por-diseño">🛡️ Parte 3: El Sistema de Salvaguardas — Seguridad por Diseño</h2>
+<h3 id="-cómo-funciona-el-sistema-de-seguridad-de-fable-5">🔒 ¿Cómo Funciona el Sistema de Seguridad de Fable 5?</h3>
+<p>Este es el componente más importante desde una perspectiva de seguridad, y el que distingue fundamentalmente a Fable 5 de Mythos 5.</p>
+<p>Claude Fable 5 incorpora <strong>clasificadores de seguridad</strong> que operan en tiempo real. Cuando una solicitud activa un clasificador en áreas de alto riesgo — como ciberseguridad, biología, química o destilación — el modelo <strong>no genera una respuesta propia</strong>. En su lugar, el sistema hace <em>fallback</em> automáticamente a <strong>Claude Opus 4.8</strong> para entregar una respuesta segura.</p>
+<p>Áreas donde se activan los clasificadores:</p>
+<ul>
+<li>🔴 <strong>Ciberseguridad ofensiva</strong> — exploits, malware, vectores de ataque</li>
+<li>🧪 <strong>Biología y química</strong> — síntesis de agentes peligrosos</li>
+<li>☢️ <strong>Materiales peligrosos</strong> — destilación y preparación de sustancias controladas</li>
+<li>💣 <strong>Instrucciones para causar daño masivo</strong></li>
+</ul>
+<h3 id="-con-qué-frecuencia-se-activan-los-clasificadores">📊 ¿Con qué frecuencia se activan los clasificadores?</h3>
+<p>Según datos tempranos de Anthropic, los clasificadores se activan en <strong>menos del 5% de las sesiones</strong>. Esto significa que el 95% o más de las interacciones normales transcurren completamente en Fable 5.</p>
+<p>La API retorna <code>stop_reason: "refusal"</code> como una respuesta HTTP 200 exitosa (no un error) cuando se activa un clasificador, junto con qué clasificador rechazó la solicitud. Esto permite a los desarrolladores construir lógica de fallback elegante.</p>
+<blockquote>
+<p>🔐 <strong>Perspectiva Zero Trust:</strong> Este sistema es un ejemplo de <strong>defensa en profundidad</strong> aplicada a un LLM. No se trata de confiar en que el modelo “no quiera” hacer daño — se trata de tener controles técnicos concretos que lo impidan incluso si el modelo fuera manipulado mediante prompt injection o jailbreaking.</p>
+</blockquote>
+<hr>
+<h3 id="️-alineación--es-fable-5-un-modelo-confiable">⚖️ Alineación — ¿Es Fable 5 un Modelo Confiable?</h3>
+<p>Anthropic realizó su <strong>evaluación de alineación automatizada</strong> en Mythos 5 (mismo modelo base que Fable 5). Los resultados son prometedores:</p>
+<ul>
+<li>El nivel de <strong>comportamiento desalineado</strong> — incluyendo acciones como engaño o cooperación con el mal uso — fue <strong>bajo y similar a Claude Opus 4.8</strong>.</li>
+<li>Esto es notable porque las capacidades del modelo son significativamente superiores: más capacidad no necesariamente implica menos alineación.
+Los detalles completos están disponibles en la <a href="https://anthropic.com/claude-fable-5-mythos-5-system-card"><strong>System Card oficial de Fable 5 y Mythos 5</strong></a>.</li>
+</ul>
+<hr>
+<h2 id="-parte-4-precios-y-disponibilidad">💰 Parte 4: Precios y Disponibilidad</h2>
+<h3 id="-quién-puede-usar-fable-5-y-cómo">🌍 ¿Quién Puede Usar Fable 5 y Cómo?</h3>
+<p><strong>Para desarrolladores (API):</strong></p>
+<ul>
+<li>
+<p>Disponible hoy en la <strong>Claude API</strong> con el model ID <code>claude-fable-5</code></p>
+</li>
+<li>
+<p>Disponible en <strong>Amazon Bedrock</strong>, <strong>Google Cloud Vertex AI</strong>, y <strong>Microsoft Foundry</strong></p>
+</li>
+<li>
+<p>Precio: <strong>$10 por millón de tokens de entrada / $50 por millón de tokens de salida</strong></p>
+</li>
+<li>
+<p>Existe un <strong>descuento del 90%</strong> en tokens de entrada para prompt caching
+<strong>Para usuarios de suscripción (Claude.ai):</strong></p>
+</li>
+<li>
+<p>Disponible desde el 9 de junio hasta el <strong>22 de junio de 2026</strong> sin costo adicional en planes Pro, Max, Team y Enterprise con asiento</p>
+</li>
+<li>
+<p>A partir del <strong>23 de junio de 2026</strong>, requiere créditos de uso adicionales</p>
+</li>
+<li>
+<p>Anthropic ha comunicado su intención de restaurar Fable 5 como parte estándar de las suscripciones “tan pronto como la capacidad lo permita”
+<strong>Para organizaciones Enterprise:</strong></p>
+</li>
+<li>
+<p>Disponible en el <strong>plan Enterprise basado en consumo</strong> desde hoy</p>
+</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Nota de precio:</strong> A $10/$50 por millón de tokens, Fable 5 es el doble del precio de Opus 4.8 — pero menos de la mitad del precio de Claude Mythos Preview. Anthropic argumenta que el mayor ROI por tarea justifica el precio premium.</p>
+</blockquote>
+<hr>
+<h2 id="-parte-5-implicaciones-de-seguridad--lente-zero-trust">🔐 Parte 5: Implicaciones de Seguridad — Lente Zero Trust</h2>
+<h3 id="-los-riesgos-reales-de-un-modelo-con-estas-capacidades">🚨 Los Riesgos Reales de un Modelo con Estas Capacidades</h3>
+<p>Como Security Researcher, sería irresponsable de mi parte presentar Fable 5 sin abordar sus implicaciones de seguridad directamente.</p>
+<p><strong>Riesgos que el propio Anthropic reconoce:</strong></p>
+<ul>
+<li>🔓 <strong>Capacidades ofensivas de ciberseguridad de nivel sin precedente:</strong> Mythos 5 tiene “las capacidades de ciberseguridad más fuertes de cualquier modelo en el mundo”. Esto es un arma de doble filo: invaluable para defensores, potencialmente devastador en manos equivocadas.</li>
+<li>🧬 <strong>Aceleración del diseño de agentes biológicos:</strong> La misma capacidad que acelera el diseño de fármacos podría, en principio, acelerar el diseño de patógenos. Es por esto que los clasificadores son tan críticos.</li>
+<li>🎭 <strong>Ingeniería social de nueva generación:</strong> Un modelo que “entiende lo que los constructores <em>quieren decir</em>, no solo lo que <em>escriben</em>” (Base44) tiene capacidades de síntesis de lenguaje natural que pueden ser weaponizadas para phishing y manipulación hiperpersonalizada.</li>
+<li>💉 <strong>Prompt Injection más sofisticado:</strong> Con mayor capacidad de razonamiento, los ataques de prompt injection que engañen a Fable 5 podrían ser más difíciles de detectar y más dañinos en sistemas agénticos.</li>
+</ul>
+<h3 id="-recomendaciones-zero-trust-para-usuarios-de-fable-5">🧭 Recomendaciones Zero Trust para Usuarios de Fable 5</h3>
+<p>Si planeas integrar Fable 5 en tus sistemas o workflows:</p>
+<ul>
+<li>✅ <strong>Implementa fallback explícito:</strong> No asumas que todas las solicitudes llegarán a Fable 5. Diseña tu arquitectura para manejar respuestas <code>stop_reason: "refusal"</code> con gracia.</li>
+<li>✅ <strong>Principio de mínimo privilegio:</strong> Dale al modelo solo el contexto que necesita para cada tarea. No pases credenciales, claves API, o datos sensibles innecesariamente.</li>
+<li>✅ <strong>Valida todas las salidas agénticas:</strong> Si usas Fable 5 en modo agéntico (ejecutando código, accediendo a herramientas), implementa puntos de verificación humana para acciones irreversibles.</li>
+<li>✅ <strong>Audita los logs de fallback:</strong> Los casos en que el clasificador activa el fallback a Opus 4.8 son señales de inteligencia. Revísalos regularmente.</li>
+<li>✅ <strong>Lee el System Card:</strong> El <a href="https://anthropic.com/claude-fable-5-mythos-5-system-card"><strong>System Card de Fable 5 / Mythos 5</strong></a> es una lectura obligatoria para cualquier profesional que use estos modelos en producción.</li>
+</ul>
+<hr>
+<h2 id="-parte-6-cómo-empezar-con-claude-fable-5">🚀 Parte 6: Cómo Empezar con Claude Fable 5</h2>
+<h3 id="-pasos-concretos-para-comenzar">👣 Pasos Concretos para Comenzar</h3>
+<p><strong>Si eres usuario final:</strong></p>
+<ol>
+<li>
+<p>Ve a <a href="https://claude.ai"><strong>claude.ai</strong></a> y selecciona Claude Fable 5 en el selector de modelos</p>
+</li>
+<li>
+<p>Recuerda que está disponible sin costo adicional hasta el 22 de junio de 2026 en planes de pago</p>
+</li>
+<li>
+<p>Experimenta con tareas complejas: análisis de documentos largos, código difícil, investigación profunda
+<strong>Si eres desarrollador:</strong></p>
+</li>
+<li>
+<p>Accede a la <a href="https://platform.claude.com/"><strong>Claude API</strong></a> y usa el model ID <code>claude-fable-5</code></p>
+</li>
+<li>
+<p>Lee la guía de introducción oficial: <a href="https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5"><strong>Introducing Claude Fable 5 and Claude Mythos 5</strong></a></p>
+</li>
+<li>
+<p>Implementa manejo de <code>stop_reason: "refusal"</code> en tu código</p>
+</li>
+<li>
+<p>Configura opciones de fallback — ya sea server-side, client-side via SDK middleware, o manual
+<strong>Ejemplo básico de llamada a la API:</strong></p>
+</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> anthropic</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#E1E4E8">client </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> anthropic.Anthropic()</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#E1E4E8">message </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> client.messages.create(</span></span>
+<span class="line"><span style="color:#FFAB70">    model</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"claude-fable-5"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    max_tokens</span><span style="color:#F97583">=</span><span style="color:#79B8FF">1024</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    messages</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#9ECBFF">"role"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"user"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"content"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Analiza este codebase y sugiere mejoras de rendimiento."</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#6A737D"># Manejar posible refusal</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> message.stop_reason </span><span style="color:#F97583">==</span><span style="color:#9ECBFF"> "refusal"</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#6A737D">    # Hacer fallback a Opus 4.8</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Solicitud rechazada por clasificador de seguridad."</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">else</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(message.content)</span></span>
+<span class="line"></span></code></pre>
+<h3 id="-recursos-oficiales-y-verificados">📚 Recursos Oficiales y Verificados</h3>
+<ul>
+<li>🌐 <a href="https://www.anthropic.com/claude/fable"><strong>Página oficial de Claude Fable 5 (Anthropic)</strong></a></li>
+<li>📰 <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5"><strong>Anuncio oficial: Claude Fable 5 y Mythos 5</strong></a></li>
+<li>📖 <a href="https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5"><strong>Documentación de la API — Introducción a Fable 5 y Mythos 5</strong></a></li>
+<li>🔬 <a href="https://anthropic.com/claude-fable-5-mythos-5-system-card"><strong>System Card (seguridad y evaluaciones)</strong></a></li>
+<li>🔐 <a href="https://www.anthropic.com/glasswing"><strong>Proyecto Glasswing</strong></a></li>
+<li>🏛️ <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"><strong>OWASP Top 10 para Aplicaciones LLM</strong></a></li>
+</ul>
+<hr>
+<h2 id="-conclusión-un-nuevo-umbral-en-la-historia-de-la-ia">🏁 Conclusión: Un Nuevo Umbral en la Historia de la IA</h2>
+<p>Claude Fable 5 no es una actualización incremental. Es un salto cualitativo — el tipo de salto que redefine lo que consideramos posible con un modelo de lenguaje de propósito general.</p>
+<p>La capacidad de comprimir <strong>dos meses de trabajo de un equipo de ingenieros en un día</strong>, de generar <strong>hipótesis científicas novedosas</strong>, de jugar Pokémon solo con visión cruda, o de diseñar candidatos para fármacos de forma autónoma — todo esto, hace dos años, habría sonado a ciencia ficción.</p>
+<p>Pero quizás más importante que las capacidades es la <strong>forma en que Anthropic eligió lanzarlo</strong>: con transparencia sobre los riesgos, con clasificadores de seguridad técnicos concretos, con una versión restringida para actores de alto riesgo, y con un System Card detallado para que los profesionales puedan tomar decisiones informadas.</p>
+<blockquote>
+<p><strong>El verdadero test de una tecnología poderosa no es lo que puede hacer. Es cómo se decide hacer disponible — y con qué salvaguardas.</strong></p>
+</blockquote>
+<p>Como siempre: aprende, experimenta, construye — pero verifica, segmenta, y audita. El camino del conocimiento responsable no termina nunca. 🔐</p>
+<hr>
+<p><em>Escrito por <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Fuentes verificadas directamente desde Anthropic, TechCrunch, VentureBeat y documentación oficial de la API.</em></p>
+</div>
+---
+---
+<div class="lang-en">
+## 🦋 Claude Fable 5: The Complete Guide to Anthropic's Most Powerful AI Model
+<p><strong>By Jafet Brito</strong> · Security Researcher · <em>Published June 11, 2026</em></p>
+<hr>
+<blockquote>
+<p>⚠️ <strong>Author’s note:</strong> This article was written under a <strong>Zero Trust philosophy</strong>: all information presented here was verified directly from Anthropic’s primary sources. The launch of Claude Fable 5 took place on <strong>June 9, 2026</strong>, and represents one of the most significant milestones in the history of generative AI. With power comes responsibility — and this article also covers the real risks this model introduces.</p>
+</blockquote>
+<hr>
+<h3 id="️-what-youll-find-in-this-guide">🗺️ What You’ll Find in This Guide</h3>
+<ul>
+<li>🔍 <strong>What Claude Fable 5 is</strong> and where it comes from</li>
+<li>🧬 <strong>Its relationship with Claude Mythos</strong> — Anthropic’s most advanced model family</li>
+<li>⚙️ <strong>Technical capabilities</strong> — benchmarks, context window, and real-world performance</li>
+<li>🛡️ <strong>The safety guardrails system</strong> — how Anthropic made it safe for general use</li>
+<li>💰 <strong>Pricing and availability</strong> — who can use it and how</li>
+<li>🔐 <strong>Security implications</strong> — a must-read through a Zero Trust lens</li>
+<li>🚀 <strong>How to get started</strong> — concrete resources and next steps</li>
+</ul>
+<hr>
+<h2 id="-part-1-the-context--where-does-fable-5-come-from">🌐 Part 1: The Context — Where Does Fable 5 Come From?</h2>
+<h3 id="️-the-mythos-family-claudes-highest-tier">🏛️ The Mythos Family: Claude’s Highest Tier</h3>
+<p>To understand Claude Fable 5, you first need to understand Anthropic’s model architecture in 2026.</p>
+<p>Historically, the main Claude lineup was divided into three capability tiers: <strong>Haiku</strong> (fast and lightweight), <strong>Sonnet</strong> (balanced), and <strong>Opus</strong> (most capable). But in April 2026, Anthropic introduced a completely new and superior category: <strong>Mythos-class models</strong>.</p>
+<blockquote>
+<p>💡 <strong>Etymological note:</strong> The naming is deliberate. <em>Fable</em> comes from the Latin <em>fabula</em>, meaning “that which is told” — cognate with the Greek <em>mythos</em>. The two names for the same underlying model are not accidental: they are a philosophical statement about the narrative of knowledge.</p>
+</blockquote>
+<p>The Mythos class sits above Opus in the capability hierarchy. Its first iteration, <strong>Claude Mythos Preview</strong>, was launched in April 2026 in an extremely restricted manner through <a href="https://www.anthropic.com/glasswing"><strong>Project Glasswing</strong></a> — an Anthropic program in collaboration with the U.S. government, oriented exclusively toward cyber defenders and critical infrastructure providers. The reason: the model’s cybersecurity capabilities were so advanced that Anthropic considered releasing it to the public irresponsible.</p>
+<p>Then on June 9, 2026, Anthropic took the next step: <strong>Claude Fable 5 and Claude Mythos 5</strong>.</p>
+<hr>
+<h3 id="-fable-5-vs-mythos-5--whats-the-difference">🔄 Fable 5 vs. Mythos 5 — What’s the Difference?</h3>
+<p>This distinction is critical and demonstrates the seriousness with which Anthropic approaches security:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>Claude Fable 5</th><th>Claude Mythos 5</th></tr></thead><tbody><tr><td><strong>Base model</strong></td><td>Identical</td><td>Identical</td></tr><tr><td><strong>Safety classifiers</strong></td><td>✅ Active</td><td>❌ Lifted in some areas</td></tr><tr><td><strong>Availability</strong></td><td>General (API, subscriptions)</td><td>Project Glasswing only</td></tr><tr><td><strong>Audience</strong></td><td>Developers and general users</td><td>Trusted cyber defenders and government</td></tr><tr><td><strong>Cybersecurity capabilities</strong></td><td>Restricted in high-risk zones</td><td>Unrestricted (strongest in the world)</td></tr></tbody></table>
+<blockquote>
+<p>🔐 <strong>Zero Trust perspective:</strong> The decision to release <em>two versions of the same model</em> with different access levels and restrictions is a concrete example of <strong>least-privilege segmentation</strong> applied to AI development. Not all users need — nor should have — access to the same level of capability.</p>
+</blockquote>
+<hr>
+<h2 id="️-part-2-technical-capabilities--what-fable-5-can-do">⚙️ Part 2: Technical Capabilities — What Fable 5 Can Do</h2>
+<h3 id="-technical-specifications">📊 Technical Specifications</h3>
+<p>Before diving into capabilities, here are the numbers that matter:</p>
+<ul>
+<li>🪟 <strong>Context window:</strong> 1,000,000 tokens (1 million)</li>
+<li>📤 <strong>Maximum output tokens:</strong> 128,000 per request</li>
+<li>📅 <strong>Knowledge cutoff date:</strong> January 2026</li>
+<li>🔌 <strong>API model ID:</strong> <code>claude-fable-5</code></li>
+<li>💲 <strong>Pricing:</strong> $10 per million input tokens / $50 per million output tokens
+A <strong>1 million token</strong> context window is not a minor detail. To put it in perspective, that’s roughly <strong>750,000 words</strong> — more than the combined content of the first three Lord of the Rings books. This allows the model to work with entire codebases, full repositories, or massive document analysis without losing the thread.</li>
+</ul>
+<hr>
+<h3 id="-software-engineering--the-flagship-capability">💻 Software Engineering — The Flagship Capability</h3>
+<p>Fable 5 doesn’t just improve on coding tasks — it <strong>qualitatively transforms</strong> them. The most revealing leap comes from a real-world use case reported by <a href="https://stripe.com/">Stripe</a>:</p>
+<blockquote>
+<p>In a <strong>50-million-line Ruby codebase</strong>, Fable 5 performed a complete codebase-wide migration in <strong>one day</strong> — a task that would normally require an entire team of engineers <strong>over two months</strong> of manual work.</p>
+</blockquote>
+<p>Other relevant benchmarks:</p>
+<ul>
+<li>🏆 <strong>FrontierCode (Cognition):</strong> Fable 5 ranks first among frontier models, evaluating whether models can complete difficult coding tasks while meeting the standards of high-quality production codebases — even at medium effort.</li>
+<li>🖱️ <strong>Cursor (CursorBench):</strong> Cursor CEO Michael Truell reported that Fable 5 is the state-of-the-art model and has “opened up a class of long-horizon problems that were out of reach for earlier models.”</li>
+<li>⚡ <strong>Token efficiency:</strong> Fable 5 is more token-efficient than previous models — producing better results with fewer tokens, which translates to a lower real cost per task in production.</li>
+<li>📱 <strong>One-shotting full apps:</strong> Platforms like Base44 reported that Fable 5 is significantly better at building complete applications in a single attempt.</li>
+</ul>
+<hr>
+<h3 id="-knowledge-work-and-reasoning">🧠 Knowledge Work and Reasoning</h3>
+<p>Fable 5 is not just for code. Its performance in complex analytical reasoning represents a generational leap:</p>
+<ul>
+<li>📈 <strong>Finance Benchmark (Hebbia):</strong> Fable 5 achieved the highest score of any model on Hebbia’s senior-level reasoning benchmark, with substantial gains in document-based reasoning, chart and table interpretation, and problem solving.</li>
+<li>📊 <strong>IMC Trading Analysis:</strong> Trading firm IMC reported that Fable 5 aced their trading-analysis evaluations nearly across the board, including factual lookup, conceptual reasoning, root-cause analysis, and expected-value analysis.</li>
+<li>⚖️ <strong>Legal analysis:</strong> Harvey AI, a legal AI platform, reported that in blind reviews, their lawyers found Fable 5’s redlines matched or beat their current model every time.</li>
+</ul>
+<hr>
+<h3 id="️-vision--state-of-the-art">👁️ Vision — State of the Art</h3>
+<p>Fable 5’s vision capabilities are equally impressive and set a new standard:</p>
+<ul>
+<li>📸 <strong>Reconstructing code from screenshots:</strong> Fable 5 can rebuild a web app’s source code from screenshots alone.</li>
+<li>🎮 <strong>Pokémon FireRed with vision only:</strong> Previous Claude models needed a complex harness with additional helper tools to play Pokémon. Fable 5 completed Pokémon FireRed using <strong>only raw game screenshots</strong> — no maps, no additional game-state information.</li>
+<li>🔬 <strong>Scientific figures:</strong> It can extract precise numbers from detailed scientific figures — a critical capability for research.</li>
+</ul>
+<hr>
+<h3 id="-scientific-research--the-deepest-impact">🧬 Scientific Research — The Deepest Impact</h3>
+<p>This is where Mythos 5 (the version without safety restrictions) shows its most transformative potential — and also the most concerning:</p>
+<ul>
+<li>💊 <strong>Drug design:</strong> Anthropic’s internal protein design experts reported that Mythos 5 accelerated aspects of the drug design process by <strong>approximately ten times</strong>. The model executes all of the tasks normally completed by a scientist: choosing binding sites, selecting and running protein design tools, and recovering from failures. Of 14 protein targets studied, <strong>9 yielded strong candidates</strong> for drug design currently under investigation.</li>
+<li>🔬 <strong>Novel molecular biology hypotheses:</strong> Mythos 5 is Anthropic’s first model to consistently produce novel, compelling scientific hypotheses. In blinded head-to-head comparisons against Opus-class models, scientists preferred Mythos’s hypotheses ~80% of the time.</li>
+<li>🧫 <strong>Autonomous genomics research:</strong> Mythos 5 conducted genuinely novel genomics research over more than a week of largely autonomous work, designing and training a custom machine learning model that outperformed a model published in the journal <em>Science</em> — despite being 100 times smaller.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Security note:</strong> The same level of capability that enables accelerating drug design can be maliciously leveraged. This is precisely why Anthropic implemented strict safety guardrails in Fable 5 and restricted Mythos 5 to trusted actors.</p>
+</blockquote>
+<hr>
+<h3 id="-memory-and-long-horizon-tasks">🎮 Memory and Long-Horizon Tasks</h3>
+<p>One of Fable 5’s most significant improvements is its ability to <strong>maintain coherence and improve its performance over long tasks</strong>:</p>
+<ul>
+<li>🃏 <strong>Slay the Spire:</strong> When Anthropic had the model play the deck-building game <em>Slay the Spire</em>, giving it access to persistent file-based memory improved its performance <strong>three times more</strong> than it did for Opus 4.8. Fable 5 also reached the game’s final act three times more often.</li>
+<li>🏭 <strong>Autonomous Factorio:</strong> Fable 5 played Factorio (the complex factory-building game beloved by engineers) autonomously, strategizing and building an automated factory on its own.</li>
+<li>🌌 <strong>Solar system simulation:</strong> Fable 5 built a simulation of the solar system, deriving the planets’ orbital motion from physics first principles and using it to predict solar eclipses.</li>
+</ul>
+<hr>
+<h2 id="️-part-3-the-safety-guardrails-system--security-by-design">🛡️ Part 3: The Safety Guardrails System — Security by Design</h2>
+<h3 id="-how-fable-5s-safety-system-works">🔒 How Fable 5’s Safety System Works</h3>
+<p>This is the most important component from a security perspective, and the one that fundamentally distinguishes Fable 5 from Mythos 5.</p>
+<p>Claude Fable 5 incorporates <strong>safety classifiers</strong> that operate in real time. When a request triggers a classifier in high-risk areas — such as cybersecurity, biology, chemistry, or distillation — the model <strong>does not generate its own response</strong>. Instead, the system automatically <strong>falls back to Claude Opus 4.8</strong> to deliver a safe answer.</p>
+<p>Areas where classifiers activate:</p>
+<ul>
+<li>🔴 <strong>Offensive cybersecurity</strong> — exploits, malware, attack vectors</li>
+<li>🧪 <strong>Biology and chemistry</strong> — synthesis of dangerous agents</li>
+<li>☢️ <strong>Hazardous materials</strong> — distillation and preparation of controlled substances</li>
+<li>💣 <strong>Instructions for causing mass harm</strong></li>
+</ul>
+<h3 id="-how-often-do-the-classifiers-activate">📊 How Often Do the Classifiers Activate?</h3>
+<p>According to early data from Anthropic, classifiers trigger in <strong>fewer than 5% of sessions</strong>. This means 95% or more of normal interactions run entirely on Fable 5.</p>
+<p>The API returns <code>stop_reason: "refusal"</code> as a successful HTTP 200 response (not an error) when a classifier fires, along with which classifier declined the request. This enables developers to build elegant fallback logic.</p>
+<blockquote>
+<p>🔐 <strong>Zero Trust perspective:</strong> This system is an example of <strong>defense in depth</strong> applied to an LLM. It’s not about trusting the model to “not want” to cause harm — it’s about having concrete technical controls that prevent it even if the model were manipulated through prompt injection or jailbreaking.</p>
+</blockquote>
+<hr>
+<h3 id="️-alignment--is-fable-5-a-trustworthy-model">⚖️ Alignment — Is Fable 5 a Trustworthy Model?</h3>
+<p>Anthropic conducted its <strong>automated alignment assessment</strong> on Mythos 5 (same base model as Fable 5). The results are encouraging:</p>
+<ul>
+<li>The level of <strong>misaligned behavior</strong> — including actions like deception or cooperating with misuse — was <strong>low and similar to Claude Opus 4.8</strong>.</li>
+<li>This is notable because the model’s capabilities are significantly superior: greater capability does not necessarily imply less alignment.
+Full details are available in the <a href="https://anthropic.com/claude-fable-5-mythos-5-system-card"><strong>official Fable 5 / Mythos 5 System Card</strong></a>.</li>
+</ul>
+<hr>
+<h2 id="-part-4-pricing-and-availability">💰 Part 4: Pricing and Availability</h2>
+<h3 id="-who-can-use-fable-5-and-how">🌍 Who Can Use Fable 5 and How?</h3>
+<p><strong>For developers (API):</strong></p>
+<ul>
+<li>
+<p>Available today on the <strong>Claude API</strong> with model ID <code>claude-fable-5</code></p>
+</li>
+<li>
+<p>Available on <strong>Amazon Bedrock</strong>, <strong>Google Cloud Vertex AI</strong>, and <strong>Microsoft Foundry</strong></p>
+</li>
+<li>
+<p>Pricing: <strong>$10 per million input tokens / $50 per million output tokens</strong></p>
+</li>
+<li>
+<p>A <strong>90% discount</strong> on input tokens applies for prompt caching
+<strong>For subscription users (Claude.ai):</strong></p>
+</li>
+<li>
+<p>Available from June 9 through <strong>June 22, 2026</strong> at no extra cost on Pro, Max, Team, and seat-based Enterprise plans</p>
+</li>
+<li>
+<p>From <strong>June 23, 2026</strong>, requires additional usage credits</p>
+</li>
+<li>
+<p>Anthropic has communicated its intent to restore Fable 5 as a standard part of subscriptions “as quickly as capacity allows”
+<strong>For Enterprise organizations:</strong></p>
+</li>
+<li>
+<p>Available on the <strong>consumption-based Enterprise plan</strong> starting today</p>
+</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Pricing note:</strong> At $10/$50 per million tokens, Fable 5 is double the price of Opus 4.8 — but less than half the price of Claude Mythos Preview. Anthropic argues that higher ROI per task justifies the premium price.</p>
+</blockquote>
+<hr>
+<h2 id="-part-5-security-implications--zero-trust-lens">🔐 Part 5: Security Implications — Zero Trust Lens</h2>
+<h3 id="-the-real-risks-of-a-model-with-these-capabilities">🚨 The Real Risks of a Model With These Capabilities</h3>
+<p>As a Security Researcher, it would be irresponsible of me to present Fable 5 without directly addressing its security implications.</p>
+<p><strong>Risks that Anthropic itself acknowledges:</strong></p>
+<ul>
+<li>🔓 <strong>Unprecedented offensive cybersecurity capabilities:</strong> Mythos 5 has “the strongest cybersecurity capabilities of any model in the world.” This is a double-edged sword: invaluable for defenders, potentially devastating in the wrong hands.</li>
+<li>🧬 <strong>Acceleration of biological agent design:</strong> The same capability that accelerates drug design could, in principle, accelerate the design of pathogens. This is precisely why the classifiers are so critical.</li>
+<li>🎭 <strong>Next-generation social engineering:</strong> A model that “understands what builders <em>mean</em>, not just what they <em>type</em>” (Base44) has natural language synthesis capabilities that can be weaponized for phishing and hyper-personalized manipulation.</li>
+<li>💉 <strong>More sophisticated prompt injection:</strong> With greater reasoning capability, prompt injection attacks that fool Fable 5 could be harder to detect and more damaging in agentic systems.</li>
+</ul>
+<h3 id="-zero-trust-recommendations-for-fable-5-users">🧭 Zero Trust Recommendations for Fable 5 Users</h3>
+<p>If you plan to integrate Fable 5 into your systems or workflows:</p>
+<ul>
+<li>✅ <strong>Implement explicit fallback:</strong> Don’t assume all requests will reach Fable 5. Design your architecture to handle <code>stop_reason: "refusal"</code> responses gracefully.</li>
+<li>✅ <strong>Principle of least privilege:</strong> Give the model only the context it needs for each task. Don’t pass credentials, API keys, or sensitive data unnecessarily.</li>
+<li>✅ <strong>Validate all agentic outputs:</strong> If you use Fable 5 in agentic mode (executing code, accessing tools), implement human verification checkpoints for irreversible actions.</li>
+<li>✅ <strong>Audit fallback logs:</strong> Cases where the classifier triggers a fallback to Opus 4.8 are intelligence signals. Review them regularly.</li>
+<li>✅ <strong>Read the System Card:</strong> The <a href="https://anthropic.com/claude-fable-5-mythos-5-system-card"><strong>Fable 5 / Mythos 5 System Card</strong></a> is required reading for any professional using these models in production.</li>
+</ul>
+<hr>
+<h2 id="-part-6-how-to-get-started-with-claude-fable-5">🚀 Part 6: How to Get Started with Claude Fable 5</h2>
+<h3 id="-concrete-steps-to-begin">👣 Concrete Steps to Begin</h3>
+<p><strong>If you’re an end user:</strong></p>
+<ol>
+<li>
+<p>Go to <a href="https://claude.ai"><strong>claude.ai</strong></a> and select Claude Fable 5 in the model selector</p>
+</li>
+<li>
+<p>Remember it’s available at no extra cost through June 22, 2026 on paid plans</p>
+</li>
+<li>
+<p>Experiment with complex tasks: long document analysis, difficult code, deep research
+<strong>If you’re a developer:</strong></p>
+</li>
+<li>
+<p>Access the <a href="https://platform.claude.com/"><strong>Claude API</strong></a> and use model ID <code>claude-fable-5</code></p>
+</li>
+<li>
+<p>Read the official introduction guide: <a href="https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5"><strong>Introducing Claude Fable 5 and Claude Mythos 5</strong></a></p>
+</li>
+<li>
+<p>Implement <code>stop_reason: "refusal"</code> handling in your code</p>
+</li>
+<li>
+<p>Configure fallback options — server-side, client-side via SDK middleware, or manual
+<strong>Basic API call example:</strong></p>
+</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> anthropic</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#E1E4E8">client </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> anthropic.Anthropic()</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#E1E4E8">message </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> client.messages.create(</span></span>
+<span class="line"><span style="color:#FFAB70">    model</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"claude-fable-5"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    max_tokens</span><span style="color:#F97583">=</span><span style="color:#79B8FF">1024</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    messages</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#9ECBFF">"role"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"user"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"content"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Analyze this codebase and suggest performance improvements."</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#6A737D"># Handle possible refusal</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> message.stop_reason </span><span style="color:#F97583">==</span><span style="color:#9ECBFF"> "refusal"</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#6A737D">    # Fall back to Opus 4.8</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Request declined by safety classifier."</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">else</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(message.content)</span></span>
+<span class="line"></span></code></pre>
+<h3 id="-official-and-verified-resources">📚 Official and Verified Resources</h3>
+<ul>
+<li>🌐 <a href="https://www.anthropic.com/claude/fable"><strong>Official Claude Fable 5 page (Anthropic)</strong></a></li>
+<li>📰 <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5"><strong>Official announcement: Claude Fable 5 and Mythos 5</strong></a></li>
+<li>📖 <a href="https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5"><strong>API Documentation — Introducing Fable 5 and Mythos 5</strong></a></li>
+<li>🔬 <a href="https://anthropic.com/claude-fable-5-mythos-5-system-card"><strong>System Card (safety and evaluations)</strong></a></li>
+<li>🔐 <a href="https://www.anthropic.com/glasswing"><strong>Project Glasswing</strong></a></li>
+<li>🏛️ <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"><strong>OWASP Top 10 for LLM Applications</strong></a></li>
+</ul>
+<hr>
+<h2 id="-conclusion-a-new-threshold-in-the-history-of-ai">🏁 Conclusion: A New Threshold in the History of AI</h2>
+<p>Claude Fable 5 is not an incremental update. It is a qualitative leap — the kind that redefines what we consider possible with a general-purpose language model.</p>
+<p>The ability to compress <strong>two months of engineering team work into a single day</strong>, to generate <strong>novel scientific hypotheses</strong>, to play Pokémon with raw vision alone, or to autonomously design drug candidates — all of this, two years ago, would have sounded like science fiction.</p>
+<p>But perhaps more important than the capabilities is the <strong>way Anthropic chose to release it</strong>: with transparency about the risks, with concrete technical safety classifiers, with a restricted version for high-risk actors, and with a detailed System Card so professionals can make informed decisions.</p>
+<blockquote>
+<p><strong>The true test of powerful technology is not what it can do. It’s how it is made available — and with what safeguards.</strong></p>
+</blockquote>
+<p>As always: learn, experiment, build — but verify, segment, and audit. The path of responsible knowledge never ends. 🔐</p>
+<hr>
+<p><em>Written by <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Sources verified directly from Anthropic, TechCrunch, VentureBeat, and official API documentation.</em></p>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>

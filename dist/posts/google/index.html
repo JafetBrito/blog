@@ -1,0 +1,1819 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="El libro definitivo de estudio con IA. Oliver the Hacker Cat guía a Script Kitty (y a ti) de estudiante desesperado a maestro del aprendizaje aumentado con NotebookLM, Gemini, Claude y el ecosistema completo de estudio con IA 2026. Audios, mapas mentales, flashcards, podcasts personalizados y mucho más."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/google/"><meta property="og:title" content="📚 Oliver te Enseña a Estudiar con IA: La Biblia de NotebookLM — Jafet Brito"><meta property="og:description" content="El libro definitivo de estudio con IA. Oliver the Hacker Cat guía a Script Kitty (y a ti) de estudiante desesperado a maestro del aprendizaje aumentado con NotebookLM, Gemini, Claude y el ecosistema completo de estudio con IA 2026. Audios, mapas mentales, flashcards, podcasts personalizados y mucho más."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/google/"><meta property="og:image" content="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="📚 Oliver te Enseña a Estudiar con IA: La Biblia de NotebookLM — Jafet Brito"><meta name="twitter:description" content="El libro definitivo de estudio con IA. Oliver the Hacker Cat guía a Script Kitty (y a ti) de estudiante desesperado a maestro del aprendizaje aumentado con NotebookLM, Gemini, Claude y el ecosistema completo de estudio con IA 2026. Audios, mapas mentales, flashcards, podcasts personalizados y mucho más."><meta name="twitter:image" content="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80"><title>📚 Oliver te Enseña a Estudiar con IA: La Biblia de NotebookLM — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80" alt="📚 Oliver te Enseña a Estudiar con IA: La Biblia de NotebookLM" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">-oliver-te-ensea-a-estudiar-con-ia-la-biblia-de-notebooklm</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/NotebookLM" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#NotebookLM</a><a href="/tags/Estudiar" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Estudiar</a><a href="/tags/IA" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#IA</a><a href="/tags/Aprendizaje" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Aprendizaje</a><a href="/tags/Google" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Google</a><a href="/tags/Oliver" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Oliver</a><a href="/tags/ScriptKitty" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#ScriptKitty</a><a href="/tags/Educacion" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Educacion</a><a href="/tags/AudioOverview" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#AudioOverview</a><a href="/tags/MindMap" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#MindMap</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="📚 Oliver te Enseña a Estudiar con IA: La Biblia de NotebookLM" data-text-en="📚 Oliver Teaches You to Study with AI: The NotebookLM Bible"> 📚 Oliver te Enseña a Estudiar con IA: La Biblia de NotebookLM </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="El libro definitivo de estudio con IA. Oliver the Hacker Cat guía a Script Kitty (y a ti) de estudiante desesperado a maestro del aprendizaje aumentado con NotebookLM, Gemini, Claude y el ecosistema completo de estudio con IA 2026. Audios, mapas mentales, flashcards, podcasts personalizados y mucho más." data-text-en="The definitive AI study book. Oliver the Hacker Cat guides Script Kitty (and you) from desperate student to master of augmented learning with NotebookLM, Gemini, Claude and the complete 2026 AI study ecosystem. Audio overviews, mind maps, flashcards, personalized podcasts, and much more."> El libro definitivo de estudio con IA. Oliver the Hacker Cat guía a Script Kitty (y a ti) de estudiante desesperado a maestro del aprendizaje aumentado con NotebookLM, Gemini, Claude y el ecosistema completo de estudio con IA 2026. Audios, mapas mentales, flashcards, podcasts personalizados y mucho más. </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-11" data-fmt-date="2026-06-11" data-fmt="long">miércoles, 10 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+<h1 id="-oliver-te-enseña-a-estudiar-con-ia-la-biblia-de-notebooklm">📚 Oliver te Enseña a Estudiar con IA: La Biblia de NotebookLM</h1>
+<p><strong>Por Jafet Brito</strong> · Security Researcher · <em>Publicado el 11 de junio de 2026</em></p>
+<hr>
+<blockquote>
+<p><em>“Estudiar sin las herramientas correctas es como querer llegar a la luna en bicicleta. Llegarás — si tienes millones de años.”</em>
+— Oliver the Hacker Cat</p>
+</blockquote>
+<blockquote>
+<p><em>“¡OLIVER! ¡Tengo un examen en 6 horas y son 400 páginas!”</em>
+— Script Kitty, en algún punto de su vida académica cada semestre</p>
+</blockquote>
+<hr>
+<h2 id="-el-contexto-startup-felina-tiene-universidad-corporativa">🏢 El Contexto: Startup Felina Tiene Universidad Corporativa</h2>
+<p>Startup Felina S.A. decidió invertir en el desarrollo de su equipo. El CEO anunció: cada empleado tiene que certificarse en su área antes de fin de año. Script Kitty tiene que certificarse en Cloud Security — 4 exámenes, 1,200 páginas de material, 90 días.</p>
+<p>Script Kitty miró el material. El material miró a Script Kitty. Fue intimidante para ambos.</p>
+<p>Oliver tomó un sorbo de café.</p>
+<p><strong>Oliver:</strong> 🐱 <em>“Siéntate. Hoy aprendes a estudiar.”</em></p>
+<p><strong>Script Kitty:</strong> 😤 <em>“¡Ya sé estudiar! Leo el material y—”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Cuánto recuerdas de lo que leíste ayer?”</em></p>
+<p><strong>Script Kitty:</strong> 😶 <em>“…el título del primer capítulo.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Exacto. Siéntate.”</em></p>
+<hr>
+<h2 id="️-mapa-del-libro">🗺️ Mapa del Libro</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>╔═══════════════════════════════════════════════════════════╗</span></span>
+<span class="line"><span>║         📚 OLIVER TE ENSEÑA A ESTUDIAR CON IA             ║</span></span>
+<span class="line"><span>╠═══════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║  FUNDAMENTOS                                              ║</span></span>
+<span class="line"><span>║  EP. 0:  Por qué fallamos al estudiar (y cómo la IA       ║</span></span>
+<span class="line"><span>║          cambia las reglas del juego)                     ║</span></span>
+<span class="line"><span>║  EP. 1:  Qué es NotebookLM y por qué es diferente        ║</span></span>
+<span class="line"><span>║  EP. 2:  Tu primer Notebook — setup profesional          ║</span></span>
+<span class="line"><span>║  EP. 3:  Los tipos de fuentes — qué puede comer          ║</span></span>
+<span class="line"><span>║                                                           ║</span></span>
+<span class="line"><span>║  HERRAMIENTAS CORE                                        ║</span></span>
+<span class="line"><span>║  EP. 4:  Audio Overviews — estudia mientras vives tu vida ║</span></span>
+<span class="line"><span>║  EP. 5:  Mind Maps — el mapa de tu conocimiento          ║</span></span>
+<span class="line"><span>║  EP. 6:  El Chat con tus fuentes — el tutor que siempre  ║</span></span>
+<span class="line"><span>║          tiene tiempo                                     ║</span></span>
+<span class="line"><span>║  EP. 7:  Study Guides, Quizzes y Flashcards              ║</span></span>
+<span class="line"><span>║  EP. 8:  Video Overviews — aprende viendo                ║</span></span>
+<span class="line"><span>║          (nuevo en 2026)                                  ║</span></span>
+<span class="line"><span>║                                                           ║</span></span>
+<span class="line"><span>║  ESTRATEGIAS AVANZADAS                                    ║</span></span>
+<span class="line"><span>║  EP. 9:  La Arquitectura de Notebooks — organiza         ║</span></span>
+<span class="line"><span>║          como un profesional                             ║</span></span>
+<span class="line"><span>║  EP. 10: Compartir y Colaborar — el notebook grupal      ║</span></span>
+<span class="line"><span>║  EP. 11: Deep Research — investigación de verdad         ║</span></span>
+<span class="line"><span>║  EP. 12: El Método Oliver — sistema completo de estudio  ║</span></span>
+<span class="line"><span>║                                                           ║</span></span>
+<span class="line"><span>║  EL ECOSISTEMA COMPLETO                                   ║</span></span>
+<span class="line"><span>║  EP. 13: NotebookLM + Gemini — la combinación perfecta   ║</span></span>
+<span class="line"><span>║  EP. 14: NotebookLM + Claude — para análisis profundo    ║</span></span>
+<span class="line"><span>║  EP. 15: NotebookLM + Perplexity — investigación web    ║</span></span>
+<span class="line"><span>║  EP. 16: Planes y precios — cuándo pagar                 ║</span></span>
+<span class="line"><span>║                                                           ║</span></span>
+<span class="line"><span>║  CASOS DE USO REALES                                      ║</span></span>
+<span class="line"><span>║  EP. 17: El Estudiante Universitario                     ║</span></span>
+<span class="line"><span>║  EP. 18: El Profesional de Certificaciones               ║</span></span>
+<span class="line"><span>║  EP. 19: El Investigador / Académico                     ║</span></span>
+<span class="line"><span>║  EP. FINAL: Script Kitty pasa su certificación           ║</span></span>
+<span class="line"><span>╚═══════════════════════════════════════════════════════════╝</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-0-por-qué-fallamos-al-estudiar">🎬 EPISODIO 0: Por Qué Fallamos al Estudiar</h2>
+<h3 id="la-neurociencia-del-estudio-que-nadie-te-enseñó">La Neurociencia del Estudio que Nadie te Enseñó</h3>
+<p><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&#x26;q=80" alt="Books and laptop"></p>
+<p><em>Domingo, 10:00 PM. Script Kitty lleva 3 horas mirando el mismo capítulo.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 😩 <em>“Oliver. He leído esta página 4 veces y no recuerdo nada. Creo que soy tonto.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“No eres tonto. Estás usando el método equivocado.”</em></p>
+<p><strong>Script Kitty:</strong> 😩 <em>“¿Qué método? Solo estoy leyendo.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Exactamente el problema.”</em></p>
+<hr>
+<h3 id="la-ilusión-de-competencia--el-error-1">La Ilusión de Competencia — El Error #1</h3>
+<p>Leer es la forma de estudio más ineficiente que existe y la que casi todos usamos por defecto. Cuando lees algo, tu cerebro reconoce las palabras y crea una sensación de familiaridad que confundes con comprensión. Es la <strong>ilusión de competencia</strong>.</p>
+<p>La ciencia cognitiva lo tiene claro desde los años 80:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>RETENCIÓN DEL APRENDIZAJE SEGÚN EL MÉTODO</span></span>
+<span class="line"><span>(Basado en investigación de aprendizaje activo)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Leer pasivamente:          ~10% de retención</span></span>
+<span class="line"><span>Escuchar:                  ~20%</span></span>
+<span class="line"><span>Ver (video/diagrama):      ~30%</span></span>
+<span class="line"><span>Demostración:              ~30%</span></span>
+<span class="line"><span>Discusión activa:          ~50%</span></span>
+<span class="line"><span>Práctica haciendo:         ~75%</span></span>
+<span class="line"><span>Enseñar a otros:           ~90%</span></span>
+<span class="line"><span>Recuperación activa:       ~90%</span></span>
+<span class="line"><span>(intentar recordar sin ver las notas)</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>El problema no eres tú. Es que nadie te enseñó que <strong>el aprendizaje activo — el que requiere que TÚ produzcas, preguntes, expliques, y te equivoques — es 5-9 veces más efectivo que leer pasivamente.</strong></p>
+<h3 id="cómo-la-ia-cambia-completamente-las-reglas">Cómo la IA Cambia Completamente las Reglas</h3>
+<p>La IA de estudio — y NotebookLM en particular — no te hace leer más rápido. Te convierte en un aprendiz activo automáticamente:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ANTES (estudio pasivo):           DESPUÉS (con NotebookLM):</span></span>
+<span class="line"><span>Leer 400 páginas → olvidas 90%    Audio Overview del material</span></span>
+<span class="line"><span>                                  → escuchas + procesas activamente</span></span>
+<span class="line"><span>                                  </span></span>
+<span class="line"><span>Subrayar párrafos → sensación      Mind Map generado al instante</span></span>
+<span class="line"><span>de progreso sin comprensión        → ves las conexiones reales</span></span>
+<span class="line"><span>                                   </span></span>
+<span class="line"><span>Releer lo que no entiendes        Chat con tus fuentes → preguntas,</span></span>
+<span class="line"><span>→ frustración creciente           el tutor responde con citas exactas</span></span>
+<span class="line"><span>                                   </span></span>
+<span class="line"><span>Estudiar solo → sin feedback      Quizzes automáticos → saber qué</span></span>
+<span class="line"><span>de si entendiste o no             sabes y qué no sabes en minutos</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 <strong>La verdad de Oliver:</strong> NotebookLM no estudia por ti. Te pone en el rol correcto — el de alguien que pregunta, escucha, cuestiona, y se autoevalúa — que es exactamente donde ocurre el aprendizaje real.</p>
+</blockquote>
+<hr>
+<h2 id="-episodio-1-qué-es-notebooklm-y-por-qué-es-diferente">🎬 EPISODIO 1: Qué es NotebookLM y Por Qué Es Diferente</h2>
+<h3 id="el-tutor-que-solo-sabe-lo-que-tú-le-dices">”El Tutor que Solo Sabe lo que Tú le Dices”</h3>
+<p><em>Lunes, 9:00 AM. Oliver abre NotebookLM en la pantalla de Script Kitty.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 🤔 <em>“¿Qué tiene de especial esto? También tengo ChatGPT.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Cuántas veces ChatGPT te ha dado información que no estaba en tu libro de texto?”</em></p>
+<p><strong>Script Kitty:</strong> 🤔 <em>“Muchas. A veces incluso cosas contradictorias.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Eso es porque ChatGPT sabe todo internet. NotebookLM solo sabe lo que TÚ le das. Y esa es la diferencia que cambia todo.”</em></p>
+<hr>
+<h3 id="la-diferencia-fundamental">La Diferencia Fundamental</h3>
+<p>NotebookLM es una herramienta de investigación con IA creada por Google que proporciona respuestas a consultas con citas fundamentadas en las fuentes proporcionadas por el usuario, impulsada por el último modelo Gemini.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CHATGPT / GEMINI GENERAL:</span></span>
+<span class="line"><span>Fuente de respuestas: TODO internet + datos de entrenamiento</span></span>
+<span class="line"><span>Riesgo: puede mezclar tu libro de bioquímica con un artículo</span></span>
+<span class="line"><span>        de blog de 2019 que estaba desactualizado</span></span>
+<span class="line"><span>Ideal para: preguntas generales, exploración</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NOTEBOOKLM:</span></span>
+<span class="line"><span>Fuente de respuestas: SOLO lo que tú subes</span></span>
+<span class="line"><span>Resultado: respuestas citadas con el número de página exacto</span></span>
+<span class="line"><span>           de TU material</span></span>
+<span class="line"><span>Ideal para: estudiar material específico con certeza de fuente</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cómo-funciona-notebooklm-por-dentro">Cómo Funciona NotebookLM Por Dentro</h3>
+<p>NotebookLM es el compañero de investigación y pensamiento fundamentado en fuentes de Google que transforma los documentos, enlaces y medios en los que ya confías en un espacio de trabajo interactivo. Carga PDFs, Google Docs, sitios web, videos de YouTube, presentaciones y archivos de audio, y NotebookLM lee todo por ti, luego responde preguntas con citas en línea de tus propios materiales.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>TU MATERIAL</span></span>
+<span class="line"><span>(PDFs, videos, notas, páginas web)</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>    [NotebookLM los indexa]</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>    Cuando preguntas algo:</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>NotebookLM → busca en TUS fuentes → genera respuesta</span></span>
+<span class="line"><span>           → añade cita exacta de dónde vino la info</span></span>
+<span class="line"><span>           → muestra el fragmento original para verificar</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="lo-que-notebooklm-puede-hacer-por-un-estudiante">Lo Que Notebooklm Puede Hacer Por Un Estudiante</h3>
+<p>Para los estudiantes, puede convertirse en un compañero de estudio. Para los investigadores, puede acelerar la revisión de literatura. Puede resumir notas de clases, crear guías de estudio, y ayudar a los estudiantes a aprender nuevos temas más rápido.</p>
+<p>En términos concretos:</p>
+<ul>
+<li>🎧 <strong>Audio Overviews</strong> — convierte tu material en un podcast de dos presentadores de IA discutiendo los conceptos clave</li>
+<li>🗺️ <strong>Mind Maps</strong> — diagrama visual de cómo se conectan todas las ideas de tus fuentes</li>
+<li>💬 <strong>Chat con citas</strong> — pregunta cualquier cosa, recibe respuesta con número de página</li>
+<li>📋 <strong>Study Guides</strong> — guías de estudio generadas automáticamente</li>
+<li>🧩 <strong>Quizzes</strong> — preguntas de práctica basadas en tu material</li>
+<li>🃏 <strong>Flashcards</strong> — tarjetas de memorización generadas al instante</li>
+<li>🎬 <strong>Video Overviews</strong> — explicaciones visuales con diapositivas animadas <em>(nuevo 2026)</em></li>
+<li>🔬 <strong>Deep Research</strong> — investigación multi-paso sobre tu tema</li>
+</ul>
+<hr>
+<p><strong>Script Kitty:</strong> 🤩 <em>“¿Y todo eso basado en MI material específico?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Todo basado en lo que tú subas. Nada más.”</em></p>
+<p><strong>Script Kitty:</strong> 🤩 <em>“¿Por qué nadie me dijo esto antes?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Te lo estoy diciendo ahora. Abre la laptop.”</em></p>
+<hr>
+<h2 id="-episodio-2-tu-primer-notebook--setup-profesional">🎬 EPISODIO 2: Tu Primer Notebook — Setup Profesional</h2>
+<h3 id="qué-es-un-notebook-exactamente">”¿Qué Es un Notebook Exactamente?”</h3>
+<p><em>Lunes, 9:15 AM.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 🤔 <em>“Oliver, abrí NotebookLM. Hay un botón que dice ‘Crear Notebook’. ¿Qué es un notebook exactamente?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Imagina una carpeta inteligente. Metes documentos, el notebook los aprende, y luego puedes hablar con ellos.”</em></p>
+<p><strong>Script Kitty:</strong> 🤔 <em>“¿Hablar con documentos?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Sí. Y los documentos te responden con el número de página exacto de donde sacaron la información.”</em></p>
+<p><em>Script Kitty mira su laptop con ojos nuevos.</em></p>
+<hr>
+<h3 id="cómo-crear-tu-primer-notebook">Cómo Crear Tu Primer Notebook</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PASO 1: Accede a NotebookLM</span></span>
+<span class="line"><span>→ notebooklm.google.com</span></span>
+<span class="line"><span>→ Inicia sesión con tu cuenta de Google</span></span>
+<span class="line"><span>→ Clic en "Nuevo notebook" o el botón "+"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 2: Dale un nombre estratégico</span></span>
+<span class="line"><span>❌ MAL: "Estudio", "Mis notas", "Examen"</span></span>
+<span class="line"><span>✅ BIEN: "Certificación AWS-SAA — Módulo 1: Fundamentos"</span></span>
+<span class="line"><span>        "Biología Celular — Parcial 2 — Mitocondria y Ribosomas"</span></span>
+<span class="line"><span>        "MBA — Estrategia Competitiva — Porter y Blue Ocean"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>El nombre importa porque cuando tienes 20+ notebooks,</span></span>
+<span class="line"><span>necesitas saber exactamente qué hay en cada uno.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 3: Carga tus fuentes (lo veremos en detalle en Ep. 3)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 4: Empieza a interactuar</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="la-anatomía-de-notebooklm--conoce-tu-herramienta">La Anatomía de NotebookLM — Conoce Tu Herramienta</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>┌─────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│ 📓 NOMBRE DEL NOTEBOOK                                  │</span></span>
+<span class="line"><span>│─────────────────────────────────────────────────────────│</span></span>
+<span class="line"><span>│                    │              │                     │</span></span>
+<span class="line"><span>│  📂 PANEL DE       │  💬 CHAT     │  🎛️ STUDIO         │</span></span>
+<span class="line"><span>│  FUENTES           │              │                     │</span></span>
+<span class="line"><span>│                    │  Aquí haces  │  Aquí generas:      │</span></span>
+<span class="line"><span>│  Lista de todo     │  preguntas   │  - Audio Overviews  │</span></span>
+<span class="line"><span>│  lo que cargaste   │  y recibes   │  - Video Overviews  │</span></span>
+<span class="line"><span>│                    │  respuestas  │  - Mind Maps        │</span></span>
+<span class="line"><span>│  PDF, YouTube,     │  con citas   │  - Study Guides     │</span></span>
+<span class="line"><span>│  Docs, URLs...     │  exactas     │  - Quizzes          │</span></span>
+<span class="line"><span>│                    │              │  - Flashcards       │</span></span>
+<span class="line"><span>│  [+ Agregar        │              │  - Infographics     │</span></span>
+<span class="line"><span>│   fuente]          │              │  - Slide Decks      │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="los-límites-que-necesitas-conocer">Los Límites que Necesitas Conocer</h3>
+<p>Fuentes por notebook: 50 (Free), 100 (Plus), 300 (Pro), 600 (Ultra). Máximo por fuente: 500,000 palabras o 200 MB. Chats diarios: 50 (Free) hasta 5,000 (Ultra). Ventana de contexto: 1 millón de tokens en todos los planes desde enero 2026.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PLAN GRATUITO — Para empezar (recomendado para probar):</span></span>
+<span class="line"><span>✅ 100 notebooks</span></span>
+<span class="line"><span>✅ 50 fuentes por notebook</span></span>
+<span class="line"><span>✅ 50 chats diarios</span></span>
+<span class="line"><span>✅ 3 Audio Overviews por día</span></span>
+<span class="line"><span>✅ Mind Maps ilimitados</span></span>
+<span class="line"><span>✅ 1M tokens de contexto</span></span>
+<span class="line"><span>✅ Todas las features core</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PLUS ($7.99/mes — El sweet spot para estudiantes):</span></span>
+<span class="line"><span>✅ 100 notebooks → mismo límite</span></span>
+<span class="line"><span>✅ 50 fuentes → 100 fuentes por notebook</span></span>
+<span class="line"><span>✅ Audio Overviews: 3/día → más generosos</span></span>
+<span class="line"><span>✅ Deep Research: 10/mes → 3/día</span></span>
+<span class="line"><span>✅ Plan familiar (hasta 5 personas)</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 <strong>Consejo de Oliver:</strong> El plan gratuito es notablemente generoso. Tienes acceso a cada función core — Deep Research, Audio/Video Overviews, Slide Decks, Infographics, la ventana de contexto completa de 1 millón de tokens — sin período de prueba ni expiración. Empieza gratis. Solo actualiza cuando realmente sientas el límite.</p>
+</blockquote>
+<hr>
+<h2 id="-episodio-3-las-fuentes--qué-puede-comer-notebooklm">🎬 EPISODIO 3: Las Fuentes — Qué Puede “Comer” NotebookLM</h2>
+<h3 id="intenté-subir-todo-y-se-atascó">”Intenté Subir Todo y Se Atascó”</h3>
+<p><em>Lunes, 10:00 AM. Script Kitty intentó subir su biblioteca entera.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 😤 <em>“Oliver, intenté subir 30 PDFs, 5 videos de YouTube, mis notas de OneNote, y el sitio web oficial de AWS. Algunos fallaron, otros tardaron siglos, y no sé qué pasó con mis notas de OneNote.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Tienes estrategia para qué sube dónde?”</em></p>
+<p><strong>Script Kitty:</strong> 😤 <em>“Subir todo a un solo notebook y que la IA lo resuelva.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Eso no es estrategia. Eso es caos con buenas intenciones.”</em></p>
+<hr>
+<h3 id="los-tipos-de-fuentes--guía-completa">Los Tipos de Fuentes — Guía Completa</h3>
+<p>NotebookLM acepta los mismos tipos de fuente independientemente del plan: PDFs, Google Docs, Google Slides, sitios web, videos de YouTube y archivos de audio.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>📄 DOCUMENTOS DE TEXTO:</span></span>
+<span class="line"><span>✅ PDF              → El formato más confiable</span></span>
+<span class="line"><span>✅ Google Docs      → Integración nativa perfecta</span></span>
+<span class="line"><span>✅ Google Slides    → Tus presentaciones de clase</span></span>
+<span class="line"><span>✅ TXT / Markdown  → Notas en texto plano</span></span>
+<span class="line"><span>❌ Word (.docx)    → Convierte a PDF o Google Docs primero</span></span>
+<span class="line"><span>❌ OneNote         → Exporta a PDF antes de subir</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>🎬 CONTENIDO MULTIMEDIA:</span></span>
+<span class="line"><span>✅ YouTube URLs     → Extrae la transcripción automáticamente</span></span>
+<span class="line"><span>✅ Archivos de audio (MP3, WAV, M4A)</span></span>
+<span class="line"><span>✅ Video Overviews de otros notebooks</span></span>
+<span class="line"><span>❌ Videos locales de tu computadora (no soportado)</span></span>
+<span class="line"><span>   → Sube el video a YouTube como "no listado" primero</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>🌐 WEB:</span></span>
+<span class="line"><span>✅ URLs de sitios web → Captura el contenido de la página</span></span>
+<span class="line"><span>✅ Google Drive files (compartidos contigo)</span></span>
+<span class="line"><span>⚠️ Páginas detrás de login → No puede acceder</span></span>
+<span class="line"><span>⚠️ PDFs protegidos con contraseña → Desprotege primero</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>📝 TEXTO DIRECTO:</span></span>
+<span class="line"><span>✅ "Copiar/Pegar texto" → Pega texto directamente como fuente</span></span>
+<span class="line"><span>   → Perfecto para notas de clase que tienes en Word/OneNote</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="la-estrategia-de-fuentes-de-oliver">La Estrategia de Fuentes de Oliver</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>REGLA 1: Calidad sobre cantidad</span></span>
+<span class="line"><span>❌ MAL: 50 fuentes genéricas sobre el tema</span></span>
+<span class="line"><span>✅ BIEN: 10-15 fuentes curadas y altamente relevantes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"3-10 fuentes enfocadas producen la mejor calidad de respuestas.</span></span>
+<span class="line"><span>Más fuentes diluyen la señal." — NotebookLM Guide</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>REGLA 2: Un notebook por tema, no uno para todo</span></span>
+<span class="line"><span>❌ MAL: "Toda mi certificación AWS" en un notebook (300 páginas)</span></span>
+<span class="line"><span>✅ BIEN: </span></span>
+<span class="line"><span>   Notebook 1: "AWS — IAM y Seguridad" (50-80 páginas)</span></span>
+<span class="line"><span>   Notebook 2: "AWS — Networking y VPC" (50-80 páginas)</span></span>
+<span class="line"><span>   Notebook 3: "AWS — Compute: EC2 y Lambda" (50-80 páginas)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>REGLA 3: Nombra las fuentes (no solo el notebook)</span></span>
+<span class="line"><span>Cuando subes una fuente, renómbrala dentro de NotebookLM:</span></span>
+<span class="line"><span>❌ "documento (3).pdf"</span></span>
+<span class="line"><span>✅ "AWS SAA — Capítulo 5: VPC y Subnetting"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>REGLA 4: Prioriza el material oficial</span></span>
+<span class="line"><span>Para certificaciones: usa la documentación oficial</span></span>
+<span class="line"><span>Para universidad: sube los apuntes del profesor primero</span></span>
+<span class="line"><span>Para investigación: papers peer-reviewed > blogs</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cómo-optimizar-pdfs-antes-de-subir">Cómo Optimizar PDFs Antes de Subir</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#6A737D"># Si tienes PDFs escaneados (imágenes, no texto seleccionable),</span></span>
+<span class="line"><span style="color:#6A737D"># NotebookLM no puede leerlos bien. Solución:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># OPCIÓN 1: Adobe Acrobat (OCR gratuito online en smallpdf.com)</span></span>
+<span class="line"><span style="color:#6A737D"># OPCIÓN 2: Google Drive tiene OCR incorporado</span></span>
+<span class="line"><span style="color:#6A737D">#   → Sube el PDF a Google Drive</span></span>
+<span class="line"><span style="color:#6A737D">#   → Clic derecho → Abrir con Google Docs</span></span>
+<span class="line"><span style="color:#6A737D">#   → Google Docs extrae el texto automáticamente</span></span>
+<span class="line"><span style="color:#6A737D">#   → Descarga como PDF o agrégalo directo desde Drive</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># OPCIÓN 3: Para libros de texto físicos</span></span>
+<span class="line"><span style="color:#6A737D">#   → Fotografía las páginas con CamScanner o Adobe Scan</span></span>
+<span class="line"><span style="color:#6A737D">#   → Convierten a PDF con OCR automáticamente</span></span>
+<span class="line"><span style="color:#6A737D">#   → Sube el resultado a NotebookLM</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<p><em>20 minutos después. Script Kitty tiene 3 notebooks organizados con 12 fuentes cada uno.</em></p>
+<p><strong>Script Kitty:</strong> 😊 <em>“Oliver. Tres notebooks temáticos, fuentes renombradas, solo el material del primer módulo.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Cuánto tiempo tardaste?”</em></p>
+<p><strong>Script Kitty:</strong> 😊 <em>“20 minutos.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Y cuánto tardabas antes organizando en carpetas?”</em></p>
+<p><strong>Script Kitty:</strong> 😊 <em>“…nunca organizaba. Todo estaba en Descargas.”</em></p>
+<hr>
+<h2 id="-episodio-4-audio-overviews--estudia-mientras-vives-tu-vida">🎬 EPISODIO 4: Audio Overviews — Estudia Mientras Vives Tu Vida</h2>
+<h3 id="puedo-estudiar-mientras-manejo">”¿Puedo Estudiar Mientras Manejo?”</h3>
+<p><em>Martes, 7:30 AM. Script Kitty tiene 45 minutos de tráfico cada día.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 🤔 <em>“Oliver. Tengo 45 minutos de tráfico ida y 45 de vuelta. ¿Hay algo productivo que pueda hacer?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Audio Overview. Convierte tu material en un podcast. Escúchalo en el coche.”</em></p>
+<p><strong>Script Kitty:</strong> 🤔 <em>“¿La IA me lee el libro en voz alta?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“No. Dos presentadores de IA discuten los conceptos más importantes de tu material como si fueran un podcast real. No es una lectura — es una conversación que explica, da ejemplos, y conecta ideas.”</em></p>
+<p><strong>Script Kitty:</strong> 🤔 <em>“¿Cómo de real suena?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Pruébalo. Vas a olvidarte de que es IA en los primeros 2 minutos.”</em></p>
+<hr>
+<h3 id="audio-overviews--la-función-que-lo-cambió-todo">Audio Overviews — La Función que lo Cambió Todo</h3>
+<p>Los Audio Overviews son discusiones profundas entre presentadores de IA que proporcionan resúmenes detallados de los temas clave en tus fuentes cargadas. Estos resúmenes están diseñados para ser un reflejo objetivo del contenido de tus fuentes, en lugar de opiniones subjetivas de los presentadores de IA.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CÓMO GENERARLO:</span></span>
+<span class="line"><span>1. Abre tu notebook</span></span>
+<span class="line"><span>2. En el panel Studio (derecha) → clic "Audio Overview"</span></span>
+<span class="line"><span>3. OPCIONAL pero poderoso: clic en "Customize"</span></span>
+<span class="line"><span>   → "Focus on": especifica qué aspectos quieres que enfaticen</span></span>
+<span class="line"><span>   → "Adjust level": de estudiante a experto</span></span>
+<span class="line"><span>   → "Language": disponible en varios idiomas</span></span>
+<span class="line"><span>4. Clic "Generate" → espera 3-8 minutos</span></span>
+<span class="line"><span>5. ¡Descarga para escuchar offline!</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="el-secreto-del-customize--donde-está-la-magia-real">El Secreto del Customize — Donde Está la Magia Real</h3>
+<p>La mayoría de usuarios hace clic en “Generate” sin personalizar. Oliver nunca hace eso.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>SIN PERSONALIZAR:</span></span>
+<span class="line"><span>→ Resumen general de todo el material</span></span>
+<span class="line"><span>→ Útil, pero genérico</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CON "FOCUS ON" PERSONALIZADO:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Para repasar antes de un examen:</span></span>
+<span class="line"><span>"Focus on: las definiciones más importantes, los conceptos</span></span>
+<span class="line"><span>que más se confunden entre sí, y los ejemplos prácticos</span></span>
+<span class="line"><span>que ilustran cada concepto del capítulo."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Para entender un concepto difícil:</span></span>
+<span class="line"><span>"Focus on: explicar el modelo OSI de networking como si</span></span>
+<span class="line"><span>fuera una historia de cómo viaja un mensaje desde tu </span></span>
+<span class="line"><span>computadora hasta un servidor, con una analogía de </span></span>
+<span class="line"><span>mensajería postal para cada capa."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Para conectar temas:</span></span>
+<span class="line"><span>"Focus on: cómo se relacionan los conceptos de IAM policies,</span></span>
+<span class="line"><span>roles, y permissions groups, y en qué situaciones reales</span></span>
+<span class="line"><span>de una empresa usarías cada uno."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Para preparar una entrevista:</span></span>
+<span class="line"><span>"Focus on: las preguntas de entrevista más comunes sobre</span></span>
+<span class="line"><span>este tema y cómo responderlas con ejemplos concretos."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="usando-audio-overviews-en-tu-vida-real">Usando Audio Overviews en tu Vida Real</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>COMMUTE (45 min al trabajo):</span></span>
+<span class="line"><span>→ Audio Overview del tema del día</span></span>
+<span class="line"><span>→ Escuchas mientras manejas/tomas el metro</span></span>
+<span class="line"><span>→ Llegas a la oficina con una comprensión general del tema</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>EJERCICIO (30 min):</span></span>
+<span class="line"><span>→ Audio Overview del capítulo que leerás esa noche</span></span>
+<span class="line"><span>→ Tu cerebro empieza a procesar el vocabulario y conceptos</span></span>
+<span class="line"><span>→ Cuando leas (o uses el chat), todo es más familiar</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MIENTRAS COCINAS / LIMPIAS:</span></span>
+<span class="line"><span>→ Audio Overview de repaso de lo estudiado ayer</span></span>
+<span class="line"><span>→ El spaced repetition pasivo funciona mientras haces</span></span>
+<span class="line"><span>   actividades que no requieren atención visual</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ANTES DE DORMIR:</span></span>
+<span class="line"><span>→ Audio Overview corto (Brief, menos de 4 min)</span></span>
+<span class="line"><span>→ Tu cerebro consolida memoria durante el sueño</span></span>
+<span class="line"><span>→ Aprovecha la ventana de consolidación de memoria</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>DURANTE UN DESCANSO DE 10 MINUTOS:</span></span>
+<span class="line"><span>→ Audio Overview en 1.5x velocidad</span></span>
+<span class="line"><span>→ Repaso rápido de los puntos principales</span></span>
+<span class="line"><span>→ Más efectivo que scrollear Instagram</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="los-dos-formatos-de-audio-overview">Los Dos Formatos de Audio Overview</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>BRIEF (menos de 4 minutos) — Plan Plus+:</span></span>
+<span class="line"><span>→ Solo los puntos más esenciales</span></span>
+<span class="line"><span>→ Perfecto para repaso rápido</span></span>
+<span class="line"><span>→ Antes de un quiz o examen</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>DEEP DIVE (hasta 40 minutos) — Plan Plus+:</span></span>
+<span class="line"><span>→ Cobertura profunda de todos los temas</span></span>
+<span class="line"><span>→ Más ejemplos, más conexiones, más profundidad</span></span>
+<span class="line"><span>→ Para material denso que necesitas dominar</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>STANDARD (el gratuito):</span></span>
+<span class="line"><span>→ 8-15 minutos típicamente</span></span>
+<span class="line"><span>→ Equilibrio perfecto para la mayoría de los casos</span></span>
+<span class="line"><span>→ 3 por día en el plan gratuito</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<p><em>Tres días después. Script Kitty llega a la oficina.</em></p>
+<p><strong>Script Kitty:</strong> 😎 <em>“Oliver. En 3 días de commute escuché 6 Audio Overviews. Es como si alguien me hubiera pre-digerido el material y yo solo tuviera que absorberlo.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Y cuánto recuerdas?”</em></p>
+<p><strong>Script Kitty:</strong> 😎 <em>“Mucho más que leyendo. Ayer usé el chat para profundizar en algo que escuché en el audio y lo entendí mucho más rápido porque ya tenía el contexto.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Eso se llama activación de conocimiento previo. El audio crea el marco. El chat llena los detalles.”</em></p>
+<hr>
+<h2 id="-episodio-5-mind-maps--el-mapa-de-tu-conocimiento">🎬 EPISODIO 5: Mind Maps — El Mapa de Tu Conocimiento</h2>
+<h3 id="no-entiendo-cómo-se-relaciona-todo">”No Entiendo Cómo Se Relaciona Todo”</h3>
+<p><em>Miércoles, 2:00 PM.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 😩 <em>“Oliver. Sé muchos datos sueltos. IAM tiene policies. Las policies tienen statements. Los statements tienen actions y resources. Pero… ¿cómo encaja todo junto? No veo el bosque. Solo veo árboles.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Mind Map. Genera uno. Ahora.”</em></p>
+<hr>
+<h3 id="mind-maps--ver-el-bosque-no-solo-los-árboles">Mind Maps — Ver el Bosque, No Solo los Árboles</h3>
+<p>Los Mind Maps en NotebookLM resumen visualmente tus fuentes cargadas, mostrando los temas principales y las ideas relacionadas como un diagrama ramificado. Obtén una visión general rápida: comprende el panorama general y los temas clave de tu material de fuente rápidamente. Explora y aprende cosas nuevas fácilmente: obtén un punto de entrada claro a nuevos temas. Conecta los puntos: descubre visualmente cómo se relacionan las diferentes ideas.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CÓMO GENERARLO:</span></span>
+<span class="line"><span>1. Panel Studio → "Mind Map"</span></span>
+<span class="line"><span>2. Se genera automáticamente basado en TUS fuentes</span></span>
+<span class="line"><span>3. Interactividad:</span></span>
+<span class="line"><span>   → Clic en cualquier nodo → se expande con subtemas</span></span>
+<span class="line"><span>   → Clic en subtema → muestra resumen de ese concepto</span></span>
+<span class="line"><span>   → Cada nodo está citado con tu fuente original</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cómo-leer-un-mind-map-para-estudiar">Cómo Leer un Mind Map para Estudiar</h3>
+<p>Un mapa mental puede revelar cómo una idea fluye hacia otra, ayudándote a ver el panorama completo. En lugar de perderte en los detalles, puedes captar rápidamente la estructura principal de un argumento o los temas clave en tu material de investigación. Al ver la información organizada espacialmente, a menudo puedes formar recuerdos más sólidos y una comprensión más profunda.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ESTRATEGIA DE ESTUDIO CON MIND MAPS:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 1 — La vista aérea (5 minutos):</span></span>
+<span class="line"><span>Mira el mind map completo sin hacer clic en nada.</span></span>
+<span class="line"><span>→ ¿Cuántos nodos principales hay?</span></span>
+<span class="line"><span>→ ¿Reconoces todos los temas o hay algunos que son novedad?</span></span>
+<span class="line"><span>→ Identifica visualmente qué áreas son más densas (más subtemas)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 2 — Exploración guiada (15-20 minutos):</span></span>
+<span class="line"><span>Haz clic en cada nodo principal en orden.</span></span>
+<span class="line"><span>→ Lee el resumen que aparece</span></span>
+<span class="line"><span>→ Para cada subtema: ¿puedes explicarlo con tus propias palabras?</span></span>
+<span class="line"><span>→ Si NO puedes: ese es tu punto débil — ve al chat para profundizar</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 3 — El Test del Mapa Tapado (10 minutos):</span></span>
+<span class="line"><span>Abre el Mind Map pero no hagas zoom.</span></span>
+<span class="line"><span>→ Para cada nodo principal, intenta recordar sus subtemas</span></span>
+<span class="line"><span>→ Luego haz clic para verificar</span></span>
+<span class="line"><span>→ Los que no recordaste = los que más necesitas repasar</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 4 — Conecta los Nodos (reflexión activa):</span></span>
+<span class="line"><span>→ ¿Qué nodos se relacionan entre sí aunque no estén conectados?</span></span>
+<span class="line"><span>→ ¿Hay algún concepto que aparece en múltiples ramas?</span></span>
+<span class="line"><span>→ ¿Hay algún nodo que debería estar conectado a otro pero no lo está?</span></span>
+<span class="line"><span>   (Esto revela brechas en tu material)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="el-truco-de-los-múltiples-mind-maps">El Truco de los Múltiples Mind Maps</h3>
+<p>¿Estudiando para un gran examen? Ahora puedes crear y almacenar múltiples outputs del mismo tipo en un solo notebook. Esto desbloquea nuevas posibilidades para cómo aprendes.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>APLICACIÓN PRÁCTICA — Misma materia, diferentes ángulos:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Mind Map 1 — Mapa Conceptual General:</span></span>
+<span class="line"><span>"Genera el mind map estándar de todo el material"</span></span>
+<span class="line"><span>→ Panorama completo, todas las relaciones</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Mind Map 2 — Solo Definiciones:</span></span>
+<span class="line"><span>Antes de generarlo: "Focus on: solo los términos técnicos</span></span>
+<span class="line"><span>y sus definiciones, organizado por familia de conceptos"</span></span>
+<span class="line"><span>→ Vocabulario técnico organizado visualmente</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Mind Map 3 — Casos de Uso Prácticos:</span></span>
+<span class="line"><span>"Focus on: en qué situaciones reales aplica cada concepto,</span></span>
+<span class="line"><span>con ejemplos del mundo empresarial"</span></span>
+<span class="line"><span>→ Ayuda a contextualizar lo teórico</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Mind Map 4 — Para el Examen:</span></span>
+<span class="line"><span>"Focus on: los conceptos que más frecuentemente aparecen</span></span>
+<span class="line"><span>en exámenes de certificación, las diferencias confusas</span></span>
+<span class="line"><span>entre conceptos similares"</span></span>
+<span class="line"><span>→ Preparación específica para evaluación</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-6-el-chat-con-tus-fuentes--el-tutor-que-siempre-tiene-tiempo">🎬 EPISODIO 6: El Chat con Tus Fuentes — El Tutor que Siempre Tiene Tiempo</h2>
+<h3 id="le-pregunté-algo-y-me-citó-la-página-exacta">”Le Pregunté Algo y Me Citó la Página Exacta”</h3>
+<p><em>Jueves, 7:00 PM.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 🤩 <em>“Oliver. Le pregunté al chat de NotebookLM por qué AWS Lambda tiene límite de tiempo de ejecución de 15 minutos. Y me respondió con la explicación de mi libro, con la cita del capítulo 7, página 234, sección 3.2. ¡ES COMO TENER UN TUTOR QUE MEMORIZÓ MI LIBRO!”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Exactamente. Ahora aprende a hacerle las preguntas correctas.”</em></p>
+<hr>
+<h3 id="el-chat--tu-tutor-personal-247">El Chat — Tu Tutor Personal 24/7</h3>
+<p>El chat de NotebookLM es fundamentalmente diferente a preguntar en ChatGPT o Gemini:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CHATGPT/GEMINI:                 NOTEBOOKLM CHAT:</span></span>
+<span class="line"><span>Responde desde todo internet     Responde desde TUS fuentes</span></span>
+<span class="line"><span>No cita de dónde viene          Cita la fuente + sección exacta</span></span>
+<span class="line"><span>Puede inventar o contradecir    Solo dice lo que está en tus docs</span></span>
+<span class="line"><span>tu material                     → Si no está, te dice que no está</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="los-10-tipos-de-preguntas-que-debes-hacerle">Los 10 Tipos de Preguntas que Debes Hacerle</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. DEFINICIÓN PROFUNDA</span></span>
+<span class="line"><span>"Explícame qué es [concepto] como si tuviera 15 años,</span></span>
+<span class="line"><span>luego como si fuera un experto. Cita de dónde sacas cada parte."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>2. COMPARACIÓN</span></span>
+<span class="line"><span>"¿Cuál es la diferencia entre [A] y [B]? Cuando uso uno</span></span>
+<span class="line"><span>y cuándo uso el otro? Dame un ejemplo concreto de cada uno."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>3. APLICACIÓN PRÁCTICA</span></span>
+<span class="line"><span>"Dame 3 escenarios del mundo real donde usaría [concepto].</span></span>
+<span class="line"><span>Para cada escenario, explica por qué este enfoque es el correcto."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>4. PREGUNTAS DE EXAMEN</span></span>
+<span class="line"><span>"Genera 5 preguntas de examen de opción múltiple sobre [tema],</span></span>
+<span class="line"><span>con 4 opciones por pregunta. Incluye la respuesta correcta</span></span>
+<span class="line"><span>y explica por qué las otras opciones son incorrectas."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>5. ERROR CONCEPTUAL INTENCIONAL</span></span>
+<span class="line"><span>"Voy a describir cómo creo que funciona [concepto].</span></span>
+<span class="line"><span>Corrígeme si me equivoco en algo:</span></span>
+<span class="line"><span>[tu descripción, incluyendo errores a propósito]"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>6. EL RESUMEN PROGRESIVO</span></span>
+<span class="line"><span>"Explícame [tema] en exactamente 3 oraciones.</span></span>
+<span class="line"><span>Luego en un párrafo. Luego en detalle completo."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>7. ANALOGÍAS Y METÁFORAS</span></span>
+<span class="line"><span>"Explica [concepto técnico] usando SOLO la analogía de</span></span>
+<span class="line"><span>[algo cotidiano: una cocina/un aeropuerto/una empresa de mensajería]"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>8. CONEXIONES ENTRE TEMAS</span></span>
+<span class="line"><span>"¿Cómo se relaciona [tema A] con [tema B]?</span></span>
+<span class="line"><span>¿En qué situación ambos conceptos trabajarían juntos?"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>9. DEBUGGING DE COMPRENSIÓN</span></span>
+<span class="line"><span>"Voy a explicarte [concepto] con mis propias palabras.</span></span>
+<span class="line"><span>Dime si entendí bien y qué matices me faltan:</span></span>
+<span class="line"><span>[tu explicación]"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>10. SIMULACIÓN DE EXAMEN ORAL</span></span>
+<span class="line"><span>"Vas a ser mi examinador. Hazme preguntas sobre [tema]</span></span>
+<span class="line"><span>una a la vez. Espera mi respuesta antes de la siguiente.</span></span>
+<span class="line"><span>Evalúa mis respuestas y dame feedback detallado."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="el-prompt-de-tutoría-profunda--la-técnica-de-oliver">El Prompt de Tutoría Profunda — La Técnica de Oliver</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Para material que simplemente no entiendes:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"Hay un concepto en mis fuentes que no entiendo bien: [concepto].</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Te pido que me lo expliques en 4 pasos:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 1: Explícalo en lenguaje completamente simple,</span></span>
+<span class="line"><span>como si le hablaras a alguien que nunca oyó el término.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 2: Dame la analogía más intuitiva posible del</span></span>
+<span class="line"><span>mundo real para entender la esencia del concepto.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 3: Ahora dame la definición técnica correcta,</span></span>
+<span class="line"><span>con todas las precisiones necesarias.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 4: Dame 2 ejemplos concretos:</span></span>
+<span class="line"><span>- Uno donde el concepto funciona correctamente</span></span>
+<span class="line"><span>- Uno donde algo sale mal por no aplicarlo bien</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Cita de mis fuentes en cada paso donde sea relevante."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="lo-que-pasa-cuando-no-está-en-tus-fuentes">Lo Que Pasa Cuando No Está en Tus Fuentes</h3>
+<p>Esta es una de las características más valiosas de NotebookLM para el estudio:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Si le preguntas algo que NO está en tus fuentes:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>→ NotebookLM responde algo como:</span></span>
+<span class="line"><span>  "No encuentro información sobre esto en tus fuentes.</span></span>
+<span class="line"><span>   Considera agregar material adicional sobre [tema]</span></span>
+<span class="line"><span>   para obtener una respuesta más completa."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>¿Por qué esto es BUENO para estudiar?</span></span>
+<span class="line"><span>→ Te dice exactamente dónde hay brechas en tu material</span></span>
+<span class="line"><span>→ Te fuerza a conseguir el recurso correcto</span></span>
+<span class="line"><span>→ No te da información inventada que podría confundirte</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Cuando NotebookLM dice "no está en tus fuentes" =</span></span>
+<span class="line"><span>señal de que necesitas buscar ese material específico.</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-7-study-guides-quizzes-y-flashcards">🎬 EPISODIO 7: Study Guides, Quizzes y Flashcards</h2>
+<h3 id="necesito-saber-si-realmente-aprendí">”Necesito Saber si Realmente Aprendí”</h3>
+<p><em>Viernes, 8:00 PM. El examen es el lunes.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 😰 <em>“Oliver. El examen es el lunes. Creo que aprendí todo… pero no sé cómo saber si realmente lo aprendí.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“La única forma de saber si aprendiste es siendo evaluado. NotebookLM puede evaluarte ahora mismo.”</em></p>
+<hr>
+<h3 id="study-guide--el-mapa-de-todo-lo-importante">Study Guide — El Mapa de Todo lo Importante</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CÓMO GENERARLO:</span></span>
+<span class="line"><span>Panel Studio → "Study Guide" (o desde el chat: "Genera una</span></span>
+<span class="line"><span>guía de estudio completa para este material")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>QUÉ INCLUYE UN BUEN STUDY GUIDE:</span></span>
+<span class="line"><span>✅ Conceptos clave con definiciones</span></span>
+<span class="line"><span>✅ Términos técnicos importantes</span></span>
+<span class="line"><span>✅ Relaciones entre conceptos</span></span>
+<span class="line"><span>✅ Preguntas de práctica básicas</span></span>
+<span class="line"><span>✅ Puntos de enfoque para el examen</span></span>
+<span class="line"><span>✅ Citas de las secciones relevantes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CÓMO PERSONALIZARLO DESDE EL CHAT:</span></span>
+<span class="line"><span>"Genera una guía de estudio para el examen del lunes.</span></span>
+<span class="line"><span>Enfócate especialmente en:</span></span>
+<span class="line"><span>1. Las diferencias entre conceptos similares (los más confusos)</span></span>
+<span class="line"><span>2. Los 10 conceptos que más probablemente aparezcan en el examen</span></span>
+<span class="line"><span>3. Un glosario rápido de los 20 términos técnicos más importantes</span></span>
+<span class="line"><span>4. 5 preguntas de práctica con sus respuestas completas"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="quizzes--el-examen-antes-del-examen">Quizzes — El Examen Antes del Examen</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DESDE EL CHAT:</span></span>
+<span class="line"><span>"Crea un quiz de 15 preguntas de opción múltiple sobre [tema].</span></span>
+<span class="line"><span>Requisitos:</span></span>
+<span class="line"><span>- 4 opciones por pregunta (A, B, C, D)</span></span>
+<span class="line"><span>- Mezcla de dificultad: 5 básicas, 7 intermedias, 3 difíciles</span></span>
+<span class="line"><span>- Incluye casos prácticos, no solo definiciones</span></span>
+<span class="line"><span>- Al final del quiz, muestra respuestas con explicación de cada una</span></span>
+<span class="line"><span>- Para las incorrectas, explica por qué son incorrectas"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>QUIZ DE VERDADERO/FALSO (para repasar rápido):</span></span>
+<span class="line"><span>"Genera 20 afirmaciones sobre [tema].</span></span>
+<span class="line"><span>La mitad verdaderas, la mitad falsas.</span></span>
+<span class="line"><span>Después de que yo responda cada una, dime si estoy bien</span></span>
+<span class="line"><span>y explica el razonamiento."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>QUIZ TIPO EXAMEN DE CERTIFICACIÓN:</span></span>
+<span class="line"><span>"Genera 10 preguntas estilo AWS Associate Certification.</span></span>
+<span class="line"><span>Escenario + 4 opciones. La respuesta correcta debe ser</span></span>
+<span class="line"><span>la 'más correcta' aunque varias parezcan válidas —</span></span>
+<span class="line"><span>igual que en el examen real."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="flashcards--memorización-activa">Flashcards — Memorización Activa</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DESDE EL CHAT:</span></span>
+<span class="line"><span>"Genera 30 flashcards sobre [tema] en formato:</span></span>
+<span class="line"><span>FRENTE: [término o concepto o pregunta]</span></span>
+<span class="line"><span>DORSO: [definición o respuesta, máximo 3 oraciones]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Tipos de flashcards a incluir:</span></span>
+<span class="line"><span>- 10 de definición (¿Qué es X?)</span></span>
+<span class="line"><span>- 10 de aplicación (¿Cuándo se usa X?)</span></span>
+<span class="line"><span>- 10 de comparación (¿Diferencia entre X e Y?)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Cita la fuente de cada flashcard."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PARA EXPORTAR A ANKI (la mejor app de flashcards):</span></span>
+<span class="line"><span>"Genera las flashcards en formato CSV:</span></span>
+<span class="line"><span>Columna 1: Frente</span></span>
+<span class="line"><span>Columna 2: Dorso</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[Luego importas el CSV directamente a Anki]"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="el-sistema-de-evaluación-progresiva-de-oliver">El Sistema de Evaluación Progresiva de Oliver</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DÍA 1 (después de estudiar el material):</span></span>
+<span class="line"><span>→ Genera Study Guide → léelo para confirmar comprensión</span></span>
+<span class="line"><span>→ Quiz básico (5-10 preguntas) → identifica puntos débiles</span></span>
+<span class="line"><span>→ Regresa al chat para profundizar en lo que fallaste</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>DÍA 2-3 (práctica):</span></span>
+<span class="line"><span>→ Flashcards de los conceptos del Día 1</span></span>
+<span class="line"><span>→ Quiz intermedio (15-20 preguntas)</span></span>
+<span class="line"><span>→ Audio Overview mientras haces otra cosa (repaso pasivo)</span></span>
+<span class="line"><span>→ Mind Map review → ¿puedes explicar cada nodo?</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>DÍA 4 (casi listo):</span></span>
+<span class="line"><span>→ Quiz completo tipo examen real (30+ preguntas)</span></span>
+<span class="line"><span>→ Analiza los errores: ¿son de conceptos o de lectura?</span></span>
+<span class="line"><span>→ Study Guide de solo los puntos débiles identificados</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>DÍA 5 (día antes):</span></span>
+<span class="line"><span>→ Audio Overview en la mañana (activación)</span></span>
+<span class="line"><span>→ Repaso de flashcards (solo las que fallaste)</span></span>
+<span class="line"><span>→ 10 preguntas aleatorias del chat = calentamiento mental</span></span>
+<span class="line"><span>→ DUERME — la consolidación de memoria ocurre dormido</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-8-video-overviews--aprende-viendo-nuevo-2026">🎬 EPISODIO 8: Video Overviews — Aprende Viendo (Nuevo 2026)</h2>
+<h3 id="hay-algo-más-visual-que-el-audio">“¿Hay Algo Más Visual que el Audio?”</h3>
+<p><em>Sábado, 11:00 AM.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 🤔 <em>“Oliver. El Audio Overview me encanta para el coche. Pero cuando estoy en casa prefiero ver algo. ¿Hay algo más visual?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Video Overview. Lanzado en enero 2026. Son como diapositivas narradas — los presentadores de IA explican el material mientras aparecen visuales relevantes.”</em></p>
+<p><strong>Script Kitty:</strong> 🤔 <em>“¿Como una clase grabada?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Más personalizado. La clase es sobre TU material específico.”</em></p>
+<hr>
+<h3 id="video-overviews--la-evolución-del-audio">Video Overviews — La Evolución del Audio</h3>
+<p>El Video Overview es similar al Audio Overview, pero incorpora visuales junto con el audio. Personaliza el output basado en el formato deseado (explicativo o breve), idioma, estilo visual (incluyendo pizarra, kawaii, acuarela, o clásico), y llenando el prompt “¿En qué deben enfocarse los presentadores de IA?”.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ESTILOS VISUALES DISPONIBLES:</span></span>
+<span class="line"><span>🖊️ Whiteboard    → Pizarra con diagramas dibujándose en tiempo real</span></span>
+<span class="line"><span>                   Ideal para: conceptos técnicos, procesos paso a paso</span></span>
+<span class="line"><span>                   </span></span>
+<span class="line"><span>🎨 Kawaii        → Estilo ilustrado colorido y amigable</span></span>
+<span class="line"><span>                   Ideal para: conceptos abstractos, audiencias jóvenes</span></span>
+<span class="line"><span>                   </span></span>
+<span class="line"><span>🎨 Watercolor    → Estilo acuarela artístico</span></span>
+<span class="line"><span>                   Ideal para: humanidades, ciencias sociales, historia</span></span>
+<span class="line"><span>                   </span></span>
+<span class="line"><span>🎬 Classic       → Presentación limpia y profesional</span></span>
+<span class="line"><span>                   Ideal para: negocios, certificaciones, material técnico</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cuándo-usar-video-vs-audio-overview">Cuándo Usar Video vs Audio Overview</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>USA AUDIO OVERVIEW CUANDO:</span></span>
+<span class="line"><span>✅ Estás haciendo otra actividad (manejar, cocinar, ejercitar)</span></span>
+<span class="line"><span>✅ No tienes pantalla disponible</span></span>
+<span class="line"><span>✅ Quieres repasar mientras "descansas" los ojos</span></span>
+<span class="line"><span>✅ Es material que ya entiendes y solo quieres reforzar</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>USA VIDEO OVERVIEW CUANDO:</span></span>
+<span class="line"><span>✅ El material tiene diagramas, procesos, o arquitecturas</span></span>
+<span class="line"><span>✅ Necesitas ver el concepto ilustrado para entenderlo</span></span>
+<span class="line"><span>✅ Estás en casa/escritorio con pantalla disponible</span></span>
+<span class="line"><span>✅ El material es nuevo y complejo (necesitas el apoyo visual)</span></span>
+<span class="line"><span>✅ Quieres compartirlo con alguien más para enseñarle</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PARA DIFERENTES ESTILOS DE APRENDIZAJE:</span></span>
+<span class="line"><span>Visual → Video Overview (whiteboard o classic)</span></span>
+<span class="line"><span>Auditivo → Audio Overview</span></span>
+<span class="line"><span>Kinestésico → Chat interactivo + hacer quizzes</span></span>
+<span class="line"><span>Lector/Escritor → Study Guide + Chat + Flashcards</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="multitarea-inteligente-con-studio">Multitarea Inteligente con Studio</h3>
+<p>Ahora puedes multitareas en el Studio. Escucha el audio mientras exploras los mapas mentales para mayor productividad.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>LA COMBINACIÓN GANADORA:</span></span>
+<span class="line"><span>→ Audio Overview jugando en segundo plano</span></span>
+<span class="line"><span>→ Mind Map abierto mientras escuchas</span></span>
+<span class="line"><span>→ Haz clic en los nodos que el audio mencione</span></span>
+<span class="line"><span>→ Tu cerebro procesa la información por dos canales simultáneamente</span></span>
+<span class="line"><span>→ Retención significativamente mayor que solo audio o solo visual</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-9-la-arquitectura-de-notebooks">🎬 EPISODIO 9: La Arquitectura de Notebooks</h2>
+<h3 id="tengo-47-notebooks-y-no-encuentro-nada">”Tengo 47 Notebooks y No Encuentro Nada”</h3>
+<p><em>Tres semanas después. Script Kitty tiene demasiados notebooks.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 😩 <em>“Oliver. Seguí tu consejo de hacer notebooks separados por tema. Ahora tengo 47 notebooks. El de ‘IAM Policies’ y el de ‘IAM Roles’ tienen información duplicada, el de ‘AWS General’ tiene cosas que deberían estar en otros, y—”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Necesitas arquitectura, no solo notebooks.”</em></p>
+<hr>
+<h3 id="el-sistema-de-arquitectura-de-notebooks-de-oliver">El Sistema de Arquitectura de Notebooks de Oliver</h3>
+<p>Para estudiar en serio (certificaciones, maestrías, investigación), necesitas un sistema:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>NIVEL 1: NOTEBOOKS ATÓMICOS (el conocimiento base)</span></span>
+<span class="line"><span>Un tema específico y bien delimitado por notebook</span></span>
+<span class="line"><span>Ejemplo para AWS SAA:</span></span>
+<span class="line"><span>├── [AWS-01] Fundamentos: Cloud Computing y AWS Overview</span></span>
+<span class="line"><span>├── [AWS-02] IAM: Usuarios, Grupos, Roles y Policies</span></span>
+<span class="line"><span>├── [AWS-03] Networking: VPC, Subnets, Security Groups</span></span>
+<span class="line"><span>├── [AWS-04] Compute: EC2, Lambda, ECS, EKS</span></span>
+<span class="line"><span>├── [AWS-05] Storage: S3, EBS, EFS, Glacier</span></span>
+<span class="line"><span>├── [AWS-06] Databases: RDS, DynamoDB, ElastiCache</span></span>
+<span class="line"><span>├── [AWS-07] Security: KMS, CloudTrail, GuardDuty</span></span>
+<span class="line"><span>└── [AWS-08] Cost Optimization: Pricing y Billing</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NIVEL 2: NOTEBOOKS DE SÍNTESIS (conexiones entre temas)</span></span>
+<span class="line"><span>Combinas notas y hallazgos de los notebooks atómicos</span></span>
+<span class="line"><span>Ejemplo:</span></span>
+<span class="line"><span>├── [AWS-SYNTH-01] Arquitecturas de Alta Disponibilidad</span></span>
+<span class="line"><span>│   (combina EC2 + RDS + VPC + Load Balancing)</span></span>
+<span class="line"><span>├── [AWS-SYNTH-02] Seguridad End-to-End</span></span>
+<span class="line"><span>│   (combina IAM + KMS + CloudTrail + Security Groups)</span></span>
+<span class="line"><span>└── [AWS-SYNTH-03] Preguntas de Examen y Casos Prácticos</span></span>
+<span class="line"><span>    (el más importante para el examen final)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NIVEL 3: NOTEBOOK MAESTRO (para el examen)</span></span>
+<span class="line"><span>└── [AWS-EXAM-PREP] Preparación Final</span></span>
+<span class="line"><span>    Fuentes: tus notas exportadas de los otros notebooks</span></span>
+<span class="line"><span>    + guías de estudio generadas + preguntas de práctica</span></span>
+<span class="line"><span>    Uso: solo en la semana del examen</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cómo-usar-las-notas-de-notebooklm-como-fuentes">Cómo Usar las Notas de NotebookLM Como Fuentes</h3>
+<p>Este es uno de los trucos más poderosos y menos conocidos:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>NOTEBOOKLM → CHAT → genera un resumen de lo aprendido</span></span>
+<span class="line"><span>           → copia ese resumen como nota en el mismo notebook</span></span>
+<span class="line"><span>           → O descarga el Study Guide como texto</span></span>
+<span class="line"><span>           → Sube ESA nota como fuente en el Notebook de Síntesis</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>¿Por qué funciona?</span></span>
+<span class="line"><span>→ El Notebook de Síntesis "lee" los resúmenes de los</span></span>
+<span class="line"><span>  notebooks atómicos como si fueran fuentes</span></span>
+<span class="line"><span>→ Puede hacer conexiones ENTRE todos los temas</span></span>
+<span class="line"><span>→ Es como un "meta-tutor" que sabe todo lo que aprendiste</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="convenciones-de-nombres--la-clave-de-la-organización">Convenciones de Nombres — La Clave de la Organización</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>FORMATO: [MATERIA-##] Tema Específico — Subtema</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Ejemplos:</span></span>
+<span class="line"><span>[AWS-02] IAM — Políticas y Permisos</span></span>
+<span class="line"><span>[BIO-01] Célula — Membrana y Organelos</span></span>
+<span class="line"><span>[MBA-03] Finanzas — Flujo de Caja y Valoración</span></span>
+<span class="line"><span>[CERT-PY] Python — Módulo 4: POO</span></span>
+<span class="line"><span>[TESIS-01] Literatura — Marco Teórico</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Ventaja: al ordenar alfabéticamente, se agrupan por materia</span></span>
+<span class="line"><span>Los ## permiten orden lógico dentro de la materia</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-10-compartir-y-colaborar">🎬 EPISODIO 10: Compartir y Colaborar</h2>
+<h3 id="mi-equipo-de-estudio-quiere-usar-el-mismo-notebook">”Mi Equipo de Estudio Quiere Usar el Mismo Notebook”</h3>
+<p><em>Lunes, 5:00 PM. Script Kitty y dos colegas se certificarán juntos.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 🤔 <em>“Oliver, Pixel Paws y Whisker Dev también hacen la certificación. ¿Podemos compartir el mismo notebook para no duplicar esfuerzo?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“NotebookLM tiene notebooks compartidos. Pero hay reglas para usarlos bien en equipo.”</em></p>
+<hr>
+<h3 id="notebooks-compartidos--colaboración-inteligente">Notebooks Compartidos — Colaboración Inteligente</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CÓMO COMPARTIR UN NOTEBOOK:</span></span>
+<span class="line"><span>1. Abre el notebook</span></span>
+<span class="line"><span>2. Clic en el ícono de compartir (arriba derecha)</span></span>
+<span class="line"><span>3. Dos opciones:</span></span>
+<span class="line"><span>   a) Compartir con personas específicas (por email de Google)</span></span>
+<span class="line"><span>   b) Obtener enlace (cualquiera con el link puede ver/editar)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NIVELES DE ACCESO:</span></span>
+<span class="line"><span>👁️ Solo ver:  puede leer, usar el chat, generar outputs</span></span>
+<span class="line"><span>              pero NO puede agregar/editar fuentes</span></span>
+<span class="line"><span>✏️ Editor:   puede agregar fuentes, editar, todo acceso</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="la-estrategia-de-notebooks-compartidos-para-equipos">La Estrategia de Notebooks Compartidos para Equipos</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>MODELO 1: División por Módulos</span></span>
+<span class="line"><span>Persona A crea y mantiene: Módulos 1-3 (fuentes + chat)</span></span>
+<span class="line"><span>Persona B: Módulos 4-6</span></span>
+<span class="line"><span>Persona C: Módulos 7-9</span></span>
+<span class="line"><span>Todos tienen acceso de vista a todos los notebooks</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>→ Ventaja: cada persona es experta en su módulo</span></span>
+<span class="line"><span>→ Ventaja: se dividen el trabajo de curación de fuentes</span></span>
+<span class="line"><span>→ Desventaja: dependes de que los otros hagan su parte bien</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MODELO 2: Notebook Colectivo de Práctica</span></span>
+<span class="line"><span>Todos comparten UN notebook de "Banco de Preguntas"</span></span>
+<span class="line"><span>Cada persona agrega al chat:</span></span>
+<span class="line"><span>"Agrega estas 10 preguntas de práctica que encontré"</span></span>
+<span class="line"><span>→ Con el tiempo, el notebook crece con preguntas de todos</span></span>
+<span class="line"><span>→ Antes del examen, todos hacen el quiz del banco colectivo</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MODELO 3: El Debate de Conceptos</span></span>
+<span class="line"><span>Uno explica un concepto en el chat (como si enseñara)</span></span>
+<span class="line"><span>Los otros revisan la explicación y preguntan dudas</span></span>
+<span class="line"><span>NotebookLM verifica si la explicación es correcta citando las fuentes</span></span>
+<span class="line"><span>→ Enseñar = el método de aprendizaje más efectivo (90% retención)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="las-notas-colaborativas--el-feature-oculto">Las Notas Colaborativas — El Feature Oculto</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DENTRO DE NOTEBOOKLM HAY UN SISTEMA DE NOTAS:</span></span>
+<span class="line"><span>→ Clic en el ícono de notas (parte inferior del chat)</span></span>
+<span class="line"><span>→ Puedes escribir notas que se GUARDAN en el notebook</span></span>
+<span class="line"><span>→ Las notas pueden convertirse en FUENTES adicionales</span></span>
+<span class="line"><span>→ En notebooks compartidos, todos ven las notas de todos</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>USO PRÁCTICO:</span></span>
+<span class="line"><span>"Puntos que no entiendo bien y quiero investigar más:</span></span>
+<span class="line"><span>- La diferencia entre SCP y IAM policies en AWS Organizations</span></span>
+<span class="line"><span>- Por qué EBS no puede montarse en múltiples instancias a la vez</span></span>
+<span class="line"><span>- Los casos donde DynamoDB es mejor que RDS"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>→ Esto se convierte en una guía de dudas colectiva</span></span>
+<span class="line"><span>→ Cuando alguien entienda algún punto, lo responde en la nota</span></span>
+<span class="line"><span>→ El grupo mantiene una base de conocimiento compartida</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-11-deep-research--investigación-de-verdad">🎬 EPISODIO 11: Deep Research — Investigación de Verdad</h2>
+<h3 id="necesito-ir-más-allá-de-lo-que-tengo">”Necesito Ir Más Allá de Lo que Tengo”</h3>
+<p><em>Martes, 8:00 PM. Script Kitty encontró una pregunta de práctica sin respuesta en sus fuentes.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 🤔 <em>“Oliver. El banco de preguntas tiene una sobre ‘AWS Global Accelerator vs CloudFront’. Mis fuentes tienen CloudFront pero Global Accelerator apenas se menciona. ¿Qué hago?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Dos opciones. Agregas más fuentes sobre el tema. O usas Deep Research.”</em></p>
+<hr>
+<h3 id="deep-research-en-notebooklm">Deep Research en NotebookLM</h3>
+<p>El modo Deep Research ejecuta flujos de trabajo de investigación de múltiples pasos impulsados por Gemini. A diferencia del chat normal (que solo usa tus fuentes), Deep Research puede buscar en internet para complementar tu material.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DIFERENCIA CLAVE:</span></span>
+<span class="line"><span>Chat normal:      Solo usa tus fuentes subidas</span></span>
+<span class="line"><span>Deep Research:    Tus fuentes + búsqueda activa en internet</span></span>
+<span class="line"><span>                  (como Perplexity pero dentro de tu notebook)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CUÁNDO USARLO:</span></span>
+<span class="line"><span>✅ Tema en tus fuentes pero con poca profundidad</span></span>
+<span class="line"><span>✅ Quieres comparar tu material con fuentes externas actualizadas</span></span>
+<span class="line"><span>✅ Necesitas contexto adicional para entender un concepto</span></span>
+<span class="line"><span>✅ Preguntas de práctica sobre temas que no están en tu material</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CUÁNDO NO USARLO:</span></span>
+<span class="line"><span>❌ Para el core de tu estudio (puedes aluci... bueno, puede tener</span></span>
+<span class="line"><span>   menos precisión que si usas tus fuentes verificadas)</span></span>
+<span class="line"><span>❌ Cuando el tiempo de generación (3-5 min) no vale la pena</span></span>
+<span class="line"><span>❌ Para datos que cambien frecuentemente (precios, estadísticas)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cómo-activar-y-usar-deep-research">Cómo Activar y Usar Deep Research</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DESDE EL CHAT:</span></span>
+<span class="line"><span>Escribe tu pregunta y activa el toggle "Deep Research"</span></span>
+<span class="line"><span>que aparece al lado del botón de enviar</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>O pregunta directamente:</span></span>
+<span class="line"><span>"Usa Deep Research para encontrar información sobre:</span></span>
+<span class="line"><span>¿Cuál es la diferencia técnica entre AWS Global Accelerator</span></span>
+<span class="line"><span>y CloudFront? ¿Cuándo usar cada uno según AWS mismo?"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>EL RESULTADO INCLUIRÁ:</span></span>
+<span class="line"><span>- Información de tus fuentes (si la hay)</span></span>
+<span class="line"><span>- Información de la web (con citas y URLs)</span></span>
+<span class="line"><span>- Síntesis comparativa de ambas fuentes</span></span>
+<span class="line"><span>- Indicación de dónde viene cada parte</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>LÍMITES:</span></span>
+<span class="line"><span>Free: 10 sesiones de Deep Research por mes</span></span>
+<span class="line"><span>Plus: 3 por día</span></span>
+<span class="line"><span>Pro: más generoso</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-12-el-método-oliver--sistema-completo">🎬 EPISODIO 12: El Método Oliver — Sistema Completo</h2>
+<h3 id="el-sistema-de-estudio-que-funciona">El Sistema de Estudio que Funciona</h3>
+<p><em>Oliver se levanta del escritorio. Es el momento de dar la clase magistral.</em></p>
+<hr>
+<p><strong>Oliver:</strong> 🐱 <em>“Script Kitty. Aprendiste todas las herramientas. Ahora voy a enseñarte cómo juntarlas en un sistema completo. Lo llamo el Ciclo de Aprendizaje Aumentado.”</em></p>
+<hr>
+<h3 id="el-ciclo-de-aprendizaje-aumentado-de-oliver">El Ciclo de Aprendizaje Aumentado de Oliver</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>╔══════════════════════════════════════════════════════╗</span></span>
+<span class="line"><span>║         EL CICLO DE APRENDIZAJE AUMENTADO            ║</span></span>
+<span class="line"><span>║                                                      ║</span></span>
+<span class="line"><span>║  1. ORIENTACIÓN (30 min)                             ║</span></span>
+<span class="line"><span>║     → Mind Map del tema nuevo                        ║</span></span>
+<span class="line"><span>║     → Audio Overview en commute/ejercicio            ║</span></span>
+<span class="line"><span>║     → Crea el contexto antes de ir al detalle        ║</span></span>
+<span class="line"><span>║                  ↓                                   ║</span></span>
+<span class="line"><span>║  2. COMPRENSIÓN (60-90 min)                          ║</span></span>
+<span class="line"><span>║     → Lee el material o ve los videos (fuentes)      ║</span></span>
+<span class="line"><span>║     → Chat activo: pregunta lo que no entiendes      ║</span></span>
+<span class="line"><span>║     → Usa el prompt de tutoría profunda para dudas   ║</span></span>
+<span class="line"><span>║                  ↓                                   ║</span></span>
+<span class="line"><span>║  3. CONSOLIDACIÓN (30-45 min)                        ║</span></span>
+<span class="line"><span>║     → Study Guide: confirma que entendiste todo      ║</span></span>
+<span class="line"><span>║     → Quiz: identifica puntos ciegos                 ║</span></span>
+<span class="line"><span>║     → Regresa al chat para los puntos débiles        ║</span></span>
+<span class="line"><span>║                  ↓                                   ║</span></span>
+<span class="line"><span>║  4. EXPANSIÓN (15-20 min)                            ║</span></span>
+<span class="line"><span>║     → Preguntas de conexión entre temas              ║</span></span>
+<span class="line"><span>║     → Deep Research si hay brechas en el material    ║</span></span>
+<span class="line"><span>║     → Agrega notas de insights personales            ║</span></span>
+<span class="line"><span>║                  ↓                                   ║</span></span>
+<span class="line"><span>║  5. RETENCIÓN (distribuida en el tiempo)             ║</span></span>
+<span class="line"><span>║     → Flashcards en momentos muertos                 ║</span></span>
+<span class="line"><span>║     → Audio Overview el día siguiente (spaced rep.)  ║</span></span>
+<span class="line"><span>║     → Quiz de repaso después de 3 días               ║</span></span>
+<span class="line"><span>║     → Mini-quiz final la víspera del examen          ║</span></span>
+<span class="line"><span>╚══════════════════════════════════════════════════════╝</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="el-horario-de-estudio-semanal-con-notebooklm">El Horario de Estudio Semanal con NotebookLM</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>LUNES:</span></span>
+<span class="line"><span>🌅 Morning commute:    Audio Overview del Módulo 1</span></span>
+<span class="line"><span>💻 Mediodía (20 min):  Chat — preguntas sobre lo que escuché</span></span>
+<span class="line"><span>🌙 Noche (90 min):     Lectura activa + chat para dudas</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MARTES:</span></span>
+<span class="line"><span>🌅 Morning commute:    Audio Overview del Módulo 2</span></span>
+<span class="line"><span>💻 Mediodía (20 min):  Flashcards del Módulo 1 (spaced rep.)</span></span>
+<span class="line"><span>🌙 Noche (90 min):     Módulo 2 profundo + Mind Map</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MIÉRCOLES:</span></span>
+<span class="line"><span>🌅 Commute:            Audio Overview repaso Módulos 1-2</span></span>
+<span class="line"><span>💻 Mediodía (20 min):  Quiz de 10 preguntas (Módulos 1-2)</span></span>
+<span class="line"><span>🌙 Noche (60 min):     Corregir errores del quiz + notas</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>JUEVES:</span></span>
+<span class="line"><span>🌅 Commute:            Audio Overview del Módulo 3</span></span>
+<span class="line"><span>💻 Mediodía (20 min):  Video Overview del concepto más difícil</span></span>
+<span class="line"><span>🌙 Noche (90 min):     Módulo 3 + conexiones con 1 y 2</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>VIERNES:</span></span>
+<span class="line"><span>🌅 Commute:            Deep Dive Audio Overview (40 min)</span></span>
+<span class="line"><span>💻 Mediodía (20 min):  Mind Map de los 3 módulos (síntesis)</span></span>
+<span class="line"><span>🌙 Noche (45 min):     Quiz semanal completo (20 preguntas)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>SÁBADO:</span></span>
+<span class="line"><span>🎯 2-3 horas focalizadas:</span></span>
+<span class="line"><span>   → Study Guide de síntesis de la semana</span></span>
+<span class="line"><span>   → Simula el examen con 30 preguntas cronometradas</span></span>
+<span class="line"><span>   → Identifica los 3 temas más débiles</span></span>
+<span class="line"><span>   → Chat profundo en esos 3 temas</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>DOMINGO:</span></span>
+<span class="line"><span>🏖️ Descanso — El cerebro necesita consolidar</span></span>
+<span class="line"><span>   → Audio Overview opcional si hay tiempo</span></span>
+<span class="line"><span>   → NO estudies intensamente</span></span>
+<span class="line"><span>   → Confía en que el proceso funciona</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-13-notebooklm--gemini--la-combinación-perfecta">🎬 EPISODIO 13: NotebookLM + Gemini — La Combinación Perfecta</h2>
+<h3 id="cuándo-uso-notebooklm-y-cuándo-uso-gemini">”¿Cuándo Uso NotebookLM y Cuándo Uso Gemini?”</h3>
+<p><em>Script Kitty lleva tres semanas estudiando y tiene una duda estratégica.</em></p>
+<hr>
+<p><strong>Script Kitty:</strong> 🤔 <em>“Oliver. Ahora tengo NotebookLM Y Gemini Y Claude. ¿Cuándo uso cada uno?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Cada herramienta tiene su lugar. Te voy a dar el mapa.”</em></p>
+<hr>
+<h3 id="el-mapa-del-ecosistema-de-estudio-2026">El Mapa del Ecosistema de Estudio 2026</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>NOTEBOOKLM:</span></span>
+<span class="line"><span>✅ Cuando quieres trabajar con TU material específico</span></span>
+<span class="line"><span>✅ Cuando necesitas citas de las fuentes exactas</span></span>
+<span class="line"><span>✅ Para generar Audio/Video Overviews, Mind Maps, Quizzes</span></span>
+<span class="line"><span>✅ Para preparar exámenes sobre contenido conocido</span></span>
+<span class="line"><span>✅ Para organizar y sintetizar investigación propia</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>GEMINI (con búsqueda web activa):</span></span>
+<span class="line"><span>✅ Para explorar un tema ANTES de tener tu material</span></span>
+<span class="line"><span>✅ Para verificar información con fuentes actuales de internet</span></span>
+<span class="line"><span>✅ Gemini Live: estudio de voz mientras haces otra cosa</span></span>
+<span class="line"><span>✅ Para preguntas que van más allá de tus fuentes</span></span>
+<span class="line"><span>✅ Integrado con Google Docs para notas mientras estudias</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CLAUDE:</span></span>
+<span class="line"><span>✅ Para análisis profundo y razonamiento complejo</span></span>
+<span class="line"><span>✅ Para que critique tu comprensión de un tema</span></span>
+<span class="line"><span>✅ Para preparar ensayos y trabajos escritos</span></span>
+<span class="line"><span>✅ Para entender conceptos que requieren mucho razonamiento</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PERPLEXITY:</span></span>
+<span class="line"><span>✅ Para investigación web cuando necesitas fuentes verificadas</span></span>
+<span class="line"><span>✅ Para preguntas que necesitan información actualizada</span></span>
+<span class="line"><span>✅ Para encontrar papers y recursos nuevos antes de subirlos</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="el-flujo-combinado-de-oliver-para-estudio-serio">El Flujo Combinado de Oliver para Estudio Serio</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>FASE 1 — EXPLORACIÓN (antes de tener el material):</span></span>
+<span class="line"><span>→ Gemini: "¿Qué temas son más importantes en AWS SAA 2026?</span></span>
+<span class="line"><span>           ¿Qué recursos recomiendas para estudiar?"</span></span>
+<span class="line"><span>→ Perplexity: busca los mejores PDFs y cursos gratuitos</span></span>
+<span class="line"><span>→ Resultado: lista curada de recursos para subir a NotebookLM</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>FASE 2 — CARGA Y ESTUDIO PROFUNDO:</span></span>
+<span class="line"><span>→ NotebookLM: carga los recursos encontrados</span></span>
+<span class="line"><span>→ Audio Overviews en commute</span></span>
+<span class="line"><span>→ Chat para dudas (con citas exactas)</span></span>
+<span class="line"><span>→ Mind Maps para visión global</span></span>
+<span class="line"><span>→ Quizzes para evaluación</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>FASE 3 — ANÁLISIS Y SÍNTESIS:</span></span>
+<span class="line"><span>→ Claude: "Basándome en lo que aprendí sobre AWS IAM,</span></span>
+<span class="line"><span>           explícame los casos donde mi comprensión</span></span>
+<span class="line"><span>           podría tener brechas. Sé crítico."</span></span>
+<span class="line"><span>→ NotebookLM: genera el Study Guide final de síntesis</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>FASE 4 — REPASO FINAL:</span></span>
+<span class="line"><span>→ NotebookLM: simulacro de examen completo</span></span>
+<span class="line"><span>→ Gemini Live: repaso de voz en el coche el día antes</span></span>
+<span class="line"><span>→ Audio Overview esa mañana para activar el conocimiento</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="notebooklm--google-docs--notas-integradas">NotebookLM + Google Docs — Notas Integradas</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>EL FLUJO QUE OLIVER USA PARA APRENDER ALGO NUEVO:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. ABRE dos ventanas: Google Docs (izquierda) + NotebookLM (derecha)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>2. En Docs, crea la estructura de notas:</span></span>
+<span class="line"><span>   # Tema: [nombre]</span></span>
+<span class="line"><span>   ## Conceptos Clave</span></span>
+<span class="line"><span>   ## Ejemplos Prácticos</span></span>
+<span class="line"><span>   ## Preguntas Pendientes</span></span>
+<span class="line"><span>   ## Mis Insights</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>3. Usa NotebookLM en la derecha: haz preguntas, lee respuestas</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>4. Lo que entiendes → lo escribes en tus propias palabras en Docs</span></span>
+<span class="line"><span>   (el acto de escribir consolida la memoria)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>5. Lo que no entiendes → va a "Preguntas Pendientes"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>6. Cuando termines: sube el Doc de notas como FUENTE a NotebookLM</span></span>
+<span class="line"><span>   → Ahora el notebook también "sabe" tus propias interpretaciones</span></span>
+<span class="line"><span>   → Las preguntas futuras consideran TUS notas como contexto</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-14-notebooklm--claude">🎬 EPISODIO 14: NotebookLM + Claude</h2>
+<h3 id="análisis-profundo-y-pensamiento-crítico">Análisis Profundo y Pensamiento Crítico</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CUÁNDO CLAUDE COMPLEMENTA A NOTEBOOKLM:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CASO 1 — Verificar tu comprensión:</span></span>
+<span class="line"><span>Script Kitty explica un concepto a Claude</span></span>
+<span class="line"><span>Claude lo evalúa, identifica errores, sugiere correcciones</span></span>
+<span class="line"><span>Esa corrección se agrega como nota en NotebookLM</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Prompt para Claude:</span></span>
+<span class="line"><span>"Voy a explicarte mi comprensión de [tema].</span></span>
+<span class="line"><span>Por favor:</span></span>
+<span class="line"><span>1. Evalúa si mi comprensión es correcta</span></span>
+<span class="line"><span>2. Identifica cualquier error conceptual o simplificación excesiva</span></span>
+<span class="line"><span>3. Señala los matices que me faltan</span></span>
+<span class="line"><span>4. Dame una pregunta difícil sobre el tema para verificar</span></span>
+<span class="line"><span>   que realmente lo entiendo en profundidad</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Mi comprensión: [tu explicación]"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CASO 2 — Preparar ensayos o trabajos:</span></span>
+<span class="line"><span>→ NotebookLM: genera el outline basado en tus fuentes</span></span>
+<span class="line"><span>→ Claude: ayuda a desarrollar los argumentos</span></span>
+<span class="line"><span>→ NotebookLM: verifica que los argumentos están respaldados</span></span>
+<span class="line"><span>               por las fuentes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CASO 3 — Análisis de casos complejos:</span></span>
+<span class="line"><span>→ NotebookLM: explica el caso con citas de tus libros</span></span>
+<span class="line"><span>→ Claude: analiza el caso con razonamiento extendido</span></span>
+<span class="line"><span>→ Combinas ambas perspectivas en tu comprensión final</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-15-notebooklm--perplexity">🎬 EPISODIO 15: NotebookLM + Perplexity</h2>
+<h3 id="investigación-verificada-antes-de-cargar">Investigación Verificada Antes de Cargar</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>EL PIPELINE DE INVESTIGACIÓN COMPLETO:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 1 — DESCUBRIMIENTO con Perplexity:</span></span>
+<span class="line"><span>"¿Cuáles son los papers más citados sobre aprendizaje activo</span></span>
+<span class="line"><span> y retención de memoria publicados después de 2022?</span></span>
+<span class="line"><span> Dame los títulos, autores, y un párrafo de resumen."</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>→ Perplexity te da resultados con URLs verificadas</span></span>
+<span class="line"><span>→ Identificas los 5-10 más relevantes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 2 — DESCARGA las fuentes identificadas:</span></span>
+<span class="line"><span>→ PDFs de papers (de Google Scholar, Semantic Scholar)</span></span>
+<span class="line"><span>→ Transcripciones de videos (de YouTube)</span></span>
+<span class="line"><span>→ Artículos web (guárdalos como PDF con Print→PDF)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 3 — CARGA en NotebookLM:</span></span>
+<span class="line"><span>→ Notebook específico para ese tema de investigación</span></span>
+<span class="line"><span>→ Todas las fuentes verificadas juntas</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PASO 4 — ANÁLISIS profundo en NotebookLM:</span></span>
+<span class="line"><span>→ Compara los papers entre sí</span></span>
+<span class="line"><span>→ Identifica consensos y controversias</span></span>
+<span class="line"><span>→ Genera un resumen de investigación citado</span></span>
+<span class="line"><span>→ Audio Overview para el tráfico</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>RESULTADO:</span></span>
+<span class="line"><span>Investigación con fuentes verificadas por Perplexity</span></span>
+<span class="line"><span>+ Análisis profundo con citas exactas por NotebookLM</span></span>
+<span class="line"><span>+ Síntesis y revisión crítica por Claude</span></span>
+<span class="line"><span>= El paper de investigación más sólido de tu clase</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-16-planes-y-precios--cuándo-vale-la-pena-pagar">🎬 EPISODIO 16: Planes y Precios — Cuándo Vale la Pena Pagar</h2>
+<h3 id="la-guía-honesta">La Guía Honesta</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PLAN GRATUITO — ¿Para quién es suficiente?</span></span>
+<span class="line"><span>✅ Estudiante que empieza a probar la herramienta</span></span>
+<span class="line"><span>✅ Preparación de un examen específico con material limitado</span></span>
+<span class="line"><span>✅ Uso casual de 1-3 notebooks activos a la vez</span></span>
+<span class="line"><span>✅ Cuando el límite de 50 chats/día no lo sientes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>LÍMITES QUE NOTARÁS CON EL TIEMPO:</span></span>
+<span class="line"><span>- 50 fuentes por notebook se quedan cortas en cursos largos</span></span>
+<span class="line"><span>- 3 Audio Overviews/día es poco si estudias intensivamente</span></span>
+<span class="line"><span>- 10 Deep Research/mes se acaba rápido en investigación</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>El plan Plus es el punto de entrada asequible para personas que necesitan algo más de espacio que el plan gratuito. La mejora de 10 sesiones de Deep Research por mes a 3 por día por sí sola podría justificar la actualización.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>GOOGLE AI PLUS ($7.99/mes):</span></span>
+<span class="line"><span>✅ Para estudiantes universitarios activos</span></span>
+<span class="line"><span>✅ Cuando haces > 1 certificación simultánea</span></span>
+<span class="line"><span>✅ Cuando el límite de 50 fuentes te queda corto</span></span>
+<span class="line"><span>✅ Incluye: Gemini Advanced + 200GB storage + NotebookLM Plus</span></span>
+<span class="line"><span>✅ Se puede compartir con hasta 5 familiares</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>¿VALE LA PENA? Sí, si estudias 15+ horas semanales con IA.</span></span>
+<span class="line"><span>El combo Gemini + NotebookLM Plus por $7.99 es</span></span>
+<span class="line"><span>extraordinariamente generoso.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>GOOGLE AI PRO ($19.99/mes):</span></span>
+<span class="line"><span>✅ Para investigadores con 25+ fuentes por notebook</span></span>
+<span class="line"><span>✅ Para profesores que crean contenido educativo intensivamente</span></span>
+<span class="line"><span>✅ Cuando necesitas Video Overviews frecuentes</span></span>
+<span class="line"><span>✅ Acceso a Gemini 3.1 Pro</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Descuento para estudiantes: $9.99/mes por 12 meses (estudiantes de EE.UU. mayores de 18 años matriculados en instituciones elegibles). Incluye NotebookLM Plus completo + Gemini Advanced + 2 TB de almacenamiento.</p>
+<hr>
+<h2 id="-episodios-17-19-casos-de-uso-por-tipo-de-estudiante">🎬 EPISODIOS 17-19: Casos de Uso por Tipo de Estudiante</h2>
+<h3 id="episodio-17-el-estudiante-universitario">Episodio 17: El Estudiante Universitario</h3>
+<p><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&#x26;q=80" alt="University student studying"></p>
+<p><strong>El Setup Ideal para Universidad:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>NOTEBOOK PRINCIPAL POR MATERIA:</span></span>
+<span class="line"><span>├── [MATERIA] Clase — Apuntes del Profesor</span></span>
+<span class="line"><span>│   Fuentes: PDFs de apuntes, Google Slides de las clases,</span></span>
+<span class="line"><span>│            grabaciones de clases (si las tienes)</span></span>
+<span class="line"><span>│</span></span>
+<span class="line"><span>├── [MATERIA] Libro de Texto</span></span>
+<span class="line"><span>│   Fuentes: Los capítulos relevantes del libro</span></span>
+<span class="line"><span>│</span></span>
+<span class="line"><span>└── [MATERIA] Examen Parcial / Final</span></span>
+<span class="line"><span>    Fuentes: Guías de estudio del profesor,</span></span>
+<span class="line"><span>             notas exportadas de los notebooks anteriores,</span></span>
+<span class="line"><span>             exámenes anteriores (si los tienes)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>RUTINA SEMANAL:</span></span>
+<span class="line"><span>Lunes/Miércoles: Después de clase, sube los apuntes</span></span>
+<span class="line"><span>                 → Audio Overview en el trayecto de vuelta</span></span>
+<span class="line"><span>Martes/Jueves:   Chat para resolver dudas del día anterior</span></span>
+<span class="line"><span>                 → 30 min focalizados, no 2 horas vagas</span></span>
+<span class="line"><span>Viernes:         Quiz semanal de los temas de la semana</span></span>
+<span class="line"><span>                 → Identifica puntos débiles para el fin de semana</span></span>
+<span class="line"><span>Sábado:          Estudio profundo de los puntos débiles</span></span>
+<span class="line"><span>                 → Mind Map de síntesis de la semana</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>El Truco del Examen en 48 Horas:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CUANDO TIENES 48 HORAS Y 300 PÁGINAS:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Hora 1: Sube TODO el material al notebook</span></span>
+<span class="line"><span>Hora 2: Genera Mind Map completo</span></span>
+<span class="line"><span>        → Identifica las 5-7 áreas principales</span></span>
+<span class="line"><span>        → Anota en qué áreas tienes más dudas</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Horas 3-4: Audio Overview profundo (si tienes Plus: Deep Dive)</span></span>
+<span class="line"><span>           → Escucha mientras caminas o comes</span></span>
+<span class="line"><span>           → No estés quieto — el movimiento mejora la retención</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Horas 5-10: Chat intensivo por áreas</span></span>
+<span class="line"><span>           → Empieza por los temas que menos entiendes</span></span>
+<span class="line"><span>           → Usa el prompt de tutoría profunda para cada área</span></span>
+<span class="line"><span>           → Anota insights en Google Docs</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Hora 11: Quiz de 20 preguntas</span></span>
+<span class="line"><span>         → Identifica los últimos puntos débiles</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Horas 12-14: Solo los puntos débiles</span></span>
+<span class="line"><span>             → Chat + estudio focalizado</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Hora 15-16: Study Guide final + Audio Brief de repaso</span></span>
+<span class="line"><span>Hora 17-48: Duerme bien y confía en el proceso</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="episodio-18-el-profesional-de-certificaciones">Episodio 18: El Profesional de Certificaciones</h3>
+<p><strong>El Setup para Certificaciones Técnicas:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PARA AWS / GOOGLE CLOUD / AZURE / CKA / CISSP / PMP:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NIVEL 1 — NOTEBOOKS POR DOMINIO:</span></span>
+<span class="line"><span>Cada certificación tiene dominios/secciones conocidos</span></span>
+<span class="line"><span>Crea un notebook por dominio con el material oficial</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Para AWS SAA (ejemplo completo):</span></span>
+<span class="line"><span>Notebook 1: Domain 1 — Design Secure Architectures (30%)</span></span>
+<span class="line"><span>Notebook 2: Domain 2 — Design Resilient Architectures (26%)</span></span>
+<span class="line"><span>Notebook 3: Domain 3 — Design High-Performing (24%)</span></span>
+<span class="line"><span>Notebook 4: Domain 4 — Design Cost-Optimized (20%)</span></span>
+<span class="line"><span>Notebook 5: EXAM PREP — Preguntas y Simulacros</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NIVEL 2 — FUENTES POR NOTEBOOK:</span></span>
+<span class="line"><span>Para cada dominio, sube:</span></span>
+<span class="line"><span>- La guía oficial del examen (exam guide PDF)</span></span>
+<span class="line"><span>- Los módulos del curso de Udemy/A Cloud Guru/etc.</span></span>
+<span class="line"><span>  (descarga los PDFs de las diapositivas)</span></span>
+<span class="line"><span>- La documentación oficial de AWS relevante</span></span>
+<span class="line"><span>- Notas de hands-on labs que hagas</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>NIVEL 3 — GENERACIONES:</span></span>
+<span class="line"><span>→ Study Guide por dominio (para revisar cobertura)</span></span>
+<span class="line"><span>→ Audio Overview (para el commute diario)</span></span>
+<span class="line"><span>→ Quiz de 20 preguntas por dominio (evaluación)</span></span>
+<span class="line"><span>→ Simulacro final en Notebook 5 (65 preguntas en 130 min)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>EL ÚLTIMO MES ANTES DEL EXAMEN:</span></span>
+<span class="line"><span>Semana 1-2: Un dominio por semana (ciclo completo)</span></span>
+<span class="line"><span>Semana 3: Simulacros de examen completo × 3</span></span>
+<span class="line"><span>           → Analiza los patrones de errores</span></span>
+<span class="line"><span>           → Chat profundo en las áreas débiles</span></span>
+<span class="line"><span>Semana 4: Solo repaso de puntos débiles + Audio Overviews</span></span>
+<span class="line"><span>Día anterior: Audio Brief de los 4 dominios (15 min cada uno)</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="episodio-19-el-investigador-y-académico">Episodio 19: El Investigador y Académico</h3>
+<p><strong>El Setup para Investigación Seria:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PARA TESIS / PAPERS / REVISIONES DE LITERATURA:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ARQUITECTURA DE NOTEBOOKS PARA INVESTIGACIÓN:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Capa 1 — EXPLORACIÓN:</span></span>
+<span class="line"><span>[INV-EXPLO] Literatura general del campo</span></span>
+<span class="line"><span>Fuentes: 10-15 papers fundamentales del tema</span></span>
+<span class="line"><span>Uso: entender el estado del arte, identificar vacíos</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Capa 2 — PROFUNDIZACIÓN:</span></span>
+<span class="line"><span>[INV-A] Subtema A (ej: "Aprendizaje Activo")</span></span>
+<span class="line"><span>[INV-B] Subtema B (ej: "Memoria a Largo Plazo")</span></span>
+<span class="line"><span>[INV-C] Subtema C (ej: "Herramientas Digitales de Estudio")</span></span>
+<span class="line"><span>Fuentes: 15-20 papers por subtema</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Capa 3 — SÍNTESIS:</span></span>
+<span class="line"><span>[INV-MARCO] Marco Teórico de la Tesis</span></span>
+<span class="line"><span>Fuentes: notas exportadas de los notebooks de profundización</span></span>
+<span class="line"><span>         + los papers más citados de cada subtema</span></span>
+<span class="line"><span>Uso: construir el argumento de tu investigación</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Capa 4 — ESCRITURA:</span></span>
+<span class="line"><span>[INV-TESIS] Capítulos en Progreso</span></span>
+<span class="line"><span>Fuentes: el marco teórico + tus borradores en Google Docs</span></span>
+<span class="line"><span>Uso: verificar que tus argumentos están respaldados,</span></span>
+<span class="line"><span>     encontrar citas exactas para cada afirmación</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>FLUJO DE TRABAJO ACADÉMICO:</span></span>
+<span class="line"><span>Perplexity → encuentra papers relevantes</span></span>
+<span class="line"><span>NotebookLM → indexa y analiza los papers</span></span>
+<span class="line"><span>Claude → ayuda a construir el argumento</span></span>
+<span class="line"><span>Google Docs → escribe el paper</span></span>
+<span class="line"><span>NotebookLM → verifica citas y consistencia</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Prompt para Revisión de Literatura:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Analiza todos los papers en este notebook y dame:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. CONSENSOS: ¿Qué afirman todos o la mayoría de los autores?</span></span>
+<span class="line"><span>2. CONTROVERSIAS: ¿Dónde hay desacuerdo entre autores?</span></span>
+<span class="line"><span>3. VACÍOS: ¿Qué aspectos del tema no han sido suficientemente estudiados?</span></span>
+<span class="line"><span>4. METODOLOGÍAS: ¿Qué métodos de investigación predominan?</span></span>
+<span class="line"><span>5. EVOLUCIÓN TEMPORAL: ¿Cómo ha cambiado el consenso en los últimos años?</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Para cada punto, cita los papers específicos con página/sección."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-episodio-final-script-kitty-pasa-su-certificación">🎬 EPISODIO FINAL: Script Kitty Pasa Su Certificación</h2>
+<p><em>90 días después del inicio. La semana del examen.</em></p>
+<hr>
+<p><em>Oliver ve a Script Kitty en su escritorio. No está leyendo un libro. Tiene NotebookLM en una pantalla y está hablando con el notebook, escribiendo en Google Docs, con auriculares colgando en el cuello.</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Cómo vas?”</em></p>
+<p><strong>Script Kitty:</strong> 😌 <em>“Bien. Hice el simulacro ayer. 84% en los cuatro dominios. El examen real requiere 72%.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Y los puntos débiles?”</em></p>
+<p><strong>Script Kitty:</strong> 😌 <em>“Networking avanzado y Cost Optimization. Tengo audio overviews específicos de esos temas para el commute de esta semana. Y un quiz de 20 preguntas cada día hasta el examen.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Cuándo es el examen?”</em></p>
+<p><strong>Script Kitty:</strong> 😌 <em>“Sábado. Hoy es miércoles.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“¿Nervioso?”</em></p>
+<p><strong>Script Kitty:</strong> 😌 <em>“Un poco. Pero sé exactamente qué sé y qué no sé. Eso es tranquilizador.”</em></p>
+<p><em>Oliver asiente. Eso es exactamente lo que debería decir alguien que estudió bien.</em></p>
+<hr>
+<p><em>Lunes siguiente. 8:00 AM.</em></p>
+<p><strong>Script Kitty:</strong> 🎉 <em>“¡OLIVER! ¡87%! ¡PASÉ LA CERTIFICACIÓN!”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>[Levanta la taza de café en señal de brindis]</em></p>
+<p><strong>Script Kitty:</strong> 🎉 <em>“¿Sin siquiera ‘bien hecho’?”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“El ‘bien hecho’ está implícito en la arquitectura del sistema que seguiste.”</em></p>
+<p><strong>Script Kitty:</strong> 🎉 <em>“Eso es lo más poético que te he escuchado decir.”</em></p>
+<p><strong>Oliver:</strong> 🐱 <em>“Ahora hay dos certificaciones más. ¿Empezamos?”</em></p>
+<p><strong>Script Kitty:</strong> 😊 <em>“…ya tengo el notebook listo.”</em></p>
+<hr>
+<h2 id="-el-cheatsheet-final--la-biblia-condensada">📋 El Cheatsheet Final — La Biblia Condensada</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>╔════════════════════════════════════════════════════════════╗</span></span>
+<span class="line"><span>║         NOTEBOOKLM: CHEATSHEET DEL ESTUDIANTE MÁSTER      ║</span></span>
+<span class="line"><span>╠════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║                                                            ║</span></span>
+<span class="line"><span>║  SETUP:                                                    ║</span></span>
+<span class="line"><span>║  □ Un notebook por tema/módulo, no uno para todo           ║</span></span>
+<span class="line"><span>║  □ Nombres descriptivos: [MATERIA-##] Tema                 ║</span></span>
+<span class="line"><span>║  □ 3-10 fuentes focalizadas > 50 fuentes genéricas         ║</span></span>
+<span class="line"><span>║  □ Fuentes renombradas dentro del notebook                 ║</span></span>
+<span class="line"><span>║                                                            ║</span></span>
+<span class="line"><span>║  HERRAMIENTAS Y CUÁNDO USARLAS:                            ║</span></span>
+<span class="line"><span>║  🎧 Audio Overview → commute, ejercicio, actividades       ║</span></span>
+<span class="line"><span>║  🗺️ Mind Map → visión global, antes de profundizar        ║</span></span>
+<span class="line"><span>║  💬 Chat → dudas específicas, tutoría, evaluación          ║</span></span>
+<span class="line"><span>║  📋 Study Guide → confirmar cobertura completa             ║</span></span>
+<span class="line"><span>║  🧩 Quiz → identificar puntos ciegos antes del examen      ║</span></span>
+<span class="line"><span>║  🃏 Flashcards → spaced repetition, vocabulario técnico    ║</span></span>
+<span class="line"><span>║  🎬 Video Overview → conceptos visuales, nuevos temas      ║</span></span>
+<span class="line"><span>║  🔬 Deep Research → completar brechas en el material       ║</span></span>
+<span class="line"><span>║                                                            ║</span></span>
+<span class="line"><span>║  EL CICLO COMPLETO:                                        ║</span></span>
+<span class="line"><span>║  1. Mind Map → orientación visual del tema                 ║</span></span>
+<span class="line"><span>║  2. Audio Overview → contexto antes de la lectura         ║</span></span>
+<span class="line"><span>║  3. Lectura + Chat → comprensión activa                   ║</span></span>
+<span class="line"><span>║  4. Study Guide → verificar cobertura                      ║</span></span>
+<span class="line"><span>║  5. Quiz → detectar puntos ciegos                          ║</span></span>
+<span class="line"><span>║  6. Chat en puntos débiles → cerrar brechas                ║</span></span>
+<span class="line"><span>║  7. Flashcards + Audio → spaced repetition                 ║</span></span>
+<span class="line"><span>║  8. Simulacro final → examen antes del examen              ║</span></span>
+<span class="line"><span>║                                                            ║</span></span>
+<span class="line"><span>║  EL ECOSISTEMA COMPLETO:                                   ║</span></span>
+<span class="line"><span>║  Perplexity → encuentra las fuentes correctas              ║</span></span>
+<span class="line"><span>║  NotebookLM → estudia con TU material citado              ║</span></span>
+<span class="line"><span>║  Gemini Live → repaso de voz en movimiento                 ║</span></span>
+<span class="line"><span>║  Claude → análisis crítico y evaluación profunda           ║</span></span>
+<span class="line"><span>║                                                            ║</span></span>
+<span class="line"><span>║  LOS GRANDES PRINCIPIOS:                                   ║</span></span>
+<span class="line"><span>║  ★ Activo > Pasivo: pregunta, responde, enseña            ║</span></span>
+<span class="line"><span>║  ★ Calidad > Cantidad: pocas fuentes buenas               ║</span></span>
+<span class="line"><span>║  ★ Distribuido > Intensivo: spaced repetition gana        ║</span></span>
+<span class="line"><span>║  ★ Verifica siempre: las citas son tu garantía            ║</span></span>
+<span class="line"><span>║  ★ El sueño consolida: no estudies la madrugada antes     ║</span></span>
+<span class="line"><span>╚════════════════════════════════════════════════════════════╝</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-recursos-adicionales">📚 Recursos Adicionales</h2>
+<ul>
+<li>🌐 <a href="https://notebooklm.google.com"><strong>NotebookLM Official</strong></a> — La herramienta</li>
+<li>📖 <a href="https://support.google.com/notebooklm"><strong>NotebookLM Help Center</strong></a> — Documentación oficial</li>
+<li>🎓 <a href="https://edu.google.com/workspace-for-education/notebooklm/"><strong>NotebookLM for Education</strong></a> — Recursos para estudiantes</li>
+<li>📊 <a href="https://one.google.com/about/google-ai"><strong>Google AI Plans &#x26; Pricing</strong></a> — Comparativa actualizada</li>
+<li>🎧 <strong>Anki</strong> — Para flashcards con spaced repetition avanzado</li>
+<li>🔍 <a href="https://perplexity.ai"><strong>Perplexity.ai</strong></a> — Búsqueda verificada para encontrar fuentes</li>
+<li>🤖 <a href="https://claude.ai"><strong>Claude.ai</strong></a> — Análisis profundo complementario</li>
+<li>📝 <a href="https://obsidian.md"><strong>Obsidian</strong></a> — Para notas de estudio con links bidireccionales</li>
+</ul>
+<hr>
+<blockquote>
+<p><em>“La diferencia entre el mejor estudiante y el promedio no es la inteligencia. Es el sistema. Y en 2026, el mejor sistema incluye una IA que solo sabe lo que tú le enseñas.”</em></p>
+<p>— Oliver the Hacker Cat, cerrando su laptop</p>
+<p><em>“Y que te cita la fuente exacta cuando le preguntas.”</em></p>
+<p>— Script Kitty, pasando su tercera certificación del año</p>
+</blockquote>
+<hr>
+<p><em>Escrito por <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em></p>
+<p><em>Con el regreso de Oliver 🐱 y Script Kitty 🎉, residentes de Startup Felina S.A.</em></p>
+<p><em>NotebookLM es una herramienta en constante evolución. Visita notebooklm.google.com para las funciones más actualizadas.</em></p>
+</div>
+<hr>
+<div class="lang-en">
+<h1 id="-oliver-teaches-you-to-study-with-ai-the-notebooklm-bible">📚 Oliver Teaches You to Study with AI: The NotebookLM Bible</h1>
+<p><strong>By Jafet Brito</strong> · Security Researcher · <em>Published June 11, 2026</em></p>
+<hr>
+<blockquote>
+<p><em>“Studying without the right tools is like trying to reach the moon on a bicycle. You’ll get there — if you have millions of years.”</em>
+— Oliver the Hacker Cat</p>
+</blockquote>
+<hr>
+<h2 id="the-context-felina-startup-has-corporate-university">The Context: Felina Startup Has Corporate University</h2>
+<p>The CEO announced: every employee must get certified in their area before year end. Script Kitty has to get Cloud Security certified — 4 exams, 1,200 pages of material, 90 days.</p>
+<p><strong>Oliver:</strong> 🐱 <em>“Sit down. Today you learn how to study.”</em></p>
+<hr>
+<h2 id="why-we-fail-at-studying-episode-0">Why We Fail at Studying (Episode 0)</h2>
+<p>Reading is the most inefficient study method and the one almost everyone uses by default. When you read, your brain recognizes the words and creates a sense of familiarity you confuse with understanding. This is the <strong>illusion of competence</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>RETENTION BY LEARNING METHOD:</span></span>
+<span class="line"><span>Passive reading:       ~10%</span></span>
+<span class="line"><span>Listening:             ~20%</span></span>
+<span class="line"><span>Watching (video):      ~30%</span></span>
+<span class="line"><span>Active discussion:     ~50%</span></span>
+<span class="line"><span>Practice by doing:     ~75%</span></span>
+<span class="line"><span>Teaching others:       ~90%</span></span>
+<span class="line"><span>Active retrieval:      ~90%</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>NotebookLM doesn’t make you read faster. It automatically makes you an active learner: Audio Overviews, Mind Maps, interactive chat, quizzes, and flashcards — all based on your specific material.</p>
+<hr>
+<h2 id="what-is-notebooklm-episode-1">What Is NotebookLM (Episode 1)</h2>
+<p>NotebookLM is source-grounded: it only knows what YOU upload. When you ask a question, it answers with exact citations from YOUR material — not random internet content.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ChatGPT/Gemini General:    Answers from all of internet</span></span>
+<span class="line"><span>                           Risk: mixes your textbook with</span></span>
+<span class="line"><span>                           a random blog post</span></span>
+<span class="line"><span>NotebookLM:                Answers only from what you upload</span></span>
+<span class="line"><span>                           With exact page/section citations</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="the-complete-feature-set">The Complete Feature Set</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>🎧 Audio Overviews:    Podcast-style discussion of your material</span></span>
+<span class="line"><span>                       Two AI hosts cover the key concepts</span></span>
+<span class="line"><span>                       Customizable focus and depth level</span></span>
+<span class="line"><span>                       Downloadable for offline listening</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>🗺️ Mind Maps:          Visual diagram of all concepts and connections</span></span>
+<span class="line"><span>                       Interactive nodes with summaries</span></span>
+<span class="line"><span>                       Click to expand subtopics</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>💬 Chat with Sources:  Ask anything, get answers with exact citations</span></span>
+<span class="line"><span>                       If info isn't in your sources → says so</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>📋 Study Guides:       Auto-generated comprehensive guides</span></span>
+<span class="line"><span>🧩 Quizzes:            Practice questions from your material</span></span>
+<span class="line"><span>🃏 Flashcards:         Memorization cards for active recall</span></span>
+<span class="line"><span>🎬 Video Overviews:    Narrated slide explanations (new 2026)</span></span>
+<span class="line"><span>                       Styles: whiteboard, kawaii, watercolor, classic</span></span>
+<span class="line"><span>🔬 Deep Research:      Multi-step research with web search</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="plans--pricing-updated-june-2026">Plans &#x26; Pricing (Updated June 2026)</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>FREE:    100 notebooks | 50 sources/notebook | 50 chats/day</span></span>
+<span class="line"><span>         3 Audio Overviews/day | All core features</span></span>
+<span class="line"><span>         → Perfect for starting out</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PLUS ($7.99/mo): More sources, more Daily limits</span></span>
+<span class="line"><span>                 3 Deep Research/day (vs 10/month free)</span></span>
+<span class="line"><span>                 Family sharing up to 5 people</span></span>
+<span class="line"><span>                 → Sweet spot for active students</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PRO ($19.99/mo): 300 sources/notebook | Heavy research use</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Student discount: $9.99/mo (US students, 18+, eligible institutions) — includes Plus + Gemini Advanced + 2TB storage.</p>
+<hr>
+<h2 id="the-oliver-study-method--the-augmented-learning-cycle">The Oliver Study Method — The Augmented Learning Cycle</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. ORIENTATION (30 min)</span></span>
+<span class="line"><span>   → Mind Map of new topic</span></span>
+<span class="line"><span>   → Audio Overview during commute</span></span>
+<span class="line"><span>   → Build context before diving into details</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>2. COMPREHENSION (60-90 min)</span></span>
+<span class="line"><span>   → Read material / watch videos</span></span>
+<span class="line"><span>   → Active chat: ask what you don't understand</span></span>
+<span class="line"><span>   → Deep Tutoring Prompt for hard concepts</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>3. CONSOLIDATION (30-45 min)</span></span>
+<span class="line"><span>   → Study Guide: confirm you understood everything</span></span>
+<span class="line"><span>   → Quiz: identify blind spots</span></span>
+<span class="line"><span>   → Return to chat for weak points</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>4. EXPANSION (15-20 min)</span></span>
+<span class="line"><span>   → Connection questions between topics</span></span>
+<span class="line"><span>   → Deep Research for material gaps</span></span>
+<span class="line"><span>   → Add personal insight notes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>5. RETENTION (distributed over time)</span></span>
+<span class="line"><span>   → Flashcards in dead moments</span></span>
+<span class="line"><span>   → Audio Overview next day (spaced repetition)</span></span>
+<span class="line"><span>   → Review quiz after 3 days</span></span>
+<span class="line"><span>   → Mini-quiz the night before the exam</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="the-complete-study-ecosystem">The Complete Study Ecosystem</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PERPLEXITY → Find verified sources to upload</span></span>
+<span class="line"><span>NOTEBOOKLM → Study your specific material with citations</span></span>
+<span class="line"><span>GEMINI LIVE → Voice review while moving</span></span>
+<span class="line"><span>CLAUDE → Deep critical analysis and evaluation</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="the-universal-cheatsheet">The Universal Cheatsheet</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>SETUP:</span></span>
+<span class="line"><span>□ One notebook per topic/module (not one for everything)</span></span>
+<span class="line"><span>□ Descriptive names: [SUBJECT-##] Topic</span></span>
+<span class="line"><span>□ 3-10 focused sources > 50 generic sources</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>WHEN TO USE EACH TOOL:</span></span>
+<span class="line"><span>🎧 Audio Overview → commute, exercise, other activities</span></span>
+<span class="line"><span>🗺️ Mind Map → global vision, before going deep</span></span>
+<span class="line"><span>💬 Chat → specific questions, tutoring, evaluation</span></span>
+<span class="line"><span>📋 Study Guide → confirm complete coverage</span></span>
+<span class="line"><span>🧩 Quiz → find blind spots before the exam</span></span>
+<span class="line"><span>🃏 Flashcards → spaced repetition, technical vocabulary</span></span>
+<span class="line"><span>🎬 Video Overview → visual concepts, new topics</span></span>
+<span class="line"><span>🔬 Deep Research → fill gaps in material</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>THE BIG PRINCIPLES:</span></span>
+<span class="line"><span>★ Active > Passive: ask, answer, teach</span></span>
+<span class="line"><span>★ Quality > Quantity: few good sources</span></span>
+<span class="line"><span>★ Distributed > Intensive: spaced repetition wins</span></span>
+<span class="line"><span>★ Always verify: citations are your guarantee</span></span>
+<span class="line"><span>★ Sleep consolidates: don't cram the night before</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<p><em>Written by <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>With the return of Oliver 🐱 and Script Kitty 🎉, residents of Felina Startup Inc.</em></p>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>

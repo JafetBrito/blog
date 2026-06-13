@@ -1,0 +1,2148 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="La guía más completa sobre Google Gemini: 23 temas que cubren desde elegir tu plan hasta crear videos con Veo 3.1, Gems personalizados, Canvas, Gemini Live, integración total con Google Workspace y mucho más. Con roadmap visual, imágenes, ejemplos reales y tips exclusivos."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/gemini_roadmap/"><meta property="og:title" content="🌟 La Guía Definitiva de Gemini 2026: El AI que Vive en Todo Google — Jafet Brito"><meta property="og:description" content="La guía más completa sobre Google Gemini: 23 temas que cubren desde elegir tu plan hasta crear videos con Veo 3.1, Gems personalizados, Canvas, Gemini Live, integración total con Google Workspace y mucho más. Con roadmap visual, imágenes, ejemplos reales y tips exclusivos."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/gemini_roadmap/"><meta property="og:image" content="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=1200&q=80"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="🌟 La Guía Definitiva de Gemini 2026: El AI que Vive en Todo Google — Jafet Brito"><meta name="twitter:description" content="La guía más completa sobre Google Gemini: 23 temas que cubren desde elegir tu plan hasta crear videos con Veo 3.1, Gems personalizados, Canvas, Gemini Live, integración total con Google Workspace y mucho más. Con roadmap visual, imágenes, ejemplos reales y tips exclusivos."><meta name="twitter:image" content="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=1200&q=80"><title>🌟 La Guía Definitiva de Gemini 2026: El AI que Vive en Todo Google — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=1200&q=80" alt="🌟 La Guía Definitiva de Gemini 2026: El AI que Vive en Todo Google" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">-la-gua-definitiva-de-gemini-2026-el-ai-que-vive-en-todo-google</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/Gemini" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Gemini</a><a href="/tags/Google" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Google</a><a href="/tags/IA" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#IA</a><a href="/tags/GoogleWorkspace" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#GoogleWorkspace</a><a href="/tags/Veo3" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Veo3</a><a href="/tags/GeminiLive" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#GeminiLive</a><a href="/tags/Gems" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Gems</a><a href="/tags/Canvas" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Canvas</a><a href="/tags/Productividad" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Productividad</a><a href="/tags/Tutorial" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Tutorial</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="🌟 La Guía Definitiva de Gemini 2026: El AI que Vive en Todo Google" data-text-en="🌟 The Definitive Gemini Guide 2026: The AI That Lives Inside All of Google"> 🌟 La Guía Definitiva de Gemini 2026: El AI que Vive en Todo Google </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="La guía más completa sobre Google Gemini: 23 temas que cubren desde elegir tu plan hasta crear videos con Veo 3.1, Gems personalizados, Canvas, Gemini Live, integración total con Google Workspace y mucho más. Con roadmap visual, imágenes, ejemplos reales y tips exclusivos." data-text-en="The most complete guide to Google Gemini: 23 topics covering from choosing your plan to creating videos with Veo 3.1, custom Gems, Canvas, Gemini Live, full Google Workspace integration, and much more. With visual roadmap, images, real examples, and exclusive tips."> La guía más completa sobre Google Gemini: 23 temas que cubren desde elegir tu plan hasta crear videos con Veo 3.1, Gems personalizados, Canvas, Gemini Live, integración total con Google Workspace y mucho más. Con roadmap visual, imágenes, ejemplos reales y tips exclusivos. </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-11" data-fmt-date="2026-06-11" data-fmt="long">miércoles, 10 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+## 🌟 La Guía Definitiva de Gemini 2026: El AI que Vive en Todo Google
+<p><strong>Por Jafet Brito</strong> · Security Researcher · <em>Publicado el 11 de junio de 2026</em></p>
+<hr>
+<blockquote>
+<p><em>“Gemini no es un chatbot que abres en una pestaña. Es la inteligencia que ya vive dentro de cada herramienta que usas todos los días.”</em>
+— Google I/O 2026</p>
+</blockquote>
+<hr>
+<h3 id="️-el-roadmap-visual--el-universo-gemini-de-un-vistazo">🗺️ El Roadmap Visual — El Universo Gemini de un Vistazo</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>╔══════════════════════════════════════════════════════════════════╗</span></span>
+<span class="line"><span>║                    🌟 EL UNIVERSO GEMINI                         ║</span></span>
+<span class="line"><span>╠══════════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║  🏠 CONOCER GEMINI         💰 PLANES Y PRECIOS                  ║</span></span>
+<span class="line"><span>║  └─ Qué es, modelos,       └─ Free / Plus / Pro / Ultra         ║</span></span>
+<span class="line"><span>║     por qué es diferente      Workspace integrado               ║</span></span>
+<span class="line"><span>╠══════════════ NIVEL 1: USUARIO CASUAL ═══════════════════════════╣</span></span>
+<span class="line"><span>║  ⚡ MODOS DE PENSAMIENTO   ✍️  PROMPTS EFECTIVOS                ║</span></span>
+<span class="line"><span>║  └─ Flash vs Deep Think    └─ Técnicas específicas Gemini        ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  🧠 MEMORIA                🔒 PRIVACIDAD                        ║</span></span>
+<span class="line"><span>║  └─ Personalización total  └─ Configuración segura              ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  🔍 BÚSQUEDA WEB           📄 DOCS Y VIDEOS                     ║</span></span>
+<span class="line"><span>║  └─ Con fuentes y contexto └─ Análisis multimodal               ║</span></span>
+<span class="line"><span>╠══════════════ NIVEL 2: POWER USER ═══════════════════════════════╣</span></span>
+<span class="line"><span>║  📊 PLANILLAS + PYTHON     🐍 APRENDER PYTHON                   ║</span></span>
+<span class="line"><span>║  └─ Data science en chat   └─ Tutor personalizado               ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  📊 VISTA DINÁMICA         🎨 NANO BANANA                       ║</span></span>
+<span class="line"><span>║  └─ Dashboards en vivo     └─ Imágenes con texto perfecto       ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  🎬 VEO 3.1 VIDEOS         🖼️  CANVAS                          ║</span></span>
+<span class="line"><span>║  └─ Video con audio real   └─ Documentos vivos                  ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  📽️ PRESENTACIONES         📧 GMAIL INTELIGENTE                ║</span></span>
+<span class="line"><span>║  └─ Slides desde docs      └─ Búsqueda + redacción IA          ║</span></span>
+<span class="line"><span>╠══════════════ NIVEL 3: WORKSPACE PRO ════════════════════════════╣</span></span>
+<span class="line"><span>║  📝 GOOGLE DOCS            🖼️  GOOGLE SLIDES                   ║</span></span>
+<span class="line"><span>║  └─ Escritura asistida     └─ Transformación total              ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  🔗 WORKSPACE CONNECT      💎 GEMS PERSONALIZADOS               ║</span></span>
+<span class="line"><span>║  └─ Todo el ecosistema     └─ Agentes especializados            ║</span></span>
+<span class="line"><span>║                                                                  ║</span></span>
+<span class="line"><span>║  📱 GEMINI LIVE            🏆 CREA TU GEM                      ║</span></span>
+<span class="line"><span>║  └─ Voz en tiempo real     └─ Tu IA personal                    ║</span></span>
+<span class="line"><span>╚══════════════════════════════════════════════════════════════════╝</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="-índice-rápido--salta-al-tema-que-necesitas">📋 Índice Rápido — Salta al Tema que Necesitas</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Tema</th><th>Nivel</th><th>Tiempo</th></tr></thead><tbody><tr><td>1</td><td>Gemini de Google: el AI en tu Gmail</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>2</td><td>Qué es Gemini y cómo usarlo desde cero</td><td>🟢 Todos</td><td>4 min</td></tr><tr><td>3</td><td>Planes y precios: cuál elegir</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>4</td><td>Modo rápido vs modo de pensamiento</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>5</td><td>Prompting efectivo en Gemini</td><td>🟡 Intermedio</td><td>5 min</td></tr><tr><td>6</td><td>Personalizar la memoria de Gemini</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>7</td><td>Configurar privacidad en Gemini</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>8</td><td>Búsqueda web y verificación de fuentes</td><td>🟡 Intermedio</td><td>3 min</td></tr><tr><td>9</td><td>Análisis de documentos PDF y videos</td><td>🟢 Todos</td><td>4 min</td></tr><tr><td>10</td><td>Análisis de planillas con Python</td><td>🔴 Técnico</td><td>4 min</td></tr><tr><td>11</td><td>Gemini como tutor de Python</td><td>🟡 Intermedio</td><td>3 min</td></tr><tr><td>12</td><td>Vista dinámica: dashboards interactivos</td><td>🟡 Intermedio</td><td>4 min</td></tr><tr><td>13</td><td>Nano Banana: imágenes con texto perfecto</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>14</td><td>Crear videos con Veo 3.1</td><td>🟡 Intermedio</td><td>4 min</td></tr><tr><td>15</td><td>Canvas: documentos vivos</td><td>🟡 Intermedio</td><td>4 min</td></tr><tr><td>16</td><td>Presentaciones desde documentos</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>17</td><td>Gemini en Gmail: búsqueda y redacción</td><td>🟢 Todos</td><td>4 min</td></tr><tr><td>18</td><td>Gemini en Google Docs</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>19</td><td>Gemini transforma Google Slides</td><td>🟢 Todos</td><td>3 min</td></tr><tr><td>20</td><td>Conectar Gemini con Google Workspace</td><td>🟡 Intermedio</td><td>4 min</td></tr><tr><td>21</td><td>Crear Gems personalizados</td><td>🟡 Intermedio</td><td>5 min</td></tr><tr><td>22</td><td>Gemini Live: voz en tiempo real</td><td>🟢 Todos</td><td>4 min</td></tr><tr><td>23</td><td>Crea tu Gem personalizado paso a paso</td><td>🔴 Técnico</td><td>5 min</td></tr></tbody></table>
+<hr>
+<h2 id="-tema-1-gemini-de-google--el-ai-que-ya-vive-en-tu-gmail">📘 Tema 1: Gemini de Google — El AI que Ya Vive en tu Gmail</h2>
+<p><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&#x26;q=80" alt="Google Gemini interface"></p>
+<p>Hay una diferencia fundamental entre Gemini y cualquier otro asistente de IA del mercado: <strong>Gemini no es una herramienta separada que tienes que abrir en otra pestaña</strong>. Es la inteligencia artificial que Google ha tejido directamente dentro de Gmail, Docs, Sheets, Slides, Drive, Meet, y Calendar.</p>
+<p>Cuando abres tu Gmail en 2026, Gemini ya está ahí. Cuando escribes un documento en Google Docs, Gemini puede leer el contexto de lo que estás escribiendo. Cuando tienes una reunión en Google Meet, Gemini puede tomar notas automáticamente.</p>
+<p>Esta integración nativa es la <strong>ventaja competitiva única</strong> de Gemini. Ningún otro asistente tiene acceso tan profundo y sin fricción a tu vida digital si ya vives en el ecosistema Google.</p>
+<blockquote>
+<p>💡 <strong>¿Ya usas Google?</strong> Si tienes una cuenta de Gmail — personal o de trabajo — ya tienes acceso al tier gratuito de Gemini. Solo visita <a href="https://gemini.google.com"><strong>gemini.google.com</strong></a> o busca el ícono de Gemini en cualquier app de Google Workspace.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-2-qué-es-gemini-y-cómo-usarlo-desde-cero">🧬 Tema 2: Qué es Gemini y Cómo Usarlo Desde Cero</h2>
+<h3 id="-la-familia-de-modelos-gemini-en-2026">🔮 La Familia de Modelos Gemini en 2026</h3>
+<p>Gemini no es un solo modelo — es una familia. Así se ve la jerarquía actual después del Google I/O 2026:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>🌟 GEMINI 3.5 PRO (Junio 2026)</span></span>
+<span class="line"><span>   └─ El modelo más capaz para razonamiento complejo</span></span>
+<span class="line"><span>   </span></span>
+<span class="line"><span>⚡ GEMINI 3.5 FLASH (Mayo 2026)  </span></span>
+<span class="line"><span>   └─ Velocidad + calidad para uso general, más barato</span></span>
+<span class="line"><span>   </span></span>
+<span class="line"><span>🧠 GEMINI 3.1 PRO</span></span>
+<span class="line"><span>   └─ Benchmark de calidad, disponible en AI Pro</span></span>
+<span class="line"><span>   </span></span>
+<span class="line"><span>🔥 GEMINI 3 FLASH</span></span>
+<span class="line"><span>   └─ El modelo del tier gratuito, muy rápido</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>🔬 DEEP THINK</span></span>
+<span class="line"><span>   └─ Modo de razonamiento extendido (como o3 de OpenAI)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-cómo-acceder-a-gemini">🌐 Cómo Acceder a Gemini</h3>
+<p><strong>Opción 1 — La app web:</strong>
+Visita <a href="https://gemini.google.com">gemini.google.com</a> con tu cuenta Google. Es la experiencia más completa con todas las features.</p>
+<p><strong>Opción 2 — Móvil:</strong>
+Descarga la app <strong>Gemini</strong> en iOS o Android. Incluye Gemini Live (conversación por voz).</p>
+<p><strong>Opción 3 — Dentro de Google Workspace:</strong>
+Busca el ícono de Gemini ✨ en el panel lateral de Gmail, Docs, Sheets, o Slides.</p>
+<p><strong>Opción 4 — Google Assistant reemplazado:</strong>
+En Android, Gemini reemplazó a Google Assistant como asistente del sistema.</p>
+<h3 id="-tu-primera-conversación--3-preguntas-para-empezar">🏁 Tu Primera Conversación — 3 Preguntas para Empezar</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. "Hola Gemini, ¿qué puedes hacer que sea más útil para mí?</span></span>
+<span class="line"><span>   Trabajo como [tu rol] y uso mucho [herramientas que usas]."</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>2. "Analiza este email que acabo de recibir y dime:</span></span>
+<span class="line"><span>   ¿requiere acción? ¿cuál es el tono? ¿qué responderías?"</span></span>
+<span class="line"><span>   [pega el email]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>3. "Resume los últimos eventos importantes de [industria tuya]</span></span>
+<span class="line"><span>   esta semana."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-tema-3-planes-y-precios-de-gemini--cuál-elegir">💰 Tema 3: Planes y Precios de Gemini — Cuál Elegir</h2>
+<p>Gemini tiene cuatro planes de consumidor que van desde $0 hasta $249.99 por mes, con saltos de capacidad significativos en cada nivel.</p>
+<p><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&#x26;q=80" alt="Pricing tiers comparison"></p>
+<h3 id="la-tabla-completa-junio-2026">La Tabla Completa (Junio 2026)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plan</th><th>Precio</th><th>Modelo</th><th>Ideal para</th></tr></thead><tbody><tr><td><strong>Free</strong></td><td>$0</td><td>Gemini 3 Flash + 3.5 Flash (limitado)</td><td>Explorar, uso casual</td></tr><tr><td><strong>Google AI Plus</strong></td><td>$7.99/mes</td><td>Gemini 3 Pro + 200GB storage</td><td>Usuario frecuente, productividad</td></tr><tr><td><strong>Google AI Pro</strong></td><td>$19.99/mes</td><td>Gemini 3.1 Pro, 1M tokens contexto</td><td>Profesionales, Deep Research</td></tr><tr><td><strong>Google AI Ultra</strong></td><td>$99.99/mes</td><td>Todo + 5x límites + Veo 3.1 + Gemini Spark</td><td>Power users, creadores</td></tr><tr><td><strong>Ultra $200</strong></td><td>$200/mes</td><td>Todo + 20x límites Pro</td><td>Equipos y uso intensivo</td></tr></tbody></table>
+<blockquote>
+<p>El tier de AI Plus Individual cuesta $13.99 por mes. Los suscriptores de AI Ultra 5x obtienen acceso “Higher” (más alto) a todos los servicios.</p>
+</blockquote>
+<h3 id="-gemini-spark--el-agente-nuevo-de-ultra">🆕 Gemini Spark — El Agente Nuevo de Ultra</h3>
+<p><strong>Gemini Spark</strong> es un agente de IA 24/7 que te ayuda a navegar tu vida digital, toma acciones en tu nombre y está bajo tu dirección. Puede conectar los puntos en todos tus productos de Google y quitarte tareas complejas de encima. Disponible en AI Ultra ($100 y $200), solo en EE.UU. inicialmente.</p>
+<h3 id="-el-árbol-de-decisión">🎯 El Árbol de Decisión</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>¿Cuánto usas Google en tu trabajo?</span></span>
+<span class="line"><span>        │</span></span>
+<span class="line"><span>        ├─► Poco / Solo personal</span></span>
+<span class="line"><span>        │   └─► 🆓 FREE — empieza aquí, es muy bueno</span></span>
+<span class="line"><span>        │</span></span>
+<span class="line"><span>        ├─► Todos los días para productividad personal</span></span>
+<span class="line"><span>        │   └─► 💛 PLUS ($7.99) — el sweet spot</span></span>
+<span class="line"><span>        │</span></span>
+<span class="line"><span>        ├─► Profesional / Trabajo intensivo con docs</span></span>
+<span class="line"><span>        │   └─► 🔵 PRO ($19.99) — Deep Research + 1M tokens</span></span>
+<span class="line"><span>        │</span></span>
+<span class="line"><span>        └─► Creador de contenido / Video / Uso máximo</span></span>
+<span class="line"><span>            └─► 🟣 ULTRA ($99.99) — Veo 3.1 + límites máximos</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 <strong>Tip:</strong> Para la mayoría de usuarios de negocios, Google AI Pro ofrece la mejor combinación de capacidad y valor a $19.99/mes, incluyendo una ventana de contexto de 1M tokens.</p>
+</blockquote>
+<h3 id="-google-workspace--para-empresas">🏢 Google Workspace — Para Empresas</h3>
+<p>Google Workspace eliminó el complemento standalone de Gemini en 2025; Gemini ahora viene integrado en los planes Business Standard, Plus y Enterprise. Si ya pagas Google Workspace para tu empresa, <strong>ya tienes Gemini incluido</strong>.</p>
+<hr>
+<h2 id="-tema-4-modo-rápido-vs-modo-de-pensamiento-en-gemini">⚡ Tema 4: Modo Rápido vs Modo de Pensamiento en Gemini</h2>
+<p>Esta es la decisión más importante que tomas cada vez que usas Gemini. Los dos modos son filosofías de procesamiento completamente diferentes.</p>
+<h3 id="-modo-flash--la-velocidad-inteligente">⚡ Modo Flash — La Velocidad Inteligente</h3>
+<p>El modo por defecto. Gemini responde en segundos usando Gemini 3.5 Flash o 3 Flash.</p>
+<p><strong>Cuándo usarlo:</strong></p>
+<ul>
+<li>✅ Respuestas rápidas, preguntas directas</li>
+<li>✅ Redacción y edición de textos</li>
+<li>✅ Resúmenes de documentos</li>
+<li>✅ Brainstorming e ideación</li>
+<li>✅ Traducción y reformateo</li>
+</ul>
+<h3 id="-deep-think--el-razonamiento-profundo">🧠 Deep Think — El Razonamiento Profundo</h3>
+<p>El modo avanzado donde Gemini “piensa antes de responder”. Similar al Extended Thinking de Claude o la serie o3 de OpenAI. Disponible en planes Pro y Ultra.</p>
+<p><strong>El proceso interno:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Tu pregunta compleja</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>Gemini explora múltiples enfoques</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>Verifica su propio razonamiento</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>Identifica posibles errores</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>Genera una respuesta validada internamente</span></span>
+<span class="line"><span>(30-90 segundos más, mucho más preciso)</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Cuándo usar Deep Think:</strong></p>
+<ul>
+<li>🔢 Problemas matemáticos complejos o con múltiples pasos</li>
+<li>⚖️ Análisis legal, médico o estratégico de alto riesgo</li>
+<li>🏗️ Diseño de arquitecturas de sistemas</li>
+<li>🔬 Investigación técnica con trade-offs complejos</li>
+<li>🐛 Debugging de errores difíciles de identificar</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Tip práctico:</strong> Antes de activar Deep Think, pregúntate: <em>¿El error de un 5% en esta respuesta tiene consecuencias reales?</em> Si la respuesta es sí, activa Deep Think. Si no, Flash es suficiente y mucho más rápido.</p>
+</blockquote>
+<hr>
+<h2 id="️-tema-5-prompting-efectivo--mejora-las-respuestas-de-gemini">✍️ Tema 5: Prompting Efectivo — Mejora las Respuestas de Gemini</h2>
+<p><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&#x26;q=80" alt="Prompting illustration"></p>
+<p>Gemini tiene características específicas que lo hacen responder mejor a ciertos tipos de prompts.</p>
+<h3 id="lo-que-gemini-ama-️">Lo Que Gemini Ama ❤️</h3>
+<p><strong>1. Contexto de Google Workspace</strong></p>
+<p>Gemini tiene acceso directo a tus documentos, emails y calendario (si los conectas). Aprovéchalo:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>❌ Genérico:</span></span>
+<span class="line"><span>"Escribe un email de seguimiento para una propuesta"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>✅ Con contexto real:</span></span>
+<span class="line"><span>"Basándote en el email que recibí de Carlos Méndez</span></span>
+<span class="line"><span>el lunes pasado sobre la propuesta de software,</span></span>
+<span class="line"><span>escribe un email de seguimiento profesional que:</span></span>
+<span class="line"><span>- Pregunte por su decisión</span></span>
+<span class="line"><span>- Mencione el descuento del 10% que ofrecí</span></span>
+<span class="line"><span>- Sea cálido pero con sentido de urgencia"</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>2. El Framework PCTF para Gemini</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>P — Persona    → ¿Qué rol debe adoptar Gemini?</span></span>
+<span class="line"><span>C — Contexto   → ¿Cuál es la situación completa?</span></span>
+<span class="line"><span>T — Tarea      → ¿Qué exactamente necesito?</span></span>
+<span class="line"><span>F — Formato    → ¿Cómo quiero la respuesta?</span></span>
+<span class="line"><span></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Ejemplo completo:</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>[PERSONA] Actúa como un consultor de marketing digital</span></span>
+<span class="line"><span>con experiencia en startups B2B.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>[CONTEXTO] Somos una startup de SaaS en México con</span></span>
+<span class="line"><span>6 meses en el mercado, 50 clientes actuales, y un</span></span>
+<span class="line"><span>presupuesto de marketing de $2,000 USD mensuales.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>[TAREA] Diseña una estrategia de contenido para</span></span>
+<span class="line"><span>LinkedIn para los próximos 3 meses que nos ayude</span></span>
+<span class="line"><span>a conseguir 20 leads mensuales.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>[FORMATO] Presenta el resultado como:</span></span>
+<span class="line"><span>- Resumen ejecutivo (3 oraciones)</span></span>
+<span class="line"><span>- Calendario semanal de contenido</span></span>
+<span class="line"><span>- KPIs a medir</span></span>
+<span class="line"><span>- Presupuesto desglosado</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="tips-exclusivos-para-gemini">Tips Exclusivos para Gemini</h3>
+<ul>
+<li>🔗 <strong>Menciona ”@” para referenciar archivos:</strong> En Gemini.google.com, escribe <code>@nombre-del-archivo</code> para hacer referencia a un documento de Drive sin necesidad de cargarlo.</li>
+<li>🎯 <strong>Pide respuestas con Google como fuente:</strong> “Busca en internet y cítame las fuentes” activa la búsqueda web con referencias verificables.</li>
+<li>🌡️ <strong>Ajusta el “tono de creatividad”:</strong> En la configuración de la conversación puedes ajustar entre más preciso/factual o más creativo.</li>
+</ul>
+<hr>
+<h2 id="-tema-6-cómo-personalizar-la-memoria-de-gemini">🧠 Tema 6: Cómo Personalizar la Memoria de Gemini</h2>
+<p>La memoria de Gemini funciona de forma diferente a otros modelos: en lugar de recordar automáticamente todo lo que dices, te da <strong>control granular</strong> sobre qué quieres que recuerde.</p>
+<h3 id="los-tipos-de-memoria-en-gemini">Los Tipos de Memoria en Gemini</h3>
+<p><strong>1. Memoria dentro de una conversación</strong>
+Dentro de una sola sesión, Gemini recuerda todo lo que has dicho. No necesitas repetir el contexto.</p>
+<p><strong>2. Gems con contexto fijo (la verdadera memoria persistente)</strong>
+Los Gems son la forma más poderosa de crear memoria persistente en Gemini: creas un Gem con un contexto base que siempre está presente. (Ver Tema 21-23 para detalles).</p>
+<p><strong>3. Google Workspace como memoria de largo plazo</strong>
+Conectar tu Gmail, Drive, y Calendar es la forma más poderosa de dar memoria a Gemini: tiene acceso a años de tu historial de documentos y comunicaciones.</p>
+<h3 id="cómo-decirle-a-gemini-qué-recordar">Cómo Decirle a Gemini Qué Recordar</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Para todas nuestras conversaciones en este Gem,</span></span>
+<span class="line"><span>ten siempre presente que:</span></span>
+<span class="line"><span>- Soy desarrolladora frontend con 5 años de experiencia</span></span>
+<span class="line"><span>- Trabajo principalmente con React y TypeScript</span></span>
+<span class="line"><span>- Mi empresa es una fintech en LATAM</span></span>
+<span class="line"><span>- Prefiero respuestas concisas con código de ejemplo</span></span>
+<span class="line"><span>- Siempre usa español técnico, no Spanglish"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-tema-7-configurar-privacidad-en-cuentas-gemini">🔒 Tema 7: Configurar Privacidad en Cuentas Gemini</h2>
+<p>La privacidad en Gemini es un tema que muchos usuarios ignoran — y no deberían.</p>
+<p><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&#x26;q=80" alt="Privacy settings"></p>
+<h3 id="lo-que-google-puede-ver">Lo Que Google Puede Ver</h3>
+<p>Por defecto, Google puede usar tus conversaciones con Gemini para:</p>
+<ul>
+<li>🔍 Mejorar los modelos de IA de Google</li>
+<li>📊 Mostrarte publicidad más relevante (en cuentas personales gratuitas)</li>
+<li>🔬 Revisión humana de algunas conversaciones para evaluación de calidad</li>
+</ul>
+<h3 id="cómo-configurar-tu-privacidad">Cómo Configurar tu Privacidad</h3>
+<p><strong>Paso 1 — Desactiva el historial de actividad de Gemini:</strong></p>
+<ol>
+<li>Ve a <strong>myaccount.google.com → Datos y privacidad</strong></li>
+<li>Busca “Historial de actividad web y de aplicaciones”</li>
+<li>Desactiva “Incluir actividad de voz y audio de Gemini”
+<strong>Paso 2 — Revisa los permisos de extensiones:</strong></li>
+<li>En Gemini.google.com → ⚙️ Configuración → <strong>Extensiones</strong></li>
+<li>Revisa exactamente qué apps tienen acceso a tu información</li>
+<li>Desactiva cualquier extensión que no uses activamente
+<strong>Paso 3 — Para cuentas Workspace (más protección):</strong>
+Workspace Intelligence lanzó el 22 de abril de 2026, convirtiendo a Gemini en un sistema que lee a través de toda la información de Workspace del usuario por defecto, con controles de administrador para deshabilitar fuentes de datos específicas. Si eres admin, configura estos controles.</li>
+</ol>
+<blockquote>
+<p>🔐 <strong>Regla Zero Trust para Gemini:</strong> Nunca escribas contraseñas, números de tarjeta, o datos biométricos en Gemini — incluso si la conversación parece privada. Trata cada input como potencialmente revisable por un humano.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-8-cómo-buscar-en-internet-con-gemini-y-verificar-fuentes">🔍 Tema 8: Cómo Buscar en Internet con Gemini y Verificar Fuentes</h2>
+<p>Una de las mayores ventajas de Gemini sobre otros modelos es su integración nativa con Google Search. Cuando Gemini busca en internet, no solo trae resultados — los <strong>procesa, sintetiza, y te da el razonamiento</strong>.</p>
+<h3 id="cómo-activar-la-búsqueda-web">Cómo Activar la Búsqueda Web</h3>
+<p>En Gemini.google.com, la búsqueda web está <strong>activa por defecto</strong> en la mayoría de los planes. Puedes reconocer que Gemini está buscando porque verás el ícono de Google 🔍 girando durante la respuesta.</p>
+<h3 id="cómo-pedir-búsquedas-con-fuentes-verificables">Cómo Pedir Búsquedas con Fuentes Verificables</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Prompt que fuerza búsqueda + fuentes:</span></span>
+<span class="line"><span>"Busca en internet información actualizada sobre</span></span>
+<span class="line"><span>[tema]. Para cada afirmación importante que hagas,</span></span>
+<span class="line"><span>cita la fuente con URL. Prioriza fuentes oficiales,</span></span>
+<span class="line"><span>papers académicos, o medios de referencia. Si</span></span>
+<span class="line"><span>encuentras información contradictoria, menciónala."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="cómo-verificar-las-fuentes-de-gemini">Cómo Verificar las Fuentes de Gemini</h3>
+<ol>
+<li><strong>Haz click en las referencias citadas</strong> — Gemini linkea las fuentes directamente en la respuesta</li>
+<li><strong>Pide más detalles:</strong> “¿Puedes darme el URL exacto de donde sacaste el dato sobre X?”</li>
+<li><strong>Usa el botón “Verificar con Google”</strong> que aparece en algunas respuestas — busca el claim directamente en Google</li>
+<li><strong>Controla con Double-Check:</strong> En la interfaz, el botón 🔍 “Double-check response” resalta afirmaciones que pueden tener fuentes conflictivas</li>
+</ol>
+<blockquote>
+<p>⚠️ <strong>Zero Trust en búsquedas:</strong> Gemini puede estar desactualizado incluso con búsqueda web activa. Para información crítica (precios, leyes, estadísticas), siempre verifica directamente en la fuente primaria.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-9-cómo-gemini-analiza-tus-documentos-pdf-y-videos">📄 Tema 9: Cómo Gemini Analiza tus Documentos PDF y Videos</h2>
+<p><img src="https://images.unsplash.com/photo-1568667256549-094345857637?w=800&#x26;q=80" alt="Document analysis"></p>
+<p>Gemini tiene capacidades multimodales robustas — puede procesar texto, imágenes, audio, video, y documentos en el mismo contexto.</p>
+<h3 id="-análisis-de-pdfs-y-documentos">📑 Análisis de PDFs y Documentos</h3>
+<p><strong>Qué puedes cargar:</strong> PDF, DOCX, TXT, código fuente, imágenes, hojas de cálculo</p>
+<p><strong>Casos de uso reales:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Analiza este contrato de 120 páginas [PDF adjunto] y:</span></span>
+<span class="line"><span>1. Dame un resumen ejecutivo en 5 puntos clave</span></span>
+<span class="line"><span>2. Identifica cláusulas que favorezcan desproporcionadamente</span></span>
+<span class="line"><span>   a una parte</span></span>
+<span class="line"><span>3. Señala cualquier ambigüedad legal</span></span>
+<span class="line"><span>4. Dime qué términos son inusuales para este tipo de contrato"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"Lee este reporte financiero trimestral [PDF] y:</span></span>
+<span class="line"><span>- Compara los KPIs con el trimestre anterior</span></span>
+<span class="line"><span>- Identifica las 3 tendencias más importantes</span></span>
+<span class="line"><span>- Dame las métricas en una tabla limpia</span></span>
+<span class="line"><span>- Sugiere 2 preguntas que haría en el earnings call"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-análisis-de-videos">🎬 Análisis de Videos</h3>
+<p>Esta es una capacidad <strong>única de Gemini</strong> que ningún otro modelo ofrece de forma tan integrada: puedes subir un video y Gemini lo analiza completo.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"[Video adjunto: demo de producto de 10 minutos]</span></span>
+<span class="line"><span>Analiza este video de demo y dame:</span></span>
+<span class="line"><span>- Resumen del producto explicado</span></span>
+<span class="line"><span>- Los 5 features más destacados mencionados</span></span>
+<span class="line"><span>- Cualquier bug o inconsistencia visible en el demo</span></span>
+<span class="line"><span>- Los momentos donde el presentador pierde el ritmo</span></span>
+<span class="line"><span>  (con timestamp)"</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>También puedes linkear videos de YouTube directamente:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Analiza este video de YouTube: [URL]</span></span>
+<span class="line"><span>Resume los puntos principales y dame los timestamps</span></span>
+<span class="line"><span>de los momentos más importantes."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-con-google-lens-integrado">📱 Con Google Lens Integrado</h3>
+<p>En la app móvil, Gemini se integra con tu cámara:</p>
+<ul>
+<li>📸 Apunta tu cámara a cualquier texto y Gemini lo procesa</li>
+<li>🔢 Fotografía una ecuación o problema matemático para resolverlo</li>
+<li>🌿 Identifica plantas, animales, o objetos en tiempo real</li>
+</ul>
+<hr>
+<h2 id="-tema-10-análisis-de-planillas-con-gemini-y-python">📊 Tema 10: Análisis de Planillas con Gemini y Python</h2>
+<p>Para usuarios técnicos, Gemini ofrece capacidades avanzadas de análisis de datos que van mucho más allá de las fórmulas de Excel.</p>
+<h3 id="análisis-directo-en-google-sheets">Análisis Directo en Google Sheets</h3>
+<p>Con Gemini en Google Sheets puedes:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Analiza esta hoja de cálculo [Sheets conectado] y:</span></span>
+<span class="line"><span>1. Identifica los 5 productos con mayor margen</span></span>
+<span class="line"><span>2. Encuentra correlaciones entre precio y volumen de ventas</span></span>
+<span class="line"><span>3. Detecta outliers en las columnas de facturación</span></span>
+<span class="line"><span>4. Genera un gráfico de tendencia mensual</span></span>
+<span class="line"><span>5. Sugiere qué columnas faltan para un análisis más completo"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="python--gemini-data-science-en-lenguaje-natural">Python + Gemini: Data Science en Lenguaje Natural</h3>
+<p>Para análisis más avanzados, Gemini puede generar y ejecutar código Python en tiempo real:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#6A737D"># Prompt para análisis completo con Python:</span></span>
+<span class="line"><span style="color:#9ECBFF">"""</span></span>
+<span class="line"><span style="color:#9ECBFF">Tengo un CSV con columnas: </span></span>
+<span class="line"><span style="color:#9ECBFF">[fecha, producto, región, ventas, costo, cliente_id]</span></span>
+<span class="line"><span style="color:#9ECBFF"> </span></span>
+<span class="line"><span style="color:#9ECBFF">Necesito:</span></span>
+<span class="line"><span style="color:#9ECBFF">1. Análisis exploratorio completo (EDA):</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Distribución de ventas por región</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Productos más rentables</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Estacionalidad mensual</span></span>
+<span class="line"><span style="color:#9ECBFF">   </span></span>
+<span class="line"><span style="color:#9ECBFF">2. Segmentación de clientes con K-Means (K=4):</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Features: frecuencia_compra, ticket_promedio, </span></span>
+<span class="line"><span style="color:#9ECBFF">     tiempo_desde_ultima_compra (RFM)</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Visualización de clusters con seaborn</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Descripción de cada segmento en lenguaje de negocio</span></span>
+<span class="line"><span style="color:#9ECBFF"> </span></span>
+<span class="line"><span style="color:#9ECBFF">3. Predicción simple:</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Proyección de ventas próximos 3 meses</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Con intervalos de confianza</span></span>
+<span class="line"><span style="color:#9ECBFF"> </span></span>
+<span class="line"><span style="color:#9ECBFF">Genera el código Python completo, ejecutable, con:</span></span>
+<span class="line"><span style="color:#9ECBFF">- Comentarios explicativos</span></span>
+<span class="line"><span style="color:#9ECBFF">- Manejo de errores</span></span>
+<span class="line"><span style="color:#9ECBFF">- Outputs guardados como imágenes PNG</span></span>
+<span class="line"><span style="color:#9ECBFF">"""</span></span>
+<span class="line"></span></code></pre>
+<blockquote>
+<p>💡 <strong>Tip:</strong> Gemini puede ejecutar código Python directamente en la conversación (en cuentas Pro+). No necesitas instalar nada — el entorno de ejecución es de Google.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-11-cómo-gemini-te-guía-para-aprender-python">🐍 Tema 11: Cómo Gemini te Guía para Aprender Python</h2>
+<p>Gemini es un tutor de programación excepcionalmente bueno, especialmente para Python, porque:</p>
+<ul>
+<li>Tiene acceso a toda la documentación oficial</li>
+<li>Puede ejecutar y verificar el código en tiempo real</li>
+<li>Se adapta a tu nivel de experiencia</li>
+<li>Conecta con tus proyectos reales en Drive</li>
+</ul>
+<h3 id="la-ruta-de-aprendizaje-con-gemini">La Ruta de Aprendizaje con Gemini</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>SEMANA 1-2: Variables, tipos de datos, operaciones básicas</span></span>
+<span class="line"><span>SEMANA 3-4: Condicionales y loops (if, for, while)</span></span>
+<span class="line"><span>SEMANA 5-6: Funciones y scope</span></span>
+<span class="line"><span>SEMANA 7-8: Listas, diccionarios, sets, tuplas</span></span>
+<span class="line"><span>SEMANA 9-10: Archivos y manejo de errores</span></span>
+<span class="line"><span>SEMANA 11-12: Librerías esenciales (pandas, requests)</span></span>
+<span class="line"><span>SEMANA 13-16: Tu primer proyecto real</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="el-prompt-de-tutor-personalizado">El Prompt de Tutor Personalizado</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Quiero aprender Python desde cero. Mi objetivo es</span></span>
+<span class="line"><span>[análisis de datos / web scraping / automatización].</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Mi background: [trabajo en finanzas / soy diseñador /</span></span>
+<span class="line"><span>nunca he programado / sé Excel].</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Rol: Sé mi tutor de Python. Para cada concepto:</span></span>
+<span class="line"><span>1. Explícalo con una analogía de mi trabajo</span></span>
+<span class="line"><span>2. Dame un ejemplo concreto y pequeño</span></span>
+<span class="line"><span>3. Dame un ejercicio para practicar</span></span>
+<span class="line"><span>4. No me des la solución inmediata — dame un hint primero</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Empecemos por el principio: variables en Python."</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="gemini-como-pair-programmer">Gemini como Pair Programmer</h3>
+<p>Una vez que sabes los básicos, úsalo como compañero de código:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#6A737D"># Muéstrale tu código con errores y pide que te enseñe, no solo que lo corrija:</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#9ECBFF">"Este código no funciona. En lugar de darme la solución,</span></span>
+<span class="line"><span style="color:#E1E4E8">explícame </span><span style="color:#79B8FF">QUÉ</span><span style="color:#E1E4E8"> está mal y </span><span style="color:#79B8FF">POR</span><span style="color:#79B8FF"> QUÉ</span><span style="color:#E1E4E8">. Luego hazme preguntas</span></span>
+<span class="line"><span style="color:#E1E4E8">para guiarme a encontrar la solución yo mismo.</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">```python</span></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> calcular_promedio</span><span style="color:#E1E4E8">(numeros):</span></span>
+<span class="line"><span style="color:#E1E4E8">    total </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> numeros:</span></span>
+<span class="line"><span style="color:#E1E4E8">        total </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> n</span></span>
+<span class="line"><span style="color:#E1E4E8">    promedio </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> total </span><span style="color:#F97583">/</span><span style="color:#79B8FF"> len</span><span style="color:#E1E4E8">(numeros)</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> promedio</span></span>
+<span class="line"><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#E1E4E8">resultado </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> calcular_promedio([])</span></span>
+<span class="line"><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(resultado)</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">```</span><span style="color:#9ECBFF;font-style:italic">"</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<h2 id="-tema-12-vista-dinámica-de-gemini-pro--dashboards-interactivos">📊 Tema 12: Vista Dinámica de Gemini Pro — Dashboards Interactivos</h2>
+<p>La <strong>Vista Dinámica</strong> (Dynamic View) es una de las características más poderosas y menos conocidas de Gemini Pro. Permite crear <strong>representaciones visuales interactivas</strong> directamente en la conversación — sin salir de Gemini, sin instalar nada.</p>
+<h3 id="qué-puedes-crear-con-vista-dinámica">Qué Puedes Crear con Vista Dinámica</h3>
+<ul>
+<li>📊 <strong>Dashboards en tiempo real</strong> con datos que tú proporcionas</li>
+<li>📈 <strong>Gráficas interactivas</strong> que puedes explorar haciendo zoom</li>
+<li>🗺️ <strong>Mapas de datos</strong> geográficos</li>
+<li>📅 <strong>Timelines y cronogramas</strong> visuales</li>
+<li>🔄 <strong>Diagramas de flujo</strong> de procesos</li>
+</ul>
+<h3 id="cómo-activar-la-vista-dinámica">Cómo Activar la Vista Dinámica</h3>
+<ol>
+<li>En Gemini.google.com, asegúrate de tener plan Pro o Ultra</li>
+<li>Escribe un prompt que pida visualización</li>
+<li>Gemini automáticamente ofrece una Vista Dinámica cuando es apropiado</li>
+<li>También puedes pedirlo explícitamente: “Muéstrame esto en vista dinámica / crea una visualización interactiva”</li>
+</ol>
+<h3 id="ejemplo-de-prompt-para-dashboard">Ejemplo de Prompt para Dashboard</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Tengo los siguientes datos de ventas mensuales 2025:</span></span>
+<span class="line"><span>Enero: $45,000 | Febrero: $52,000 | Marzo: $48,000</span></span>
+<span class="line"><span>Abril: $61,000 | Mayo: $58,000 | Junio: $72,000</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Crea una vista dinámica con:</span></span>
+<span class="line"><span>- Gráfica de barras de ventas por mes</span></span>
+<span class="line"><span>- Línea de tendencia</span></span>
+<span class="line"><span>- Diferencia porcentual mes a mes</span></span>
+<span class="line"><span>- Proyección para los próximos 3 meses</span></span>
+<span class="line"><span>Hazlo interactivo para que pueda hacer hover en cada barra"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-tema-13-nano-banana--imágenes-realistas-con-texto-perfecto">🎨 Tema 13: Nano Banana — Imágenes Realistas con Texto Perfecto</h2>
+<p><img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=800&#x26;q=80" alt="Image generation illustration"></p>
+<p><strong>Nano Banana</strong> es el modelo de generación de imágenes de Google integrado en Gemini. Lo que lo hace especial es su capacidad para generar imágenes con <strong>texto perfectamente legible</strong> — uno de los problemas más difíciles de la generación de imágenes con IA.</p>
+<h3 id="por-qué-nano-banana-es-diferente">Por Qué Nano Banana es Diferente</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Problema en generación de imágenes</th><th>Nano Banana</th></tr></thead><tbody><tr><td>Texto ilegible o con errores</td><td>✅ Texto nítido y correcto</td></tr><tr><td>Letras invertidas o mezcladas</td><td>✅ Ortografía correcta</td></tr><tr><td>Logos corporativos distorsionados</td><td>✅ Texto en logos preciso</td></tr><tr><td>Señales, letreros, títulos borrosos</td><td>✅ Alta fidelidad en textos</td></tr></tbody></table>
+<h3 id="casos-de-uso-perfectos-para-nano-banana">Casos de Uso Perfectos para Nano Banana</h3>
+<ul>
+<li>🎨 <strong>Mockups de productos</strong> con etiquetas y texto legible</li>
+<li>📱 <strong>UI mockups</strong> con botones y labels correctos</li>
+<li>📢 <strong>Posts para redes sociales</strong> con títulos y subtítulos</li>
+<li>🏪 <strong>Materiales de marketing</strong> con nombres de marcas</li>
+<li>📊 <strong>Infografías</strong> con datos y textos integrados</li>
+<li>🃏 <strong>Tarjetas de presentación</strong> o invitaciones</li>
+</ul>
+<h3 id="el-prompt-perfecto-para-nano-banana">El Prompt Perfecto para Nano Banana</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Genera una imagen [estilo: foto realista / ilustración /</span></span>
+<span class="line"><span>minimalista / 3D render] que muestre:</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>[Descripción detallada de la escena]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Texto que DEBE aparecer CLARAMENTE LEGIBLE: </span></span>
+<span class="line"><span>"[texto exacto que necesitas]"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Posición del texto: [arriba / abajo / centro / esquina]</span></span>
+<span class="line"><span>Colores: [esquema de colores]</span></span>
+<span class="line"><span>Resolución: [alta calidad para impresión / web]"</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 <strong>Tip:</strong> Sé específico con el texto que quieres. Cuanto más exacto seas (“el texto dice exactamente: OFERTA 50% DESCUENTO en letras blancas sobre fondo azul”), mejor será el resultado.</p>
+</blockquote>
+<hr>
+<h2 id="-tema-14-cómo-crear-videos-con-veo-31-en-gemini">🎬 Tema 14: Cómo Crear Videos con Veo 3.1 en Gemini</h2>
+<p>Esta es la característica más impresionante del Gemini 2026: la generación de <strong>video con audio sincronizado de alta calidad</strong>.</p>
+<h3 id="qué-es-veo-31">¿Qué es Veo 3.1?</h3>
+<p>Veo 3.1 es un modelo de generación de video que crea clips con texturas realistas y diálogos sincronizados con efectos de sonido completos.</p>
+<p>Veo 3.1 tiene mejor consistencia temporal, audio sincronizado, soporte de diálogo, y control preciso de cámara. La versión web de Flow soporta output en 4K y configuraciones avanzadas de escena.</p>
+<h3 id="qué-puede-hacer-veo-31">Qué Puede Hacer Veo 3.1</h3>
+<ul>
+<li>🎬 Videos de hasta 2 minutos con audio nativo</li>
+<li>🎙️ Diálogos realistas con sincronización de labios</li>
+<li>🎵 Música de fondo y efectos de sonido generados</li>
+<li>📷 Control de ángulo de cámara (dolly, zoom, panorámica)</li>
+<li>🌅 Alta coherencia visual entre frames (sin “saltos”)</li>
+<li>🎭 Múltiples estilos: cinematográfico, animación, documental</li>
+</ul>
+<h3 id="cómo-acceder">Cómo Acceder</h3>
+<ul>
+<li>En <strong>Gemini.google.com</strong> con plan Ultra: busca el tab de “Video” o “Veo”</li>
+<li>En <strong>Google Flow</strong>: <a href="https://flow.google.com">flow.google.com</a> — la herramienta dedicada a Veo para creadores</li>
+</ul>
+<h3 id="el-prompt-de-video-perfecto">El Prompt de Video Perfecto</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Genera un video de [duración: 8-30 segundos] con:</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>ESCENA: [descripción detallada del entorno, hora del día,</span></span>
+<span class="line"><span>clima, objetos presentes]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>PERSONAJE/ACCIÓN: [quién aparece, qué hace exactamente,</span></span>
+<span class="line"><span>con qué emoción]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>DIÁLOGO (si aplica): "[texto exacto a decir]"</span></span>
+<span class="line"><span>VOZ: [masculina/femenina, acento, tono: serio/alegre/neutral]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>AUDIO AMBIENTE: [tipo de sonidos de fondo]</span></span>
+<span class="line"><span>MÚSICA: [género, energía: lenta/dinámica, sin música]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>CÁMARA: [tipo de shot: close-up / wide shot / dolly-in]</span></span>
+<span class="line"><span>ESTILO: [cinematográfico / documental / animación]"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="ejemplo-real">Ejemplo Real</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Video de 15 segundos.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>ESCENA: Café moderno en Ciudad de México al amanecer,</span></span>
+<span class="line"><span>ventanas grandes, luz dorada entrando, pocas personas.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>PERSONAJE: Mujer de 30 años, ropa de trabajo casual,</span></span>
+<span class="line"><span>toma su primer café del día, mira por la ventana</span></span>
+<span class="line"><span>con expresión pensativa pero optimista.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>AUDIO: Sonido suave de jazz instrumental + tazas y</span></span>
+<span class="line"><span>conversaciones de fondo lejanas.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>CÁMARA: Dolly-in lento hacia su cara desde el fondo.</span></span>
+<span class="line"><span>ESTILO: Cinematográfico, similar a un comercial de café."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="️-tema-15-canvas-de-gemini--documentos-vivos-sin-copiar-y-pegar">🖼️ Tema 15: Canvas de Gemini — Documentos Vivos Sin Copiar y Pegar</h2>
+<p><strong>Canvas</strong> es la respuesta de Google a los “Artifacts” de Claude y el “Canvas” de ChatGPT — pero con una integración única: <strong>exporta directamente a Google Docs, Slides, y Sheets</strong>.</p>
+<h3 id="qué-es-canvas">¿Qué es Canvas?</h3>
+<p>Canvas transforma descripciones en lenguaje natural en prototipos visuales sin necesidad de habilidades de diseño o código. Describe lo que quieres y el sistema genera prototipos funcionales que puedes refinar mediante conversación. Soporta elementos multimedia incluyendo texto, imágenes y componentes interactivos con edición colaborativa en tiempo real.</p>
+<p>En términos simples: Canvas es el espacio donde Gemini crea contenido <strong>rico e interactivo</strong> que puedes ver, editar, y exportar sin salir de la conversación.</p>
+<h3 id="qué-puedes-crear-en-canvas">Qué Puedes Crear en Canvas</h3>
+<ul>
+<li>📝 <strong>Documentos formatados</strong> con secciones, tablas, y listas</li>
+<li>📊 <strong>Presentaciones visuales</strong> que exportan a Google Slides</li>
+<li>🎮 <strong>Apps e interfaces interactivas</strong> — quizzes, calculadoras, juegos</li>
+<li>📐 <strong>Infografías</strong> con datos integrados</li>
+<li>📋 <strong>Formularios</strong> y templates reutilizables</li>
+<li>🌐 <strong>Páginas web simples</strong> con HTML/CSS funcional</li>
+</ul>
+<h3 id="el-flujo-de-trabajo-canvas">El Flujo de Trabajo Canvas</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. Le describes a Gemini lo que quieres crear</span></span>
+<span class="line"><span>   "Crea un documento de propuesta comercial para </span></span>
+<span class="line"><span>   una empresa de consultoría IT"</span></span>
+<span class="line"><span>          ↓</span></span>
+<span class="line"><span>2. Gemini genera el documento en Canvas (panel lateral)</span></span>
+<span class="line"><span>          ↓</span></span>
+<span class="line"><span>3. Puedes pedirle cambios en lenguaje natural</span></span>
+<span class="line"><span>   "Agrega una sección de precios con tabla comparativa"</span></span>
+<span class="line"><span>   "Cambia el tono a más formal"</span></span>
+<span class="line"><span>   "Añade el logo de mi empresa [imagen adjunta]"</span></span>
+<span class="line"><span>          ↓</span></span>
+<span class="line"><span>4. Con un click, exportas a Google Docs / Slides / Drive</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="tip-de-productividad-máxima">Tip de Productividad Máxima</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Crea en Canvas una propuesta comercial completa para</span></span>
+<span class="line"><span>[tipo de proyecto] con estas secciones:</span></span>
+<span class="line"><span>- Portada con [nombre empresa], fecha, y tagline</span></span>
+<span class="line"><span>- Resumen ejecutivo (3 párrafos)</span></span>
+<span class="line"><span>- El problema que resolvemos</span></span>
+<span class="line"><span>- Nuestra solución con 3 features clave</span></span>
+<span class="line"><span>- Casos de éxito (3 ejemplos genéricos)</span></span>
+<span class="line"><span>- Inversión requerida (tabla de precios)</span></span>
+<span class="line"><span>- Próximos pasos y CTA</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Estilo: Corporativo moderno, colores azul y blanco.</span></span>
+<span class="line"><span>Al terminar, exporta a Google Docs."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="️-tema-16-gemini-crea-presentaciones-desde-documentos">📽️ Tema 16: Gemini Crea Presentaciones Desde Documentos</h2>
+<p>Google también lanzó una de sus características más prácticas: construcción automatizada de presentaciones en Canvas. Los usuarios pueden proporcionar un tema o documento fuente a Gemini, y generará un deck completo con temas e imágenes relevantes. La clave es la exportación directa a Google Slides para los toques finales.</p>
+<h3 id="el-flujo-completo">El Flujo Completo</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>TU DOCUMENTO / REPORTE / NOTAS</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>"Gemini, convierte este documento en una presentación</span></span>
+<span class="line"><span>de [N] slides para [audiencia]"</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>Canvas genera el deck con estructura lógica</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>Gemini añade imágenes relevantes de imagen + IA</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>Exporta a Google Slides con 1 click</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>Editas en Slides como siempre</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="prompt-para-transformar-cualquier-documento">Prompt para Transformar Cualquier Documento</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"[Documento/notas adjuntas o pegadas]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Convierte este contenido en una presentación de</span></span>
+<span class="line"><span>[N] slides para [audiencia: directivos / técnicos /</span></span>
+<span class="line"><span>clientes / equipo].</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Estructura:</span></span>
+<span class="line"><span>- 1 slide de portada impactante</span></span>
+<span class="line"><span>- 1 slide de agenda</span></span>
+<span class="line"><span>- [N] slides de contenido</span></span>
+<span class="line"><span>- 1 slide de conclusiones y próximos pasos</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Para cada slide: máximo 5 bullets o 1 idea principal.</span></span>
+<span class="line"><span>Estilo: [ejecutivo / técnico / creativo]</span></span>
+<span class="line"><span>Incluye: sugerencias de imágenes relevantes para cada slide.</span></span>
+<span class="line"><span>Exporta a Google Slides al finalizar."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-tema-17-gemini-en-gmail--búsqueda-con-contexto-y-redacción-automática">📧 Tema 17: Gemini en Gmail — Búsqueda con Contexto y Redacción Automática</h2>
+<p><img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&#x26;q=80" alt="Gmail AI features"></p>
+<p>El email es donde la mayoría de trabajadores del conocimiento pierden 2 a 3 horas cada día. Gemini en Gmail ataca este problema desde cuatro ángulos simultáneamente.</p>
+<h3 id="-búsqueda-inteligente-en-gmail">🔍 Búsqueda Inteligente en Gmail</h3>
+<p>La búsqueda tradicional de Gmail busca palabras clave. Gemini entiende el <strong>contexto y la intención</strong>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Búsquedas imposibles con la búsqueda normal:</span></span>
+<span class="line"><span>"¿Alguien me preguntó por los resultados de la</span></span>
+<span class="line"><span>encuesta de satisfacción del Q1?"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"¿Qué emails tengo pendientes de responder de</span></span>
+<span class="line"><span>clientes que llevan más de 2 semanas sin respuesta?"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"¿Cuándo fue la última vez que Juan me mandó algo</span></span>
+<span class="line"><span>relacionado con el proyecto de migración?"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="️-redacción-automática-con-gemini">✍️ Redacción Automática con Gemini</h3>
+<p><strong>“Help me write” en Gmail:</strong></p>
+<ol>
+<li>Haz click en ✏️ “Compose” para escribir un email nuevo</li>
+<li>Busca el botón ✨ “Help me write”</li>
+<li>Escribe una frase describiendo el email que necesitas</li>
+<li>Gemini genera el draft completo</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Tus instrucciones: "Email al proveedor XYZ para quejarse</span></span>
+<span class="line"><span>del retraso en el envío del pedido #4521 que debió llegar</span></span>
+<span class="line"><span>hace 2 semanas, pedir actualización urgente y mencionar</span></span>
+<span class="line"><span>que consideramos cambiar de proveedor si no hay respuesta</span></span>
+<span class="line"><span>en 24 horas. Tono: firme pero profesional."</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Gemini genera: Un email completo, bien estructurado,</span></span>
+<span class="line"><span>con asunto apropiado, saludo, cuerpo, y despedida.</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-gmail-live-io-2026">🆕 Gmail Live (I/O 2026)</h3>
+<p>Gmail Live permite a los usuarios usar su voz para buscar dentro de Gmail y obtener respuestas audibles generadas desde el contenido de su bandeja de entrada. Es como una conversación de Gemini Live dentro de Gmail. Por ejemplo, puedes preguntar “¿Qué eventos escolares tiene mi hijo Jack?” y Gmail Live busca en tus emails y responde conversacionalmente.</p>
+<p>Disponible en verano 2026 para suscriptores de AI Pro y Ultra en EE.UU.</p>
+<hr>
+<h2 id="-tema-18-cómo-usar-gemini-en-google-docs-para-escribir">📝 Tema 18: Cómo Usar Gemini en Google Docs para Escribir</h2>
+<p>Gemini en Google Docs no es solo autocomplete — es un <strong>colaborador de escritura</strong> que entiende el contexto de todo tu documento.</p>
+<h3 id="las-4-formas-de-usar-gemini-en-docs">Las 4 Formas de Usar Gemini en Docs</h3>
+<p><strong>1. “Help me write” (Ayúdame a escribir)</strong>
+Clic derecho en cualquier parte del documento → “Help me write” → describe qué quieres añadir.</p>
+<p><strong>2. Panel lateral de Gemini</strong>
+Haz click en ✨ en la barra lateral → Gemini puede leer TODO el documento y responder preguntas sobre él.</p>
+<p><strong>3. Selecciona texto + Gemini</strong>
+Selecciona cualquier párrafo → ícono de Gemini → opciones: reescribir, acortar, expandir, cambiar tono, traducir.</p>
+<p><strong>4. @mentions para fuentes externas</strong>
+Escribe <code>@</code> en el documento para referenciar archivos de Drive, emails de Gmail, o personas del directorio.</p>
+<h3 id="casos-de-uso-transformadores">Casos de Uso Transformadores</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># En el panel lateral:</span></span>
+<span class="line"><span>"Este es un reporte de análisis de mercado.</span></span>
+<span class="line"><span>Identifica los 3 argumentos más débiles y sugiere</span></span>
+<span class="line"><span>cómo fortalecerlos con datos adicionales."</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"¿Este documento es consistente en su argumento</span></span>
+<span class="line"><span>de principio a fin? ¿Hay contradicciones?"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"Reescribe la sección 3 con un tono más ejecutivo,</span></span>
+<span class="line"><span>adecuado para un directorio de empresa."</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"Convierte este documento en una lista de action</span></span>
+<span class="line"><span>items con responsable y fecha sugerida para cada uno."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-tema-19-cómo-gemini-transforma-google-slides">🎨 Tema 19: Cómo Gemini Transforma Google Slides</h2>
+<p>Gemini en Slides va mucho más allá de crear presentaciones desde cero. Puede <strong>transformar, mejorar, y reimaginar</strong> presentaciones existentes.</p>
+<h3 id="lo-que-gemini-puede-hacer-en-slides">Lo Que Gemini Puede Hacer en Slides</h3>
+<ul>
+<li>✨ <strong>Reimaginar una slide:</strong> Selecciona una slide → “Reimagine this slide” → Gemini crea 4 variaciones visuales</li>
+<li>📝 <strong>Generar notas del presentador:</strong> Para cada slide, genera speaker notes detalladas</li>
+<li>🎨 <strong>Cambiar tema visual:</strong> “Aplica un estilo más moderno y corporativo a toda la presentación”</li>
+<li>🖼️ <strong>Sugerir imágenes:</strong> “Para esta slide sobre crecimiento, sugiere 3 imágenes apropiadas de Unsplash”</li>
+<li>📊 <strong>Convertir bullets en visuales:</strong> “Convierte estos 5 puntos en un diagrama de proceso”</li>
+</ul>
+<h3 id="el-prompt-de-transformación-total">El Prompt de Transformación Total</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"[Presentación existente abierta en Slides]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Transforma esta presentación completa:</span></span>
+<span class="line"><span>1. Reduce cada slide a 1 idea principal máximo</span></span>
+<span class="line"><span>2. Convierte listas de bullets en visuales donde sea posible</span></span>
+<span class="line"><span>3. Añade una metáfora visual consistente para todo el deck</span></span>
+<span class="line"><span>4. Genera speaker notes de 2 minutos por slide</span></span>
+<span class="line"><span>5. Crea una slide de apertura más impactante</span></span>
+<span class="line"><span>6. Asegúrate de que haya un hilo narrativo claro</span></span>
+<span class="line"><span>   de principio a fin"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-tema-20-conecta-gemini-con-google-workspace">🔗 Tema 20: Conecta Gemini con Google Workspace</h2>
+<p>Gemini no es un chatbot en una pestaña separada. Vive dentro de tus apps existentes y tiene acceso directo al contexto de tus emails, documentos, calendarios, y reuniones. Es la diferencia entre un consultor que tienes que briefear desde cero cada vez versus un miembro del equipo que estuvo en cada reunión, leyó cada documento, y ya está al día.</p>
+<p><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&#x26;q=80" alt="Workspace integration"></p>
+<h3 id="cómo-activar-las-extensiones-de-workspace">Cómo Activar las Extensiones de Workspace</h3>
+<ol>
+<li>Ve a <strong>gemini.google.com</strong></li>
+<li>Haz click en ⚙️ Configuración → <strong>Extensions</strong> (Extensiones)</li>
+<li>Activa las que necesitas:
+<ul>
+<li>📧 <strong>Gmail</strong> — Lee y redacta emails</li>
+<li>📅 <strong>Google Calendar</strong> — Ve y crea eventos</li>
+<li>🗂️ <strong>Google Drive</strong> — Accede a archivos y documentos</li>
+<li>📝 <strong>Google Docs</strong> — Lee y edita documentos</li>
+<li>📊 <strong>Google Sheets</strong> — Analiza hojas de cálculo</li>
+<li>🗺️ <strong>Google Maps</strong> — Consultas de ubicación</li>
+<li>🛍️ <strong>Google Shopping</strong> — Búsquedas de productos</li>
+</ul>
+</li>
+</ol>
+<h3 id="flujos-de-trabajo-multi-app">Flujos de Trabajo Multi-App</h3>
+<p>Una vez conectados, Gemini puede trabajar a través de todas tus apps en un solo prompt:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Revisa mi calendario de esta semana [Calendar],</span></span>
+<span class="line"><span>identifica qué reuniones tienen documentos de</span></span>
+<span class="line"><span>preparación en Drive [Drive], y para las que no</span></span>
+<span class="line"><span>tienen ninguno, draft un email [Gmail] a los</span></span>
+<span class="line"><span>organizadores pidiendo la agenda con al menos</span></span>
+<span class="line"><span>24 horas de anticipación."</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>→ Gemini:</span></span>
+<span class="line"><span>1. Lee tu calendario</span></span>
+<span class="line"><span>2. Busca en Drive documentos relacionados con cada evento</span></span>
+<span class="line"><span>3. Identifica los que no tienen doc de preparación</span></span>
+<span class="line"><span>4. Redacta emails personalizados para cada uno</span></span>
+<span class="line"><span>5. Te muestra los drafts para aprobación</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-tema-21-cómo-crear-gems-personalizados-en-gemini">💎 Tema 21: Cómo Crear Gems Personalizados en Gemini</h2>
+<p>Los <strong>Gems</strong> son el equivalente de Gemini a los GPTs de OpenAI o los Proyectos de Claude. Son versiones personalizadas de Gemini con instrucciones específicas, contexto permanente, y archivos de referencia.</p>
+<h3 id="por-qué-los-gems-cambian-todo">¿Por Qué los Gems Cambian Todo?</h3>
+<p>Sin Gems: Explicas tu contexto desde cero en cada conversación.
+Con Gems: Tu contexto vive permanentemente en el Gem. Abres el Gem y Gemini ya sabe quién eres, qué haces, y cómo trabajas.</p>
+<h3 id="los-gems-pre-construidos-por-google">Los Gems Pre-Construidos por Google</h3>
+<p>Google incluye varios Gems ya configurados:</p>
+<ul>
+<li>🧑‍💻 <strong>Coding Partner</strong> — Compañero de programación</li>
+<li>📚 <strong>Learning Coach</strong> — Tutor personalizado</li>
+<li>✍️ <strong>Writing Editor</strong> — Editor de escritura</li>
+<li>🧠 <strong>Brainstorm Partner</strong> — Compañero de ideación</li>
+<li>💼 <strong>Career Guide</strong> — Guía de carrera</li>
+</ul>
+<h3 id="tipos-de-gems-que-puedes-crear">Tipos de Gems que Puedes Crear</h3>
+<ul>
+<li>👔 <strong>Gem Profesional</strong> — Tu asistente con el contexto de tu empresa</li>
+<li>📚 <strong>Gem Educativo</strong> — Tu tutor personalizado para un tema específico</li>
+<li>✍️ <strong>Gem de Contenido</strong> — Tu escritor que entiende tu marca y audiencia</li>
+<li>🔬 <strong>Gem de Investigación</strong> — Tu analista con acceso a tus documentos de referencia</li>
+<li>💬 <strong>Gem de Cliente</strong> — Un agente que responde en el contexto de tu producto</li>
+</ul>
+<hr>
+<h2 id="-tema-22-gemini-live--charla-en-tiempo-real-desde-tu-celular">📱 Tema 22: Gemini Live — Charla en Tiempo Real Desde tu Celular</h2>
+<p><strong>Gemini Live</strong> es la función más natural e inmediata de Gemini: una conversación de voz fluida, bidireccional, en tiempo real.</p>
+<p><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&#x26;q=80" alt="Mobile AI conversation"></p>
+<h3 id="por-qué-gemini-live-es-diferente-a-siri-o-alexa">Por Qué Gemini Live es Diferente a Siri o Alexa</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Siri / Alexa:          Comandos de voz</span></span>
+<span class="line"><span>                       "Pon un timer de 10 minutos"</span></span>
+<span class="line"><span>                       → Acción puntual</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Gemini Live:           Conversación real</span></span>
+<span class="line"><span>                       "Estoy preparando mi presentación</span></span>
+<span class="line"><span>                       para mañana, ¿puedes ayudarme a</span></span>
+<span class="line"><span>                       estructurar los argumentos mientras</span></span>
+<span class="line"><span>                       te cuento de qué va?"</span></span>
+<span class="line"><span>                       → Diálogo fluido, puedes interrumpir,</span></span>
+<span class="line"><span>                         redirigir, hacer preguntas de seguimiento</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="casos-de-uso-reales-de-gemini-live">Casos de Uso Reales de Gemini Live</h3>
+<ul>
+<li>🚗 <strong>En el coche:</strong> “Mientras conduzco, ayúdame a preparar mentalmente la presentación de las 9am”</li>
+<li>🏃 <strong>Ejercitándote:</strong> “Mientras corro, enséñame vocabulario de negocios en inglés”</li>
+<li>🍳 <strong>Cocinando:</strong> “Tengo cebolla, tomate, y pollo — dime una receta paso a paso”</li>
+<li>📚 <strong>Estudiando:</strong> “Hazme preguntas sobre el tema de termodinámica que estudié hoy”</li>
+<li>💼 <strong>Preparando reuniones:</strong> “Ayúdame a anticipar las objeciones que me pueden hacer en la negociación”</li>
+</ul>
+<h3 id="las-integraciones-de-gemini-live-2026">Las Integraciones de Gemini Live (2026)</h3>
+<p>Gemini Live se integra en tiempo real con Google Calendar, Google Tasks, Google Keep, y Google Maps en dispositivos móviles, permitiendo interacción en tiempo real durante las conversaciones. Los usuarios pueden crear eventos en Calendar, establecer recordatorios en Tasks, añadir notas en Keep, y recuperar datos de apps directamente mediante voz.</p>
+<h3 id="cómo-usar-gemini-live">Cómo Usar Gemini Live</h3>
+<ol>
+<li>Abre la app <strong>Gemini</strong> en tu móvil (iOS o Android)</li>
+<li>Toca el ícono de olas de audio 🎙️ en la parte inferior</li>
+<li>Comienza a hablar — no necesitas frases especiales, habla naturalmente</li>
+<li>Puedes interrumpir en cualquier momento para redirigir</li>
+<li>Activa el compartir pantalla para que Gemini vea lo que ves</li>
+</ol>
+<hr>
+<h2 id="-tema-23-cómo-crear-un-gem-personalizado-en-gemini--guía-paso-a-paso">🏆 Tema 23: Cómo Crear un Gem Personalizado en Gemini — Guía Paso a Paso</h2>
+<p>Este es el tema más técnico y el más transformador de toda la guía. Crear tu propio Gem es como contratar un asistente que nunca olvida quién eres.</p>
+<h3 id="el-proceso-completo">El Proceso Completo</h3>
+<p><strong>Paso 1 — Accede a la gestión de Gems</strong></p>
+<ol>
+<li>Ve a <a href="https://gemini.google.com">gemini.google.com</a></li>
+<li>En el panel lateral izquierdo, busca “Gems” o “Mis Gems”</li>
+<li>Haz click en “Create a Gem” o “Nuevo Gem”
+<strong>Paso 2 — Define el nombre y la descripción</strong></li>
+</ol>
+<ul>
+<li><strong>Nombre:</strong> Elige algo descriptivo: “Mi Asistente de Marketing”, “Tutor Python”, “Analizador Legal”</li>
+<li><strong>Descripción:</strong> Una línea sobre para qué sirve el Gem
+<strong>Paso 3 — Escribe las instrucciones del Gem (la parte más importante)</strong></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># PLANTILLA COMPLETA DE INSTRUCCIONES PARA UN GEM</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Quién eres</span></span>
+<span class="line"><span>Eres [nombre], un asistente especializado en [dominio].</span></span>
+<span class="line"><span>Tu personalidad es [descripción: directo, empático, técnico, etc.]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Contexto permanente sobre el usuario</span></span>
+<span class="line"><span>- Nombre/rol: [información del usuario]</span></span>
+<span class="line"><span>- Empresa/proyecto: [contexto del trabajo]</span></span>
+<span class="line"><span>- Nivel técnico: [básico / intermedio / avanzado]</span></span>
+<span class="line"><span>- Objetivos principales: [qué quiere lograr]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Para qué estás diseñado</span></span>
+<span class="line"><span>Ayudas principalmente con:</span></span>
+<span class="line"><span>1. [Tarea principal 1]</span></span>
+<span class="line"><span>2. [Tarea principal 2]</span></span>
+<span class="line"><span>3. [Tarea principal 3]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Cómo respondes (comportamiento)</span></span>
+<span class="line"><span>- Tono: [formal / casual / técnico]</span></span>
+<span class="line"><span>- Longitud: [conciso / detallado / según la complejidad]</span></span>
+<span class="line"><span>- Formato preferido: [bullets / prosa / código / tablas]</span></span>
+<span class="line"><span>- Idioma: [español / inglés / según el usuario]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Lo que SIEMPRE haces</span></span>
+<span class="line"><span>- [Comportamiento siempre presente 1]</span></span>
+<span class="line"><span>- [Comportamiento siempre presente 2]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Lo que NUNCA haces</span></span>
+<span class="line"><span>- [Restricción 1]</span></span>
+<span class="line"><span>- [Restricción 2]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Cuando no sepas algo</span></span>
+<span class="line"><span>Dices: "[tu mensaje de honestidad]"</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Paso 4 — Añade archivos de referencia</strong>
+Los Gems pueden tener archivos que siempre están disponibles como contexto:</p>
+<ul>
+<li>📄 Brand guidelines de tu empresa</li>
+<li>📋 Lista de productos y precios</li>
+<li>📚 Manual de estilo de escritura</li>
+<li>🗂️ Documentos de referencia técnica
+<strong>Paso 5 — Prueba y refina</strong>
+Empieza una conversación con tu Gem y evalúa:</li>
+<li>¿Responde con el tono correcto?</li>
+<li>¿Recuerda el contexto que definiste?</li>
+<li>¿El formato de respuesta es el que necesitas?
+Ajusta las instrucciones y repite hasta que sea perfecto.</li>
+</ul>
+<h3 id="ejemplo-completo-gem-de-asistente-de-ventas">Ejemplo Completo: Gem de Asistente de Ventas</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>## Quién eres</span></span>
+<span class="line"><span>Eres SalesBot, asistente de ventas para Empresa XYZ,</span></span>
+<span class="line"><span>una empresa de software B2B en México. Eres proactivo,</span></span>
+<span class="line"><span>orientado a resultados, y conoces el producto de memoria.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Contexto del usuario</span></span>
+<span class="line"><span>- El usuario es Account Executive con 3 años en la empresa</span></span>
+<span class="line"><span>- Trabaja en cuentas del segmento mid-market (50-500 empleados)</span></span>
+<span class="line"><span>- Sus cuotas son mensuales, en este momento está al 70% del mes</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Para qué estás diseñado</span></span>
+<span class="line"><span>1. Preparar argumentos para objeciones de clientes</span></span>
+<span class="line"><span>2. Drafts de emails y propuestas comerciales</span></span>
+<span class="line"><span>3. Investigar prospectos específicos</span></span>
+<span class="line"><span>4. Analizar llamadas y reuniones de ventas</span></span>
+<span class="line"><span>5. Calcular ROI y casos de negocio para prospectos</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Cómo respondes</span></span>
+<span class="line"><span>- Tono: Directo y orientado a la acción — el usuario no tiene tiempo</span></span>
+<span class="line"><span>- Formato: Bullets y listas accionables primero, detalles después</span></span>
+<span class="line"><span>- Siempre incluye un "próximo paso" recomendado</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Lo que SIEMPRE haces</span></span>
+<span class="line"><span>- Preguntas de descubrimiento antes de dar un argumento</span></span>
+<span class="line"><span>- Mencionar el caso de uso más relevante para el vertical del cliente</span></span>
+<span class="line"><span>- Cerrar con un call-to-action específico</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Lo que NUNCA haces</span></span>
+<span class="line"><span>- Prometer features que no existen en el producto</span></span>
+<span class="line"><span>- Dar descuentos sin preguntar el contexto de la negociación</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="el-resultado">El Resultado</h3>
+<p>Una vez creado, tu Gem vive en el panel de Gems y puedes accederlo desde web o móvil. Cada vez que lo abres, ya tiene todo el contexto. No necesitas repetir quién eres, qué haces, o cómo quieres que te responda.</p>
+<hr>
+<h2 id="-conclusión-gemini-no-es-una-herramienta--es-la-inteligencia-de-tu-ecosistema">🏁 Conclusión: Gemini No es una Herramienta — Es la Inteligencia de tu Ecosistema</h2>
+<p>Lo que hace a Gemini único no es un modelo de lenguaje más poderoso (aunque también lo es). Es que <strong>Google pasó décadas construyendo el ecosistema de herramientas más usado del mundo</strong> — Gmail, Docs, Sheets, Drive, Calendar, Maps, YouTube — y ahora metió inteligencia artificial nativa en cada una de ellas.</p>
+<p>La curva de aprendizaje de Gemini es diferente a la de otros modelos. No se trata de “aprender a usar Gemini” — se trata de <strong>descubrir que las herramientas que ya usabas ahora pueden hacer mucho más</strong>.</p>
+<ul>
+<li>📧 El Gmail que abres cada mañana ahora puede redactar, buscar con contexto, y priorizar</li>
+<li>📝 El Docs donde escribes tus reportes ahora tiene un colaborador que los entiende</li>
+<li>📊 El Sheets donde tienes tus datos ahora puede analizarlos automáticamente</li>
+<li>🎬 El Canvas donde creas presentaciones ahora genera slides desde cualquier documento</li>
+<li>🎥 La app de Gemini en tu celular ahora puede conversar, ver, y actuar en tiempo real</li>
+</ul>
+<blockquote>
+<p><strong>La ventaja de Gemini no es que sea mejor en todo. Es que está donde ya estás.</strong></p>
+</blockquote>
+<p>Empieza por la herramienta de Google que más usas, activa Gemini ahí, y descubre cuánto tiempo puedes recuperar esta semana. El resto vendrá solo. 🚀</p>
+<hr>
+<h3 id="-recursos-adicionales">📚 Recursos Adicionales</h3>
+<ul>
+<li>🌐 <a href="https://gemini.google.com"><strong>Gemini.google.com</strong></a> — La app principal</li>
+<li>📖 <a href="https://support.google.com/gemini"><strong>Google AI Help Center</strong></a> — Documentación oficial</li>
+<li>🎬 <a href="https://flow.google.com"><strong>Google Flow (Veo 3.1)</strong></a> — Creación de video</li>
+<li>🔧 <a href="https://aistudio.google.com"><strong>Google AI Studio</strong></a> — Para desarrolladores y API</li>
+<li>📊 <a href="https://workspace.google.com/learning-center/"><strong>Workspace Learning Center</strong></a> — Tutoriales de Workspace</li>
+<li>📧 <a href="https://blog.google"><strong>Google Blog — The Keyword</strong></a> — Novedades oficiales</li>
+</ul>
+<hr>
+<p><em>Escrito por <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Fuentes: Google I/O 2026, Google Blog, Android Authority, Build Fast With AI, 9to5Google.</em>
+<em>Esta guía se actualiza conforme Google lanza nuevas características. Última actualización: junio 2026.</em></p>
+</div>
+---
+---
+<div class="lang-en">
+## 🌟 The Definitive Gemini Guide 2026: The AI That Lives Inside All of Google
+<p><strong>By Jafet Brito</strong> · Security Researcher · <em>Published June 11, 2026</em></p>
+<hr>
+<blockquote>
+<p><em>“Gemini isn’t a chatbot you open in a tab. It’s the intelligence already woven into every tool you use every day.”</em>
+— Google I/O 2026</p>
+</blockquote>
+<hr>
+<h3 id="️-visual-roadmap--the-gemini-universe-at-a-glance">🗺️ Visual Roadmap — The Gemini Universe at a Glance</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>╔══════════════════════════════════════════════════════════════════╗</span></span>
+<span class="line"><span>║                    🌟 THE GEMINI UNIVERSE                        ║</span></span>
+<span class="line"><span>╠══════════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║  🏠 KNOW GEMINI            💰 PLANS &#x26; PRICING                   ║</span></span>
+<span class="line"><span>║  └─ What it is, models     └─ Free / Plus / Pro / Ultra         ║</span></span>
+<span class="line"><span>╠══════════════ LEVEL 1: CASUAL USER ══════════════════════════════╣</span></span>
+<span class="line"><span>║  ⚡ THINKING MODES         ✍️  EFFECTIVE PROMPTS                ║</span></span>
+<span class="line"><span>║  🧠 MEMORY                 🔒 PRIVACY                           ║</span></span>
+<span class="line"><span>║  🔍 WEB SEARCH             📄 DOCS &#x26; VIDEOS                     ║</span></span>
+<span class="line"><span>╠══════════════ LEVEL 2: POWER USER ═══════════════════════════════╣</span></span>
+<span class="line"><span>║  📊 SHEETS + PYTHON        🐍 LEARN PYTHON                      ║</span></span>
+<span class="line"><span>║  📊 DYNAMIC VIEW           🎨 NANO BANANA                       ║</span></span>
+<span class="line"><span>║  🎬 VEO 3.1 VIDEOS         🖼️  CANVAS                          ║</span></span>
+<span class="line"><span>║  📽️ PRESENTATIONS          📧 SMART GMAIL                      ║</span></span>
+<span class="line"><span>╠══════════════ LEVEL 3: WORKSPACE PRO ════════════════════════════╣</span></span>
+<span class="line"><span>║  📝 GOOGLE DOCS            🖼️  GOOGLE SLIDES                   ║</span></span>
+<span class="line"><span>║  🔗 WORKSPACE CONNECT      💎 CUSTOM GEMS                       ║</span></span>
+<span class="line"><span>║  📱 GEMINI LIVE            🏆 BUILD YOUR GEM                    ║</span></span>
+<span class="line"><span>╚══════════════════════════════════════════════════════════════════╝</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="-quick-index">📋 Quick Index</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Topic</th><th>Level</th><th>Time</th></tr></thead><tbody><tr><td>1</td><td>Gemini: the AI already in your Gmail</td><td>🟢 All</td><td>3 min</td></tr><tr><td>2</td><td>What Gemini is &#x26; how to use it from zero</td><td>🟢 All</td><td>4 min</td></tr><tr><td>3</td><td>Plans &#x26; pricing: which to choose</td><td>🟢 All</td><td>3 min</td></tr><tr><td>4</td><td>Fast mode vs thinking mode</td><td>🟢 All</td><td>3 min</td></tr><tr><td>5</td><td>Effective prompting in Gemini</td><td>🟡 Intermediate</td><td>5 min</td></tr><tr><td>6</td><td>Personalizing Gemini’s memory</td><td>🟢 All</td><td>3 min</td></tr><tr><td>7</td><td>Configuring privacy in Gemini</td><td>🟢 All</td><td>3 min</td></tr><tr><td>8</td><td>Web search &#x26; source verification</td><td>🟡 Intermediate</td><td>3 min</td></tr><tr><td>9</td><td>PDF and video analysis</td><td>🟢 All</td><td>4 min</td></tr><tr><td>10</td><td>Spreadsheet analysis with Python</td><td>🔴 Technical</td><td>4 min</td></tr><tr><td>11</td><td>Gemini as your Python tutor</td><td>🟡 Intermediate</td><td>3 min</td></tr><tr><td>12</td><td>Dynamic view: interactive dashboards</td><td>🟡 Intermediate</td><td>4 min</td></tr><tr><td>13</td><td>Nano Banana: images with perfect text</td><td>🟢 All</td><td>3 min</td></tr><tr><td>14</td><td>Creating videos with Veo 3.1</td><td>🟡 Intermediate</td><td>4 min</td></tr><tr><td>15</td><td>Canvas: living documents</td><td>🟡 Intermediate</td><td>4 min</td></tr><tr><td>16</td><td>Presentations from documents</td><td>🟢 All</td><td>3 min</td></tr><tr><td>17</td><td>Gemini in Gmail: search &#x26; drafting</td><td>🟢 All</td><td>4 min</td></tr><tr><td>18</td><td>Gemini in Google Docs</td><td>🟢 All</td><td>3 min</td></tr><tr><td>19</td><td>Gemini transforms Google Slides</td><td>🟢 All</td><td>3 min</td></tr><tr><td>20</td><td>Connect Gemini with Google Workspace</td><td>🟡 Intermediate</td><td>4 min</td></tr><tr><td>21</td><td>Creating custom Gems</td><td>🟡 Intermediate</td><td>5 min</td></tr><tr><td>22</td><td>Gemini Live: real-time voice</td><td>🟢 All</td><td>4 min</td></tr><tr><td>23</td><td>Build your custom Gem step by step</td><td>🔴 Technical</td><td>5 min</td></tr></tbody></table>
+<hr>
+<h2 id="-topic-1-gemini--the-ai-already-living-in-your-gmail">📘 Topic 1: Gemini — The AI Already Living in Your Gmail</h2>
+<p>There’s a fundamental difference between Gemini and any other AI assistant on the market: <strong>Gemini is not a separate tool you open in another tab</strong>. It’s the artificial intelligence Google has woven directly into Gmail, Docs, Sheets, Slides, Drive, Meet, and Calendar.</p>
+<p>When you open your Gmail in 2026, Gemini is already there. When you write a document in Google Docs, Gemini can read the context of what you’re writing. During a Google Meet call, Gemini can take notes automatically.</p>
+<p>This native integration is Gemini’s <strong>unique competitive advantage</strong>. No other assistant has such deep, frictionless access to your digital life if you already live in the Google ecosystem.</p>
+<blockquote>
+<p>💡 <strong>Already using Google?</strong> If you have a Gmail account — personal or work — you already have access to Gemini’s free tier. Just visit <a href="https://gemini.google.com"><strong>gemini.google.com</strong></a> or look for the Gemini icon in any Google Workspace app.</p>
+</blockquote>
+<hr>
+<h2 id="-topic-2-what-gemini-is--how-to-use-it-from-zero">🧬 Topic 2: What Gemini Is &#x26; How to Use It From Zero</h2>
+<h3 id="-the-gemini-model-family-in-2026">🔮 The Gemini Model Family in 2026</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>🌟 GEMINI 3.5 PRO (June 2026) — Most capable for complex reasoning</span></span>
+<span class="line"><span>⚡ GEMINI 3.5 FLASH (May 2026) — Speed + quality, most cost-effective</span></span>
+<span class="line"><span>🧠 GEMINI 3.1 PRO — Quality benchmark, available in AI Pro</span></span>
+<span class="line"><span>🔥 GEMINI 3 FLASH — Free tier model, very fast</span></span>
+<span class="line"><span>🔬 DEEP THINK — Extended reasoning mode</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-how-to-access-gemini">🌐 How to Access Gemini</h3>
+<ul>
+<li><strong>Web app:</strong> <a href="https://gemini.google.com">gemini.google.com</a> — most complete experience</li>
+<li><strong>Mobile:</strong> Download the <strong>Gemini</strong> app on iOS or Android (includes Live voice)</li>
+<li><strong>Inside Google Workspace:</strong> Look for the ✨ Gemini icon in the side panel of Gmail, Docs, Sheets, or Slides</li>
+<li><strong>Android system:</strong> Gemini replaced Google Assistant as the default system assistant</li>
+</ul>
+<hr>
+<h2 id="-topic-3-plans--pricing--which-to-choose">💰 Topic 3: Plans &#x26; Pricing — Which to Choose</h2>
+<p>Gemini has four consumer tiers ranging from $0 to $249.99/month, with meaningful capability jumps at each level.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plan</th><th>Price</th><th>Model</th><th>Best for</th></tr></thead><tbody><tr><td><strong>Free</strong></td><td>$0</td><td>Gemini 3 Flash + limited 3.5 Flash</td><td>Exploring, casual use</td></tr><tr><td><strong>Google AI Plus</strong></td><td>$7.99/mo</td><td>Gemini 3 Pro + 200GB storage</td><td>Frequent users</td></tr><tr><td><strong>Google AI Pro</strong></td><td>$19.99/mo</td><td>Gemini 3.1 Pro, 1M token context</td><td>Professionals</td></tr><tr><td><strong>Google AI Ultra</strong></td><td>$99.99/mo</td><td>Everything + 5x limits + Veo 3.1</td><td>Power users, creators</td></tr><tr><td><strong>Ultra $200</strong></td><td>$200/mo</td><td>Everything + 20x Pro limits</td><td>Intensive use</td></tr></tbody></table>
+<p><strong>Decision tree:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Little Google use / Personal only → 🆓 FREE</span></span>
+<span class="line"><span>Daily productivity / Power personal user → 💛 PLUS ($7.99)</span></span>
+<span class="line"><span>Professional / Intensive with docs → 🔵 PRO ($19.99)</span></span>
+<span class="line"><span>Content creator / Video / Maximum use → 🟣 ULTRA ($99.99)</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 For most business users, Google AI Pro offers the best combination of capability and value at $19.99/month, including a 1M-token context window.</p>
+</blockquote>
+<hr>
+<h2 id="-topic-4-fast-mode-vs-thinking-mode">⚡ Topic 4: Fast Mode vs Thinking Mode</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Flash Mode:   Question → 💬 Answer (seconds)</span></span>
+<span class="line"><span>              Best for: drafting, summaries, quick Q&#x26;A</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Deep Think:   Question → 🧠🧠🧠 Internal reasoning → 💬 Answer</span></span>
+<span class="line"><span>              (30-90 seconds, much more accurate)</span></span>
+<span class="line"><span>              Best for: complex math, legal/strategic analysis,</span></span>
+<span class="line"><span>              architecture design, hard debugging</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>The rule:</strong> Ask yourself — <em>Would a 5% error rate in this answer have real consequences?</em> If yes, use Deep Think. If not, Flash is faster and sufficient.</p>
+<hr>
+<h2 id="️-topic-5-effective-prompting-in-gemini">✍️ Topic 5: Effective Prompting in Gemini</h2>
+<p><strong>The PCTF Framework for Gemini:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>P — Persona   → What role should Gemini adopt?</span></span>
+<span class="line"><span>C — Context   → What's the complete situation?</span></span>
+<span class="line"><span>T — Task      → What specifically do I need?</span></span>
+<span class="line"><span>F — Format    → How do I want the response?</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Exclusive Gemini tips:</strong></p>
+<ul>
+<li>🔗 <strong>Use ”@” to reference files:</strong> Type <code>@filename</code> to reference a Drive document</li>
+<li>🎯 <strong>Ask for internet sources:</strong> “Search online and cite your sources” activates verified web search</li>
+<li>🌡️ <strong>Adjust creativity temperature:</strong> In conversation settings, toggle between precise/factual and more creative
+<strong>Full example prompt:</strong></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[PERSONA] Act as a B2B digital marketing consultant.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>[CONTEXT] We're a SaaS startup in Mexico with 6 months</span></span>
+<span class="line"><span>in the market, 50 current clients, $2,000 USD/month</span></span>
+<span class="line"><span>marketing budget.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>[TASK] Design a LinkedIn content strategy for the next</span></span>
+<span class="line"><span>3 months to help us get 20 monthly leads.</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>[FORMAT]</span></span>
+<span class="line"><span>- Executive summary (3 sentences)</span></span>
+<span class="line"><span>- Weekly content calendar</span></span>
+<span class="line"><span>- KPIs to measure</span></span>
+<span class="line"><span>- Budget breakdown</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-6-personalizing-geminis-memory">🧠 Topic 6: Personalizing Gemini’s Memory</h2>
+<p>Gemini gives you <strong>granular control</strong> over what it remembers, rather than automatically remembering everything.</p>
+<p><strong>Types of memory:</strong></p>
+<ol>
+<li><strong>Within-conversation memory</strong> — Everything in a single session</li>
+<li><strong>Gems with fixed context</strong> — True persistent memory through custom Gems</li>
+<li><strong>Google Workspace as long-term memory</strong> — Years of emails, docs, and calendar history
+<strong>Setting up persistent context:</strong></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"For all our conversations in this Gem,</span></span>
+<span class="line"><span>always keep in mind that:</span></span>
+<span class="line"><span>- I'm a frontend developer with 5 years experience</span></span>
+<span class="line"><span>- I primarily work with React and TypeScript</span></span>
+<span class="line"><span>- My company is a fintech in LATAM</span></span>
+<span class="line"><span>- I prefer concise responses with code examples</span></span>
+<span class="line"><span>- Always use technical English"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-7-configuring-privacy-in-gemini">🔒 Topic 7: Configuring Privacy in Gemini</h2>
+<p><strong>What Google can see by default:</strong></p>
+<ul>
+<li>Use your conversations to improve AI models</li>
+<li>Show more relevant advertising (personal free accounts)</li>
+<li>Human review of some conversations for quality assessment
+<strong>How to configure your privacy:</strong></li>
+</ul>
+<ol>
+<li><strong>Turn off Gemini activity history:</strong> myaccount.google.com → Data &#x26; Privacy → Web &#x26; App Activity → disable Gemini voice and audio activity</li>
+<li><strong>Review extension permissions:</strong> Gemini.google.com → ⚙️ Settings → Extensions → disable what you don’t actively use</li>
+<li><strong>For Workspace accounts:</strong> Workspace Intelligence launched April 22, 2026, turning Gemini into a system that reads across a user’s entire Workspace footprint by default, with admin controls to disable specific data sources.</li>
+</ol>
+<blockquote>
+<p>🔐 <strong>Zero Trust rule:</strong> Never type passwords, card numbers, or sensitive personal data into Gemini — even if the conversation feels private.</p>
+</blockquote>
+<hr>
+<h2 id="-topic-8-web-search--source-verification">🔍 Topic 8: Web Search &#x26; Source Verification</h2>
+<p>Web search is <strong>active by default</strong> in most Gemini plans. You can tell Gemini is searching because you’ll see the Google 🔍 icon spinning during the response.</p>
+<p><strong>Forcing search with verifiable sources:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Search the internet for current information about [topic].</span></span>
+<span class="line"><span>For each important claim you make, cite the source with URL.</span></span>
+<span class="line"><span>Prioritize official sources, academic papers, or reference</span></span>
+<span class="line"><span>media. If you find contradictory information, mention it."</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Verifying Gemini’s sources:</strong></p>
+<ol>
+<li><strong>Click the cited references</strong> — Gemini links sources directly in the response</li>
+<li><strong>Ask for more details:</strong> “Can you give me the exact URL for the data about X?”</li>
+<li><strong>Use the “Double-check” button</strong> — highlights claims with potentially conflicting sources</li>
+</ol>
+<hr>
+<h2 id="-topic-9-document-and-video-analysis">📄 Topic 9: Document and Video Analysis</h2>
+<p><strong>Document use cases:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Analyze this 120-page contract [PDF] and:</span></span>
+<span class="line"><span>1. Give me a 5-point executive summary</span></span>
+<span class="line"><span>2. Identify clauses that disproportionately favor one party</span></span>
+<span class="line"><span>3. Flag any legal ambiguity</span></span>
+<span class="line"><span>4. Tell me which terms are unusual for this contract type"</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Video analysis</strong> is a unique Gemini capability:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"[Attached video: 10-minute product demo]</span></span>
+<span class="line"><span>Analyze this demo video and give me:</span></span>
+<span class="line"><span>- Product summary</span></span>
+<span class="line"><span>- Top 5 features mentioned</span></span>
+<span class="line"><span>- Any bugs or inconsistencies visible</span></span>
+<span class="line"><span>- Moments where the presenter loses rhythm (with timestamps)"</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>You can also link YouTube videos directly and Gemini will analyze them.</p>
+<hr>
+<h2 id="-topic-10-spreadsheet-analysis-with-gemini-and-python">📊 Topic 10: Spreadsheet Analysis with Gemini and Python</h2>
+<p><strong>Direct analysis in Google Sheets:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Analyze this spreadsheet [Sheets connected] and:</span></span>
+<span class="line"><span>1. Identify the 5 products with highest margin</span></span>
+<span class="line"><span>2. Find correlations between price and sales volume</span></span>
+<span class="line"><span>3. Detect outliers in billing columns</span></span>
+<span class="line"><span>4. Generate a monthly trend chart"</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Python + Gemini for advanced analysis:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#9ECBFF">"""</span></span>
+<span class="line"><span style="color:#9ECBFF">I have a CSV with columns: [date, product, region, sales, cost, client_id]</span></span>
+<span class="line"><span style="color:#9ECBFF"> </span></span>
+<span class="line"><span style="color:#9ECBFF">I need:</span></span>
+<span class="line"><span style="color:#9ECBFF">1. Complete exploratory data analysis (EDA)</span></span>
+<span class="line"><span style="color:#9ECBFF">2. Customer segmentation with K-Means (K=4):</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Features: purchase_frequency, avg_ticket, days_since_last_purchase (RFM)</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Cluster visualization with seaborn</span></span>
+<span class="line"><span style="color:#9ECBFF">   - Business description of each segment</span></span>
+<span class="line"><span style="color:#9ECBFF">3. Simple forecasting: next 3 months with confidence intervals</span></span>
+<span class="line"><span style="color:#9ECBFF"> </span></span>
+<span class="line"><span style="color:#9ECBFF">Generate complete, executable Python code with:</span></span>
+<span class="line"><span style="color:#9ECBFF">- Explanatory comments</span></span>
+<span class="line"><span style="color:#9ECBFF">- Error handling</span></span>
+<span class="line"><span style="color:#9ECBFF">- Outputs saved as PNG images</span></span>
+<span class="line"><span style="color:#9ECBFF">"""</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<h2 id="-topic-11-gemini-as-your-python-tutor">🐍 Topic 11: Gemini as Your Python Tutor</h2>
+<p><strong>Personalized tutor prompt:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"I want to learn Python from scratch. My goal is [data analysis / automation].</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>My background: [I work in finance / I'm a designer / I've never coded].</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Role: Be my Python tutor. For each concept:</span></span>
+<span class="line"><span>1. Explain it with an analogy from my work</span></span>
+<span class="line"><span>2. Give me a concrete small example</span></span>
+<span class="line"><span>3. Give me a practice exercise</span></span>
+<span class="line"><span>4. Don't give me the solution immediately — give me a hint first</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Let's start from the beginning: variables in Python."</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Learning timeline with Gemini:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Week 1-2: Variables, data types, basic operations</span></span>
+<span class="line"><span>Week 3-4: Conditionals and loops</span></span>
+<span class="line"><span>Week 5-6: Functions and scope</span></span>
+<span class="line"><span>Week 7-8: Lists, dictionaries, sets, tuples</span></span>
+<span class="line"><span>Week 9-10: File handling and error handling</span></span>
+<span class="line"><span>Week 11-12: Essential libraries (pandas, requests)</span></span>
+<span class="line"><span>Week 13-16: Your first real project</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-12-dynamic-view--interactive-dashboards">📊 Topic 12: Dynamic View — Interactive Dashboards</h2>
+<p><strong>Dynamic View</strong> lets you create interactive visual representations directly in the conversation — without leaving Gemini.</p>
+<p><strong>What you can create:</strong></p>
+<ul>
+<li>📊 Real-time dashboards with your data</li>
+<li>📈 Interactive charts with zoom capabilities</li>
+<li>🗺️ Geographic data maps</li>
+<li>📅 Visual timelines and schedules</li>
+<li>🔄 Process flow diagrams
+<strong>Dashboard prompt example:</strong></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"I have this monthly sales data for 2025:</span></span>
+<span class="line"><span>Jan: $45k | Feb: $52k | Mar: $48k | Apr: $61k</span></span>
+<span class="line"><span>May: $58k | Jun: $72k</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Create a dynamic view with:</span></span>
+<span class="line"><span>- Bar chart of sales by month</span></span>
+<span class="line"><span>- Trend line</span></span>
+<span class="line"><span>- Month-over-month percentage change</span></span>
+<span class="line"><span>- Projection for next 3 months</span></span>
+<span class="line"><span>Make it interactive with hover tooltips"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-13-nano-banana--images-with-perfect-text">🎨 Topic 13: Nano Banana — Images with Perfect Text</h2>
+<p><strong>Nano Banana</strong> is Google’s image generation model, unique for its ability to generate images with <strong>perfectly legible text</strong> — one of the hardest problems in AI image generation.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Common image generation problem</th><th>Nano Banana</th></tr></thead><tbody><tr><td>Unreadable or misspelled text</td><td>✅ Sharp, correct text</td></tr><tr><td>Inverted or mixed letters</td><td>✅ Correct spelling</td></tr><tr><td>Distorted corporate logos</td><td>✅ Precise text in logos</td></tr></tbody></table>
+<p><strong>Perfect prompt for Nano Banana:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Generate a [style: photorealistic / illustration / minimalist / 3D render] image showing:</span></span>
+<span class="line"><span>[detailed scene description]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Text that MUST appear CLEARLY LEGIBLE:</span></span>
+<span class="line"><span>"[exact text you need]"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Text position: [top / bottom / center / corner]</span></span>
+<span class="line"><span>Colors: [color scheme]</span></span>
+<span class="line"><span>Quality: [high quality for print / web]"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-14-creating-videos-with-veo-31">🎬 Topic 14: Creating Videos with Veo 3.1</h2>
+<p>Veo 3.1 is a video generation model that creates clips with true-to-life textures and synchronized dialogue complete with sound effects.</p>
+<p>Veo 3.1 features improved temporal consistency, synchronized audio, dialogue support, and precise camera control. The web version of Flow supports 4K output and advanced scene settings.</p>
+<p><strong>Access:</strong> Gemini.google.com with Ultra plan → “Video” or “Veo” tab, or <a href="https://flow.google.com">flow.google.com</a> for dedicated video creation.</p>
+<p><strong>Perfect video prompt:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Generate a [8-30 second] video with:</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>SCENE: [detailed description of environment, time of day, weather]</span></span>
+<span class="line"><span>CHARACTER/ACTION: [who appears, what they do, what emotion]</span></span>
+<span class="line"><span>DIALOGUE: "[exact text to say]"</span></span>
+<span class="line"><span>VOICE: [male/female, accent, tone]</span></span>
+<span class="line"><span>AMBIENT AUDIO: [types of background sounds]</span></span>
+<span class="line"><span>MUSIC: [genre, energy, or no music]</span></span>
+<span class="line"><span>CAMERA: [shot type: close-up / wide shot / dolly-in]</span></span>
+<span class="line"><span>STYLE: [cinematic / documentary / animation]"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="️-topic-15-canvas--living-documents">🖼️ Topic 15: Canvas — Living Documents</h2>
+<p>Canvas transforms natural language descriptions into visual prototypes without design or coding skills. Describe what you want, and the system generates working prototypes you can refine through conversation. Canvas supports multimedia elements including text, images, and interactive components with real-time collaborative editing.</p>
+<p><strong>Canvas workflow:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. Describe to Gemini what you want to create</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>2. Gemini generates in Canvas (side panel)</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>3. Request changes in natural language</span></span>
+<span class="line"><span>         ↓</span></span>
+<span class="line"><span>4. Export to Google Docs / Slides / Drive with one click</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Maximum productivity prompt:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Create in Canvas a complete business proposal for</span></span>
+<span class="line"><span>[project type] with these sections:</span></span>
+<span class="line"><span>- Cover page with [company name], date, tagline</span></span>
+<span class="line"><span>- Executive summary (3 paragraphs)</span></span>
+<span class="line"><span>- Problem we solve</span></span>
+<span class="line"><span>- Our solution with 3 key features</span></span>
+<span class="line"><span>- Investment table</span></span>
+<span class="line"><span>- Next steps and CTA</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Style: modern corporate, blue and white.</span></span>
+<span class="line"><span>Export to Google Docs when done."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="️-topic-16-presentations-from-documents">📽️ Topic 16: Presentations From Documents</h2>
+<p>Users can throw a topic or source document at Gemini, and it’ll generate a complete slide deck with themes and relevant images. Direct export to Google Slides for final touches.</p>
+<p><strong>Complete transformation prompt:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"[Document/notes attached or pasted]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Convert this content into a [N]-slide presentation for</span></span>
+<span class="line"><span>[audience: executives / technical / clients / team].</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Structure:</span></span>
+<span class="line"><span>- 1 impactful cover slide</span></span>
+<span class="line"><span>- 1 agenda slide</span></span>
+<span class="line"><span>- [N] content slides (max 5 bullets or 1 main idea each)</span></span>
+<span class="line"><span>- 1 conclusions and next steps slide</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Style: [executive / technical / creative]</span></span>
+<span class="line"><span>Include: image suggestions for each slide.</span></span>
+<span class="line"><span>Export to Google Slides when done."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-17-gemini-in-gmail--smart-search--drafting">📧 Topic 17: Gemini in Gmail — Smart Search &#x26; Drafting</h2>
+<p>Email is where most knowledge workers lose 2 to 3 hours every day. Gemini in Gmail attacks this problem from four angles simultaneously.</p>
+<p><strong>Context-aware Gmail search:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Are there any emails pending response from clients</span></span>
+<span class="line"><span>who haven't heard back in more than 2 weeks?"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"Who asked me about the Q1 satisfaction survey results?"</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>“Help me write” drafting:</strong>
+Click ✨ “Help me write” → describe your email:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Email to supplier XYZ complaining about delay in</span></span>
+<span class="line"><span>order #4521 that should have arrived 2 weeks ago,</span></span>
+<span class="line"><span>request urgent update, mention we're considering</span></span>
+<span class="line"><span>switching suppliers if no response in 24 hours.</span></span>
+<span class="line"><span>Tone: firm but professional."</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Gmail Live (I/O 2026):</strong>
+Gmail Live lets users use their voice to search within Gmail and get audible responses generated from their inbox contents. You can ask “What school events does my son Jack have?” and Gmail Live will go through your emails and respond conversationally.</p>
+<hr>
+<h2 id="-topic-18-gemini-in-google-docs">📝 Topic 18: Gemini in Google Docs</h2>
+<p><strong>4 ways to use Gemini in Docs:</strong></p>
+<ol>
+<li><strong>“Help me write”</strong> — right-click anywhere → describe what to add</li>
+<li><strong>Gemini side panel</strong> — click ✨ in sidebar → Gemini reads the whole doc</li>
+<li><strong>Select text + Gemini</strong> — select any paragraph → options: rewrite, shorten, expand, change tone, translate</li>
+<li><strong>@mentions</strong> — type <code>@</code> to reference Drive files or Gmail emails
+<strong>Transformative use cases:</strong></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># In side panel:</span></span>
+<span class="line"><span>"Identify the 3 weakest arguments in this document</span></span>
+<span class="line"><span>and suggest how to strengthen them with additional data."</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"Is this document consistent in its argument from</span></span>
+<span class="line"><span>beginning to end? Are there any contradictions?"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"Rewrite section 3 with a more executive tone,</span></span>
+<span class="line"><span>appropriate for a company board."</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>"Convert this document into a list of action items</span></span>
+<span class="line"><span>with suggested owner and due date for each."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-19-gemini-transforms-google-slides">🎨 Topic 19: Gemini Transforms Google Slides</h2>
+<p><strong>What Gemini can do in Slides:</strong></p>
+<ul>
+<li>✨ <strong>Reimagine slides:</strong> Select → “Reimagine this slide” → 4 visual variations</li>
+<li>📝 <strong>Generate speaker notes:</strong> Detailed notes for each slide</li>
+<li>🎨 <strong>Change visual theme:</strong> “Apply a more modern corporate style to the whole deck”</li>
+<li>📊 <strong>Convert bullets to visuals:</strong> “Convert these 5 points into a process diagram”
+<strong>Total transformation prompt:</strong></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"[Existing presentation open in Slides]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Transform this entire presentation:</span></span>
+<span class="line"><span>1. Reduce each slide to 1 main idea maximum</span></span>
+<span class="line"><span>2. Convert bullet lists to visuals where possible</span></span>
+<span class="line"><span>3. Add a consistent visual metaphor throughout</span></span>
+<span class="line"><span>4. Generate 2-minute speaker notes per slide</span></span>
+<span class="line"><span>5. Create a more impactful opening slide</span></span>
+<span class="line"><span>6. Ensure a clear narrative thread from start to finish"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-20-connect-gemini-with-google-workspace">🔗 Topic 20: Connect Gemini with Google Workspace</h2>
+<p>Gemini lives inside your existing apps and has direct context access to your emails, documents, calendars, and meetings. Think of it as the difference between a consultant you have to brief from scratch every time versus a team member who was in every meeting, read every document, and is already up to speed.</p>
+<p><strong>Activating Workspace extensions:</strong></p>
+<ol>
+<li>gemini.google.com → ⚙️ Settings → <strong>Extensions</strong></li>
+<li>Enable: Gmail, Calendar, Drive, Docs, Sheets, Maps, Shopping
+<strong>Multi-app workflow:</strong></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"Review my calendar this week [Calendar], identify</span></span>
+<span class="line"><span>which meetings have preparation documents in Drive [Drive],</span></span>
+<span class="line"><span>and for those without any, draft an email [Gmail] to</span></span>
+<span class="line"><span>the organizers requesting the agenda at least 24 hours</span></span>
+<span class="line"><span>in advance."</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-topic-21-creating-custom-gems">💎 Topic 21: Creating Custom Gems</h2>
+<p>Gems are Gemini’s equivalent of GPTs or Projects — personalized Gemini versions with specific instructions, permanent context, and reference files.</p>
+<p><strong>Types of Gems to create:</strong></p>
+<ul>
+<li>👔 Professional Gem — Your company-context assistant</li>
+<li>📚 Educational Gem — Your personalized tutor</li>
+<li>✍️ Content Gem — Your brand-aware writer</li>
+<li>🔬 Research Gem — Your analyst with reference documents</li>
+<li>💬 Customer Gem — A product-context agent
+<strong>Google’s pre-built Gems:</strong>
+Coding Partner, Learning Coach, Writing Editor, Brainstorm Partner, Career Guide</li>
+</ul>
+<hr>
+<h2 id="-topic-22-gemini-live--real-time-voice">📱 Topic 22: Gemini Live — Real-Time Voice</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Siri / Alexa:    Voice commands</span></span>
+<span class="line"><span>                 "Set a 10-minute timer" → one-time action</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>Gemini Live:     Real conversation</span></span>
+<span class="line"><span>                 "I'm preparing my presentation for tomorrow,</span></span>
+<span class="line"><span>                 can you help me structure my arguments while</span></span>
+<span class="line"><span>                 I tell you what it's about?"</span></span>
+<span class="line"><span>                 → Flowing dialogue, interrupt, redirect, follow up</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Real use cases:</strong></p>
+<ul>
+<li>🚗 In the car: “While I drive, help me mentally prepare the 9am presentation”</li>
+<li>🏃 Exercising: “While I run, teach me business English vocabulary”</li>
+<li>💼 Pre-meeting prep: “Help me anticipate objections for today’s negotiation”
+Gemini Live integrates with Google Calendar, Google Tasks, Google Keep, and Google Maps on mobile devices, enabling real-time interaction during conversations. Users can create Calendar events, set Tasks reminders, add notes to Keep, and retrieve app data directly through voice.</li>
+</ul>
+<p><strong>How to use:</strong> Open Gemini mobile app → tap the audio waves icon 🎙️ → start talking naturally.</p>
+<hr>
+<h2 id="-topic-23-build-your-custom-gem--step-by-step">🏆 Topic 23: Build Your Custom Gem — Step by Step</h2>
+<p><strong>Complete 5-step process:</strong></p>
+<p><strong>Step 1 — Access Gem management:</strong>
+gemini.google.com → “Gems” in left panel → “Create a Gem”</p>
+<p><strong>Step 2 — Name and description</strong></p>
+<p><strong>Step 3 — Write the Gem instructions:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># COMPLETE GEM INSTRUCTIONS TEMPLATE</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Who you are</span></span>
+<span class="line"><span>You are [name], a specialized assistant for [domain].</span></span>
+<span class="line"><span>Your personality is [description].</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## Permanent context about the user</span></span>
+<span class="line"><span>- Name/role: [user info]</span></span>
+<span class="line"><span>- Company/project: [work context]</span></span>
+<span class="line"><span>- Technical level: [basic / intermediate / advanced]</span></span>
+<span class="line"><span>- Main goals: [what they want to achieve]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## What you're designed for</span></span>
+<span class="line"><span>1. [Primary task 1]</span></span>
+<span class="line"><span>2. [Primary task 2]</span></span>
+<span class="line"><span>3. [Primary task 3]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## How you respond</span></span>
+<span class="line"><span>- Tone: [formal / casual / technical]</span></span>
+<span class="line"><span>- Length: [concise / detailed / per complexity]</span></span>
+<span class="line"><span>- Preferred format: [bullets / prose / code / tables]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## What you ALWAYS do</span></span>
+<span class="line"><span>- [Always-present behavior 1]</span></span>
+<span class="line"><span>- [Always-present behavior 2]</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>## What you NEVER do</span></span>
+<span class="line"><span>- [Restriction 1]</span></span>
+<span class="line"><span>- [Restriction 2]</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Step 4 — Add reference files:</strong>
+Brand guidelines, product lists, style manuals, technical docs</p>
+<p><strong>Step 5 — Test and refine:</strong>
+Start a conversation, evaluate tone and context, adjust instructions, repeat.</p>
+<hr>
+<h2 id="-conclusion-gemini-isnt-a-tool--its-the-intelligence-of-your-ecosystem">🏁 Conclusion: Gemini Isn’t a Tool — It’s the Intelligence of Your Ecosystem</h2>
+<p>What makes Gemini unique isn’t a more powerful language model (though it is that too). It’s that <strong>Google spent decades building the world’s most-used tool ecosystem</strong> — Gmail, Docs, Sheets, Drive, Calendar, Maps, YouTube — and now put native intelligence into every single one.</p>
+<ul>
+<li>📧 The Gmail you open every morning can now draft, search with context, and prioritize</li>
+<li>📝 The Docs where you write reports now has a collaborator who understands them</li>
+<li>📊 The Sheets where your data lives can now analyze itself automatically</li>
+<li>🎬 The Canvas where you create presentations generates slides from any document</li>
+<li>🎥 The Gemini app on your phone can now converse, see, and act in real time</li>
+</ul>
+<blockquote>
+<p><strong>Gemini’s advantage isn’t that it’s best at everything. It’s that it’s where you already are.</strong></p>
+</blockquote>
+<p>Start with the Google tool you use most, activate Gemini there, and discover how much time you can get back this week. The rest will follow on its own. 🚀</p>
+<hr>
+<h3 id="-additional-resources">📚 Additional Resources</h3>
+<ul>
+<li>🌐 <a href="https://gemini.google.com"><strong>Gemini.google.com</strong></a> — The main app</li>
+<li>📖 <a href="https://support.google.com/gemini"><strong>Google AI Help Center</strong></a> — Official documentation</li>
+<li>🎬 <a href="https://flow.google.com"><strong>Google Flow (Veo 3.1)</strong></a> — Video creation</li>
+<li>🔧 <a href="https://aistudio.google.com"><strong>Google AI Studio</strong></a> — For developers and API</li>
+<li>📊 <a href="https://workspace.google.com/learning-center/"><strong>Workspace Learning Center</strong></a> — Workspace tutorials</li>
+<li>📧 <a href="https://blog.google"><strong>Google Blog — The Keyword</strong></a> — Official news</li>
+</ul>
+<hr>
+<p><em>Written by <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Sources: Google I/O 2026, Google Blog, Android Authority, Build Fast With AI, 9to5Google.</em>
+<em>This guide updates as Google ships new features. Last updated: June 2026.</em></p>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>

@@ -1,0 +1,1218 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="La guía de rutas más completa del blog: un roadmap integrado que cubre OSINT, Pentesting/Red Team y Blue Team/SOC desde nivel intermedio hasta especialización profesional. Con certificaciones, plataformas de práctica, recursos gratuitos, y tiempos realistas para cada fase."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/roadmap_cybersecurity/"><meta property="og:title" content="🗺️ Roadmap Completo de OSINT y Ciberseguridad 2026: De Intermedio a Especialista — Jafet Brito"><meta property="og:description" content="La guía de rutas más completa del blog: un roadmap integrado que cubre OSINT, Pentesting/Red Team y Blue Team/SOC desde nivel intermedio hasta especialización profesional. Con certificaciones, plataformas de práctica, recursos gratuitos, y tiempos realistas para cada fase."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/roadmap_cybersecurity/"><meta property="og:image" content="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1200&q=80"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="🗺️ Roadmap Completo de OSINT y Ciberseguridad 2026: De Intermedio a Especialista — Jafet Brito"><meta name="twitter:description" content="La guía de rutas más completa del blog: un roadmap integrado que cubre OSINT, Pentesting/Red Team y Blue Team/SOC desde nivel intermedio hasta especialización profesional. Con certificaciones, plataformas de práctica, recursos gratuitos, y tiempos realistas para cada fase."><meta name="twitter:image" content="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1200&q=80"><title>🗺️ Roadmap Completo de OSINT y Ciberseguridad 2026: De Intermedio a Especialista — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1200&q=80" alt="🗺️ Roadmap Completo de OSINT y Ciberseguridad 2026: De Intermedio a Especialista" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">-roadmap-completo-de-osint-y-ciberseguridad-2026-de-intermedio-a-especialista</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/Roadmap" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Roadmap</a><a href="/tags/OSINT" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-purple-50 text-purple-700 ring-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:ring-purple-700/40 hover:opacity-80 transition-opacity">#OSINT</a><a href="/tags/Ciberseguridad" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Ciberseguridad</a><a href="/tags/Pentesting" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Pentesting</a><a href="/tags/RedTeam" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#RedTeam</a><a href="/tags/BlueTeam" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#BlueTeam</a><a href="/tags/SOC" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#SOC</a><a href="/tags/Certificaciones" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Certificaciones</a><a href="/tags/CarreraIT" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#CarreraIT</a><a href="/tags/ZeroTrust" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#ZeroTrust</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="🗺️ Roadmap Completo de OSINT y Ciberseguridad 2026: De Intermedio a Especialista" data-text-en="🗺️ Complete OSINT &#38; Cybersecurity Roadmap 2026: From Intermediate to Specialist"> 🗺️ Roadmap Completo de OSINT y Ciberseguridad 2026: De Intermedio a Especialista </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="La guía de rutas más completa del blog: un roadmap integrado que cubre OSINT, Pentesting/Red Team y Blue Team/SOC desde nivel intermedio hasta especialización profesional. Con certificaciones, plataformas de práctica, recursos gratuitos, y tiempos realistas para cada fase." data-text-en="The blog's most complete route guide: an integrated roadmap covering OSINT, Pentesting/Red Team, and Blue Team/SOC from intermediate level to professional specialization. With certifications, practice platforms, free resources, and realistic timelines for each phase."> La guía de rutas más completa del blog: un roadmap integrado que cubre OSINT, Pentesting/Red Team y Blue Team/SOC desde nivel intermedio hasta especialización profesional. Con certificaciones, plataformas de práctica, recursos gratuitos, y tiempos realistas para cada fase. </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-11" data-fmt-date="2026-06-11" data-fmt="long">miércoles, 10 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+<h2 id="️-roadmap-completo-de-osint-y-ciberseguridad-2026-de-intermedio-a-especialista">🗺️ Roadmap Completo de OSINT y Ciberseguridad 2026: De Intermedio a Especialista</h2>
+<p><strong>Por Jafet Brito</strong> · Security Researcher · <em>Publicado el 11 de junio de 2026</em></p>
+<hr>
+<blockquote>
+<p><em>“La ciberseguridad no es un destino. Es una dirección.”</em>
+— Filosofía Zero Trust</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Nota importante:</strong> Este roadmap asume que ya tienes conocimientos de IT, redes o Linux básico. Si partes desde cero absoluto, te recomiendo completar primero el <a href="https://www.comptia.org/certifications/it-fundamentals">CompTIA ITF+</a> o el path <a href="https://tryhackme.com/path/outline/presecurity">Pre-Security de TryHackMe</a> antes de continuar aquí.</p>
+</blockquote>
+<hr>
+<h3 id="-cómo-leer-este-roadmap">🧭 Cómo Leer Este Roadmap</h3>
+<p>Este no es un roadmap lineal — es un <strong>árbol de caminos</strong> con una base común y tres especializaciones que convergen en el nivel avanzado. La estructura es la siguiente:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>📦 FASE 0: Base Común (Todos los caminos)</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>   ┌────┴────┬─────────────┐</span></span>
+<span class="line"><span>   ↓         ↓             ↓</span></span>
+<span class="line"><span>🔍 OSINT   ⚔️ Red Team   🛡️ Blue Team</span></span>
+<span class="line"><span>   ↓         ↓             ↓</span></span>
+<span class="line"><span>   └────┬────┴─────────────┘</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>🎯 FASE AVANZADA: Especialización &#x26; Convergencia</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Puedes seguir un solo camino o los tres — y en el nivel avanzado, los mejores profesionales siempre han tocado los tres. Un buen Red Teamer entiende de OSINT y de defensa. Un buen analista SOC entiende cómo piensan los atacantes.</p>
+<hr>
+<h2 id="-fase-0-los-cimientos--lo-que-todo-especialista-debe-saber">📦 FASE 0: Los Cimientos — Lo Que Todo Especialista Debe Saber</h2>
+<blockquote>
+<p>⏱️ <strong>Tiempo estimado:</strong> 2-4 meses (si ya tienes base de IT)
+🎯 <strong>Objetivo:</strong> Tener el lenguaje, los conceptos, y el entorno de trabajo para cualquiera de los tres caminos</p>
+</blockquote>
+<h3 id="️-01--sistema-operativo-linux-como-lengua-materna">🖥️ 0.1 — Sistema Operativo: Linux como Lengua Materna</h3>
+<p>La ciberseguridad ocurre primordialmente en Linux. No puedes ser efectivo en ninguno de los tres caminos sin sentirte cómodo en la terminal.</p>
+<p><strong>Lo que debes dominar:</strong></p>
+<ul>
+<li>🔧 Navegación del filesystem: <code>ls</code>, <code>cd</code>, <code>find</code>, <code>locate</code>, <code>which</code></li>
+<li>📄 Manipulación de archivos y texto: <code>cat</code>, <code>grep</code>, <code>awk</code>, <code>sed</code>, <code>cut</code>, <code>sort</code>, <code>uniq</code></li>
+<li>🔒 Permisos: <code>chmod</code>, <code>chown</code>, <code>umask</code>, gestión de usuarios y grupos</li>
+<li>🌐 Red desde terminal: <code>ip</code>, <code>ss</code>, <code>netstat</code>, <code>ping</code>, <code>traceroute</code>, <code>curl</code>, <code>wget</code></li>
+<li>⚙️ Procesos: <code>ps</code>, <code>top</code>, <code>htop</code>, <code>kill</code>, <code>systemctl</code>, <code>cron</code></li>
+<li>📦 Scripting Bash: variables, loops, condicionales, funciones</li>
+</ul>
+<p><strong>Recursos gratuitos:</strong></p>
+<ul>
+<li>🎓 <a href="https://overthewire.org/wargames/bandit/"><strong>OverTheWire: Bandit</strong></a> — El mejor wargame de Linux para principiantes. Aprende la terminal resolviendo puzzles.</li>
+<li>🎓 <a href="https://tryhackme.com/module/linux-fundamentals"><strong>TryHackMe — Linux Fundamentals</strong></a> — 3 salas, completamente gratuitas.</li>
+<li>📖 <a href="https://linuxcommand.org/tlcl.php"><strong>The Linux Command Line (libro gratuito)</strong></a> — El libro de referencia más recomendado.</li>
+</ul>
+<hr>
+<h3 id="-02--redes-el-idioma-que-habla-internet">🌐 0.2 — Redes: El Idioma que Habla Internet</h3>
+<p><strong>Lo que debes dominar:</strong></p>
+<ul>
+<li>📡 <strong>Modelo OSI y TCP/IP</strong> — Capa por capa, qué hace cada una</li>
+<li>🔢 <strong>Direccionamiento:</strong> IPv4, IPv6, CIDR notation, subnetting</li>
+<li>📨 <strong>Protocolos fundamentales:</strong> TCP, UDP, ICMP, DNS, HTTP/HTTPS, SMTP, FTP, SSH, SMB, RDP</li>
+<li>🔍 <strong>Herramientas de análisis:</strong> Wireshark, tcpdump, nmap básico</li>
+<li>🔒 <strong>Conceptos de seguridad de red:</strong> Firewalls, NAT, VLANs, VPN, proxies</li>
+</ul>
+<p><strong>Recursos gratuitos:</strong></p>
+<ul>
+<li>🎓 <a href="https://www.youtube.com/@ProfessorMesser"><strong>Professor Messer — CompTIA Network+ (YouTube, gratuito)</strong></a> — La mejor preparación de redes en YouTube.</li>
+<li>🛠️ <a href="https://www.wireshark.org/docs/"><strong>Wireshark University (gratuito)</strong></a> — Documentación oficial + laboratorios de análisis de tráfico.</li>
+<li>🎮 <a href="https://tryhackme.com/path/outline/presecurity"><strong>TryHackMe — Pre-Security Path</strong></a> — Cubre redes + Linux + fundamentos web.</li>
+</ul>
+<hr>
+<h3 id="-03--conceptos-de-seguridad-fundamentales">🔐 0.3 — Conceptos de Seguridad Fundamentales</h3>
+<p><strong>Lo que debes dominar:</strong></p>
+<ul>
+<li>🎯 <strong>La Tríada CIA:</strong> Confidentiality, Integrity, Availability</li>
+<li>⚔️ <strong>Tipos de ataques:</strong> Phishing, MitM, DoS/DDoS, SQL Injection, XSS, CSRF, Buffer Overflow</li>
+<li>🔑 <strong>Criptografía básica:</strong> Simétrica vs asimétrica, hashing, PKI, TLS/SSL</li>
+<li>🏛️ <strong>Frameworks:</strong> MITRE ATT&#x26;CK, Cyber Kill Chain, OWASP Top 10</li>
+<li>📋 <strong>Conceptos de compliance:</strong> GDPR, ISO 27001 (solo entender qué son)</li>
+</ul>
+<p><strong>Recursos gratuitos:</strong></p>
+<ul>
+<li>🎓 <a href="https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/"><strong>Professor Messer — CompTIA Security+ (YouTube, gratuito)</strong></a> — La base de seguridad más completa y gratuita.</li>
+<li>🏛️ <a href="https://attack.mitre.org/"><strong>MITRE ATT&#x26;CK Navigator (gratuito)</strong></a> — La enciclopedia de tácticas y técnicas de atacantes.</li>
+<li>📚 <a href="https://owasp.org/www-project-top-ten/"><strong>OWASP Top 10 (gratuito)</strong></a> — Las 10 vulnerabilidades web más críticas.</li>
+</ul>
+<hr>
+<h3 id="-certificación-de-fase-0-recomendada">🏅 Certificación de Fase 0 Recomendada</h3>
+<blockquote>
+<p>Si quieres validar esta fase con una certificación:</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Certificación</th><th>Costo</th><th>Formato</th><th>Valor</th></tr></thead><tbody><tr><td><strong>CompTIA Security+</strong></td><td>~$400 USD</td><td>Examen teórico + práctico</td><td>Alto — estándar de la industria, requerida por DoD</td></tr><tr><td><strong>ISC2 CC (Certified in Cybersecurity)</strong></td><td><strong>Gratis</strong> (iniciativa 1MCC)</td><td>Examen teórico</td><td>Medio — excelente punto de entrada sin costo</td></tr><tr><td><strong>CompTIA Network+</strong></td><td>~$380 USD</td><td>Examen teórico</td><td>Alto — si tu base de redes es débil</td></tr></tbody></table>
+<blockquote>
+<p>💡 <strong>Recomendación:</strong> Si tienes presupuesto limitado, empieza con el <strong>ISC2 CC gratuito</strong> para validar el conocimiento y usa el dinero ahorrado para certificaciones más avanzadas.</p>
+</blockquote>
+<hr>
+<h2 id="-camino-a-osint--inteligencia-de-fuentes-abiertas">🔍 CAMINO A: OSINT — Inteligencia de Fuentes Abiertas</h2>
+<blockquote>
+<p>⏱️ <strong>Tiempo estimado post-Fase 0:</strong> 3-6 meses para nivel funcional, 12+ meses para nivel avanzado
+🎯 <strong>Roles objetivo:</strong> OSINT Analyst, Threat Intelligence Analyst, Investigador Digital, Journalist investigativo</p>
+</blockquote>
+<h3 id="️-a1--fundamentos-del-ciclo-osint">🗺️ A.1 — Fundamentos del Ciclo OSINT</h3>
+<p>Antes de las herramientas, entiende el <strong>proceso</strong>. El OSINT no es buscar en Google — es el ciclo completo de inteligencia aplicado a fuentes abiertas:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. Planificación    → ¿Qué necesito saber? ¿Cuáles son los requisitos?</span></span>
+<span class="line"><span>2. Recolección      → Búsqueda activa/pasiva en fuentes abiertas</span></span>
+<span class="line"><span>3. Procesamiento    → Limpiar, normalizar y estructurar datos crudos</span></span>
+<span class="line"><span>4. Análisis         → Interpretar, correlacionar, identificar patrones</span></span>
+<span class="line"><span>5. Diseminación     → Comunicar los hallazgos de forma accionable</span></span>
+<span class="line"><span>6. Feedback         → Ajustar el ciclo según los resultados</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Conceptos clave a dominar:</strong></p>
+<ul>
+<li>🎭 <strong>Sock puppets y OPSEC:</strong> Cuentas falsas para investigación sin revelar identidad. Separación de entornos de investigación.</li>
+<li>🌐 <strong>Búsqueda avanzada:</strong> Google Dorks, Bing Dorks, operadores de búsqueda booleana</li>
+<li>📊 <strong>Pivoting:</strong> Moverse de un dato (email) → a otro (dominio) → a otro (IP) → a otro (persona)</li>
+<li>⚖️ <strong>Ética y legalidad:</strong> Los límites entre OSINT legal e ilegal varían por jurisdicción</li>
+</ul>
+<p><strong>Recursos gratuitos:</strong></p>
+<ul>
+<li>🎓 <a href="https://osintframework.com/"><strong>OSINT Framework</strong></a> — El mapa del universo OSINT</li>
+<li>📖 <a href="https://docs.google.com/spreadsheets/d/18rtqh8EG2q1xBo2cLNyhIDuK9jrPGwYr9DI2UncoqJQ/edit"><strong>Bellingcat’s Online Investigation Toolkit</strong></a> — Hoja de recursos del equipo de periodismo de investigación más famoso</li>
+<li>🎓 <a href="https://www.youtube.com/watch?v=qwA6MmbeGNo"><strong>TCM Security — OSINT Fundamentals (gratuito en YouTube)</strong></a> — Curso completo gratuito</li>
+</ul>
+<hr>
+<h3 id="️-a2--stack-de-herramientas-osint-esenciales">🛠️ A.2 — Stack de Herramientas OSINT Esenciales</h3>
+<p>Organiza tu aprendizaje por categoría. Lee nuestra <a href="/blog/osint-tools-guide-2026"><strong>Guía Completa de Herramientas OSINT</strong></a> para detalles de cada herramienta.</p>
+<h4 id="-dominios-e-infraestructura">🌐 Dominios e Infraestructura</h4>
+<ul>
+<li><a href="https://www.shodan.io"><strong>Shodan</strong></a> — Motor de búsqueda de dispositivos conectados</li>
+<li><a href="https://search.censys.io"><strong>Censys</strong></a> — Certificados TLS y escaneo de infraestructura</li>
+<li><a href="https://crt.sh"><strong>crt.sh</strong></a> — Certificate Transparency logs</li>
+<li><a href="https://dnsdumpster.com"><strong>DNSDumpster</strong></a> — Mapeo DNS pasivo</li>
+<li><a href="https://securitytrails.com"><strong>SecurityTrails</strong></a> — Historial DNS</li>
+</ul>
+<h4 id="-personas-y-redes-sociales">👤 Personas y Redes Sociales</h4>
+<ul>
+<li><a href="https://github.com/sherlock-project/sherlock"><strong>Sherlock</strong></a> — Username multiplataforma</li>
+<li><a href="https://github.com/soxoj/maigret"><strong>Maigret</strong></a> — Username en 3,000+ sitios</li>
+<li><a href="https://hunter.io"><strong>Hunter.io</strong></a> — Emails corporativos</li>
+<li><a href="https://www.spiderfoot.net"><strong>SpiderFoot</strong></a> — Reconocimiento automatizado</li>
+</ul>
+<h4 id="-imágenes-y-geolocalización">📸 Imágenes y Geolocalización</h4>
+<ul>
+<li><a href="https://lens.google.com"><strong>Google Lens</strong></a> — Geolocalización visual</li>
+<li><a href="https://pimeyes.com"><strong>PimEyes</strong></a> — Búsqueda facial</li>
+<li><a href="https://exiftool.org"><strong>ExifTool</strong></a> — Metadatos EXIF</li>
+<li><a href="https://geospy.ai"><strong>GeoSpy AI</strong></a> — Geolocalización por IA</li>
+</ul>
+<hr>
+<h3 id="-a3--práctica-real-dónde-entrenar-osint">📚 A.3 — Práctica Real: Dónde Entrenar OSINT</h3>
+<ul>
+<li>🏆 <a href="https://www.tracelabs.org/"><strong>Trace Labs — OSINT CTF for Missing Persons</strong></a> — CTF donde haces OSINT real para encontrar personas desaparecidas. El entreno más ético y realista.</li>
+<li>🎮 <a href="https://www.bellingcat.com/resources/how-tos/"><strong>Bellingcat — Open Source Investigation Challenges</strong></a> — Casos reales de investigación periodística</li>
+<li>🎮 <a href="https://osintctf.com/"><strong>OSINT CTF Challenges (OSINTCTF.com)</strong></a> — Competiciones dedicadas a OSINT</li>
+<li>🎮 <a href="https://www.geoguessr.com/"><strong>GeoGuessr</strong></a> — Para entrenar geolocalización visual (sí, en serio)</li>
+</ul>
+<hr>
+<h3 id="-certificaciones-osint">🏅 Certificaciones OSINT</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Certificación</th><th>Emisor</th><th>Costo</th><th>Nivel</th><th>Descripción</th></tr></thead><tbody><tr><td><strong>OSCP</strong></td><td>Offensive Security</td><td>$1,499</td><td>Avanzado</td><td>Incluye componente OSINT fuerte en recon</td></tr><tr><td><strong>GOSI (GIAC OSINT)</strong></td><td>GIAC/SANS</td><td>~$949</td><td>Intermedio</td><td>La certificación OSINT más reconocida</td></tr><tr><td><strong>PNPT</strong></td><td>TCM Security</td><td>$400</td><td>Intermedio</td><td>Examen práctico con componente OSINT real</td></tr><tr><td><strong>Certified OSINT Professional</strong></td><td>OSMOSIS</td><td>~$300</td><td>Básico/Medio</td><td>Específica para OSINT</td></tr></tbody></table>
+<hr>
+<h2 id="️-camino-b-red-team--pentesting">⚔️ CAMINO B: Red Team &#x26; Pentesting</h2>
+<blockquote>
+<p>⏱️ <strong>Tiempo estimado post-Fase 0:</strong> 6-12 meses para nivel junior, 18-24 meses para nivel mid
+🎯 <strong>Roles objetivo:</strong> Junior Penetration Tester, Red Team Operator, Bug Bounty Hunter, Vulnerability Researcher</p>
+</blockquote>
+<h3 id="️-b1--el-framework-mental-del-atacante">🗺️ B.1 — El Framework Mental del Atacante</h3>
+<p>Antes de herramientas, entiende <strong>cómo piensa un atacante</strong>. El estándar de la industria para sistematizar esto es el framework <strong>MITRE ATT&#x26;CK</strong> y el modelo del <strong>Cyber Kill Chain</strong>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>KILL CHAIN (Lockheed Martin):</span></span>
+<span class="line"><span>1. Reconnaissance    → OSINT, escaneo de red, enumeración</span></span>
+<span class="line"><span>2. Weaponization     → Preparar el payload / exploit</span></span>
+<span class="line"><span>3. Delivery          → Email, web, USB, ingeniería social</span></span>
+<span class="line"><span>4. Exploitation      → Ejecutar el exploit en el objetivo</span></span>
+<span class="line"><span>5. Installation      → Establecer persistencia</span></span>
+<span class="line"><span>6. C2 (Command &#x26; Control) → Canal de comunicación con el objetivo</span></span>
+<span class="line"><span>7. Actions on Objectives  → Exfiltración, movimiento lateral, impacto</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Esta estructura define las <strong>fases del pentesting</strong> que debes aprender en orden.</p>
+<hr>
+<h3 id="️-b2--stack-técnico-red-team-por-fase">🛠️ B.2 — Stack Técnico Red Team por Fase</h3>
+<h4 id="-fase-1-reconocimiento-recon">🔍 Fase 1: Reconocimiento (Recon)</h4>
+<p>Lo primero es siempre OSINT. Ver <strong>Camino A</strong> para el stack completo.</p>
+<p>Herramientas adicionales para recon técnico:</p>
+<ul>
+<li><a href="https://nmap.org/"><strong>Nmap</strong></a> — El escáner de puertos estándar. Domínalo completamente.</li>
+<li><a href="https://github.com/robertdavidgraham/masscan"><strong>Masscan</strong></a> — Escaneo de puertos a velocidad máxima</li>
+<li><a href="https://github.com/laramies/theHarvester"><strong>theHarvester</strong></a> — Recolección de emails, subdominios, IPs desde buscadores</li>
+<li><a href="https://github.com/owasp-amass/amass"><strong>Amass</strong></a> — Enumeración avanzada de subdominios (OWASP)</li>
+<li><a href="https://github.com/projectdiscovery/subfinder"><strong>Subfinder</strong></a> — Subdominios pasivos, extremadamente rápido</li>
+</ul>
+<h4 id="-fase-2-scanning-y-enumeración">💥 Fase 2: Scanning y Enumeración</h4>
+<ul>
+<li><a href="https://www.openvas.org/"><strong>Nessus / OpenVAS</strong></a> — Escaneo de vulnerabilidades (OpenVAS es gratuito)</li>
+<li><a href="https://github.com/sullo/nikto"><strong>Nikto</strong></a> — Escaneo de vulnerabilidades web</li>
+<li><a href="https://github.com/OJ/gobuster"><strong>Gobuster / ffuf / feroxbuster</strong></a> — Fuzzing de directorios y archivos web</li>
+<li><a href="https://github.com/CiscoCXSecurity/enum4linux"><strong>Enum4linux</strong></a> — Enumeración de sistemas Windows/Samba</li>
+<li><a href="https://github.com/BloodHoundAD/BloodHound"><strong>BloodHound</strong></a> — Mapeo de Active Directory (AD) 🔑</li>
+</ul>
+<h4 id="-fase-3-explotación">🎯 Fase 3: Explotación</h4>
+<ul>
+<li><a href="https://www.metasploit.com/"><strong>Metasploit Framework</strong></a> — El framework de explotación más usado del mundo</li>
+<li><a href="https://portswigger.net/burp/communitydownload"><strong>Burp Suite Community</strong></a> — Proxy para pentesting web (gratuito)</li>
+<li><a href="https://sqlmap.org/"><strong>SQLMap</strong></a> — Automatización de SQL Injection</li>
+<li><a href="https://github.com/vanhauser-thc/thc-hydra"><strong>Hydra / John the Ripper / Hashcat</strong></a> — Ataques de fuerza bruta y cracking de hashes</li>
+<li><a href="https://github.com/SpiderLabs/Responder"><strong>Responder</strong></a> — Captura de hashes NTLM en redes Windows</li>
+</ul>
+<h4 id="-fase-4-post-explotación-y-movimiento-lateral">🔝 Fase 4: Post-Explotación y Movimiento Lateral</h4>
+<ul>
+<li><a href="https://github.com/gentilkiwi/mimikatz"><strong>Mimikatz</strong></a> — Extracción de credenciales en Windows</li>
+<li><a href="https://github.com/BloodHoundAD/BloodHound"><strong>PowerView / SharpHound</strong></a> — Enumeración de AD post-compromiso</li>
+<li><a href="https://github.com/Pennyw0rth/NetExec"><strong>CrackMapExec / NetExec</strong></a> — Movimiento lateral en redes Windows</li>
+<li><a href="https://github.com/HavocFramework/Havoc"><strong>Cobalt Strike / Havoc C2</strong></a> — Frameworks de Command &#x26; Control (C2)</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Zero Trust en herramientas:</strong> Todas estas herramientas son de doble filo. Solo úsalas en entornos que te pertenecen, plataformas de práctica autorizadas (HackTheBox, TryHackMe), o en compromisos con contrato firmado. El uso no autorizado es ilegal.</p>
+</blockquote>
+<hr>
+<h3 id="-b3--plataformas-de-práctica-red-team">📚 B.3 — Plataformas de Práctica Red Team</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PROGRESIÓN RECOMENDADA:</span></span>
+<span class="line"><span>TryHackMe → HackTheBox → PortSwigger → OffSec Labs</span></span>
+<span class="line"><span>(Guiado)    (Realista)   (Web App)    (Certificación)</span></span>
+<span class="line"><span></span></span></code></pre>
+<ul>
+<li>🎮 <a href="https://tryhackme.com"><strong>TryHackMe</strong></a> — Comenzar aquí. Rooms guiados, browser-based. Free tier generoso.
+<ul>
+<li>Paths recomendados: <em>Jr Penetration Tester</em>, <em>Red Teaming</em>, <em>Offensive Pentesting</em></li>
+</ul>
+</li>
+<li>🎮 <a href="https://www.hackthebox.com"><strong>Hack The Box</strong></a> — Siguiente nivel. Menos guiado, más realista. Free tier con máquinas rotativas.
+<ul>
+<li>Paths recomendados: <em>Penetration Testing Job Role</em>, <em>Active Directory 101</em></li>
+</ul>
+</li>
+<li>🌐 <a href="https://portswigger.net/web-security"><strong>PortSwigger Web Security Academy</strong></a> — <strong>100% gratuito.</strong> El estándar de oro para pentesting web. Labs interactivos con Burp Suite.</li>
+<li>🎮 <a href="https://www.vulnhub.com/"><strong>VulnHub</strong></a> — Máquinas virtuales vulnerables para descargar y practicar localmente. Completamente gratis.</li>
+<li>🎮 <a href="https://pentesterlab.com/"><strong>PentesterLab</strong></a> — Web app security con badge system. Tier gratis disponible.</li>
+</ul>
+<hr>
+<h3 id="-b4--el-skill-olvidado-writing-reports">📝 B.4 — El Skill Olvidado: Writing Reports</h3>
+<p>Un pentester que no sabe escribir reportes pierde el 50% de su valor. Las empresas contratan pentesting para tener un reporte accionable — no para ver un exploit bonito.</p>
+<p>Un buen reporte de pentesting tiene:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. Executive Summary     → Para el C-suite: impacto de negocio en lenguaje no técnico</span></span>
+<span class="line"><span>2. Scope &#x26; Methodology   → Qué se probó, cómo, cuándo</span></span>
+<span class="line"><span>3. Risk Summary          → Tabla de hallazgos por criticidad</span></span>
+<span class="line"><span>4. Technical Findings    → Para cada vuln: descripción, evidencia (screenshot),</span></span>
+<span class="line"><span>                           CVSS score, CVE si aplica, pasos de reproducción,</span></span>
+<span class="line"><span>                           impacto, recomendación de remediación</span></span>
+<span class="line"><span>5. Appendices            → Logs, herramientas usadas, referencias</span></span>
+<span class="line"><span></span></span></code></pre>
+<ul>
+<li>📖 <a href="https://www.youtube.com/watch?v=NEez4j8coTg"><strong>TCM Security — Report Writing for Hackers (gratuito en YouTube)</strong></a></li>
+<li>📄 <a href="https://pentestreports.com/"><strong>Public Pentest Reports (repositorio de reportes reales anonimizados)</strong></a></li>
+</ul>
+<hr>
+<h3 id="-certificaciones-red-team--mapa-completo">🏅 Certificaciones Red Team — Mapa Completo</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>NIVEL ENTRY (0-12 meses de práctica):</span></span>
+<span class="line"><span>┌─────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│  eJPT (eLearnSecurity)     ~$200   Hands-on básico  │</span></span>
+<span class="line"><span>│  CompTIA PenTest+          ~$400   Teórico+práctico │</span></span>
+<span class="line"><span>│  PJPT (TCM Security)       $30     Hands-on básico  │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span>                    ↓</span></span>
+<span class="line"><span>NIVEL MID (1-2 años de práctica):</span></span>
+<span class="line"><span>┌─────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│  OSCP (OffSec)             $1,499  EL ESTÁNDAR ORO  │</span></span>
+<span class="line"><span>│  PNPT (TCM Security)       $400    Práctico+reporte │</span></span>
+<span class="line"><span>│  GPEN (GIAC)               ~$949   Enterprise focus │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span>                    ↓</span></span>
+<span class="line"><span>NIVEL AVANZADO (2+ años):</span></span>
+<span class="line"><span>┌─────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│  OSEP (OffSec)             ~$1,299 Evasión + AV     │</span></span>
+<span class="line"><span>│  CRTO (Zero-Point Security) £399   AD Red Team      │</span></span>
+<span class="line"><span>│  OSWE (OffSec)             ~$1,299 Web Expert       │</span></span>
+<span class="line"><span>│  GXPN (GIAC)              ~$949   Expert pentest    │</span></span>
+<span class="line"><span>│  OSED (OffSec)             ~$1,299 Exploit dev      │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 <strong>Consejo de carrera:</strong> La ruta más respetada en 2026 es <strong>eJPT/PJPT → OSCP → especialización (OSEP/CRTO/OSWE)</strong>. El OSCP sigue siendo la credencial de referencia que más empleadores requieren para roles de pentesting.</p>
+</blockquote>
+<hr>
+<h2 id="️-camino-c-blue-team--soc">🛡️ CAMINO C: Blue Team &#x26; SOC</h2>
+<blockquote>
+<p>⏱️ <strong>Tiempo estimado post-Fase 0:</strong> 4-8 meses para Tier 1 SOC, 12-18 meses para Tier 2/3
+🎯 <strong>Roles objetivo:</strong> SOC Analyst (Tier 1/2/3), Threat Hunter, Incident Responder, Threat Intelligence Analyst, Security Engineer</p>
+</blockquote>
+<h3 id="️-c1--el-framework-mental-del-defensor">🗺️ C.1 — El Framework Mental del Defensor</h3>
+<p>El Blue Team piensa en términos de <strong>detección, respuesta y resiliencia</strong>. Los frameworks clave:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>NIST Cybersecurity Framework (CSF):</span></span>
+<span class="line"><span>├── Identify     → Inventario de assets, gestión de riesgos</span></span>
+<span class="line"><span>├── Protect      → Controles preventivos, segmentación, hardening</span></span>
+<span class="line"><span>├── Detect       → Monitoreo, alertas, hunting de amenazas</span></span>
+<span class="line"><span>├── Respond      → Incident response, contención, erradicación</span></span>
+<span class="line"><span>└── Recover      → Restauración, post-mortem, mejoras</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MITRE D3FEND (el contraparte defensivo de ATT&#x26;CK):</span></span>
+<span class="line"><span>Técnicas de defensa mapeadas contra las técnicas de ataque de ATT&#x26;CK</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="️-c2--stack-técnico-blue-team">🛠️ C.2 — Stack Técnico Blue Team</h3>
+<h4 id="-siem--el-centro-nervioso-del-soc">📊 SIEM — El Centro Nervioso del SOC</h4>
+<p>Los SIEMs correlacionan logs de toda la infraestructura para detectar amenazas:</p>
+<ul>
+<li><a href="https://www.splunk.com"><strong>Splunk</strong></a> — El estándar de la industria. Free tier disponible para práctica.</li>
+<li><a href="https://azure.microsoft.com/en-us/products/microsoft-sentinel"><strong>Microsoft Sentinel</strong></a> — Cloud-native SIEM. Domina en empresas Microsoft.</li>
+<li><a href="https://www.elastic.co/security"><strong>Elastic SIEM / ELK Stack</strong></a> — Open source. Puedes instalarlo localmente gratis.</li>
+<li><a href="https://wazuh.com/"><strong>Wazuh</strong></a> — Open source, excelente para homelabs. 100% gratuito.</li>
+</ul>
+<h4 id="-herramientas-de-análisis-y-detección">🔍 Herramientas de Análisis y Detección</h4>
+<ul>
+<li><a href="https://zeek.org/"><strong>Zeek (antes Bro)</strong></a> — Análisis de tráfico de red</li>
+<li><a href="https://suricata.io/"><strong>Suricata</strong></a> — IDS/IPS open source</li>
+<li><a href="https://volatilityfoundation.org/"><strong>Volatility</strong></a> — Análisis forense de memoria RAM</li>
+<li><a href="https://www.autopsy.com/"><strong>Autopsy / Sleuth Kit</strong></a> — Forense digital de disco</li>
+<li><a href="https://thehive-project.org/"><strong>TheHive</strong></a> — Plataforma de gestión de incidentes open source</li>
+<li><a href="https://www.misp-project.org/"><strong>Cortex / MISP</strong></a> — Plataforma de Threat Intelligence compartida</li>
+</ul>
+<h4 id="-threat-hunting">🎯 Threat Hunting</h4>
+<ul>
+<li><a href="https://github.com/SigmaHQ/sigma"><strong>Sigma Rules</strong></a> — El estándar abierto de reglas de detección, vendor-agnostic</li>
+<li><a href="https://mitre-attack.github.io/attack-navigator/"><strong>MITRE ATT&#x26;CK Navigator</strong></a> — Para mapear amenazas y gaps de cobertura</li>
+<li><a href="https://www.opencti.io/"><strong>OpenCTI</strong></a> — Plataforma open source de Threat Intelligence</li>
+</ul>
+<hr>
+<h3 id="-c3--plataformas-de-práctica-blue-team">📚 C.3 — Plataformas de Práctica Blue Team</h3>
+<ul>
+<li>🎮 <a href="https://tryhackme.com/path/outline/soclevel1"><strong>TryHackMe — SOC Level 1</strong></a> — El mejor path guiado de SOC disponible. Gratuito en su mayoría.</li>
+<li>🎮 <a href="https://letsdefend.io/"><strong>LetsDefend</strong></a> — Simulador SOC con alertas reales que investigar. Free tier disponible.</li>
+<li>🎮 <a href="https://blueteamlabs.online/"><strong>Blue Team Labs Online</strong></a> — Challenges de investigación forense y respuesta a incidentes.</li>
+<li>🎮 <a href="https://cyberdefenders.org/"><strong>CyberDefenders</strong></a> — Challenges de DFIR (Digital Forensics &#x26; Incident Response) de alta calidad.</li>
+<li>📦 <a href="https://www.splunk.com/en_us/training/free-courses/splunk-fundamentals-1.html"><strong>Boss of the SOC (BOTS) — Splunk</strong></a> — Datasets reales de investigaciones SOC para practicar con Splunk.</li>
+<li>🏠 <a href="https://wazuh.com/blog/setting-up-a-home-siem-lab/"><strong>Building a Home SIEM Lab</strong></a> — Tutorial oficial de Wazuh para construir tu propio lab de detección.</li>
+</ul>
+<hr>
+<h3 id="-certificaciones-blue-team--mapa-completo">🏅 Certificaciones Blue Team — Mapa Completo</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>NIVEL ENTRY (0-12 meses):</span></span>
+<span class="line"><span>┌──────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│  CompTIA Security+        ~$400   Base requerida     │</span></span>
+<span class="line"><span>│  CompTIA CySA+            ~$400   SOC-focused        │</span></span>
+<span class="line"><span>│  BTL1 (Blue Team Labs)    ~$500   Hands-on SOC       │</span></span>
+<span class="line"><span>└──────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span>                    ↓</span></span>
+<span class="line"><span>NIVEL MID (1-2 años):</span></span>
+<span class="line"><span>┌──────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│  Splunk Core Certified    ~$130   SIEM standard      │</span></span>
+<span class="line"><span>│  Microsoft SC-200         ~$165   Sentinel/Defender  │</span></span>
+<span class="line"><span>│  GCIH (GIAC)              ~$949   Incident Handler   │</span></span>
+<span class="line"><span>│  GCFE (GIAC)              ~$949   Digital Forensics  │</span></span>
+<span class="line"><span>└──────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span>                    ↓</span></span>
+<span class="line"><span>NIVEL AVANZADO (2+ años):</span></span>
+<span class="line"><span>┌──────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│  GCIA (GIAC)              ~$949   Intrusion Analyst  │</span></span>
+<span class="line"><span>│  GCTI (GIAC)              ~$949   Threat Intelligence│</span></span>
+<span class="line"><span>│  CISSP (ISC2)             ~$749   Management/Senior  │</span></span>
+<span class="line"><span>│  CISM (ISACA)             ~$760   Security Manager   │</span></span>
+<span class="line"><span>└──────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-fase-avanzada-especialización-y-convergencia">🎯 FASE AVANZADA: Especialización y Convergencia</h2>
+<blockquote>
+<p>Esta fase es donde el mapa se vuelve personal. No hay una ruta única — hay <strong>vectores de especialización</strong> que eliges según tus intereses, el mercado laboral de tu región, y tu experiencia acumulada.</p>
+</blockquote>
+<h3 id="-especialización-ofensiva-red-team-avanzado">🔬 Especialización Ofensiva (Red Team Avanzado)</h3>
+<h4 id="active-directory-attack--defense">Active Directory Attack &#x26; Defense</h4>
+<p>El 90% de las empresas Fortune 500 usa Active Directory. Dominarlo es obligatorio para cualquier Red Teamer serio.</p>
+<ul>
+<li>📖 <a href="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course"><strong>TCM Security — Practical Ethical Hacking (incluye AD)</strong></a> — El mejor curso de AD para pentesters.</li>
+<li>🎮 <a href="https://github.com/Orange-Cyberdefense/GOAD"><strong>GOAD (Game of Active Directory)</strong></a> — Lab open source de AD vulnerable para instalar localmente.</li>
+<li>🏅 <strong>Certificaciones:</strong> CRTO, CRTP, OSEP</li>
+</ul>
+<h4 id="cloud-pentesting">Cloud Pentesting</h4>
+<p>AWS, Azure, y GCP son el nuevo perímetro. Las empresas están migrando masivamente y la mayoría no tiene equipo que sepa testear cloud.</p>
+<ul>
+<li>📖 <a href="https://cloud.hacktricks.xyz/"><strong>HackTricks Cloud</strong></a> — La referencia open source de técnicas de cloud hacking.</li>
+<li>🎮 <a href="https://github.com/RhinoSecurityLabs/cloudgoat"><strong>CloudGoat (Rhino Security Labs)</strong></a> — Entorno AWS vulnerable para practicar.</li>
+<li>🏅 <strong>Certificaciones:</strong> AWS Security Specialty, CCSP, CKSA (Kubernetes)</li>
+</ul>
+<h4 id="bug-bounty">Bug Bounty</h4>
+<p>El camino hacia ingresos independientes. La plataforma más grande es <a href="https://www.hackerone.com/"><strong>HackerOne</strong></a> y <a href="https://www.bugcrowd.com/"><strong>Bugcrowd</strong></a>.</p>
+<ul>
+<li>📖 <a href="https://portswigger.net/web-security"><strong>The Web Application Hacker’s Handbook (gratuito online)</strong></a> — PortSwigger Web Academy es esencialmente este libro interactivo.</li>
+<li>🏅 <strong>Certificaciones:</strong> BSCP (Burp Suite Certified Practitioner), OSWE</li>
+</ul>
+<hr>
+<h3 id="-especialización-defensiva-blue-team-avanzado">🔬 Especialización Defensiva (Blue Team Avanzado)</h3>
+<h4 id="threat-intelligence">Threat Intelligence</h4>
+<p>Convertir datos en inteligencia accionable. El rol más estratégico del Blue Team.</p>
+<ul>
+<li>📖 <a href="https://www.sans.org/cyber-security-courses/cyber-threat-intelligence/"><strong>SANS FOR578 — Cyber Threat Intelligence</strong></a> — El curso de referencia (de pago).</li>
+<li>🌐 <a href="https://www.opencti.io/"><strong>OpenCTI + MISP</strong></a> — Stack open source para TI operacional.</li>
+<li>🏅 <strong>Certificaciones:</strong> GCTI, CREST CTI, Recorded Future Certified Analyst</li>
+</ul>
+<h4 id="digital-forensics--incident-response-dfir">Digital Forensics &#x26; Incident Response (DFIR)</h4>
+<p>Responder cuando el incidente ya ocurrió. El rol más demandado en 2026.</p>
+<ul>
+<li>📖 <a href="https://www.youtube.com/c/13Cubed"><strong>13Cubed — DFIR YouTube Channel (gratuito)</strong></a> — El mejor canal de DFIR en YouTube.</li>
+<li>🎮 <a href="https://cyberdefenders.org/"><strong>CyberDefenders — DFIR Challenges</strong></a> — Los mejores retos prácticos de DFIR.</li>
+<li>🏅 <strong>Certificaciones:</strong> GCFE, GCFA, GCIH</li>
+</ul>
+<h4 id="security-engineering--devsecops">Security Engineering / DevSecOps</h4>
+<p>Integrar seguridad en el pipeline de desarrollo. El rol que más crece con la expansión de cloud nativo.</p>
+<ul>
+<li>📖 <a href="https://owasp.org/www-project-devsecops-guideline/"><strong>OWASP DevSecOps Guideline</strong></a></li>
+<li>🏅 <strong>Certificaciones:</strong> AWS DevOps Pro, CKS (Certified Kubernetes Security Specialist)</li>
+</ul>
+<hr>
+<h2 id="-timeline-realista--cuánto-tiempo-toma">📅 Timeline Realista — ¿Cuánto Tiempo Toma?</h2>
+<blockquote>
+<p>Estas estimaciones asumen estudio constante de 1-2 horas diarias + práctica en labs los fines de semana.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>PARTIENDO DE NIVEL INTERMEDIO (ya sabes IT/redes/Linux básico):</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>╔══════════════════════════════════════════════════════════════╗</span></span>
+<span class="line"><span>║  MES 0-3:   Fase 0 (Fundamentos)                            ║</span></span>
+<span class="line"><span>║             + ISC2 CC (gratuito) o CompTIA Security+        ║</span></span>
+<span class="line"><span>╠══════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║  MES 3-6:   Inicio de camino elegido                        ║</span></span>
+<span class="line"><span>║             + TryHackMe (el path de tu camino)              ║</span></span>
+<span class="line"><span>║             + Primera certificación de nivel entry          ║</span></span>
+<span class="line"><span>╠══════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║  MES 6-12:  Profundización técnica                          ║</span></span>
+<span class="line"><span>║             + HackTheBox (Red) / LetsDefend (Blue)          ║</span></span>
+<span class="line"><span>║             + Certificación mid-level (OSCP / BTL1)         ║</span></span>
+<span class="line"><span>╠══════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║  MES 12-18: Portfolio + aplicaciones laborales              ║</span></span>
+<span class="line"><span>║             + Proyectos propios documentados                ║</span></span>
+<span class="line"><span>║             + Participación en CTFs y comunidades           ║</span></span>
+<span class="line"><span>╠══════════════════════════════════════════════════════════════╣</span></span>
+<span class="line"><span>║  MES 18-24+: Especialización avanzada                       ║</span></span>
+<span class="line"><span>║              + Certificación avanzada de tu track           ║</span></span>
+<span class="line"><span>║              + Contribuciones open source                   ║</span></span>
+<span class="line"><span>╚══════════════════════════════════════════════════════════════╝</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-construye-tu-homelab--el-activo-más-valioso">🏠 Construye Tu Homelab — El Activo Más Valioso</h2>
+<p>Ninguna plataforma de práctica reemplaza <strong>tu propio laboratorio</strong>. El homelab te da libertad total para experimentar, romper cosas, y aprender de los errores.</p>
+<h3 id="setup-mínimo-una-sola-máquina-con-recursos-moderados">Setup mínimo (una sola máquina con recursos moderados):</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Hardware mínimo recomendado:</span></span>
+<span class="line"><span>- CPU: 4+ cores (Intel/AMD modernos)</span></span>
+<span class="line"><span>- RAM: 16GB (32GB ideal para AD labs)</span></span>
+<span class="line"><span>- Storage: 500GB SSD</span></span>
+<span class="line"><span>- Costo estimado: $200-600 USD en hardware usado</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Software base (todo gratuito):</span></span>
+<span class="line"><span>├── Hypervisor: VirtualBox o VMware Workstation (free)</span></span>
+<span class="line"><span>├── Máquina atacante: Kali Linux o Parrot OS</span></span>
+<span class="line"><span>├── Objetivos vulnerables:</span></span>
+<span class="line"><span>│   ├── VulnHub machines (gratuitas)</span></span>
+<span class="line"><span>│   ├── DVWA (Damn Vulnerable Web Application)</span></span>
+<span class="line"><span>│   ├── GOAD (Active Directory lab)</span></span>
+<span class="line"><span>│   └── Metasploitable 3</span></span>
+<span class="line"><span>└── Defensa/monitoreo:</span></span>
+<span class="line"><span>    ├── Wazuh SIEM (gratuito)</span></span>
+<span class="line"><span>    ├── ELK Stack (gratuito)</span></span>
+<span class="line"><span>    └── Security Onion (gratuito)</span></span>
+<span class="line"><span></span></span></code></pre>
+<ul>
+<li>📖 <a href="https://www.youtube.com/watch?v=xQs3O9pKjdg"><strong>Building a Cybersecurity Homelab (David Vargas)</strong></a> — Guía en video paso a paso.</li>
+<li>📖 <a href="https://systemweakness.com/building-a-cybersecurity-home-lab-step-by-step-guide-2026-edition-c1b3e5e1f2a4"><strong>Day-0 Homelab Guide</strong></a></li>
+</ul>
+<hr>
+<h2 id="-comunidades-y-recursos-permanentes">🌐 Comunidades y Recursos Permanentes</h2>
+<h3 id="-comunidades">💬 Comunidades</h3>
+<ul>
+<li>🌐 <a href="https://discord.com/invite/tryhackme"><strong>TryHackMe Discord</strong></a> — La comunidad de aprendizaje más activa</li>
+<li>🌐 <a href="https://discord.com/invite/hackthebox"><strong>Hack The Box Discord</strong></a> — Para puzzles y writeups</li>
+<li>🌐 <a href="https://www.reddit.com/r/netsec/"><strong>r/netsec</strong></a> — Noticias y discusión técnica de seguridad</li>
+<li>🌐 <a href="https://www.reddit.com/r/OSINT/"><strong>r/osint</strong></a> — Comunidad OSINT</li>
+<li>🌐 <a href="https://www.bellingcat.com/community/"><strong>Bellingcat Community</strong></a> — Investigación OSINT periodística</li>
+<li>🌐 <a href="https://isc.sans.edu/podcast.html"><strong>SANS Internet Stormcast (podcast diario gratuito)</strong></a></li>
+</ul>
+<h3 id="-newsletters-y-blogs-obligatorios">📰 Newsletters y Blogs Obligatorios</h3>
+<ul>
+<li>📧 <a href="https://krebsonsecurity.com/"><strong>Krebs on Security</strong></a> — Periodismo de seguridad de referencia</li>
+<li>📧 <a href="https://www.schneier.com/"><strong>Schneier on Security</strong></a> — Análisis profundo de seguridad y política</li>
+<li>📧 <a href="https://www.sans.org/reading-room/"><strong>SANS Reading Room</strong></a> — Papers técnicos gratuitos</li>
+<li>📧 <a href="https://thedfirreport.com/"><strong>The DFIR Report</strong></a> — Análisis técnicos de incidentes reales</li>
+<li>📧 <a href="https://book.hacktricks.xyz/"><strong>HackTricks</strong></a> — La enciclopedia técnica de hacking más completa</li>
+</ul>
+<h3 id="️-podcasts">🎙️ Podcasts</h3>
+<ul>
+<li>🎧 <a href="https://darknetdiaries.com/"><strong>Darknet Diaries</strong></a> — Historias reales de hacking y ciberseguridad</li>
+<li>🎧 <a href="https://risky.biz/"><strong>Risky Business</strong></a> — Noticias técnicas semanales de seguridad</li>
+<li>🎧 <a href="https://isc.sans.edu/podcast.html"><strong>SANS Internet Stormcast</strong></a> — 5 minutos diarios de amenazas actuales</li>
+</ul>
+<hr>
+<h2 id="-el-principio-zero-trust-aplicado-a-tu-carrera">🔐 El Principio Zero Trust Aplicado a Tu Carrera</h2>
+<p>Como filosofía de vida profesional, Zero Trust se aplica perfectamente al desarrollo de carrera en ciberseguridad:</p>
+<ul>
+<li>✅ <strong>Never trust, always verify:</strong> No asumas que sabes algo solo porque lo leíste. Verifica en el lab.</li>
+<li>✅ <strong>Principio de mínimo privilegio:</strong> No intentes aprender todo a la vez. Profundiza en una dirección antes de expandir.</li>
+<li>✅ <strong>Segmentación:</strong> Separa tu entorno de aprendizaje de tus sistemas de trabajo/personal.</li>
+<li>✅ <strong>Monitoreo continuo:</strong> Documenta tu progreso. Un diario de aprendizaje + repos de GitHub con proyectos es tu mejor CV.</li>
+<li>✅ <strong>Assume breach:</strong> En los CTFs, asume que el objetivo está comprometido y trabaja desde ahí. En la vida real, asume que tu organización ya fue comprometida y diseña defensas acordemente.</li>
+</ul>
+<hr>
+<h2 id="-conclusión-el-mapa-no-es-el-territorio">🏁 Conclusión: El Mapa No Es el Territorio</h2>
+<p>Este roadmap es una guía, no una prisión. La ciberseguridad es uno de los campos más dinámicos que existen — lo que aprendes hoy puede volverse obsoleto en dos años, y nuevas áreas de especialización aparecen constantemente (AI security, quantum cryptography, satellite hacking, OT/ICS security).</p>
+<p>Lo que nunca cambia:</p>
+<ul>
+<li>🧠 <strong>La mentalidad del atacante:</strong> Cómo piensa alguien que intenta comprometer un sistema</li>
+<li>🔍 <strong>La curiosidad estructurada:</strong> La habilidad de investigar cualquier tecnología desde cero</li>
+<li>📝 <strong>La comunicación técnica:</strong> Explicar hallazgos complejos de forma accionable</li>
+<li>⚖️ <strong>La ética:</strong> Saber dónde están las líneas — legales, morales, y profesionales</li>
+</ul>
+<blockquote>
+<p><strong>El mejor momento para empezar fue hace un año. El segundo mejor momento es ahora.</strong></p>
+</blockquote>
+<p>Elige tu camino, configura tu lab, y haz el primer CTF esta semana. El resto viene solo. 🚀</p>
+<hr>
+<p><em>Escrito por <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Recursos verificados y actualizados a junio de 2026.</em></p>
+</div>
+<hr>
+<hr>
+<div class="lang-en">
+<h2 id="️-complete-osint--cybersecurity-roadmap-2026-from-intermediate-to-specialist">🗺️ Complete OSINT &#x26; Cybersecurity Roadmap 2026: From Intermediate to Specialist</h2>
+<p><strong>By Jafet Brito</strong> · Security Researcher · <em>Published June 11, 2026</em></p>
+<hr>
+<blockquote>
+<p><em>“Cybersecurity is not a destination. It is a direction.”</em>
+— Zero Trust Philosophy</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Important note:</strong> This roadmap assumes you already have IT, networking, or basic Linux knowledge. If you’re starting from absolute zero, complete the <a href="https://www.comptia.org/certifications/it-fundamentals">CompTIA ITF+</a> or <a href="https://tryhackme.com/path/outline/presecurity">TryHackMe’s Pre-Security path</a> first.</p>
+</blockquote>
+<hr>
+<h3 id="-how-to-read-this-roadmap">🧭 How to Read This Roadmap</h3>
+<p>This is not a linear roadmap — it’s a <strong>tree of paths</strong> with a common foundation and three specializations that converge at the advanced level:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>📦 PHASE 0: Common Foundation (all paths)</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>   ┌────┴────┬─────────────┐</span></span>
+<span class="line"><span>   ↓         ↓             ↓</span></span>
+<span class="line"><span>🔍 OSINT   ⚔️ Red Team   🛡️ Blue Team</span></span>
+<span class="line"><span>   ↓         ↓             ↓</span></span>
+<span class="line"><span>   └────┬────┴─────────────┘</span></span>
+<span class="line"><span>        ↓</span></span>
+<span class="line"><span>🎯 ADVANCED PHASE: Specialization &#x26; Convergence</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-phase-0-the-foundation--what-every-specialist-must-know">📦 PHASE 0: The Foundation — What Every Specialist Must Know</h2>
+<blockquote>
+<p>⏱️ <strong>Estimated time:</strong> 2-4 months (if you already have an IT background)
+🎯 <strong>Goal:</strong> Have the language, concepts, and work environment for any of the three paths</p>
+</blockquote>
+<h3 id="️-01--operating-system-linux-as-mother-tongue">🖥️ 0.1 — Operating System: Linux as Mother Tongue</h3>
+<p><strong>What you must master:</strong> Filesystem navigation, file manipulation (grep, awk, sed), permissions, networking from terminal, process management, basic Bash scripting.</p>
+<p><strong>Free resources:</strong></p>
+<ul>
+<li>🎓 <a href="https://overthewire.org/wargames/bandit/"><strong>OverTheWire: Bandit</strong></a> — Best Linux wargame for beginners</li>
+<li>🎓 <a href="https://tryhackme.com/module/linux-fundamentals"><strong>TryHackMe — Linux Fundamentals</strong></a> — 3 free rooms</li>
+<li>📖 <a href="https://linuxcommand.org/tlcl.php"><strong>The Linux Command Line (free book)</strong></a></li>
+</ul>
+<hr>
+<h3 id="-02--networking-the-language-the-internet-speaks">🌐 0.2 — Networking: The Language the Internet Speaks</h3>
+<p><strong>What you must master:</strong> OSI model, TCP/IP, addressing (IPv4, CIDR), fundamental protocols (TCP, UDP, DNS, HTTP/S, SSH, SMB), Wireshark/tcpdump/nmap, security concepts (firewalls, NAT, VPN).</p>
+<p><strong>Free resources:</strong></p>
+<ul>
+<li>🎓 <a href="https://www.youtube.com/@ProfessorMesser"><strong>Professor Messer — CompTIA Network+ (YouTube, free)</strong></a></li>
+<li>🎮 <a href="https://tryhackme.com/path/outline/presecurity"><strong>TryHackMe — Pre-Security Path</strong></a></li>
+</ul>
+<hr>
+<h3 id="-03--core-security-concepts">🔐 0.3 — Core Security Concepts</h3>
+<p><strong>What you must master:</strong> CIA Triad, attack types (phishing, MitM, SQL injection, XSS), basic cryptography (symmetric/asymmetric, hashing, TLS), MITRE ATT&#x26;CK, Cyber Kill Chain, OWASP Top 10.</p>
+<p><strong>Free resources:</strong></p>
+<ul>
+<li>🎓 <a href="https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/"><strong>Professor Messer — CompTIA Security+ (YouTube, free)</strong></a></li>
+<li>🏛️ <a href="https://attack.mitre.org/"><strong>MITRE ATT&#x26;CK</strong></a></li>
+<li>📚 <a href="https://owasp.org/www-project-top-ten/"><strong>OWASP Top 10</strong></a></li>
+</ul>
+<hr>
+<h3 id="-phase-0-certification-options">🏅 Phase 0 Certification Options</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Certification</th><th>Cost</th><th>Format</th><th>Value</th></tr></thead><tbody><tr><td><strong>CompTIA Security+</strong></td><td>~$400</td><td>Theory + practical</td><td>High — DoD baseline, industry standard</td></tr><tr><td><strong>ISC2 CC</strong></td><td><strong>Free</strong> (1MCC initiative)</td><td>Theory exam</td><td>Medium — best free entry point</td></tr><tr><td><strong>CompTIA Network+</strong></td><td>~$380</td><td>Theory exam</td><td>High — if networking background is weak</td></tr></tbody></table>
+<hr>
+<h2 id="-path-a-osint--open-source-intelligence">🔍 PATH A: OSINT — Open Source Intelligence</h2>
+<blockquote>
+<p>⏱️ <strong>Estimated time post-Phase 0:</strong> 3-6 months functional, 12+ months advanced
+🎯 <strong>Target roles:</strong> OSINT Analyst, Threat Intelligence Analyst, Digital Investigator</p>
+</blockquote>
+<h3 id="️-a1--the-osint-intelligence-cycle">🗺️ A.1 — The OSINT Intelligence Cycle</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. Planning      → What do I need to know? Requirements?</span></span>
+<span class="line"><span>2. Collection    → Active/passive search of open sources</span></span>
+<span class="line"><span>3. Processing    → Clean, normalize, structure raw data</span></span>
+<span class="line"><span>4. Analysis      → Interpret, correlate, identify patterns</span></span>
+<span class="line"><span>5. Dissemination → Communicate findings actionably</span></span>
+<span class="line"><span>6. Feedback      → Adjust cycle based on results</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Key concepts:</strong> Sock puppets &#x26; OPSEC, advanced search operators, Google/Bing Dorks, pivoting (email → domain → IP → person), ethics and legality.</p>
+<p><strong>Free resources:</strong></p>
+<ul>
+<li>🎓 <a href="https://osintframework.com/"><strong>OSINT Framework</strong></a></li>
+<li>📖 <a href="https://docs.google.com/spreadsheets/d/18rtqh8EG2q1xBo2cLNyhIDuK9jrPGwYr9DI2UncoqJQ/edit"><strong>Bellingcat’s Online Investigation Toolkit</strong></a></li>
+<li>🎓 <a href="https://www.youtube.com/watch?v=qwA6MmbeGNo"><strong>TCM Security — OSINT Fundamentals (free on YouTube)</strong></a></li>
+</ul>
+<hr>
+<h3 id="️-a2--osint-tool-stack-by-category">🛠️ A.2 — OSINT Tool Stack by Category</h3>
+<p><strong>Domains &#x26; Infrastructure:</strong> Shodan, Censys, crt.sh, DNSDumpster, SecurityTrails, VirusTotal, Wayback Machine</p>
+<p><strong>People &#x26; Social Media:</strong> Sherlock, Maigret, Hunter.io, SpiderFoot, Maltego, Social-Searcher</p>
+<p><strong>Images &#x26; Geolocation:</strong> Google Lens, PimEyes, FaceCheck.ID, ExifTool, GeoSpy AI, Google Earth Pro, Mapillary</p>
+<p>See the <a href="/blog/osint-tools-guide-2026"><strong>Complete OSINT Tools Guide</strong></a> for full details, use cases, and tips on each.</p>
+<hr>
+<h3 id="-a3--where-to-practice-osint">📚 A.3 — Where to Practice OSINT</h3>
+<ul>
+<li>🏆 <a href="https://www.tracelabs.org/"><strong>Trace Labs — OSINT CTF for Missing Persons</strong></a> — Real OSINT for real missing persons cases</li>
+<li>🎮 <a href="https://www.bellingcat.com/resources/how-tos/"><strong>Bellingcat Open Source Investigation Challenges</strong></a></li>
+<li>🎮 <a href="https://osintctf.com/"><strong>OSINT CTF Challenges</strong></a></li>
+<li>🎮 <a href="https://www.geoguessr.com/"><strong>GeoGuessr</strong></a> — Visual geolocation training (seriously)</li>
+</ul>
+<hr>
+<h3 id="-osint-certifications">🏅 OSINT Certifications</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Cert</th><th>Issuer</th><th>Cost</th><th>Level</th></tr></thead><tbody><tr><td><strong>GOSI</strong></td><td>GIAC/SANS</td><td>~$949</td><td>Mid — most recognized OSINT cert</td></tr><tr><td><strong>PNPT</strong></td><td>TCM Security</td><td>$400</td><td>Mid — practical with real OSINT component</td></tr><tr><td><strong>Certified OSINT Professional</strong></td><td>OSMOSIS</td><td>~$300</td><td>Entry/Mid — OSINT-specific</td></tr></tbody></table>
+<hr>
+<h2 id="️-path-b-red-team--pentesting">⚔️ PATH B: Red Team &#x26; Pentesting</h2>
+<blockquote>
+<p>⏱️ <strong>Estimated time post-Phase 0:</strong> 6-12 months junior, 18-24 months mid-level
+🎯 <strong>Target roles:</strong> Junior Penetration Tester, Red Team Operator, Bug Bounty Hunter</p>
+</blockquote>
+<h3 id="️-b1--the-cyber-kill-chain">🗺️ B.1 — The Cyber Kill Chain</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. Reconnaissance        → OSINT, network scanning, enumeration</span></span>
+<span class="line"><span>2. Weaponization         → Prepare payload/exploit</span></span>
+<span class="line"><span>3. Delivery              → Email, web, USB, social engineering</span></span>
+<span class="line"><span>4. Exploitation          → Execute exploit on target</span></span>
+<span class="line"><span>5. Installation          → Establish persistence</span></span>
+<span class="line"><span>6. C2 (Command &#x26; Control)→ Communication channel with target</span></span>
+<span class="line"><span>7. Actions on Objectives → Exfiltration, lateral movement, impact</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="️-b2--red-team-technical-stack-by-phase">🛠️ B.2 — Red Team Technical Stack by Phase</h3>
+<p><strong>Reconnaissance:</strong> Nmap, Masscan, theHarvester, Amass, Subfinder</p>
+<p><strong>Scanning &#x26; Enumeration:</strong> OpenVAS, Nikto, Gobuster/ffuf, Enum4linux, BloodHound (for AD)</p>
+<p><strong>Exploitation:</strong> Metasploit Framework, Burp Suite Community, SQLMap, Hydra/Hashcat, Responder</p>
+<p><strong>Post-Exploitation:</strong> Mimikatz, PowerView/SharpHound, CrackMapExec/NetExec, Cobalt Strike/Havoc C2</p>
+<hr>
+<h3 id="-b3--red-team-practice-platforms">📚 B.3 — Red Team Practice Platforms</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>RECOMMENDED PROGRESSION:</span></span>
+<span class="line"><span>TryHackMe → HackTheBox → PortSwigger → OffSec Labs</span></span>
+<span class="line"><span>(Guided)    (Realistic)  (Web App)    (Certification)</span></span>
+<span class="line"><span></span></span></code></pre>
+<ul>
+<li>🎮 <a href="https://tryhackme.com"><strong>TryHackMe</strong></a> — Start here. Guided rooms. Generous free tier.
+<ul>
+<li>Recommended paths: <em>Jr Penetration Tester</em>, <em>Red Teaming</em>, <em>Offensive Pentesting</em></li>
+</ul>
+</li>
+<li>🎮 <a href="https://www.hackthebox.com"><strong>Hack The Box</strong></a> — Next level. Less guided, more realistic.
+<ul>
+<li>Recommended paths: <em>Penetration Testing Job Role</em>, <em>Active Directory 101</em></li>
+</ul>
+</li>
+<li>🌐 <a href="https://portswigger.net/web-security"><strong>PortSwigger Web Security Academy</strong></a> — <strong>100% free.</strong> Gold standard for web pentesting.</li>
+<li>🎮 <a href="https://www.vulnhub.com/"><strong>VulnHub</strong></a> — Downloadable vulnerable VMs. Completely free.</li>
+</ul>
+<hr>
+<h3 id="-red-team-certifications--full-map">🏅 Red Team Certifications — Full Map</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ENTRY LEVEL (0-12 months practice):</span></span>
+<span class="line"><span>├── eJPT (eLearnSecurity)     ~$200   Hands-on basics</span></span>
+<span class="line"><span>├── CompTIA PenTest+          ~$400   Theory + practical</span></span>
+<span class="line"><span>└── PJPT (TCM Security)       $30     Hands-on basics</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MID LEVEL (1-2 years practice):</span></span>
+<span class="line"><span>├── OSCP (OffSec)             $1,499  THE GOLD STANDARD</span></span>
+<span class="line"><span>├── PNPT (TCM Security)       $400    Practical + report</span></span>
+<span class="line"><span>└── GPEN (GIAC)               ~$949   Enterprise focus</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ADVANCED (2+ years):</span></span>
+<span class="line"><span>├── OSEP (OffSec)             ~$1,299 Evasion + AV bypass</span></span>
+<span class="line"><span>├── CRTO (Zero-Point Security) £399   AD Red Team</span></span>
+<span class="line"><span>├── OSWE (OffSec)             ~$1,299 Web Expert</span></span>
+<span class="line"><span>└── GXPN (GIAC)              ~$949   Expert pentesting</span></span>
+<span class="line"><span></span></span></code></pre>
+<blockquote>
+<p>💡 <strong>Career advice:</strong> The most respected 2026 path is <strong>eJPT/PJPT → OSCP → specialization (OSEP/CRTO/OSWE)</strong>. OSCP remains the reference credential most employers require for pentesting roles.</p>
+</blockquote>
+<hr>
+<h2 id="️-path-c-blue-team--soc">🛡️ PATH C: Blue Team &#x26; SOC</h2>
+<blockquote>
+<p>⏱️ <strong>Estimated time post-Phase 0:</strong> 4-8 months for Tier 1 SOC, 12-18 months for Tier 2/3
+🎯 <strong>Target roles:</strong> SOC Analyst, Threat Hunter, Incident Responder, Security Engineer</p>
+</blockquote>
+<h3 id="️-c1--the-nist-csf-framework">🗺️ C.1 — The NIST CSF Framework</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>├── Identify  → Asset inventory, risk management</span></span>
+<span class="line"><span>├── Protect   → Preventive controls, segmentation, hardening</span></span>
+<span class="line"><span>├── Detect    → Monitoring, alerting, threat hunting</span></span>
+<span class="line"><span>├── Respond   → Incident response, containment, eradication</span></span>
+<span class="line"><span>└── Recover   → Restoration, post-mortem, improvements</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="️-c2--blue-team-technical-stack">🛠️ C.2 — Blue Team Technical Stack</h3>
+<p><strong>SIEM:</strong> Splunk (industry standard), Microsoft Sentinel (Azure/Microsoft shops), Elastic SIEM/ELK Stack (open source), Wazuh (free, great for homelabs)</p>
+<p><strong>Analysis &#x26; Detection:</strong> Zeek, Suricata, Volatility, Autopsy/Sleuth Kit, TheHive, MISP</p>
+<p><strong>Threat Hunting:</strong> Sigma Rules, MITRE ATT&#x26;CK Navigator, OpenCTI</p>
+<hr>
+<h3 id="-c3--blue-team-practice-platforms">📚 C.3 — Blue Team Practice Platforms</h3>
+<ul>
+<li>🎮 <a href="https://tryhackme.com/path/outline/soclevel1"><strong>TryHackMe — SOC Level 1</strong></a> — Best guided SOC path available</li>
+<li>🎮 <a href="https://letsdefend.io/"><strong>LetsDefend</strong></a> — SOC simulator with real alerts to investigate</li>
+<li>🎮 <a href="https://blueteamlabs.online/"><strong>Blue Team Labs Online</strong></a> — Forensics and incident response challenges</li>
+<li>🎮 <a href="https://cyberdefenders.org/"><strong>CyberDefenders</strong></a> — High-quality DFIR challenges</li>
+<li>📦 <a href="https://www.splunk.com/en_us/training/free-courses/splunk-fundamentals-1.html"><strong>Boss of the SOC (BOTS) — Splunk</strong></a> — Real SOC investigation datasets</li>
+</ul>
+<hr>
+<h3 id="-blue-team-certifications--full-map">🏅 Blue Team Certifications — Full Map</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ENTRY LEVEL (0-12 months):</span></span>
+<span class="line"><span>├── CompTIA Security+    ~$400   Required baseline</span></span>
+<span class="line"><span>├── CompTIA CySA+        ~$400   SOC-focused</span></span>
+<span class="line"><span>└── BTL1 (Blue Team Labs) ~$500  Hands-on SOC</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>MID LEVEL (1-2 years):</span></span>
+<span class="line"><span>├── Splunk Core Certified ~$130  SIEM standard</span></span>
+<span class="line"><span>├── Microsoft SC-200      ~$165  Sentinel/Defender</span></span>
+<span class="line"><span>├── GCIH (GIAC)          ~$949  Incident Handler</span></span>
+<span class="line"><span>└── GCFE (GIAC)          ~$949  Digital Forensics</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ADVANCED (2+ years):</span></span>
+<span class="line"><span>├── GCIA (GIAC)          ~$949  Intrusion Analyst</span></span>
+<span class="line"><span>├── GCTI (GIAC)          ~$949  Threat Intelligence</span></span>
+<span class="line"><span>├── CISSP (ISC2)         ~$749  Management/Senior</span></span>
+<span class="line"><span>└── CISM (ISACA)         ~$760  Security Manager</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-advanced-phase-specialization--convergence">🎯 ADVANCED PHASE: Specialization &#x26; Convergence</h2>
+<h3 id="-offensive-specialization">🔬 Offensive Specialization</h3>
+<p><strong>Active Directory Attack &#x26; Defense</strong> — 90% of Fortune 500 uses AD. Mandatory for serious Red Teamers.</p>
+<ul>
+<li>📖 <a href="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course"><strong>TCM Security — Practical Ethical Hacking</strong></a></li>
+<li>🎮 <a href="https://github.com/Orange-Cyberdefense/GOAD"><strong>GOAD (Game of Active Directory)</strong></a> — Free vulnerable AD lab</li>
+<li>🏅 Certs: CRTO, CRTP, OSEP</li>
+</ul>
+<p><strong>Cloud Pentesting</strong> — AWS, Azure, GCP are the new perimeter.</p>
+<ul>
+<li>📖 <a href="https://cloud.hacktricks.xyz/"><strong>HackTricks Cloud</strong></a></li>
+<li>🎮 <a href="https://github.com/RhinoSecurityLabs/cloudgoat"><strong>CloudGoat (Rhino Security Labs)</strong></a></li>
+<li>🏅 Certs: AWS Security Specialty, CCSP</li>
+</ul>
+<p><strong>Bug Bounty</strong> — Path to independent income.</p>
+<ul>
+<li>🌐 <a href="https://www.hackerone.com/"><strong>HackerOne</strong></a> / <a href="https://www.bugcrowd.com/"><strong>Bugcrowd</strong></a></li>
+<li>🏅 Certs: BSCP, OSWE</li>
+</ul>
+<hr>
+<h3 id="-defensive-specialization">🔬 Defensive Specialization</h3>
+<p><strong>Threat Intelligence</strong> — Converting data to actionable intelligence.</p>
+<ul>
+<li>🌐 <a href="https://www.opencti.io/"><strong>OpenCTI + MISP</strong></a> — Free open source TI stack</li>
+<li>🏅 Certs: GCTI, CREST CTI</li>
+</ul>
+<p><strong>DFIR</strong> — The most demanded role in 2026.</p>
+<ul>
+<li>📖 <a href="https://www.youtube.com/c/13Cubed"><strong>13Cubed YouTube Channel (free)</strong></a></li>
+<li>🎮 <a href="https://cyberdefenders.org/"><strong>CyberDefenders — DFIR Challenges</strong></a></li>
+<li>🏅 Certs: GCFE, GCFA, GCIH</li>
+</ul>
+<hr>
+<h2 id="-realistic-timeline">📅 Realistic Timeline</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>STARTING FROM INTERMEDIATE LEVEL (IT/networking/Linux basics):</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Month 0-3:   Phase 0 Foundation</span></span>
+<span class="line"><span>             + ISC2 CC (free) or CompTIA Security+</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Month 3-6:   Start chosen path</span></span>
+<span class="line"><span>             + TryHackMe path for your track</span></span>
+<span class="line"><span>             + First entry-level certification</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Month 6-12:  Technical deepening</span></span>
+<span class="line"><span>             + HackTheBox (Red) / LetsDefend (Blue)</span></span>
+<span class="line"><span>             + Mid-level cert (OSCP / BTL1)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Month 12-18: Portfolio + job applications</span></span>
+<span class="line"><span>             + Documented personal projects</span></span>
+<span class="line"><span>             + CTF participation and communities</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Month 18-24+: Advanced specialization</span></span>
+<span class="line"><span>              + Advanced certification for your track</span></span>
+<span class="line"><span>              + Open source contributions</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-build-your-homelab">🏠 Build Your Homelab</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Minimum recommended hardware:</span></span>
+<span class="line"><span>- CPU: 4+ cores</span></span>
+<span class="line"><span>- RAM: 16GB (32GB ideal for AD labs)</span></span>
+<span class="line"><span>- Storage: 500GB SSD</span></span>
+<span class="line"><span>- Estimated cost: $200-600 USD used hardware</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Free software base:</span></span>
+<span class="line"><span>├── Hypervisor: VirtualBox or VMware Workstation (free)</span></span>
+<span class="line"><span>├── Attack machine: Kali Linux or Parrot OS</span></span>
+<span class="line"><span>├── Vulnerable targets: VulnHub, DVWA, GOAD, Metasploitable 3</span></span>
+<span class="line"><span>└── Defense/monitoring: Wazuh, ELK Stack, Security Onion (all free)</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-communities--permanent-resources">🌐 Communities &#x26; Permanent Resources</h2>
+<p><strong>Communities:</strong> TryHackMe Discord, Hack The Box Discord, r/netsec, r/osint, Bellingcat Community</p>
+<p><strong>Must-read blogs/newsletters:</strong> Krebs on Security, Schneier on Security, SANS Reading Room, The DFIR Report, HackTricks</p>
+<p><strong>Podcasts:</strong> Darknet Diaries, Risky Business, SANS Internet Stormcast</p>
+<hr>
+<h2 id="-conclusion-the-map-is-not-the-territory">🏁 Conclusion: The Map Is Not the Territory</h2>
+<p>This roadmap is a guide, not a prison. Cybersecurity is one of the most dynamic fields in existence. What never changes:</p>
+<ul>
+<li>🧠 <strong>The attacker’s mindset</strong> — How someone thinks when trying to compromise a system</li>
+<li>🔍 <strong>Structured curiosity</strong> — The ability to research any technology from scratch</li>
+<li>📝 <strong>Technical communication</strong> — Explaining complex findings actionably</li>
+<li>⚖️ <strong>Ethics</strong> — Knowing where the lines are — legal, moral, and professional</li>
+</ul>
+<blockquote>
+<p><strong>The best time to start was a year ago. The second-best time is now.</strong></p>
+</blockquote>
+<p>Choose your path, set up your lab, and complete your first CTF this week. The rest follows. 🚀</p>
+<hr>
+<p><em>Written by <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Resources verified and updated as of June 2026.</em></p>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>

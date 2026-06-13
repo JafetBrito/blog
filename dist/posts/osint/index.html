@@ -1,0 +1,1187 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Guía intermedia de herramientas OSINT online organizadas por categoría: dominios e infraestructura, personas y redes sociales, imágenes y geolocalización. Incluye Google Dorks actualizados para 2026 y una metodología de investigación paso a paso."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/osint/"><meta property="og:title" content="🕵️ Arsenal OSINT 2026: Herramientas, Dorks y Técnicas para Investigadores — Jafet Brito"><meta property="og:description" content="Guía intermedia de herramientas OSINT online organizadas por categoría: dominios e infraestructura, personas y redes sociales, imágenes y geolocalización. Incluye Google Dorks actualizados para 2026 y una metodología de investigación paso a paso."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/osint/"><meta property="og:image" content="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="🕵️ Arsenal OSINT 2026: Herramientas, Dorks y Técnicas para Investigadores — Jafet Brito"><meta name="twitter:description" content="Guía intermedia de herramientas OSINT online organizadas por categoría: dominios e infraestructura, personas y redes sociales, imágenes y geolocalización. Incluye Google Dorks actualizados para 2026 y una metodología de investigación paso a paso."><meta name="twitter:image" content="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80"><title>🕵️ Arsenal OSINT 2026: Herramientas, Dorks y Técnicas para Investigadores — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80" alt="🕵️ Arsenal OSINT 2026: Herramientas, Dorks y Técnicas para Investigadores" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">-arsenal-osint-2026-herramientas-dorks-y-tcnicas-para-investigadores</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/OSINT" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-purple-50 text-purple-700 ring-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:ring-purple-700/40 hover:opacity-80 transition-opacity">#OSINT</a><a href="/tags/Recon" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Recon</a><a href="/tags/GoogleDorks" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#GoogleDorks</a><a href="/tags/Ciberseguridad" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Ciberseguridad</a><a href="/tags/Pentesting" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Pentesting</a><a href="/tags/ZeroTrust" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#ZeroTrust</a><a href="/tags/Infraestructura" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Infraestructura</a><a href="/tags/SOCMINT" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#SOCMINT</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="🕵️ Arsenal OSINT 2026: Herramientas, Dorks y Técnicas para Investigadores" data-text-en="🕵️ OSINT Arsenal 2026: Tools, Dorks &#38; Techniques for Investigators"> 🕵️ Arsenal OSINT 2026: Herramientas, Dorks y Técnicas para Investigadores </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="Guía intermedia de herramientas OSINT online organizadas por categoría: dominios e infraestructura, personas y redes sociales, imágenes y geolocalización. Incluye Google Dorks actualizados para 2026 y una metodología de investigación paso a paso." data-text-en="Intermediate guide to online OSINT tools organized by category: domains and infrastructure, people and social media, images and geolocation. Includes updated Google Dorks for 2026 and a step-by-step investigation methodology."> Guía intermedia de herramientas OSINT online organizadas por categoría: dominios e infraestructura, personas y redes sociales, imágenes y geolocalización. Incluye Google Dorks actualizados para 2026 y una metodología de investigación paso a paso. </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-11" data-fmt-date="2026-06-11" data-fmt="long">miércoles, 10 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+## 🕵️ Arsenal OSINT 2026: Herramientas, Dorks y Técnicas para Investigadores
+<p><strong>Por Jafet Brito</strong> · Security Researcher · <em>Publicado el 11 de junio de 2026</em></p>
+<hr>
+<blockquote>
+<p>⚠️ <strong>Aviso legal y ético:</strong> Toda la información en este artículo es para uso <strong>exclusivamente defensivo, educativo y de investigación autorizada</strong>. El uso de estas herramientas sobre sistemas o personas sin autorización explícita puede constituir un delito en tu jurisdicción. Bajo una filosofía <strong>Zero Trust</strong>: verifica siempre el alcance legal antes de ejecutar cualquier técnica de reconocimiento. <strong>Never trust, always verify — starting with your own permissions.</strong></p>
+</blockquote>
+<hr>
+<h3 id="️-qué-encontrarás-en-esta-guía">🗺️ ¿Qué encontrarás en esta guía?</h3>
+<ul>
+<li>🌐 <strong>Herramientas OSINT de dominios, IPs e infraestructura</strong> — con casos de uso y tips</li>
+<li>👤 <strong>Herramientas OSINT de personas y redes sociales</strong> — SOCMINT aplicado</li>
+<li>📸 <strong>Herramientas de imágenes y geolocalización</strong> — Visual OSINT</li>
+<li>💡 <strong>Metodología de investigación</strong> — cómo encadenar herramientas de forma efectiva</li>
+<li>🔎 <strong>Google Dorks 2026</strong> — operadores actualizados con ejemplos reales</li>
+<li>🛡️ <strong>Contramedidas</strong> — cómo proteger tu huella digital</li>
+</ul>
+<hr>
+<h2 id="-parte-1-dominios-ips-e-infraestructura">🌐 Parte 1: Dominios, IPs e Infraestructura</h2>
+<blockquote>
+<p>💡 <strong>Principio clave:</strong> La infraestructura digital de cualquier organización es su columna vertebral pública. Cada dominio, subdominio, certificado TLS, y banner de servicio es un dato OSINT legítimo indexado o accesible sin autenticación. El recon de infraestructura mapea la <strong>superficie de ataque externa</strong> antes de cualquier test.</p>
+</blockquote>
+<hr>
+<h3 id="-shodan--el-motor-de-búsqueda-del-internet-de-las-cosas">🔵 Shodan — El Motor de Búsqueda del Internet de las Cosas</h3>
+<p><strong>🔗 <a href="https://www.shodan.io">https://www.shodan.io</a></strong></p>
+<p>Shodan indexa <strong>banners de servicios</strong> de dispositivos conectados a internet: routers, cámaras IP, servidores industriales (ICS/OT), bases de datos expuestas, paneles de administración sin autenticación, y más. No indexa páginas web — indexa <strong>lo que escuchan los puertos</strong>.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Identificar servidores de una organización con versiones vulnerables de software, puertos abiertos innecesariamente, o servicios expuestos sin credenciales.</li>
+<li>💡 <strong>Tip:</strong> Usa los operadores <code>org:</code>, <code>country:</code>, <code>port:</code>, <code>product:</code> y <code>vuln:</code> para queries quirúrgicas. Por ejemplo: <code>org:"Nombre Empresa" port:3389</code> revela escritorios remotos expuestos.</li>
+<li>⚠️ <strong>Límite:</strong> La cuenta gratuita tiene queries limitadas. El plan pagado desbloquea exportaciones y monitoreo.</li>
+</ul>
+<hr>
+<h3 id="-censys--infraestructura-y-certificados-tls">🟣 Censys — Infraestructura y Certificados TLS</h3>
+<p><strong>🔗 <a href="https://search.censys.io">https://search.censys.io</a></strong></p>
+<p>Similar a Shodan pero con <strong>mayor énfasis en certificados TLS y escaneo continuo de toda la red IPv4/IPv6</strong>. Censys es especialmente poderoso para descubrir “shadow IT” — servidores desplegados por empleados que no están bajo gestión oficial de TI.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Descubrir subdominios y hosts de una organización a través de sus certificados TLS (que frecuentemente revelan nombres internos).</li>
+<li>💡 <strong>Tip:</strong> Busca por <code>parsed.subject.organization: "Empresa"</code> para encontrar todos los certificados emitidos a nombre de una organización. Los certificados wildcard revelan la estructura de subdominios.</li>
+<li>⚠️ <strong>Límite:</strong> El tier gratuito tiene límites de consultas diarias. Para investigaciones amplias, considera el plan researcher.</li>
+</ul>
+<hr>
+<h3 id="-dnsdumpster--mapeo-de-dns-pasivo">🟢 DNSDumpster — Mapeo de DNS Pasivo</h3>
+<p><strong>🔗 <a href="https://dnsdumpster.com">https://dnsdumpster.com</a></strong></p>
+<p>Herramienta web gratuita que realiza <strong>reconocimiento DNS pasivo</strong> sin enviar queries directas al objetivo. Genera un mapa visual de subdominios, registros MX, TXT, y relaciones de infraestructura.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Obtener una vista panorámica de los subdominios de un dominio objetivo, identificar proveedores de email, servicios de terceros y posibles puntos de entrada.</li>
+<li>💡 <strong>Tip:</strong> Combínalo con Shodan: los subdominios descubiertos en DNSDumpster pueden buscarse en Shodan para ver qué servicios tienen expuestos.</li>
+<li>✅ <strong>Ventaja:</strong> Completamente gratuito, sin registro, sin instalar nada.</li>
+</ul>
+<hr>
+<h3 id="-virustotal--inteligencia-de-dominios-ips-y-archivos">🟡 VirusTotal — Inteligencia de Dominios, IPs y Archivos</h3>
+<p><strong>🔗 <a href="https://www.virustotal.com">https://www.virustotal.com</a></strong></p>
+<p>Aunque conocido por análisis de malware, VirusTotal es una <strong>mina de oro OSINT</strong> para infraestructura. Su sección de graph y relaciones permite ver con qué IPs, dominios y archivos se ha asociado un indicador.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Investigar si un dominio o IP tiene historial malicioso, con qué otras infraestructuras se ha comunicado, y qué archivos han sido enviados desde esa IP.</li>
+<li>💡 <strong>Tip:</strong> Usa la pestaña “Relations” y “Graph” en cualquier dominio o IP para descubrir infraestructura relacionada que no aparece en DNS.</li>
+<li>✅ <strong>Ventaja:</strong> Gratuito para uso básico. La API tiene tier libre con 500 requests/día.</li>
+</ul>
+<hr>
+<h3 id="-securitytrails--historial-dns-e-infraestructura">🔴 SecurityTrails — Historial DNS e Infraestructura</h3>
+<p><strong>🔗 <a href="https://securitytrails.com">https://securitytrails.com</a></strong></p>
+<p>Proporciona <strong>historial completo de registros DNS</strong> de cualquier dominio: qué IPs ha tenido, con qué servidores de nombres estuvo configurado, cambios de MX, y más. Invaluable para rastrear movimientos de infraestructura en el tiempo.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Un dominio que cambió de IP puede revelar el hosting anterior (y sus datos de WHOIS históricos). Útil para atribuir infraestructura maliciosa.</li>
+<li>💡 <strong>Tip:</strong> Busca el historial de una IP para ver todos los dominios que han apuntado a ella — posible infraestructura compartida de un actor de amenaza.</li>
+<li>⚠️ <strong>Límite:</strong> Tier gratuito con 50 queries/mes. Para investigaciones activas, el plan básico pagado es necesario.</li>
+</ul>
+<hr>
+<h3 id="-crtsh--transparencia-de-certificados">⚫ crt.sh — Transparencia de Certificados</h3>
+<p><strong>🔗 <a href="https://crt.sh">https://crt.sh</a></strong></p>
+<p>Registro público de <strong>todos los certificados TLS emitidos</strong> para un dominio. Los certificados son públicos por ley (Certificate Transparency), lo que los convierte en una fuente OSINT insospechada.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Descubrir subdominios que no aparecen en DNS público. Muchas organizaciones emiten certificados para subdominios de staging, dev, interno o VPN que no están en DNS público pero sí en CT logs.</li>
+<li>💡 <strong>Tip:</strong> Query: <code>%.ejemplo.com</code> en crt.sh para obtener todos los subdominios con certificados emitidos. Esto frecuentemente revela <code>vpn.ejemplo.com</code>, <code>dev.ejemplo.com</code>, <code>staging.ejemplo.com</code>.</li>
+<li>✅ <strong>Ventaja:</strong> Completamente gratuito, sin registro.</li>
+</ul>
+<hr>
+<h3 id="-wayback-machine--archiveorg--el-internet-del-pasado">🌐 Wayback Machine / Archive.org — El Internet del Pasado</h3>
+<p><strong>🔗 <a href="https://web.archive.org">https://web.archive.org</a></strong></p>
+<p>El archivo de páginas web más grande del mundo. Permite ver <strong>versiones históricas de cualquier sitio web</strong>, incluyendo páginas eliminadas, configuraciones antiguas, y código fuente expuesto en el pasado.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Encontrar páginas de login, documentos o datos que fueron públicos brevemente y luego eliminados. También útil para comparar cambios en políticas de privacidad o configuraciones.</li>
+<li>💡 <strong>Tip:</strong> Combina con dorks de Google usando <code>cache:</code> para acceder a versiones en caché de páginas recientemente modificadas.</li>
+<li>✅ <strong>Ventaja:</strong> Completamente gratuito.</li>
+</ul>
+<hr>
+<h3 id="-shodan-favicon-hash--reconocimiento-por-ícono">🔍 Shodan Favicon Hash — Reconocimiento por Ícono</h3>
+<p>Una técnica menos conocida pero muy efectiva: los favicons (iconos de pestañas del navegador) tienen un <strong>hash calculable</strong> que Shodan indexa. Esto permite encontrar <strong>todas las instancias de una aplicación específica</strong> en internet.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Si sabes el favicon de un panel de administración específico (pfSense, Grafana, Kibana), puedes buscar en Shodan <code>http.favicon.hash:HASH</code> para encontrar todas las instancias expuestas globalmente.</li>
+<li>💡 <strong>Herramienta de apoyo:</strong> <a href="https://favicon-hash.kmsec.uk/"><strong>Favicon Hash Calculator</strong></a> — calcula el hash de cualquier favicon para uso en Shodan.</li>
+</ul>
+<hr>
+<h2 id="-parte-2-personas-y-redes-sociales-socmint">👤 Parte 2: Personas y Redes Sociales (SOCMINT)</h2>
+<blockquote>
+<p>💡 <strong>Principio clave:</strong> Las personas dejan rastros digitales involuntarios en múltiples plataformas. El SOCMINT (Social Media Intelligence) no se trata de espiar — se trata de analizar información <strong>voluntariamente pública</strong> para construir un perfil de actividad digital. La ética aquí es crítica: la legalidad de recopilar datos públicos varía por jurisdicción.</p>
+</blockquote>
+<hr>
+<h3 id="-sherlock--búsqueda-de-username-multiplataforma">🔵 Sherlock — Búsqueda de Username Multiplataforma</h3>
+<p><strong>🔗 <a href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a></strong> <em>(open source, CLI)</em>
+<strong>🔗 <a href="https://sherlockosint.com">https://sherlockosint.com</a></strong> <em>(versión web)</em></p>
+<p>Sherlock busca un username en <strong>más de 400 plataformas simultáneamente</strong>, identificando en cuáles existe una cuenta con ese nombre. Es la herramienta estándar de reconocimiento de identidad digital por username.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Un actor de amenaza usa el mismo alias en múltiples foros. Con Sherlock puedes pivotar desde un username de un foro oscuro hacia su cuenta de GitHub, Twitter, o Reddit pública.</li>
+<li>💡 <strong>Tip:</strong> Ejecuta también variaciones del username (con números, guiones bajos, puntos). Las personas frecuentemente usan <code>username</code>, <code>username_</code>, <code>username01</code>.</li>
+<li>✅ <strong>Ventaja:</strong> Open source, gratuito, activamente mantenido.</li>
+</ul>
+<hr>
+<h3 id="-maigret--el-hermano-mayor-de-sherlock">🟣 Maigret — El Hermano Mayor de Sherlock</h3>
+<p><strong>🔗 <a href="https://github.com/soxoj/maigret">https://github.com/soxoj/maigret</a></strong> <em>(open source, CLI)</em></p>
+<p>Fork avanzado de Sherlock que busca usernames en <strong>más de 3,000 sitios</strong> y genera reportes detallados con información adicional extraída de los perfiles encontrados (bio, foto, enlaces, IDs).</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Cuando Sherlock da un resultado inicial, Maigret profundiza en las cuentas encontradas para extraer más pivotes de información.</li>
+<li>💡 <strong>Tip:</strong> El flag <code>--report</code> genera un informe HTML visual con todos los perfiles encontrados y la información extraída. Ideal para documentación de investigación.</li>
+</ul>
+<hr>
+<h3 id="-spiderfoot--reconocimiento-osint-automatizado">🟢 SpiderFoot — Reconocimiento OSINT Automatizado</h3>
+<p><strong>🔗 <a href="https://www.spiderfoot.net">https://www.spiderfoot.net</a></strong>
+<strong>🔗 <a href="https://github.com/smicallef/spiderfoot">https://github.com/smicallef/spiderfoot</a></strong> <em>(open source)</em></p>
+<p>SpiderFoot es un motor de reconocimiento OSINT que acepta un <strong>seed</strong> (dominio, IP, email, nombre de persona) y automáticamente consulta <strong>más de 200 fuentes de datos públicas</strong> para construir un perfil completo de inteligencia.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Investigación de un actor de amenaza. Das su email como seed y SpiderFoot busca automáticamente brechas asociadas, dominios registrados con ese email, cuentas sociales, IPs, y más.</li>
+<li>💡 <strong>Tip:</strong> La versión HX (hosted) tiene una interfaz web elegante. La versión open source requiere setup pero da control total sobre los módulos.</li>
+<li>⚠️ <strong>Límite:</strong> Algunas integraciones requieren API keys de servicios externos (Shodan, Hunter, etc.).</li>
+</ul>
+<hr>
+<h3 id="-hunterio--búsqueda-de-emails-corporativos">🟡 Hunter.io — Búsqueda de Emails Corporativos</h3>
+<p><strong>🔗 <a href="https://hunter.io">https://hunter.io</a></strong></p>
+<p>Permite encontrar <strong>todos los emails asociados a un dominio corporativo</strong> y verifica su validez. Muy usado en investigaciones corporativas y en pentesting de phishing para construir listas de objetivos.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Identificar el patrón de emails de una empresa (<code>nombre.apellido@empresa.com</code>) y encontrar emails de empleados específicos de LinkedIn.</li>
+<li>💡 <strong>Tip:</strong> Combina Hunter con LinkedIn para construir una lista completa de empleados + sus emails probables. Útil para evaluaciones de conciencia de phishing.</li>
+<li>✅ <strong>Ventaja:</strong> Plan gratuito con 25 búsquedas/mes.</li>
+</ul>
+<hr>
+<h3 id="-maltego--análisis-visual-de-relaciones">🔴 Maltego — Análisis Visual de Relaciones</h3>
+<p><strong>🔗 <a href="https://www.maltego.com">https://www.maltego.com</a></strong></p>
+<p>Plataforma de análisis OSINT que crea <strong>grafos visuales de relaciones</strong> entre personas, organizaciones, dominios, IPs, y otras entidades. Utiliza “transforms” (consultas automatizadas) para expandir nodos del grafo.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Mapear la red de relaciones de un grupo de actores de amenaza: quién se comunica con quién, qué infraestructura comparten, qué organización está detrás.</li>
+<li>💡 <strong>Tip:</strong> La versión Community es gratuita con transforms limitados. Para OSINT serio, considera la versión Pro con acceso a más de 50 data sources integradas.</li>
+</ul>
+<hr>
+<h3 id="-social-searcher--monitoreo-de-redes-sociales-en-tiempo-real">⚫ Social-Searcher — Monitoreo de Redes Sociales en Tiempo Real</h3>
+<p><strong>🔗 <a href="https://www.social-searcher.com">https://www.social-searcher.com</a></strong></p>
+<p>Motor de búsqueda de <strong>publicaciones públicas en redes sociales</strong> en tiempo real. Permite rastrear menciones de nombres, alias, organizaciones o términos clave en múltiples plataformas simultáneamente.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Monitorear en tiempo real si un nombre de dominio, una marca o una persona está siendo mencionada en redes sociales — útil para respuesta a incidentes y threat intelligence.</li>
+<li>💡 <strong>Tip:</strong> Configura alertas automáticas para términos específicos. Ideal para detectar campañas de phishing emergentes que mencionan tu marca.</li>
+</ul>
+<hr>
+<h3 id="-osint-framework--el-mapa-de-todo">🌐 OSINT Framework — El Mapa de Todo</h3>
+<p><strong>🔗 <a href="https://osintframework.com">https://osintframework.com</a></strong></p>
+<p>No es una herramienta de búsqueda — es un <strong>directorio interactivo visual</strong> de cientos de herramientas OSINT categorizadas por tipo de dato: username, email, IP, imagen, geolocalización, dark web, y más. El punto de partida obligatorio para cualquier investigador.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Cuando estás en un dead-end en una investigación, el OSINT Framework te sugiere el siguiente paso lógico. Es el “Google Maps” del mundo OSINT.</li>
+<li>💡 <strong>Tip:</strong> Úsalo como checklist al inicio de cada investigación para asegurarte de no omitir categorías de datos relevantes.</li>
+</ul>
+<hr>
+<h2 id="-parte-3-imágenes-y-geolocalización-visual-osint">📸 Parte 3: Imágenes y Geolocalización (Visual OSINT)</h2>
+<blockquote>
+<p>💡 <strong>Principio clave:</strong> Una imagen vale más que mil palabras — y en OSINT, también vale más que mil queries. Las imágenes contienen tres capas de inteligencia: <strong>metadatos EXIF</strong> (coordenadas GPS, cámara, fecha), <strong>contenido visual</strong> (landmarks, texto, uniformes, vehículos), y <strong>huella digital</strong> (en qué otras plataformas aparece esa imagen).</p>
+</blockquote>
+<hr>
+<h3 id="-google-lens--geolocalización-visual-de-referencia">🔵 Google Lens — Geolocalización Visual de Referencia</h3>
+<p><strong>🔗 <a href="https://lens.google.com">https://lens.google.com</a></strong></p>
+<p>La herramienta de búsqueda visual de Google. En 2026, sigue siendo el <strong>estándar de oro para inteligencia ambiental</strong>: identificar landmarks, edificios, paisajes y objetos en imágenes.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Una imagen de protesta o incidente muestra un edificio de fondo. Google Lens puede identificar la ciudad, el barrio, o incluso el nombre del edificio.</li>
+<li>💡 <strong>Tip:</strong> Si el resultado es ambiguo, toma un recorte del elemento más distintivo de la imagen (un letrero, un edificio particular) y búscalo por separado. La especificidad mejora los resultados.</li>
+</ul>
+<hr>
+<h3 id="-pimeyes--búsqueda-de-rostros-en-la-web">🟣 PimEyes — Búsqueda de Rostros en la Web</h3>
+<p><strong>🔗 <a href="https://pimeyes.com">https://pimeyes.com</a></strong></p>
+<p>Motor de búsqueda de rostros que indexa millones de imágenes de la web pública y encuentra <strong>dónde más aparece una cara</strong>. Es una de las herramientas más poderosas y controversiales del Visual OSINT.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Dada una foto de perfil de un actor de amenaza en un foro, PimEyes puede encontrar otras imágenes de esa persona en otras plataformas, ayudando a construir un perfil de identidad real.</li>
+<li>💡 <strong>Tip:</strong> Combina PimEyes con Sherlock: si PimEyes encuentra un perfil de Instagram, usa el username encontrado en Sherlock para continuar el pivot.</li>
+<li>⚠️ <strong>Consideración ética y legal:</strong> En muchas jurisdicciones, los datos biométricos (incluyendo el reconocimiento facial) están protegidos por regulaciones como el GDPR. Usa esta herramienta únicamente en investigaciones autorizadas.</li>
+</ul>
+<hr>
+<h3 id="-facecheckid--alternativa-a-pimeyes">🟢 FaceCheck.ID — Alternativa a PimEyes</h3>
+<p><strong>🔗 <a href="https://facecheck.id">https://facecheck.id</a></strong></p>
+<p>Alternativa gratuita a PimEyes para búsqueda de rostros en internet. Menos comprensiva pero accesible sin suscripción, útil para verificaciones iniciales.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Primera verificación rápida antes de invertir en una búsqueda más profunda con PimEyes.</li>
+<li>💡 <strong>Tip:</strong> Úsalo como screening inicial — si FaceCheck ya encuentra resultados relevantes, ahorraste el costo de PimEyes.</li>
+</ul>
+<hr>
+<h3 id="-exiftool--extracción-de-metadatos">🟡 ExifTool — Extracción de Metadatos</h3>
+<p><strong>🔗 <a href="https://exiftool.org">https://exiftool.org</a></strong> <em>(open source, CLI)</em>
+<strong>🔗 <a href="https://exif.tools">https://exif.tools</a></strong> <em>(versión web)</em></p>
+<p>ExifTool extrae todos los <strong>metadatos EXIF</strong> de imágenes y otros archivos: coordenadas GPS, fecha y hora exactas, modelo de cámara/teléfono, software usado, y más. Muchas fotos comparten más de lo que sus autores imaginan.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Una foto publicada en redes sociales sin editar puede contener coordenadas GPS exactas del lugar donde fue tomada, revelar el modelo de teléfono, o confirmar una marca de tiempo.</li>
+<li>💡 <strong>Tip:</strong> Las plataformas como Instagram, Facebook y Twitter <strong>eliminan metadatos EXIF</strong> al subir fotos. Sin embargo, imágenes compartidas directamente por email, Telegram, o servicios de almacenamiento sin procesamiento a menudo los conservan.</li>
+<li>✅ <strong>Ventaja:</strong> Open source, completamente gratuito.</li>
+</ul>
+<hr>
+<h3 id="-geospy--geolocalización-con-ia">🔴 GeoSpy — Geolocalización con IA</h3>
+<p><strong>🔗 <a href="https://geospy.ai">https://geospy.ai</a></strong></p>
+<p>Herramienta emergente que usa <strong>IA para estimar la geolocalización de una imagen</strong> a partir de su contenido visual: vegetación, arquitectura, señalización, calidad de luz, y más. No requiere metadatos EXIF.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Una imagen sin metadatos de un campamento o instalación puede ser geolocualizada a través del análisis visual de la topografía, la vegetación y las estructuras visibles.</li>
+<li>💡 <strong>Tip:</strong> Combina GeoSpy con Google Earth y Mapillary para verificar y refinar la geolocalización propuesta. La IA da una estimación — la verificación manual la confirma.</li>
+</ul>
+<hr>
+<h3 id="-google-earth-pro--verificación-geoespacial">⚫ Google Earth Pro — Verificación Geoespacial</h3>
+<p><strong>🔗 <a href="https://earth.google.com">https://earth.google.com</a></strong></p>
+<p>El estándar para verificación geoespacial en OSINT. Permite comparar imágenes de satélite históricas para confirmar o refutar geolocalizaciones, identificar cambios en instalaciones, y correlacionar ubicaciones con eventos.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Verificar si una imagen supuestamente tomada en un lugar específico corresponde realmente con la topografía, estructuras, y vegetación de ese lugar en la fecha indicada.</li>
+<li>💡 <strong>Tip:</strong> Activa la capa de imágenes históricas (ícono de reloj) para comparar cómo era un lugar en diferentes fechas. Invaluable para investigaciones de conflictos o seguimiento de infraestructura.</li>
+<li>✅ <strong>Ventaja:</strong> Gratuito para uso personal.</li>
+</ul>
+<hr>
+<h3 id="-mapillary--street-view-de-código-abierto">🌐 Mapillary — Street View de Código Abierto</h3>
+<p><strong>🔗 <a href="https://www.mapillary.com">https://www.mapillary.com</a></strong></p>
+<p>Base de datos de imágenes a nivel de calle contribuidas por la comunidad, propiedad de Meta. Cubre zonas que Google Street View no tiene — especialmente útil para verificar geolocalizaciones en regiones menos desarrolladas o conflictos.</p>
+<ul>
+<li>📌 <strong>Caso de uso:</strong> Verificar la fachada de un edificio o una calle específica en una ciudad donde Google Street View no tiene cobertura.</li>
+</ul>
+<hr>
+<h2 id="-parte-4-metodología--cómo-encadenar-herramientas-de-forma-efectiva">💡 Parte 4: Metodología — Cómo Encadenar Herramientas de Forma Efectiva</h2>
+<blockquote>
+<p>La diferencia entre un investigador OSINT principiante y uno experto no es el número de herramientas que conoce — es <strong>cómo las encadena</strong>. Las herramientas son puntos de pivote; los pivotes son los que construyen inteligencia real.</p>
+</blockquote>
+<h3 id="-flujo-de-trabajo-de-investigación-de-infraestructura">🔗 Flujo de Trabajo de Investigación de Infraestructura</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DOMINIO OBJETIVO</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  DNSDumpster → Mapa de subdominios y registros DNS</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  crt.sh → Subdominios adicionales vía CT logs</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Shodan / Censys → Servicios expuestos por IP</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  VirusTotal → Historial de reputación y relaciones</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  SecurityTrails → Historial DNS (IPs previas)</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Wayback Machine → Contenido histórico del sitio</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-flujo-de-trabajo-de-investigación-de-personas">🔗 Flujo de Trabajo de Investigación de Personas</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>USERNAME / EMAIL / NOMBRE</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Sherlock / Maigret → Perfiles en múltiples plataformas</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Hunter.io → Emails corporativos asociados</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  SpiderFoot → Reconocimiento automatizado amplio</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Maltego → Grafo de relaciones</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Social-Searcher → Actividad pública en tiempo real</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-flujo-de-trabajo-de-visual-osint">🔗 Flujo de Trabajo de Visual OSINT</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>IMAGEN DESCONOCIDA</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  ExifTool → ¿Tiene metadatos GPS? → Si sí: Google Earth Pro</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Google Lens → Identificación de landmarks y entorno</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  GeoSpy → Estimación de geolocalización con IA</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  PimEyes / FaceCheck.ID → ¿Hay un rostro? → Búsqueda facial</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Sherlock → Username del perfil encontrado → Más pivotes</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-parte-5-google-dorks-2026--operadores-avanzados-con-ejemplos-reales">🔎 Parte 5: Google Dorks 2026 — Operadores Avanzados con Ejemplos Reales</h2>
+<blockquote>
+<p>⚠️ <strong>Uso ético obligatorio:</strong> Los dorks solo deben aplicarse sobre infraestructura que tienes autorización de analizar, en el contexto de bug bounty programs, pentesting contratado, o investigación de tu propia organización. El acceso no autorizado a sistemas informáticos es un delito.</p>
+</blockquote>
+<h3 id="-operadores-fundamentales">📖 Operadores Fundamentales</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Operador</th><th>Función</th><th>Ejemplo</th></tr></thead><tbody><tr><td><code>site:</code></td><td>Restringe resultados a un dominio</td><td><code>site:empresa.com</code></td></tr><tr><td><code>filetype:</code></td><td>Filtra por extensión de archivo</td><td><code>filetype:pdf</code></td></tr><tr><td><code>inurl:</code></td><td>Busca texto en la URL</td><td><code>inurl:admin</code></td></tr><tr><td><code>intitle:</code></td><td>Busca en el título de la página</td><td><code>intitle:"index of"</code></td></tr><tr><td><code>intext:</code></td><td>Busca en el cuerpo del texto</td><td><code>intext:"contraseña"</code></td></tr><tr><td><code>cache:</code></td><td>Versión en caché de Google</td><td><code>cache:ejemplo.com</code></td></tr><tr><td><code>-</code></td><td>Excluye resultados</td><td><code>site:ejemplo.com -www</code></td></tr><tr><td><code>OR</code></td><td>Condición alternativa</td><td><code>filetype:pdf OR filetype:doc</code></td></tr></tbody></table>
+<hr>
+<h3 id="-dorks-por-categoría--2026">🔍 Dorks por Categoría — 2026</h3>
+<h4 id="️-reconocimiento-de-infraestructura">🏗️ Reconocimiento de Infraestructura</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Descubrir todos los subdominios de un dominio</span></span>
+<span class="line"><span>site:*.objetivo.com -www.objetivo.com</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Encontrar páginas de login y paneles de administración</span></span>
+<span class="line"><span>site:objetivo.com inurl:login OR inurl:admin OR inurl:panel OR inurl:dashboard</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Directorios abiertos (open directory listing)</span></span>
+<span class="line"><span>intitle:"index of" site:objetivo.com</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Archivos de configuración expuestos</span></span>
+<span class="line"><span>site:objetivo.com filetype:env OR filetype:cfg OR filetype:conf OR filetype:ini</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Archivos de backup expuestos</span></span>
+<span class="line"><span>site:objetivo.com filetype:bak OR filetype:old OR filetype:backup OR filetype:sql</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-documentos-y-datos-sensibles">📄 Documentos y Datos Sensibles</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Documentos internos con información sensible</span></span>
+<span class="line"><span>site:objetivo.com filetype:pdf "confidencial" OR "interno" OR "no distribuir"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Hojas de cálculo con posible información de empleados o finanzas</span></span>
+<span class="line"><span>site:objetivo.com filetype:xlsx OR filetype:csv "empleados" OR "nómina" OR "salarios"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Presentaciones corporativas</span></span>
+<span class="line"><span>site:objetivo.com filetype:pptx OR filetype:ppt "estrategia" OR "roadmap" OR "Q1" OR "Q2"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Archivos de log expuestos</span></span>
+<span class="line"><span>site:objetivo.com filetype:log OR filetype:txt inurl:log</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-reconocimiento-de-credenciales-y-secrets">🔑 Reconocimiento de Credenciales y Secrets</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># API keys expuestas en GitHub (Google Dorking de GitHub)</span></span>
+<span class="line"><span>site:github.com "objetivo.com" "api_key" OR "secret_key" OR "password"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Archivos .env en repositorios públicos</span></span>
+<span class="line"><span>site:github.com filename:.env "DB_PASSWORD" OR "API_KEY"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Credenciales en código fuente público</span></span>
+<span class="line"><span>site:github.com "objetivo.com" intext:"password" filetype:py OR filetype:js OR filetype:php</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Tokens de acceso expuestos</span></span>
+<span class="line"><span>site:github.com "objetivo.com" "access_token" OR "auth_token" OR "bearer"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-cámaras-y-dispositivos-expuestos-shodan-dorks">📷 Cámaras y Dispositivos Expuestos (Shodan Dorks)</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># En Shodan — cámaras IP sin autenticación</span></span>
+<span class="line"><span>title:"webcam" country:"MX" has_screenshot:true</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Paneles de administración de routers</span></span>
+<span class="line"><span>http.title:"router" OR http.title:"admin" port:80,443 country:"MX"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Bases de datos MongoDB expuestas</span></span>
+<span class="line"><span>product:"MongoDB" port:27017 -authentication</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Elasticsearch sin autenticación</span></span>
+<span class="line"><span>product:"Elastic" port:9200 http.title:"Kibana"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-osint-de-personas-e-identidad">🧑‍💼 OSINT de Personas e Identidad</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Currículums y perfiles profesionales</span></span>
+<span class="line"><span>"Nombre Apellido" filetype:pdf OR filetype:doc "curriculum" OR "resume" OR "CV"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Perfiles en directorios profesionales</span></span>
+<span class="line"><span>site:linkedin.com "nombre apellido" "empresa"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Cuentas en foros técnicos</span></span>
+<span class="line"><span>site:github.com OR site:stackoverflow.com "nombre apellido" OR "username"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Menciones en medios y documentos públicos</span></span>
+<span class="line"><span>"Nombre Apellido" site:gov.mx OR site:gob.mx filetype:pdf</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-osint-avanzado-con-operadores-combinados">🔎 OSINT Avanzado con Operadores Combinados</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Encontrar instancias de Grafana expuestas (plataforma de monitoreo)</span></span>
+<span class="line"><span>intitle:"Grafana" inurl:"/login" -"grafana.com"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Instancias de Kibana sin autenticación</span></span>
+<span class="line"><span>intitle:"Kibana" inurl:":5601"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Paneles de Jenkins expuestos</span></span>
+<span class="line"><span>intitle:"Dashboard [Jenkins]" -site:jenkins.io</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Instancias de Jupyter Notebook sin contraseña</span></span>
+<span class="line"><span>intitle:"Jupyter Notebook" inurl:"/tree" -"jupyter.org"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Archivos robots.txt que revelan rutas sensibles</span></span>
+<span class="line"><span>site:objetivo.com filetype:txt inurl:robots "Disallow"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="️-recursos-complementarios-para-dorks">🛠️ Recursos Complementarios para Dorks</h3>
+<ul>
+<li>🗃️ <a href="https://www.exploit-db.com/google-hacking-database"><strong>Google Hacking Database (GHDB) — Exploit-DB</strong></a> — La base de datos más completa de dorks categorizados por tipo: files, devices, error messages, advisories. Mantenida activamente.</li>
+<li>🤖 <a href="https://theosintvault.io/google-dork-generator"><strong>Google Dork Generator — The OSINT Vault</strong></a> — Generador de dorks basado en objetivos específicos. Ideal para construir queries complejas sin memorizar operadores.</li>
+<li>🔧 <a href="https://shadowdragon.io/free-osint-tools/dork-assistant/"><strong>Dork Assistant — ShadowDragon</strong></a> — Asistente de IA que convierte objetivos en lenguaje natural en dorks precisos.</li>
+<li>📚 <a href="https://www.bing.com/search?q=site%3A*.ejemplo.com"><strong>Bing Dorks</strong></a> — Bing acepta operadores similares a Google y frecuentemente indexa contenido que Google no tiene, especialmente dominios de menor autoridad.</li>
+</ul>
+<hr>
+<h2 id="️-parte-6-contramedidas--protege-tu-huella-digital">🛡️ Parte 6: Contramedidas — Protege tu Huella Digital</h2>
+<p>El conocimiento OSINT tiene un segundo propósito crítico: <strong>entender cómo te ven los atacantes</strong> para reducir tu superficie de exposición.</p>
+<h3 id="-para-organizaciones">🔒 Para organizaciones:</h3>
+<ul>
+<li>✅ <strong>Auditoría regular de subdominios</strong> con crt.sh y DNSDumpster. Elimina subdominios obsoletos.</li>
+<li>✅ <strong>Monitorea tus certificados TLS</strong> — no emitas wildcards innecesarios que revelan estructura interna.</li>
+<li>✅ <strong>Configura robots.txt</strong> pero sin listar rutas sensibles — security through obscurity no es seguridad, pero innecesariamente listar rutas en robots.txt es regalar información.</li>
+<li>✅ <strong>Google Search Console</strong> — úsalo para remover páginas indexadas accidentalmente.</li>
+<li>✅ <strong>Política de metadatos en archivos</strong> — implementa procesos que eliminen metadatos de documentos antes de publicarlos.</li>
+<li>✅ <strong>Monitoreo de GitHub</strong> — configura alertas para detectar si código de tu organización es publicado accidentalmente en repositorios públicos.</li>
+</ul>
+<h3 id="-para-individuos">🔒 Para individuos:</h3>
+<ul>
+<li>✅ <strong>Elimina metadatos EXIF</strong> de fotos antes de publicarlas (herramienta: <a href="https://github.com/Tommy-Geenexus/exif-eraser"><strong>ExifEraser</strong></a>)</li>
+<li>✅ <strong>Audita tus usernames</strong> — usa Sherlock en ti mismo para ver qué perfiles tienes activos</li>
+<li>✅ <strong>Revisión periódica en HaveIBeenPwned</strong> — <a href="https://haveibeenpwned.com"><strong>https://haveibeenpwned.com</strong></a></li>
+<li>✅ <strong>Minimiza la información pública en LinkedIn</strong> — es la fuente OSINT corporativa más rica para atacantes</li>
+</ul>
+<hr>
+<h2 id="-conclusión-el-osint-es-un-superpoder--úsalo-con-criterio">🏁 Conclusión: El OSINT es un Superpoder — Úsalo con Criterio</h2>
+<p>Las herramientas en esta guía son <strong>neutrales</strong>: las mismas que usa un investigador de ciberseguridad para proteger una organización son las que usa un atacante para encontrar vulnerabilidades, o un periodista para investigar corrupción. La diferencia no está en la herramienta — está en el <strong>propósito, la autorización, y la ética</strong> del operador.</p>
+<p>El OSINT efectivo no es sobre la herramienta más poderosa. Es sobre <strong>la metodología más disciplinada</strong>: saber qué dato buscar, cómo pivotear de una fuente a otra, y cuándo detenerse porque cruzaste una línea legal o ética.</p>
+<blockquote>
+<p><strong>“La inteligencia de fuentes abiertas no consiste en saber buscar. Consiste en saber qué hacer con lo que encuentras — y qué no hacer.”</strong></p>
+</blockquote>
+<p>Aprende, practica en entornos autorizados, contribuye a la comunidad, y siempre opera dentro de los límites legales de tu jurisdicción. 🔐</p>
+<hr>
+<p><em>Escrito por <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Todas las herramientas listadas son de uso legal para reconocimiento pasivo y/o requieren autorización explícita para reconocimiento activo.</em></p>
+</div>
+---
+---
+<div class="lang-en">
+## 🕵️ OSINT Arsenal 2026: Tools, Dorks &#x26; Techniques for Investigators
+<p><strong>By Jafet Brito</strong> · Security Researcher · <em>Published June 11, 2026</em></p>
+<hr>
+<blockquote>
+<p>⚠️ <strong>Legal and ethical disclaimer:</strong> All information in this article is for <strong>exclusively defensive, educational, and authorized research</strong> purposes. Using these tools on systems or individuals without explicit authorization may constitute a crime in your jurisdiction. Under a <strong>Zero Trust philosophy</strong>: always verify the legal scope before executing any reconnaissance technique. <strong>Never trust, always verify — starting with your own permissions.</strong></p>
+</blockquote>
+<hr>
+<h3 id="️-what-youll-find-in-this-guide">🗺️ What You’ll Find in This Guide</h3>
+<ul>
+<li>🌐 <strong>Domain, IP &#x26; infrastructure OSINT tools</strong> — with use cases and tips</li>
+<li>👤 <strong>People &#x26; social media OSINT tools</strong> — applied SOCMINT</li>
+<li>📸 <strong>Image &#x26; geolocation tools</strong> — Visual OSINT</li>
+<li>💡 <strong>Investigation methodology</strong> — how to chain tools effectively</li>
+<li>🔎 <strong>Google Dorks 2026</strong> — updated operators with real examples</li>
+<li>🛡️ <strong>Countermeasures</strong> — how to protect your digital footprint</li>
+</ul>
+<hr>
+<h2 id="-part-1-domains-ips--infrastructure">🌐 Part 1: Domains, IPs &#x26; Infrastructure</h2>
+<blockquote>
+<p>💡 <strong>Core principle:</strong> Any organization’s digital infrastructure is its public backbone. Every domain, subdomain, TLS certificate, and service banner is legitimate OSINT data — indexed or accessible without authentication. Infrastructure recon maps the <strong>external attack surface</strong> before any test.</p>
+</blockquote>
+<hr>
+<h3 id="-shodan--the-search-engine-for-the-internet-of-things">🔵 Shodan — The Search Engine for the Internet of Things</h3>
+<p><strong>🔗 <a href="https://www.shodan.io">https://www.shodan.io</a></strong></p>
+<p>Shodan indexes <strong>service banners</strong> from internet-connected devices: routers, IP cameras, industrial servers (ICS/OT), exposed databases, unauthenticated admin panels, and more. It doesn’t index web pages — it indexes <strong>what ports are listening</strong>.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Identify an organization’s servers running vulnerable software versions, unnecessarily open ports, or services exposed without credentials.</li>
+<li>💡 <strong>Tip:</strong> Use operators <code>org:</code>, <code>country:</code>, <code>port:</code>, <code>product:</code> and <code>vuln:</code> for surgical queries. For example: <code>org:"Company Name" port:3389</code> reveals exposed remote desktops.</li>
+<li>⚠️ <strong>Limit:</strong> Free account has limited queries. Paid plan unlocks exports and monitoring.</li>
+</ul>
+<hr>
+<h3 id="-censys--infrastructure--tls-certificates">🟣 Censys — Infrastructure &#x26; TLS Certificates</h3>
+<p><strong>🔗 <a href="https://search.censys.io">https://search.censys.io</a></strong></p>
+<p>Similar to Shodan but with <strong>greater focus on TLS certificates and continuous full IPv4/IPv6 scanning</strong>. Censys is especially powerful for discovering “shadow IT” — servers deployed by employees not under official IT management.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Discover an organization’s subdomains and hosts through their TLS certificates (which frequently reveal internal names).</li>
+<li>💡 <strong>Tip:</strong> Search <code>parsed.subject.organization: "Company"</code> to find all certificates issued to an organization’s name. Wildcard certificates reveal subdomain structure.</li>
+<li>⚠️ <strong>Limit:</strong> Free tier has daily query limits. For broader investigations, consider the researcher plan.</li>
+</ul>
+<hr>
+<h3 id="-dnsdumpster--passive-dns-mapping">🟢 DNSDumpster — Passive DNS Mapping</h3>
+<p><strong>🔗 <a href="https://dnsdumpster.com">https://dnsdumpster.com</a></strong></p>
+<p>Free web tool that performs <strong>passive DNS reconnaissance</strong> without sending direct queries to the target. Generates a visual map of subdomains, MX records, TXT records, and infrastructure relationships.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Get a panoramic view of a target domain’s subdomains, identify email providers, third-party services, and potential entry points.</li>
+<li>💡 <strong>Tip:</strong> Combine with Shodan: subdomains discovered in DNSDumpster can be searched in Shodan to see what services they expose.</li>
+<li>✅ <strong>Advantage:</strong> Completely free, no registration, nothing to install.</li>
+</ul>
+<hr>
+<h3 id="-virustotal--domain-ip--file-intelligence">🟡 VirusTotal — Domain, IP &#x26; File Intelligence</h3>
+<p><strong>🔗 <a href="https://www.virustotal.com">https://www.virustotal.com</a></strong></p>
+<p>Though known for malware analysis, VirusTotal is an <strong>OSINT gold mine</strong> for infrastructure. Its graph and relations section lets you see what IPs, domains, and files an indicator has been associated with.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Investigate whether a domain or IP has a malicious history, what other infrastructure it’s communicated with, and what files have been submitted from that IP.</li>
+<li>💡 <strong>Tip:</strong> Use the “Relations” and “Graph” tabs on any domain or IP to discover related infrastructure that doesn’t appear in DNS.</li>
+<li>✅ <strong>Advantage:</strong> Free for basic use. API has a free tier with 500 requests/day.</li>
+</ul>
+<hr>
+<h3 id="-securitytrails--dns-history--infrastructure">🔴 SecurityTrails — DNS History &#x26; Infrastructure</h3>
+<p><strong>🔗 <a href="https://securitytrails.com">https://securitytrails.com</a></strong></p>
+<p>Provides <strong>complete DNS record history</strong> for any domain: what IPs it has had, what nameservers it used, MX changes, and more. Invaluable for tracking infrastructure movements over time.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> A domain that changed its IP may reveal previous hosting (and its historical WHOIS data). Useful for attributing malicious infrastructure.</li>
+<li>💡 <strong>Tip:</strong> Search an IP’s history to see all domains that have pointed to it — possible shared infrastructure for a threat actor.</li>
+<li>⚠️ <strong>Limit:</strong> Free tier with 50 queries/month. For active investigations, the basic paid plan is necessary.</li>
+</ul>
+<hr>
+<h3 id="-crtsh--certificate-transparency">⚫ crt.sh — Certificate Transparency</h3>
+<p><strong>🔗 <a href="https://crt.sh">https://crt.sh</a></strong></p>
+<p>Public registry of <strong>all TLS certificates issued</strong> for a domain. Certificates are public by law (Certificate Transparency), making them an unsuspected OSINT source.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Discover subdomains that don’t appear in public DNS. Many organizations issue certificates for staging, dev, internal, or VPN subdomains not in public DNS but visible in CT logs.</li>
+<li>💡 <strong>Tip:</strong> Query <code>%.ejemplo.com</code> in crt.sh to get all subdomains with issued certificates. This frequently reveals <code>vpn.ejemplo.com</code>, <code>dev.ejemplo.com</code>, <code>staging.ejemplo.com</code>.</li>
+<li>✅ <strong>Advantage:</strong> Completely free, no registration.</li>
+</ul>
+<hr>
+<h3 id="-wayback-machine--archiveorg--the-internets-past">🌐 Wayback Machine / Archive.org — The Internet’s Past</h3>
+<p><strong>🔗 <a href="https://web.archive.org">https://web.archive.org</a></strong></p>
+<p>The world’s largest web page archive. Lets you see <strong>historical versions of any website</strong>, including deleted pages, old configurations, and source code previously exposed to the public.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Find login pages, documents, or data that were briefly public then removed. Also useful for comparing changes in privacy policies or configurations.</li>
+<li>💡 <strong>Tip:</strong> Combine with Google’s <code>cache:</code> operator to access cached versions of recently modified pages.</li>
+<li>✅ <strong>Advantage:</strong> Completely free.</li>
+</ul>
+<hr>
+<h3 id="-shodan-favicon-hash--reconnaissance-by-icon">🔍 Shodan Favicon Hash — Reconnaissance by Icon</h3>
+<p>A lesser-known but highly effective technique: favicons (browser tab icons) have a <strong>calculable hash</strong> that Shodan indexes. This allows finding <strong>all instances of a specific application</strong> across the internet.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> If you know the favicon of a specific admin panel (pfSense, Grafana, Kibana), search Shodan with <code>http.favicon.hash:HASH</code> to find all globally exposed instances.</li>
+<li>💡 <strong>Support tool:</strong> <a href="https://favicon-hash.kmsec.uk/"><strong>Favicon Hash Calculator</strong></a> — calculates the hash of any favicon for use in Shodan.</li>
+</ul>
+<hr>
+<h2 id="-part-2-people--social-media-socmint">👤 Part 2: People &#x26; Social Media (SOCMINT)</h2>
+<blockquote>
+<p>💡 <strong>Core principle:</strong> People leave involuntary digital traces across multiple platforms. SOCMINT (Social Media Intelligence) is not about spying — it’s about analyzing <strong>voluntarily public information</strong> to build a digital activity profile. Ethics are critical here: the legality of collecting public data varies by jurisdiction.</p>
+</blockquote>
+<hr>
+<h3 id="-sherlock--cross-platform-username-search">🔵 Sherlock — Cross-Platform Username Search</h3>
+<p><strong>🔗 <a href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a></strong> <em>(open source, CLI)</em>
+<strong>🔗 <a href="https://sherlockosint.com">https://sherlockosint.com</a></strong> <em>(web version)</em></p>
+<p>Sherlock searches a username across <strong>more than 400 platforms simultaneously</strong>, identifying which ones have an account with that name. It’s the standard tool for digital identity reconnaissance by username.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> A threat actor uses the same alias on multiple forums. With Sherlock you can pivot from a dark forum username to their public GitHub, Twitter, or Reddit account.</li>
+<li>💡 <strong>Tip:</strong> Also run variations of the username (with numbers, underscores, dots). People frequently use <code>username</code>, <code>username_</code>, <code>username01</code>.</li>
+<li>✅ <strong>Advantage:</strong> Open source, free, actively maintained.</li>
+</ul>
+<hr>
+<h3 id="-maigret--sherlocks-more-powerful-sibling">🟣 Maigret — Sherlock’s More Powerful Sibling</h3>
+<p><strong>🔗 <a href="https://github.com/soxoj/maigret">https://github.com/soxoj/maigret</a></strong> <em>(open source, CLI)</em></p>
+<p>Advanced fork of Sherlock that searches usernames across <strong>more than 3,000 sites</strong> and generates detailed reports with additional information extracted from found profiles (bio, photo, links, IDs).</p>
+<ul>
+<li>📌 <strong>Use case:</strong> When Sherlock gives an initial result, Maigret deepens into found accounts to extract more information pivots.</li>
+<li>💡 <strong>Tip:</strong> The <code>--report</code> flag generates a visual HTML report with all found profiles and extracted information. Ideal for investigation documentation.</li>
+</ul>
+<hr>
+<h3 id="-spiderfoot--automated-osint-reconnaissance">🟢 SpiderFoot — Automated OSINT Reconnaissance</h3>
+<p><strong>🔗 <a href="https://www.spiderfoot.net">https://www.spiderfoot.net</a></strong>
+<strong>🔗 <a href="https://github.com/smicallef/spiderfoot">https://github.com/smicallef/spiderfoot</a></strong> <em>(open source)</em></p>
+<p>SpiderFoot is an OSINT reconnaissance engine that accepts a <strong>seed</strong> (domain, IP, email, person’s name) and automatically queries <strong>more than 200 public data sources</strong> to build a comprehensive intelligence profile.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Threat actor investigation. You provide their email as a seed and SpiderFoot automatically searches for associated breaches, domains registered with that email, social accounts, IPs, and more.</li>
+<li>💡 <strong>Tip:</strong> The HX (hosted) version has an elegant web interface. The open source version requires setup but gives full control over modules.</li>
+<li>⚠️ <strong>Limit:</strong> Some integrations require API keys from external services (Shodan, Hunter, etc.).</li>
+</ul>
+<hr>
+<h3 id="-hunterio--corporate-email-discovery">🟡 Hunter.io — Corporate Email Discovery</h3>
+<p><strong>🔗 <a href="https://hunter.io">https://hunter.io</a></strong></p>
+<p>Allows finding <strong>all emails associated with a corporate domain</strong> and verifying their validity. Widely used in corporate investigations and phishing pentesting to build target lists.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Identify a company’s email pattern (<code>firstname.lastname@company.com</code>) and find specific employee emails from LinkedIn.</li>
+<li>💡 <strong>Tip:</strong> Combine Hunter with LinkedIn to build a complete list of employees + their probable emails. Useful for phishing awareness assessments.</li>
+<li>✅ <strong>Advantage:</strong> Free plan with 25 searches/month.</li>
+</ul>
+<hr>
+<h3 id="-maltego--visual-relationship-analysis">🔴 Maltego — Visual Relationship Analysis</h3>
+<p><strong>🔗 <a href="https://www.maltego.com">https://www.maltego.com</a></strong></p>
+<p>OSINT analysis platform that creates <strong>visual relationship graphs</strong> between people, organizations, domains, IPs, and other entities. Uses “transforms” (automated queries) to expand graph nodes.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Map the relationship network of a threat actor group: who communicates with whom, what infrastructure they share, what organization is behind them.</li>
+<li>💡 <strong>Tip:</strong> The Community version is free with limited transforms. For serious OSINT, consider the Pro version with access to 50+ integrated data sources.</li>
+</ul>
+<hr>
+<h3 id="-social-searcher--real-time-social-media-monitoring">⚫ Social-Searcher — Real-Time Social Media Monitoring</h3>
+<p><strong>🔗 <a href="https://www.social-searcher.com">https://www.social-searcher.com</a></strong></p>
+<p>Search engine for <strong>public social media posts</strong> in real time. Allows tracking mentions of names, aliases, organizations, or keywords across multiple platforms simultaneously.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Monitor in real time if a domain name, brand, or person is being mentioned on social networks — useful for incident response and threat intelligence.</li>
+<li>💡 <strong>Tip:</strong> Set up automatic alerts for specific terms. Ideal for detecting emerging phishing campaigns mentioning your brand.</li>
+</ul>
+<hr>
+<h3 id="-osint-framework--the-map-of-everything">🌐 OSINT Framework — The Map of Everything</h3>
+<p><strong>🔗 <a href="https://osintframework.com">https://osintframework.com</a></strong></p>
+<p>Not a search tool — it’s an <strong>interactive visual directory</strong> of hundreds of OSINT tools categorized by data type: username, email, IP, image, geolocation, dark web, and more. The mandatory starting point for any investigator.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> When you hit a dead end in an investigation, the OSINT Framework suggests the next logical step. It’s the “Google Maps” of the OSINT world.</li>
+<li>💡 <strong>Tip:</strong> Use it as a checklist at the start of each investigation to ensure you don’t miss relevant data categories.</li>
+</ul>
+<hr>
+<h2 id="-part-3-images--geolocation-visual-osint">📸 Part 3: Images &#x26; Geolocation (Visual OSINT)</h2>
+<blockquote>
+<p>💡 <strong>Core principle:</strong> A picture is worth a thousand words — and in OSINT, also more than a thousand queries. Images contain three layers of intelligence: <strong>EXIF metadata</strong> (GPS coordinates, camera, date), <strong>visual content</strong> (landmarks, text, uniforms, vehicles), and <strong>digital footprint</strong> (on which other platforms does that image appear).</p>
+</blockquote>
+<hr>
+<h3 id="-google-lens--the-reference-visual-geolocation-tool">🔵 Google Lens — The Reference Visual Geolocation Tool</h3>
+<p><strong>🔗 <a href="https://lens.google.com">https://lens.google.com</a></strong></p>
+<p>Google’s visual search tool. In 2026, it remains the <strong>gold standard for environmental intelligence</strong>: identifying landmarks, buildings, landscapes, and objects in images.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> A protest or incident photo shows a building in the background. Google Lens can identify the city, neighborhood, or even the building’s name.</li>
+<li>💡 <strong>Tip:</strong> If results are ambiguous, crop the most distinctive element of the image (a sign, a particular building) and search it separately. Specificity improves results.</li>
+</ul>
+<hr>
+<h3 id="-pimeyes--facial-search-across-the-web">🟣 PimEyes — Facial Search Across the Web</h3>
+<p><strong>🔗 <a href="https://pimeyes.com">https://pimeyes.com</a></strong></p>
+<p>Facial search engine that indexes millions of images from the public web and finds <strong>where else a face appears</strong>. One of the most powerful and controversial tools in Visual OSINT.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Given a profile photo of a threat actor on a forum, PimEyes can find other images of that person on other platforms, helping build a real identity profile.</li>
+<li>💡 <strong>Tip:</strong> Combine PimEyes with Sherlock: if PimEyes finds an Instagram profile, use the found username in Sherlock to continue the pivot.</li>
+<li>⚠️ <strong>Ethical and legal consideration:</strong> In many jurisdictions, biometric data (including facial recognition) is protected by regulations like GDPR. Use this tool only in authorized investigations.</li>
+</ul>
+<hr>
+<h3 id="-facecheckid--pimeyes-alternative">🟢 FaceCheck.ID — PimEyes Alternative</h3>
+<p><strong>🔗 <a href="https://facecheck.id">https://facecheck.id</a></strong></p>
+<p>Free alternative to PimEyes for facial search on the internet. Less comprehensive but accessible without subscription, useful for initial verifications.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Quick initial check before investing in a deeper search with PimEyes.</li>
+<li>💡 <strong>Tip:</strong> Use it as an initial screening — if FaceCheck already finds relevant results, you saved the cost of PimEyes.</li>
+</ul>
+<hr>
+<h3 id="-exiftool--metadata-extraction">🟡 ExifTool — Metadata Extraction</h3>
+<p><strong>🔗 <a href="https://exiftool.org">https://exiftool.org</a></strong> <em>(open source, CLI)</em>
+<strong>🔗 <a href="https://exif.tools">https://exif.tools</a></strong> <em>(web version)</em></p>
+<p>ExifTool extracts all <strong>EXIF metadata</strong> from images and other files: GPS coordinates, exact date and time, camera/phone model, software used, and more. Many photos share more than their authors imagine.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> An unedited photo posted on social media may contain exact GPS coordinates of where it was taken, reveal the phone model, or confirm a timestamp.</li>
+<li>💡 <strong>Tip:</strong> Platforms like Instagram, Facebook, and Twitter <strong>strip EXIF metadata</strong> when photos are uploaded. However, images shared directly via email, Telegram, or unprocessed storage services often retain them.</li>
+<li>✅ <strong>Advantage:</strong> Open source, completely free.</li>
+</ul>
+<hr>
+<h3 id="-geospy--ai-powered-geolocation">🔴 GeoSpy — AI-Powered Geolocation</h3>
+<p><strong>🔗 <a href="https://geospy.ai">https://geospy.ai</a></strong></p>
+<p>Emerging tool that uses <strong>AI to estimate an image’s geolocation</strong> from its visual content: vegetation, architecture, signage, light quality, and more. Doesn’t require EXIF metadata.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> A metadata-free image of a camp or facility can be geolocated through visual analysis of the topography, vegetation, and visible structures.</li>
+<li>💡 <strong>Tip:</strong> Combine GeoSpy with Google Earth and Mapillary to verify and refine the proposed geolocation. AI provides an estimate — manual verification confirms it.</li>
+</ul>
+<hr>
+<h3 id="-google-earth-pro--geospatial-verification">⚫ Google Earth Pro — Geospatial Verification</h3>
+<p><strong>🔗 <a href="https://earth.google.com">https://earth.google.com</a></strong></p>
+<p>The standard for geospatial verification in OSINT. Allows comparing historical satellite images to confirm or refute geolocations, identify changes in facilities, and correlate locations with events.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Verify whether an image supposedly taken at a specific location actually matches the topography, structures, and vegetation of that place on the indicated date.</li>
+<li>💡 <strong>Tip:</strong> Activate the historical imagery layer (clock icon) to compare what a place looked like at different dates. Invaluable for conflict investigations or infrastructure tracking.</li>
+<li>✅ <strong>Advantage:</strong> Free for personal use.</li>
+</ul>
+<hr>
+<h3 id="-mapillary--open-source-street-view">🌐 Mapillary — Open Source Street View</h3>
+<p><strong>🔗 <a href="https://www.mapillary.com">https://www.mapillary.com</a></strong></p>
+<p>Community-contributed street-level image database, owned by Meta. Covers areas Google Street View doesn’t — especially useful for verifying geolocations in less-developed regions or conflict zones.</p>
+<ul>
+<li>📌 <strong>Use case:</strong> Verify a building’s facade or a specific street in a city where Google Street View has no coverage.</li>
+</ul>
+<hr>
+<h2 id="-part-4-methodology--how-to-chain-tools-effectively">💡 Part 4: Methodology — How to Chain Tools Effectively</h2>
+<blockquote>
+<p>The difference between a beginner and expert OSINT investigator isn’t the number of tools they know — it’s <strong>how they chain them</strong>. Tools are pivot points; pivots are what build real intelligence.</p>
+</blockquote>
+<h3 id="-infrastructure-investigation-workflow">🔗 Infrastructure Investigation Workflow</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>TARGET DOMAIN</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  DNSDumpster → Subdomain map and DNS records</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  crt.sh → Additional subdomains via CT logs</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Shodan / Censys → Exposed services by IP</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  VirusTotal → Reputation history and relations</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  SecurityTrails → DNS history (previous IPs)</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Wayback Machine → Historical site content</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-person-investigation-workflow">🔗 Person Investigation Workflow</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>USERNAME / EMAIL / NAME</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Sherlock / Maigret → Profiles on multiple platforms</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Hunter.io → Associated corporate emails</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  SpiderFoot → Broad automated reconnaissance</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Maltego → Relationship graph</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Social-Searcher → Real-time public activity</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="-visual-osint-workflow">🔗 Visual OSINT Workflow</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>UNKNOWN IMAGE</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  ExifTool → Does it have GPS metadata? → If yes: Google Earth Pro</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Google Lens → Landmark and environment identification</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  GeoSpy → AI-powered geolocation estimate</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  PimEyes / FaceCheck.ID → Is there a face? → Facial search</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  Sherlock → Username from found profile → More pivots</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="-part-5-google-dorks-2026--advanced-operators-with-real-examples">🔎 Part 5: Google Dorks 2026 — Advanced Operators with Real Examples</h2>
+<blockquote>
+<p>⚠️ <strong>Mandatory ethical use:</strong> Dorks should only be applied to infrastructure you have authorization to analyze — in the context of bug bounty programs, contracted pentesting, or your own organization’s research. Unauthorized access to computer systems is a crime.</p>
+</blockquote>
+<h3 id="-core-operators">📖 Core Operators</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Operator</th><th>Function</th><th>Example</th></tr></thead><tbody><tr><td><code>site:</code></td><td>Restricts results to a domain</td><td><code>site:company.com</code></td></tr><tr><td><code>filetype:</code></td><td>Filters by file extension</td><td><code>filetype:pdf</code></td></tr><tr><td><code>inurl:</code></td><td>Searches text in the URL</td><td><code>inurl:admin</code></td></tr><tr><td><code>intitle:</code></td><td>Searches in the page title</td><td><code>intitle:"index of"</code></td></tr><tr><td><code>intext:</code></td><td>Searches in body text</td><td><code>intext:"password"</code></td></tr><tr><td><code>cache:</code></td><td>Google’s cached version</td><td><code>cache:example.com</code></td></tr><tr><td><code>-</code></td><td>Excludes results</td><td><code>site:example.com -www</code></td></tr><tr><td><code>OR</code></td><td>Alternative condition</td><td><code>filetype:pdf OR filetype:doc</code></td></tr></tbody></table>
+<hr>
+<h3 id="-dorks-by-category--2026">🔍 Dorks by Category — 2026</h3>
+<h4 id="️-infrastructure-reconnaissance">🏗️ Infrastructure Reconnaissance</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Discover all subdomains of a domain</span></span>
+<span class="line"><span>site:*.target.com -www.target.com</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Find login pages and admin panels</span></span>
+<span class="line"><span>site:target.com inurl:login OR inurl:admin OR inurl:panel OR inurl:dashboard</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Open directory listings</span></span>
+<span class="line"><span>intitle:"index of" site:target.com</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Exposed configuration files</span></span>
+<span class="line"><span>site:target.com filetype:env OR filetype:cfg OR filetype:conf OR filetype:ini</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Exposed backup files</span></span>
+<span class="line"><span>site:target.com filetype:bak OR filetype:old OR filetype:backup OR filetype:sql</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-documents--sensitive-data">📄 Documents &#x26; Sensitive Data</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Internal documents with sensitive information</span></span>
+<span class="line"><span>site:target.com filetype:pdf "confidential" OR "internal" OR "do not distribute"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Spreadsheets with possible employee or financial data</span></span>
+<span class="line"><span>site:target.com filetype:xlsx OR filetype:csv "employees" OR "payroll" OR "salaries"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Corporate presentations</span></span>
+<span class="line"><span>site:target.com filetype:pptx OR filetype:ppt "strategy" OR "roadmap" OR "Q1" OR "Q2"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Exposed log files</span></span>
+<span class="line"><span>site:target.com filetype:log OR filetype:txt inurl:log</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-credential--secrets-reconnaissance">🔑 Credential &#x26; Secrets Reconnaissance</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># API keys exposed on GitHub</span></span>
+<span class="line"><span>site:github.com "target.com" "api_key" OR "secret_key" OR "password"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># .env files in public repositories</span></span>
+<span class="line"><span>site:github.com filename:.env "DB_PASSWORD" OR "API_KEY"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Credentials in public source code</span></span>
+<span class="line"><span>site:github.com "target.com" intext:"password" filetype:py OR filetype:js OR filetype:php</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Exposed access tokens</span></span>
+<span class="line"><span>site:github.com "target.com" "access_token" OR "auth_token" OR "bearer"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-exposed-cameras--devices-shodan-dorks">📷 Exposed Cameras &#x26; Devices (Shodan Dorks)</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Shodan — IP cameras without authentication</span></span>
+<span class="line"><span>title:"webcam" country:"US" has_screenshot:true</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Router admin panels</span></span>
+<span class="line"><span>http.title:"router" OR http.title:"admin" port:80,443 country:"US"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Exposed MongoDB databases</span></span>
+<span class="line"><span>product:"MongoDB" port:27017 -authentication</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Elasticsearch without authentication</span></span>
+<span class="line"><span>product:"Elastic" port:9200 http.title:"Kibana"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-people--identity-osint">🧑‍💼 People &#x26; Identity OSINT</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Resumes and professional profiles</span></span>
+<span class="line"><span>"First Last" filetype:pdf OR filetype:doc "curriculum" OR "resume" OR "CV"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Profiles in professional directories</span></span>
+<span class="line"><span>site:linkedin.com "first last" "company"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Accounts on technical forums</span></span>
+<span class="line"><span>site:github.com OR site:stackoverflow.com "first last" OR "username"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Mentions in media and public documents</span></span>
+<span class="line"><span>"First Last" site:gov.com filetype:pdf</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="-advanced-osint-with-combined-operators">🔎 Advanced OSINT with Combined Operators</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Find exposed Grafana instances (monitoring platform)</span></span>
+<span class="line"><span>intitle:"Grafana" inurl:"/login" -"grafana.com"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Kibana instances without authentication</span></span>
+<span class="line"><span>intitle:"Kibana" inurl:":5601"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Exposed Jenkins dashboards</span></span>
+<span class="line"><span>intitle:"Dashboard [Jenkins]" -site:jenkins.io</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># Jupyter Notebooks without password</span></span>
+<span class="line"><span>intitle:"Jupyter Notebook" inurl:"/tree" -"jupyter.org"</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span># robots.txt files revealing sensitive paths</span></span>
+<span class="line"><span>site:target.com filetype:txt inurl:robots "Disallow"</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h3 id="️-complementary-dork-resources">🛠️ Complementary Dork Resources</h3>
+<ul>
+<li>🗃️ <a href="https://www.exploit-db.com/google-hacking-database"><strong>Google Hacking Database (GHDB) — Exploit-DB</strong></a> — The most complete database of categorized dorks by type: files, devices, error messages, advisories. Actively maintained.</li>
+<li>🤖 <a href="https://theosintvault.io/google-dork-generator"><strong>Google Dork Generator — The OSINT Vault</strong></a> — Dork generator based on specific targets. Ideal for building complex queries without memorizing operators.</li>
+<li>🔧 <a href="https://shadowdragon.io/free-osint-tools/dork-assistant/"><strong>Dork Assistant — ShadowDragon</strong></a> — AI assistant that converts natural language objectives into precise dorks.</li>
+<li>📚 <a href="https://www.bing.com/search?q=site%3A*.example.com"><strong>Bing Dorks</strong></a> — Bing accepts similar operators to Google and frequently indexes content Google doesn’t have, especially lower-authority domains.</li>
+</ul>
+<hr>
+<h2 id="️-part-6-countermeasures--protect-your-digital-footprint">🛡️ Part 6: Countermeasures — Protect Your Digital Footprint</h2>
+<p>OSINT knowledge has a second critical purpose: <strong>understanding how attackers see you</strong> to reduce your exposure surface.</p>
+<h3 id="-for-organizations">🔒 For organizations:</h3>
+<ul>
+<li>✅ <strong>Regular subdomain audits</strong> with crt.sh and DNSDumpster. Remove obsolete subdomains.</li>
+<li>✅ <strong>Monitor your TLS certificates</strong> — don’t issue unnecessary wildcards that reveal internal structure.</li>
+<li>✅ <strong>Configure robots.txt</strong> but without listing sensitive paths — security through obscurity is not security, but unnecessarily listing paths in robots.txt is giving information away.</li>
+<li>✅ <strong>Google Search Console</strong> — use it to remove accidentally indexed pages.</li>
+<li>✅ <strong>File metadata policy</strong> — implement processes that strip metadata from documents before publishing.</li>
+<li>✅ <strong>GitHub monitoring</strong> — set up alerts to detect if your organization’s code is accidentally published in public repositories.</li>
+</ul>
+<h3 id="-for-individuals">🔒 For individuals:</h3>
+<ul>
+<li>✅ <strong>Remove EXIF metadata</strong> from photos before posting (tool: <a href="https://github.com/Tommy-Geenexus/exif-eraser"><strong>ExifEraser</strong></a>)</li>
+<li>✅ <strong>Audit your usernames</strong> — run Sherlock on yourself to see what active profiles you have</li>
+<li>✅ <strong>Regular HaveIBeenPwned checks</strong> — <a href="https://haveibeenpwned.com"><strong>https://haveibeenpwned.com</strong></a></li>
+<li>✅ <strong>Minimize public information on LinkedIn</strong> — it’s the richest corporate OSINT source for attackers</li>
+</ul>
+<hr>
+<h2 id="-conclusion-osint-is-a-superpower--use-it-with-judgment">🏁 Conclusion: OSINT Is a Superpower — Use It With Judgment</h2>
+<p>The tools in this guide are <strong>neutral</strong>: the same ones a cybersecurity investigator uses to protect an organization are the ones an attacker uses to find vulnerabilities, or a journalist uses to investigate corruption. The difference is not in the tool — it’s in the <strong>purpose, authorization, and ethics</strong> of the operator.</p>
+<p>Effective OSINT is not about the most powerful tool. It’s about <strong>the most disciplined methodology</strong>: knowing what data to look for, how to pivot from one source to another, and when to stop because you’ve crossed a legal or ethical line.</p>
+<blockquote>
+<p><strong>“Open source intelligence is not about knowing how to search. It’s about knowing what to do with what you find — and what not to do.”</strong></p>
+</blockquote>
+<p>Learn, practice in authorized environments, contribute to the community, and always operate within the legal limits of your jurisdiction. 🔐</p>
+<hr>
+<p><em>Written by <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>All tools listed are for legal use in passive reconnaissance and/or require explicit authorization for active reconnaissance.</em></p>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Una investigación original que introduce el Framework de Explotación Estructural (F.E.E.): el vector de ataque que la industria ha ignorado. Mientras todos protegen la semántica, los atacantes explotan la arquitectura física del texto. Una lectura obligatoria para defensores de sistemas LLM en producción."><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/prompt_engineering/"><meta property="og:title" content="🧠 El Punto Ciego de la IA: Explotación Estructural en Prompt Engineering — Jafet Brito"><meta property="og:description" content="Una investigación original que introduce el Framework de Explotación Estructural (F.E.E.): el vector de ataque que la industria ha ignorado. Mientras todos protegen la semántica, los atacantes explotan la arquitectura física del texto. Una lectura obligatoria para defensores de sistemas LLM en producción."><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/prompt_engineering/"><meta property="og:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="🧠 El Punto Ciego de la IA: Explotación Estructural en Prompt Engineering — Jafet Brito"><meta name="twitter:description" content="Una investigación original que introduce el Framework de Explotación Estructural (F.E.E.): el vector de ataque que la industria ha ignorado. Mientras todos protegen la semántica, los atacantes explotan la arquitectura física del texto. Una lectura obligatoria para defensores de sistemas LLM en producción."><meta name="twitter:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80"><title>🧠 El Punto Ciego de la IA: Explotación Estructural en Prompt Engineering — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80" alt="🧠 El Punto Ciego de la IA: Explotación Estructural en Prompt Engineering" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">-el-punto-ciego-de-la-ia-explotacin-estructural-en-prompt-engineering</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/LLM" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#LLM</a><a href="/tags/PromptEngineering" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#PromptEngineering</a><a href="/tags/AISeguridad" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#AISeguridad</a><a href="/tags/PromptInjection" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#PromptInjection</a><a href="/tags/ZeroTrust" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#ZeroTrust</a><a href="/tags/RedTeam" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#RedTeam</a><a href="/tags/MLSecurity" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#MLSecurity</a><a href="/tags/Investigacion" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#Investigacion</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="🧠 El Punto Ciego de la IA: Explotación Estructural en Prompt Engineering" data-text-en="🧠 AI's Blind Spot: Structural Exploitation in Prompt Engineering"> 🧠 El Punto Ciego de la IA: Explotación Estructural en Prompt Engineering </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="Una investigación original que introduce el Framework de Explotación Estructural (F.E.E.): el vector de ataque que la industria ha ignorado. Mientras todos protegen la semántica, los atacantes explotan la arquitectura física del texto. Una lectura obligatoria para defensores de sistemas LLM en producción." data-text-en="An original research piece introducing the Structural Exploitation Framework (S.E.F.): the attack vector the industry has been ignoring. While everyone protects semantics, attackers exploit the physical architecture of text. Required reading for defenders of production LLM systems."> Una investigación original que introduce el Framework de Explotación Estructural (F.E.E.): el vector de ataque que la industria ha ignorado. Mientras todos protegen la semántica, los atacantes explotan la arquitectura física del texto. Una lectura obligatoria para defensores de sistemas LLM en producción. </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-11" data-fmt-date="2026-06-11" data-fmt="long">miércoles, 10 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+<h2 id="-el-punto-ciego-de-la-ia-explotación-estructural-en-prompt-engineering">🧠 El Punto Ciego de la IA: Explotación Estructural en Prompt Engineering</h2>
+<p><strong>Por Jafet Brito</strong> · Security Researcher · <em>Publicado el 11 de junio de 2026</em></p>
+<hr>
+<blockquote>
+<p>⚠️ <strong>Nota de responsabilidad:</strong> Esta investigación fue elaborada con un propósito estrictamente <strong>defensivo y educativo</strong>. El objetivo es habilitar a los equipos de seguridad para auditar, detectar y mitigar una clase de vulnerabilidades que la industria ha subestimado sistemáticamente. Ningún detalle técnico en este artículo constituye un manual de ataque operacional. Todo el contenido está respaldado por investigación académica publicada y CVEs documentados en sistemas en producción.</p>
+</blockquote>
+<hr>
+<h3 id="-premisa-central">📍 Premisa Central</h3>
+<p>La comunidad de seguridad en IA lleva años perfeccionando defensas contra ataques semánticos: psicología inversa, roleplay, ofuscación de palabras clave, redacción ambigua. Los guardrails modernos son extraordinariamente buenos reconociendo <strong>lo que un texto dice</strong>.</p>
+<p>Pero hay una pregunta que nadie está haciendo con suficiente seriedad:</p>
+<blockquote>
+<p><strong>¿Qué tan buenos son los guardrails reconociendo <em>cómo está construido</em> el texto?</strong></p>
+</blockquote>
+<p>Esta investigación argumenta que existe una <strong>brecha estructural</strong> — un punto ciego en la arquitectura de los sistemas de seguridad de LLMs que no se encuentra en el contenido semántico de los prompts, sino en su <strong>arquitectura física</strong>: la forma en que el texto está codificado, delimitado, fragmentado y formateado antes de llegar al modelo.</p>
+<p>Llamamos a esta clase de vulnerabilidades el <strong>Framework de Explotación Estructural (F.E.E.)</strong>.</p>
+<hr>
+<h2 id="-parte-1-el-problema-que-nadie-está-mirando">🔬 Parte 1: El Problema que Nadie Está Mirando</h2>
+<h3 id="-la-anatomía-de-un-prompt--más-allá-del-contenido">🧬 La Anatomía de un Prompt — Más Allá del Contenido</h3>
+<p>Para entender el punto ciego estructural, primero hay que entender cómo procesa un LLM el texto que recibe. No es magia — es un pipeline de procesamiento en múltiples etapas:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Texto de entrada</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Tokenización] → El texto se convierte en tokens numéricos</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Parsing de contexto] → Se identifican roles: sistema, usuario, herramienta</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Clasificación semántica] → Los guardrails analizan el contenido</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Inferencia del modelo] → El modelo genera una respuesta</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Filtrado de salida] → Se revisa la respuesta antes de entregarla</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Los guardrails semánticos operan principalmente en el <strong>paso 3</strong>: analizan lo que el texto significa. Esta es su fortaleza — y también su limitación.</p>
+<p>Lo que sucede en los <strong>pasos 1 y 2</strong> — tokenización y parsing — recibe mucho menos atención defensiva. Y es precisamente ahí donde vive la superficie de ataque estructural.</p>
+<hr>
+<h3 id="️-la-distinción-que-cambia-todo-tono-vs-estructura">⚠️ La Distinción que Cambia Todo: Tono vs. Estructura</h3>
+<p>Antes de continuar, es imperativo establecer una distinción conceptual que es el corazón de esta investigación:</p>
+<p><strong>El tono</strong> define la actitud, el registro y la intención aparente del texto. Es semántico. Los guardrails modernos lo entienden muy bien. Detectan si un texto suena hostil, manipulador, o intenta explotar vulnerabilidades conocidas mediante lenguaje.</p>
+<p><strong>La estructura</strong> define la <strong>arquitectura física y matemática</strong> del texto: cómo está delimitado, qué tokens de control contiene, cómo se fragmenta, qué capas de formato se superponen. La estructura no es interpretativa — es <strong>determinista</strong>. El mismo token estructural tiene el mismo efecto independientemente de cuán amigable suene el texto que lo rodea.</p>
+<blockquote>
+<p>💡 <strong>Analogía de red:</strong> En arquitecturas de red, existe la distinción clásica entre el <strong>plano de control</strong> (control plane) — que define las reglas y el flujo — y el <strong>plano de datos</strong> (data plane) — que transporta la información real. Un atacante sofisticado no compromete el plano de datos con contenido malicioso; comprometeel <strong>plano de control</strong> para cambiar las reglas de procesamiento. La Explotación Estructural en LLMs es el equivalente a atacar el plano de control del pipeline de procesamiento del modelo.</p>
+</blockquote>
+<p>Esta distinción tiene una implicación defensiva inmediata: <strong>las defensas que solo operan a nivel semántico son ciegas a los ataques a nivel estructural</strong>, de la misma forma en que un firewall que solo inspecciona el contenido de los paquetes es ciego a un ataque que manipula los headers de enrutamiento.</p>
+<hr>
+<h3 id="-el-respaldo-de-la-investigación-académica">📊 El Respaldo de la Investigación Académica</h3>
+<p>Esta no es una hipótesis especulativa. La investigación académica de 2025-2026 ha comenzado a documentar esta brecha con rigor:</p>
+<ul>
+<li>
+<p>🔬 <strong>GraphAttack (arXiv, 2025):</strong> Demostró que la efectividad de los mecanismos de seguridad se degrada sistemáticamente cuando las representaciones se alejan del lenguaje natural hacia estructuras formales. Las tasas de éxito de ataque llegaron al <strong>87%</strong> en LLMs comerciales explotando diferencias en cómo el modelo procesa representaciones semánticas versus texto natural.</p>
+</li>
+<li>
+<p>📄 <strong>SoK: Taxonomy and Evaluation of Prompt Security (arXiv, 2025):</strong> Formalizó la categoría de <strong>“Format Exploitation”</strong> como una clase distinta de vulnerabilidad — donde los adversarios explotan el manejo del modelo de formatos de entrada y salida específicos como bloques de código, tablas, pseudocódigo, etiquetas, y marcadores contextuales — no para cambiar el contenido, sino para afectar cómo el modelo procesa las instrucciones.</p>
+</li>
+<li>
+<p>⚡ <strong>Constrained Decoding Attack — CDA (ACM SIGSAC 2026):</strong> El paper más significativo de la clase estructural. Introdujo una nueva categoría de jailbreak que opera en el <strong>plano de control</strong> del LLM — no en el plano de datos. El ataque logró tasas de éxito del <strong>96.2%</strong> en GPT-4o, Gemini 2.0 Flash, DeepSeek-R1, y otros modelos frontier mediante la manipulación de estructuras de gramática guiada, no de contenido semántico. Crucialmente: los guardrails estándar no lo detectan porque inspeccionan el plano de datos, no el plano de control.</p>
+</li>
+<li>
+<p>🏗️ <strong>Countermind (arXiv, 2025):</strong> Acuñó el término <strong>“form-first attacks”</strong> para describir ataques cuyo éxito depende de la estructura, codificación, o formato del input — no de su contenido semántico. Argumentó que el paradigma dominante de seguridad en LLMs — filtrado reactivo de outputs — es fundamentalmente defectuoso porque “intenta tratar los síntomas, no la causa raíz.”</p>
+</li>
+<li>
+<p>🎯 <strong>BOOST Attack (USENIX Security 2025):</strong> Demostró cómo la manipulación de <strong>tokens de control</strong> — los tokens que el modelo usa para gestionar el flujo de información y reconocer diferentes partes de un input — puede comprometer los mecanismos de seguridad de modelos de Meta, Alibaba, Google, Mistral y Databricks.</p>
+</li>
+</ul>
+<p>Investigación sobre CVEs críticos documentados en 2025-2026 incluye EchoLeak (CVE-2025-32711), GitHub Copilot RCE (CVE-2025-53773) y vulnerabilidades en Cursor IDE — demostrando que los atacantes están explotando activamente sistemas de IA en producción con tasas de éxito de inyección de prompt de entre 50% y 84%.</p>
+<hr>
+<h2 id="️-parte-2-el-framework-de-explotación-estructural-fee">🗂️ Parte 2: El Framework de Explotación Estructural (F.E.E.)</h2>
+<blockquote>
+<p>El F.E.E. no es una colección de exploits — es un <strong>marco conceptual</strong> para que los equipos defensivos entiendan, clasifiquen, y auditen los vectores de riesgo estructural en sus sistemas LLM. Cada vector describe una <strong>clase de vulnerabilidad</strong>, no una técnica específica de ataque.</p>
+</blockquote>
+<hr>
+<h3 id="-vector-1-fuzzing-de-sintaxis-y-analizadores-parser-stress">🔴 Vector 1: Fuzzing de Sintaxis y Analizadores (Parser Stress)</h3>
+<p><strong>¿Qué es?</strong></p>
+<p>Los LLMs tienen analizadores sintácticos (parsers) implícitos que interpretan la estructura del prompt antes de procesarlo semánticamente. Estos parsers determinan dónde comienza el “sistema”, dónde comienza el “usuario”, qué es una herramienta, qué es datos. Como cualquier parser de software, tienen <strong>condiciones de borde</strong> — comportamientos indefinidos o inesperados cuando reciben inputs que no siguen los patrones para los que fueron diseñados.</p>
+<p>El <strong>Parser Stress</strong> es la clase de vulnerabilidades que emergen cuando el pipeline de procesamiento del modelo recibe inputs que estresan o confunden estos analizadores implícitos.</p>
+<p><strong>¿Por qué los guardrails semánticos no lo detectan?</strong></p>
+<p>Porque los guardrails inspeccionan el contenido <strong>después</strong> de que el parser ha procesado la estructura. Si el parser fue confundido, los guardrails reciben un contexto diferente al que el operador del sistema pretendía establecer — y lo analizan como si fuera el contexto correcto.</p>
+<p><strong>¿Qué buscar defensivamente?</strong></p>
+<ul>
+<li>🔍 Inputs que contienen secuencias de tokens no estándar que imitan tokens de control del modelo</li>
+<li>🔍 Prompts con estructuras de delimitación anidadas, inconsistentes, o truncadas</li>
+<li>🔍 Caracteres Unicode de ancho cero, bidireccionales, o de espaciado inusual</li>
+<li>🔍 Inputs que mezclan múltiples esquemas de marcado (Markdown + XML + JSON simultáneamente)</li>
+</ul>
+<p><strong>Referencia académica:</strong> BOOST Attack (USENIX Security 2025), que demostró que la manipulación de tokens de control es un vector activo contra modelos comerciales líderes.</p>
+<hr>
+<h3 id="-vector-2-secuestro-de-formato-format-hijacking">🟠 Vector 2: Secuestro de Formato (Format Hijacking)</h3>
+<p><strong>¿Qué es?</strong></p>
+<p>Los LLMs son entrenados con enormes cantidades de datos estructurados: código, JSON, XML, Markdown, tablas, HTML. Como resultado, el modelo tiene “comportamientos aprendidos” muy fuertes asociados a formatos específicos — sabe cómo “debe comportarse” cuando ve ciertos patrones estructurales. El <strong>Format Hijacking</strong> es la explotación de estos comportamientos aprendidos usando el formato como vector de instrucción, independientemente del contenido semántico.</p>
+<p><strong>¿Por qué los guardrails semánticos no lo detectan?</strong></p>
+<p>Porque el hijacking ocurre a nivel de los <strong>patrones estructurales que el modelo asocia con ciertos modos de operación</strong>. Un formato que el modelo asocia con “salida de código ejecutable” puede hacer que el modelo entre en un modo de generación diferente — uno que puede tener alineaciones de seguridad distintas a las de la generación de texto libre.</p>
+<p><strong>¿Qué buscar defensivamente?</strong></p>
+<ul>
+<li>🔍 Inputs que mezclan formatos de “alto privilegio implícito” (bloques de código, pseudo-JSON de sistema) con contenido de usuario</li>
+<li>🔍 Solicitudes que piden outputs en formatos que el modelo trata estructuralmente diferente al texto libre</li>
+<li>🔍 Usos de estructuras de etiquetas que imitan los delimitadores internos usados en el entrenamiento</li>
+</ul>
+<p><strong>Referencia académica:</strong> SoK Taxonomy (arXiv, 2025) — Format Exploitation como categoría formal; Banerjee et al. y Zhao et al. sobre formatos de respuesta como canales encubiertos.</p>
+<hr>
+<h3 id="-vector-3-inyección-de-carga-útil-fragmentada-payload-fragmentation">🟡 Vector 3: Inyección de Carga Útil Fragmentada (Payload Fragmentation)</h3>
+<p><strong>¿Qué es?</strong></p>
+<p>Los sistemas de detección de inyección de prompt buscan patrones completos y reconocibles. La <strong>Payload Fragmentation</strong> es la clase de técnicas donde una directiva que sería detectada si apareciera completa se distribuye a través de múltiples partes del input — aprovechando que el modelo tiene la capacidad de sintetizar y reconstruir información fragmentada (esa es, de hecho, una de sus capacidades más valoradas), pero los detectores no tienen el mismo nivel de síntesis contextual.</p>
+<p><strong>¿Por qué los guardrails semánticos no lo detectan?</strong></p>
+<p>Porque operan con una ventana de análisis que frecuentemente es más estrecha que la ventana de contexto del modelo. El modelo puede sintetizar instrucciones fragmentadas a lo largo de miles de tokens; un clasificador de guardrail puede solo analizar chunks del input.</p>
+<p><strong>¿Qué buscar defensivamente?</strong></p>
+<ul>
+<li>🔍 Inputs de larga extensión con fragmentos que, analizados individualmente, parecen inocuos</li>
+<li>🔍 Patrones donde elementos de instrucción aparecen separados por contenido distractor de alta densidad</li>
+<li>🔍 Inputs que construyen contexto progresivamente a través de múltiples turnos de conversación</li>
+</ul>
+<p><strong>Referencia académica:</strong> La revisión comprensiva de ataques de prompt injection de enero de 2026 documenta una taxonomía que abarca desde jailbreaking simple hasta exploits multi-etapa sofisticados, incluyendo el análisis de CVE-2025-53773 de GitHub Copilot (RCE) y el exploit CamoLeak con CVSS 9.6.</p>
+<hr>
+<h3 id="-vector-4-desplazamiento-tono-estructura-tone-structure-decoupling">🔵 Vector 4: Desplazamiento Tono-Estructura (Tone-Structure Decoupling)</h3>
+<p><strong>¿Qué es?</strong></p>
+<p>Este vector aborda la brecha conceptual más importante del F.E.E. y la que tiene las implicaciones defensivas más profundas.</p>
+<p>Los sistemas de alineación de LLMs operan en dos capas: una capa de <strong>tono</strong> (que gestiona el registro, la actitud y los comportamientos relacionales del modelo) y una capa de <strong>estructura</strong> (que gestiona el formato, la codificación y el modo de procesamiento del output). Estas dos capas son relativamente independientes en la arquitectura del modelo.</p>
+<p>El <strong>Tone-Structure Decoupling</strong> describe ataques que manipulan estas dos capas de forma asimétrica: el tono del prompt es completamente alineado con las políticas de uso, generando confianza y pasando filtros de tono — mientras que la estructura del prompt realiza el trabajo de manipulación real en el plano de control.</p>
+<p><strong>La diferencia conceptual crítica:</strong></p>
+<ul>
+<li><strong>Cambiar el tono</strong> = cambiar cómo suena la solicitud (semántico, detectable)</li>
+<li><strong>Cambiar la estructura</strong> = cambiar las reglas de procesamiento del pipeline (arquitectónico, frecuentemente invisible a filtros semánticos)</li>
+</ul>
+<p>Un prompt puede sonar perfectamente amigable, respetuoso y legítimo en su tono — y simultáneamente contener instrucciones estructurales que modifican el comportamiento del pipeline de procesamiento.</p>
+<p><strong>¿Qué buscar defensivamente?</strong></p>
+<ul>
+<li>🔍 Prompts donde el contenido lingüístico pasa todos los filtros pero la estructura del formatting es inusualmente compleja para la solicitud aparente</li>
+<li>🔍 Solicitudes que combinan tono de alta confianza con estructuras de formato de alta complejidad</li>
+<li>🔍 Disparidades entre la simplicidad semántica del request y la complejidad estructural del formato empleado</li>
+</ul>
+<p><strong>Referencia académica:</strong> Countermind (arXiv, 2025) argumentó formalmente que los ataques “form-first” —donde el éxito del ataque depende de la estructura, codificación o formato del input más que de su contenido semántico— apuntan al pipeline de procesamiento del modelo en un nivel pre-semántico.</p>
+<hr>
+<h3 id="-vector-5-contrabando-por-parallax-estructural-structural-parallax">🟣 Vector 5: Contrabando por Parallax Estructural (Structural Parallax)</h3>
+<p><strong>¿Qué es?</strong></p>
+<p>Este es el vector más sofisticado del F.E.E. y el que mejor ilustra la diferencia entre cómo un humano lee un prompt y cómo lo procesa un modelo.</p>
+<p>El <strong>Structural Parallax</strong> describe la condición en que el mismo input es “visto” de maneras fundamentalmente diferentes por: (a) un revisor humano, (b) un clasificador de guardrail semántico, y (c) el modelo objetivo. Esta diferencia de percepción no se logra mediante ofuscación de contenido — se logra mediante <strong>superposición estructural</strong>: capas de información que los diferentes sistemas procesan con diferentes pesos y prioridades.</p>
+<p><strong>La analogía visual:</strong> Un cuadro de ilusión óptica no engaña cambiando lo que está pintado — engaña explotando cómo el sistema visual procesa la información. El Structural Parallax es la ilusión óptica del prompt engineering defensivo.</p>
+<p><strong>¿Por qué es difícil de defender?</strong></p>
+<p>Porque la defensa requiere que el sistema de guardrail procese el input con el mismo modelo de percepción que el modelo objetivo — lo cual crea un problema de bootstrap: si el guardrail usa el mismo modelo para evaluar, hereda las mismas vulnerabilidades perceptuales.</p>
+<p><strong>¿Qué buscar defensivamente?</strong></p>
+<ul>
+<li>🔍 Inputs con densidad de información espacial inusual (uso de whitespace, alineación, tabulación como portadores de estructura semántica)</li>
+<li>🔍 Disparidades entre el análisis del input por un modelo pequeño vs. un modelo grande (si difieren, hay estructura que el modelo pequeño no está procesando)</li>
+<li>🔍 Inputs que producen respuestas diferentes dependiendo del nivel de atención del modelo</li>
+</ul>
+<p><strong>Referencia académica:</strong> El paper “Beyond Prompts: Space-Time Decoupling Control-Plane Jailbreaks in LLM Structured Output” (2025) introdujo el Constrained Decoding Attack (CDA), demostrando una superficie de ataque en el plano de control ortogonal a las vulnerabilidades del plano de datos tradicional, con tasas de éxito del 96.2% en modelos propietarios y de código abierto.</p>
+<hr>
+<h2 id="️-parte-3-framework-defensivo--cómo-auditar-contra-el-fee">🛡️ Parte 3: Framework Defensivo — Cómo Auditar Contra el F.E.E.</h2>
+<blockquote>
+<p>Esta es la sección más importante del artículo. La caracterización del vector de ataque tiene valor solo si habilita mejores defensas. Lo que sigue es una guía práctica para equipos de seguridad que despliegan o auditan sistemas LLM en producción.</p>
+</blockquote>
+<hr>
+<h3 id="️-el-cambio-de-paradigma-necesario-de-content-moderation-a-architectural-defense">🏗️ El Cambio de Paradigma Necesario: De Content Moderation a Architectural Defense</h3>
+<p>La arquitectura de seguridad dominante para LLMs ha sido reactiva, enfocada en filtrado post-hoc de outputs del modelo. Este enfoque es fundamentalmente defectuoso porque intenta tratar los síntomas — outputs dañinos — en lugar de la causa raíz. Pone a los defensores en un perpetuo juego del gato y el ratón donde deben reaccionar constantemente a nuevas técnicas de ataque.</p>
+<p>El F.E.E. hace esta crítica aún más aguda: si los ataques ocurren en el plano de control — en la arquitectura del pipeline de procesamiento — los filtros que operan en el plano de datos nunca los verán, sin importar cuán sofisticados sean.</p>
+<p>La respuesta defensiva requiere un cambio de paradigma:</p>
+<p><strong>De:</strong> “¿Este contenido es seguro?”
+<strong>A:</strong> “¿Esta estructura es válida para el contexto de esta aplicación?”</p>
+<hr>
+<h3 id="-las-5-capas-de-defensa-estructural">🔐 Las 5 Capas de Defensa Estructural</h3>
+<h4 id="capa-1-validación-de-schema-de-input-structural-input-validation">Capa 1: Validación de Schema de Input (Structural Input Validation)</h4>
+<p>Antes de que el input llegue al modelo, debe pasar por validación estructural — no solo semántica:</p>
+<ul>
+<li>✅ <strong>Definir un schema estricto</strong> para lo que constituye un input válido en tu aplicación: longitud máxima, formatos permitidos, caracteres Unicode permitidos</li>
+<li>✅ <strong>Rechazar inputs que no cumplan el schema</strong>, independientemente de si su contenido semántico parece inofensivo</li>
+<li>✅ <strong>Normalizar la estructura</strong> del input antes del procesamiento: eliminar whitespace inusual, normalizar codificación, aplanar formatos anidados no esperados</li>
+<li>✅ <strong>Monitorear la distribución estadística</strong> de la estructura de los inputs: un input anómalamente complejo en su estructura para una tarea simple es una señal de alerta</li>
+</ul>
+<p><strong>Herramienta recomendada:</strong> <a href="https://www.guardrailsai.com/"><strong>Guardrails AI</strong></a> — permite definir validators estructurales además de semánticos, incluyendo schema validation para inputs y outputs.</p>
+<hr>
+<h4 id="capa-2-separación-de-planos-controldata-plane-separation">Capa 2: Separación de Planos (Control/Data Plane Separation)</h4>
+<p>Este es el principio defensivo más importante y el más frecuentemente ignorado:</p>
+<ul>
+<li>✅ <strong>Las instrucciones del sistema y los datos del usuario deben procesarse por canales arquitectónicamente separados</strong> cuando sea posible. Esto es lo que hacen las APIs modernas de LLM con los campos <code>system</code> y <code>user</code> — pero muchas implementaciones colapsan estos límites en su lógica de negocio.</li>
+<li>✅ <strong>Nunca construyas el system prompt usando datos no validados del usuario.</strong> Cualquier datos del usuario que se inyecte en el system prompt colapsa la separación de planos.</li>
+<li>✅ <strong>Implementa “privilege separation”</strong>: el modelo debería operar con el mínimo nivel de “privilegio instruccional” necesario para la tarea.</li>
+</ul>
+<p><strong>Referencia:</strong> Countermind (arXiv, 2025) propuso que la solución robusta requiere rediseñar el “sistema operativo” en el que funciona el LLM para ser seguro por diseño — creando una separación estructural y verificable entre instrucciones confiables y datos de usuario no confiables, una solución que no puede lograrse mediante filtrado de contenido solo.</p>
+<hr>
+<h4 id="capa-3-guardrails-de-formato-structural-guardrails">Capa 3: Guardrails de Formato (Structural Guardrails)</h4>
+<p>Los guardrails deben extenderse más allá de la semántica para incluir validación estructural:</p>
+<ul>
+<li>✅ <strong><a href="https://github.com/NVIDIA/NeMo-Guardrails">NeMo Guardrails</a></strong> — framework de NVIDIA para control de diálogo con rails conversacionales. Permite definir políticas que controlan el flujo de la conversación a nivel estructural.</li>
+<li>✅ <strong><a href="https://llm-guard.com/">LLM Guard</a></strong> — escaneo comprensivo de inputs y outputs. Incluye detectores de prompt injection que van más allá de la semántica.</li>
+<li>✅ <strong><a href="https://github.com/microsoft/guidance">Microsoft Guidance</a></strong> — control de generación token por token. En lugar de filtrar después de la generación, guía el modelo durante la generación para que solo pueda producir outputs que cumplan un schema estructural definido.</li>
+<li>✅ <strong><a href="https://github.com/protectai/rebuff">Rebuff</a></strong> — sistema de self-hardening que aprende de ataques previos. Útil para detectar variaciones estructurales de ataques conocidos.</li>
+</ul>
+<hr>
+<h4 id="capa-4-monitoreo-de-anomalías-estructurales-structural-anomaly-detection">Capa 4: Monitoreo de Anomalías Estructurales (Structural Anomaly Detection)</h4>
+<p>Implementar observabilidad que monitoree la <strong>estructura</strong> de los inputs, no solo su contenido:</p>
+<ul>
+<li>✅ <strong>Métricas de complejidad estructural:</strong> longitud, ratio de tokens de control vs. tokens de contenido, profundidad de anidamiento de formatos</li>
+<li>✅ <strong>Detección de distribución:</strong> inputs cuya estructura se desvía estadísticamente de la baseline de tu aplicación merecen inspección adicional</li>
+<li>✅ <strong>Logging de plano de control:</strong> registrar no solo el contenido de los inputs sino sus características estructurales para análisis forense posterior a un incidente</li>
+<li>✅ <strong>Comparación multi-modelo:</strong> si el mismo input produce respuestas muy diferentes en modelos de diferente tamaño/arquitectura, existe probable estructura que no está siendo procesada uniformemente</li>
+</ul>
+<p><strong>Herramienta recomendada:</strong> <a href="https://www.datadoghq.com/product/llm-observability/"><strong>Datadog LLM Observability</strong></a> — ofrece trazabilidad de inputs y outputs con capacidades de análisis de anomalías.</p>
+<hr>
+<h4 id="capa-5-red-teaming-estructural-structural-red-teaming">Capa 5: Red Teaming Estructural (Structural Red Teaming)</h4>
+<p>El red teaming convencional de LLMs se enfoca en ataques semánticos. Las organizaciones deben expandir su red teaming para incluir pruebas estructurales:</p>
+<ul>
+<li>✅ <strong>Fuzzing de inputs:</strong> enviar inputs con variaciones estructurales sistemáticas para identificar condiciones de borde en el pipeline de procesamiento</li>
+<li>✅ <strong>Pruebas de separación de planos:</strong> verificar que los datos del usuario no pueden influir en el contexto de instrucción del sistema</li>
+<li>✅ <strong>Pruebas de schema enforcement:</strong> intentar inputs que violen el schema estructural esperado y verificar que son rechazados correctamente</li>
+<li>✅ <strong>Auditoría de tokens de control:</strong> revisar qué tokens especiales o de control reconoce el modelo y si pueden ser inyectados por usuarios</li>
+</ul>
+<p><strong>Recurso clave:</strong> <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"><strong>OWASP Top 10 for LLM Applications 2025</strong></a> — LLM01:2025 cubre Prompt Injection incluyendo vectores indirectos y estructurales. Lectura obligatoria para cualquier equipo que despliegue LLMs en producción.</p>
+<hr>
+<h3 id="-checklist-de-auditoría-fee-defensive-assessment">📋 Checklist de Auditoría: F.E.E. Defensive Assessment</h3>
+<p>Para equipos que quieren auditar sus sistemas LLM contra los vectores del F.E.E., este checklist es un punto de partida:</p>
+<p><strong>Vector 1 — Parser Stress:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> ¿Valida tu sistema la codificación Unicode de los inputs?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Rechaza inputs con estructuras de delimitación anómalas?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Has probado el comportamiento del modelo con inputs que contienen tokens de control?</li>
+</ul>
+<p><strong>Vector 2 — Format Hijacking:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> ¿Está definido y enforced el esquema de formato permitido en inputs de usuario?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Los outputs están validados contra un schema estructural antes de ser entregados?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Has auditado cómo el modelo se comporta con inputs de diferentes formatos?</li>
+</ul>
+<p><strong>Vector 3 — Payload Fragmentation:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> ¿Tus guardrails analizan el contexto completo de la conversación o solo el último turno?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Tienes límites estructurales en la longitud y complejidad acumulada de las conversaciones?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Monitorizas patrones de fragmentación de instrucciones a través de múltiples turnos?</li>
+</ul>
+<p><strong>Vector 4 — Tone-Structure Decoupling:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> ¿Tus guardrails incluyen validación estructural además de semántica?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Tienes métricas de “complejidad estructural esperada vs. observada” por tipo de solicitud?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Has entrenado a tu equipo en la diferencia entre análisis de tono y análisis estructural?</li>
+</ul>
+<p><strong>Vector 5 — Structural Parallax:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> ¿Compruebas que los guardrails evalúan el input con el mismo modelo de percepción que el modelo objetivo?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Has probado comportamiento diferencial del mismo input en diferentes modelos/configuraciones?</li>
+<li class="task-list-item"><input type="checkbox" disabled> ¿Tu sistema detecta inputs con densidad de información estructural anómalamente alta?</li>
+</ul>
+<hr>
+<h2 id="-parte-4-el-contexto-de-la-industria-y-el-camino-a-seguir">🌐 Parte 4: El Contexto de la Industria y el Camino a Seguir</h2>
+<h3 id="-el-estado-actual-una-carrera-asimétrica">📊 El Estado Actual: Una Carrera Asimétrica</h3>
+<p>La inyección de prompt es el riesgo #1 de seguridad en IA — clasificado LLM01 por OWASP — con tasas de éxito de ataque de 50-84% dependiendo de la configuración del sistema. No existe una solución completa: incluso los modelos frontera de OpenAI, Google y Anthropic permanecen vulnerables después de aplicar sus mejores defensas, haciendo que la defensa en profundidad sea la única estrategia viable.</p>
+<p>Esta estadística es reveladora. Si las tasas de éxito de ataque son tan altas incluso después de aplicar las mejores defensas conocidas, la explicación más parsimonious es que las defensas conocidas tienen puntos ciegos sistemáticos. El F.E.E. propone que uno de esos puntos ciegos es la dimensión estructural.</p>
+<h3 id="-el-horizonte-agentic-ai-y-la-expansión-de-la-superficie-estructural">🔮 El Horizonte: Agentic AI y la Expansión de la Superficie Estructural</h3>
+<p>El problema se vuelve más urgente conforme los LLMs evolucionan hacia sistemas agénticos. El surgimiento de los sistemas de agentes de IA y el Model Context Protocol (MCP) ha expandido dramáticamente las superficies de ataque, introduciendo vulnerabilidades como el envenenamiento de herramientas y el robo de credenciales.</p>
+<p>En un sistema agéntico, el modelo no solo genera texto — ejecuta herramientas, accede a APIs, toma decisiones con efectos en el mundo real. En este contexto, un ataque estructural exitoso no produce texto indeseado — puede producir <strong>acciones indeseadas</strong>. La superficie de daño potencial se expande en órdenes de magnitud.</p>
+<h3 id="-recursos-para-profundizar">📖 Recursos para Profundizar</h3>
+<ul>
+<li>🏛️ <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"><strong>OWASP Top 10 for LLM Applications 2025</strong></a> — El estándar de la industria para seguridad de LLMs</li>
+<li>🔬 <a href="https://www.anthropic.com/research"><strong>Anthropic Research — AI Safety</strong></a> — Papers sobre alignment y seguridad</li>
+<li>📄 <a href="https://www.nist.gov/artificial-intelligence"><strong>NIST AI Risk Management Framework</strong></a> — Marco de gestión de riesgos para sistemas de IA</li>
+<li>🛡️ <a href="https://atlas.mitre.org/"><strong>MITRE ATLAS</strong></a> — Base de conocimiento de tácticas, técnicas y procedimientos adversariales contra sistemas de ML</li>
+<li>📚 <a href="https://arxiv.org/list/cs.CR/recent"><strong>arXiv cs.CR — Cryptography and Security</strong></a> — Papers recientes de investigación en seguridad de LLMs</li>
+<li>🔧 <a href="https://www.guardrailsai.com/docs"><strong>Guardrails AI Documentation</strong></a> — Implementación práctica de guardrails estructurales</li>
+</ul>
+<hr>
+<h2 id="-conclusión-la-próxima-frontera-de-la-seguridad-en-ia">🏁 Conclusión: La Próxima Frontera de la Seguridad en IA</h2>
+<p>La industria de seguridad en IA ha construido defensas extraordinariamente sofisticadas contra ataques semánticos. Los guardrails modernos entienden el contexto, detectan la intención, y reconocen el lenguaje manipulador con una precisión que habría parecido imposible hace tres años.</p>
+<p>Pero la seguridad nunca es estática. Los atacantes siempre se mueven hacia el vector menos defendido. Y la investigación académica de 2025-2026 está documentando, con creciente claridad, que ese vector menos defendido es la <strong>dimensión estructural</strong>.</p>
+<p>El Framework de Explotación Estructural (F.E.E.) no es una alarma — es un mapa. Un mapa de un territorio que los defensores necesitan conocer para auditar sus sistemas de forma completa. La distinción entre tono y estructura no es semántica — es arquitectónica, y tiene consecuencias arquitectónicas para cómo construimos y evaluamos la seguridad de los sistemas LLM.</p>
+<blockquote>
+<p><strong>La siguiente generación de defensas en IA no preguntará solo “¿qué dice este texto?” — preguntará “¿cómo está construido este texto, y qué hace esa construcción al pipeline que lo procesa?”</strong></p>
+</blockquote>
+<p>El trabajo de construir esas defensas empieza ahora. 🔐</p>
+<hr>
+<p><em>Escrito por <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em></p>
+<p><em>Esta investigación sintetiza papers académicos publicados, CVEs documentados, y análisis original. Todas las fuentes están referenciadas. Para discusión técnica, colaboración o revisión de pares, contacta a través del blog.</em></p>
+<p><em>Referencias académicas clave: GraphAttack (arXiv:2504.13052), SoK Taxonomy (arXiv:2510.15476), CDA/Constrained Decoding Attack (arXiv:2503.24191), Countermind (arXiv:2510.11837), BOOST Attack (USENIX Security 2025), OWASP LLM Top 10 2025.</em></p>
+</div>
+<hr>
+<hr>
+<div class="lang-en">
+<h2 id="-ais-blind-spot-structural-exploitation-in-prompt-engineering">🧠 AI’s Blind Spot: Structural Exploitation in Prompt Engineering</h2>
+<p><strong>By Jafet Brito</strong> · Security Researcher · <em>Published June 11, 2026</em></p>
+<hr>
+<blockquote>
+<p>⚠️ <strong>Responsibility note:</strong> This research was developed with a strictly <strong>defensive and educational</strong> purpose. The goal is to enable security teams to audit, detect, and mitigate a class of vulnerabilities the industry has systematically underestimated. No technical detail in this article constitutes an operational attack manual. All content is backed by published academic research and CVEs documented in production systems.</p>
+</blockquote>
+<hr>
+<h3 id="-central-premise">📍 Central Premise</h3>
+<p>The AI security community has spent years perfecting defenses against semantic attacks: reverse psychology, roleplay, keyword obfuscation, ambiguous phrasing. Modern guardrails are extraordinarily good at recognizing <strong>what a text says</strong>.</p>
+<p>But there’s a question no one is asking with sufficient seriousness:</p>
+<blockquote>
+<p><strong>How good are guardrails at recognizing <em>how a text is constructed</em>?</strong></p>
+</blockquote>
+<p>This research argues that there is a <strong>structural gap</strong> — a blind spot in the security architecture of LLM systems that doesn’t reside in the semantic content of prompts, but in their <strong>physical architecture</strong>: the way text is encoded, delimited, fragmented, and formatted before it reaches the model.</p>
+<p>We call this class of vulnerabilities the <strong>Structural Exploitation Framework (S.E.F.)</strong>.</p>
+<hr>
+<h2 id="-part-1-the-problem-nobody-is-looking-at">🔬 Part 1: The Problem Nobody Is Looking At</h2>
+<h3 id="-the-anatomy-of-a-prompt--beyond-content">🧬 The Anatomy of a Prompt — Beyond Content</h3>
+<p>To understand the structural blind spot, we first need to understand how an LLM processes the text it receives. It’s not magic — it’s a multi-stage processing pipeline:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Input text</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Tokenization] → Text is converted to numerical tokens</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Context parsing] → Roles are identified: system, user, tool</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Semantic classification] → Guardrails analyze content</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Model inference] → The model generates a response</span></span>
+<span class="line"><span>      ↓</span></span>
+<span class="line"><span>  [Output filtering] → Response is checked before delivery</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Semantic guardrails operate primarily at <strong>step 3</strong>: they analyze what the text means. This is their strength — and also their limitation.</p>
+<p>What happens at <strong>steps 1 and 2</strong> — tokenization and parsing — receives far less defensive attention. And that’s precisely where the structural attack surface lives.</p>
+<hr>
+<h3 id="️-the-distinction-that-changes-everything-tone-vs-structure">⚠️ The Distinction That Changes Everything: Tone vs. Structure</h3>
+<p>Before continuing, it’s imperative to establish a conceptual distinction that is the heart of this research:</p>
+<p><strong>Tone</strong> defines the attitude, register, and apparent intent of the text. It is semantic. Modern guardrails understand it very well. They detect whether a text sounds hostile, manipulative, or attempts to exploit known vulnerabilities through language.</p>
+<p><strong>Structure</strong> defines the <strong>physical and mathematical architecture</strong> of the text: how it is delimited, what control tokens it contains, how it is fragmented, what layers of formatting are overlaid. Structure is not interpretive — it is <strong>deterministic</strong>. The same structural token has the same effect regardless of how friendly the surrounding text sounds.</p>
+<blockquote>
+<p>💡 <strong>Network analogy:</strong> In network architectures, there is the classic distinction between the <strong>control plane</strong> — which defines rules and flow — and the <strong>data plane</strong> — which carries the actual information. A sophisticated attacker doesn’t compromise the data plane with malicious content; they compromise the <strong>control plane</strong> to change the processing rules. Structural Exploitation in LLMs is the equivalent of attacking the control plane of the model’s processing pipeline.</p>
+</blockquote>
+<p>This distinction has an immediate defensive implication: <strong>defenses that only operate at the semantic level are blind to attacks at the structural level</strong>, just as a firewall that only inspects packet content is blind to an attack that manipulates routing headers.</p>
+<hr>
+<h3 id="-the-academic-research-backing">📊 The Academic Research Backing</h3>
+<p>This is not speculative hypothesis. Academic research from 2025-2026 has begun documenting this gap with rigor:</p>
+<ul>
+<li>
+<p>🔬 <strong>GraphAttack (arXiv, 2025):</strong> Demonstrated that the effectiveness of safety mechanisms systematically degrades as representations shift from natural language toward formal structures. Attack success rates reached <strong>87%</strong> against commercial LLMs by exploiting differences in how the model processes semantic representations versus natural text.</p>
+</li>
+<li>
+<p>📄 <strong>SoK: Taxonomy and Evaluation of Prompt Security (arXiv, 2025):</strong> Formalized the category of <strong>“Format Exploitation”</strong> as a distinct class of vulnerability — where adversaries exploit the model’s handling of specific input/output formats like code blocks, tables, pseudocode, tags, and contextual markers — not to change content, but to affect how the model processes instructions.</p>
+</li>
+<li>
+<p>⚡ <strong>Constrained Decoding Attack — CDA (ACM SIGSAC 2026):</strong> The most significant paper in the structural class. Introduced a new jailbreak category that operates on the <strong>control plane</strong> of the LLM — not the data plane. The attack achieved success rates of <strong>96.2%</strong> against GPT-4o, Gemini 2.0 Flash, DeepSeek-R1, and other frontier models through manipulation of grammar-guided structures, not semantic content. Crucially: standard guardrails don’t detect it because they inspect the data plane, not the control plane.</p>
+</li>
+<li>
+<p>🏗️ <strong>Countermind (arXiv, 2025):</strong> Coined the term <strong>“form-first attacks”</strong> to describe attacks whose success depends on the structure, encoding, or format of the input — not its semantic content. Argued that the dominant LLM security paradigm — reactive output filtering — is fundamentally flawed because it “attempts to treat symptoms, not the root cause.”</p>
+</li>
+<li>
+<p>🎯 <strong>BOOST Attack (USENIX Security 2025):</strong> Demonstrated how manipulation of <strong>control tokens</strong> — the tokens the model uses to manage information flow and recognize different parts of an input — can compromise the safety mechanisms of models from Meta, Alibaba, Google, Mistral, and Databricks.</p>
+</li>
+</ul>
+<p>Research on critical CVEs documented in 2025-2026 includes EchoLeak (CVE-2025-32711), GitHub Copilot RCE (CVE-2025-53773), and Cursor IDE vulnerabilities — demonstrating that attackers are actively exploiting production AI systems with prompt injection success rates of 50-84%.</p>
+<hr>
+<h2 id="️-part-2-the-structural-exploitation-framework-sef">🗂️ Part 2: The Structural Exploitation Framework (S.E.F.)</h2>
+<blockquote>
+<p>The S.E.F. is not a collection of exploits — it is a <strong>conceptual framework</strong> for defensive teams to understand, classify, and audit structural risk vectors in their LLM systems. Each vector describes a <strong>vulnerability class</strong>, not a specific attack technique.</p>
+</blockquote>
+<hr>
+<h3 id="-vector-1-syntax--parser-stress-parser-breaking">🔴 Vector 1: Syntax &#x26; Parser Stress (Parser Breaking)</h3>
+<p><strong>What is it?</strong></p>
+<p>LLMs have implicit syntactic parsers that interpret the structure of a prompt before processing it semantically. These parsers determine where the “system” begins, where the “user” begins, what is a tool, what is data. Like any software parser, they have <strong>edge conditions</strong> — undefined or unexpected behaviors when receiving inputs that don’t follow the patterns they were designed for.</p>
+<p><strong>Parser Stress</strong> is the class of vulnerabilities that emerge when the model’s processing pipeline receives inputs that stress or confuse these implicit parsers.</p>
+<p><strong>Why don’t semantic guardrails detect it?</strong></p>
+<p>Because guardrails inspect content <strong>after</strong> the parser has processed the structure. If the parser was confused, the guardrails receive a different context than the system operator intended to establish — and analyze it as if it were the correct context.</p>
+<p><strong>What to look for defensively?</strong></p>
+<ul>
+<li>🔍 Inputs containing non-standard token sequences that mimic model control tokens</li>
+<li>🔍 Prompts with nested, inconsistent, or truncated delimitation structures</li>
+<li>🔍 Zero-width, bidirectional, or unusually spaced Unicode characters</li>
+<li>🔍 Inputs that mix multiple markup schemas simultaneously (Markdown + XML + JSON)</li>
+</ul>
+<p><strong>Academic reference:</strong> BOOST Attack (USENIX Security 2025), which demonstrated that control token manipulation is an active vector against leading commercial models.</p>
+<hr>
+<h3 id="-vector-2-format-hijacking">🟠 Vector 2: Format Hijacking</h3>
+<p><strong>What is it?</strong></p>
+<p>LLMs are trained on enormous amounts of structured data: code, JSON, XML, Markdown, tables, HTML. As a result, the model has very strong “learned behaviors” associated with specific formats — it knows how it “should behave” when it sees certain structural patterns. <strong>Format Hijacking</strong> is the exploitation of these learned behaviors using format as an instruction vector, independent of semantic content.</p>
+<p><strong>Why don’t semantic guardrails detect it?</strong></p>
+<p>Because the hijacking occurs at the level of <strong>structural patterns the model associates with certain operating modes</strong>. A format the model associates with “executable code output” may cause the model to enter a different generation mode — one that may have different safety alignments than free-text generation.</p>
+<p><strong>What to look for defensively?</strong></p>
+<ul>
+<li>🔍 Inputs that mix “implicitly high-privilege” formats (code blocks, system-like pseudo-JSON) with user content</li>
+<li>🔍 Requests asking for outputs in formats the model treats structurally differently from free text</li>
+<li>🔍 Uses of tag structures that mimic internal delimiters used during training</li>
+</ul>
+<p><strong>Academic reference:</strong> SoK Taxonomy (arXiv, 2025) — Format Exploitation as a formal category; Banerjee et al. and Zhao et al. on response formats as covert channels.</p>
+<hr>
+<h3 id="-vector-3-fragmented-payload-injection">🟡 Vector 3: Fragmented Payload Injection</h3>
+<p><strong>What is it?</strong></p>
+<p>Prompt injection detection systems look for complete, recognizable patterns. <strong>Payload Fragmentation</strong> is the class of techniques where a directive that would be detected if it appeared complete is distributed across multiple parts of the input — exploiting the fact that the model has the capacity to synthesize and reconstruct fragmented information (that is, in fact, one of its most valued capabilities), but detectors don’t have the same level of contextual synthesis.</p>
+<p><strong>Why don’t semantic guardrails detect it?</strong></p>
+<p>Because they operate with an analysis window that is frequently narrower than the model’s context window. The model can synthesize fragmented instructions across thousands of tokens; a guardrail classifier may only analyze chunks of the input.</p>
+<p><strong>What to look for defensively?</strong></p>
+<ul>
+<li>🔍 Long-form inputs with fragments that, analyzed individually, appear innocuous</li>
+<li>🔍 Patterns where instruction elements appear separated by high-density distractor content</li>
+<li>🔍 Inputs that progressively build context across multiple conversation turns</li>
+</ul>
+<p><strong>Academic reference:</strong> The comprehensive prompt injection attack review of January 2026 documents a taxonomy spanning from simple jailbreaking to sophisticated multi-stage exploits, including analysis of GitHub Copilot’s CVE-2025-53773 RCE and the CamoLeak exploit with CVSS 9.6.</p>
+<hr>
+<h3 id="-vector-4-tone-structure-decoupling">🔵 Vector 4: Tone-Structure Decoupling</h3>
+<p><strong>What is it?</strong></p>
+<p>This vector addresses the most important conceptual gap in the S.E.F. and the one with the deepest defensive implications.</p>
+<p>LLM alignment systems operate on two layers: a <strong>tone</strong> layer (which manages the model’s register, attitude, and relational behaviors) and a <strong>structure</strong> layer (which manages the format, encoding, and output processing mode). These two layers are relatively independent in the model’s architecture.</p>
+<p><strong>Tone-Structure Decoupling</strong> describes attacks that manipulate these two layers asymmetrically: the tone of the prompt is completely aligned with usage policies, generating trust and passing tone filters — while the structure of the prompt does the actual manipulation work on the control plane.</p>
+<p><strong>The critical conceptual difference:</strong></p>
+<ul>
+<li><strong>Changing the tone</strong> = changing how the request sounds (semantic, detectable)</li>
+<li><strong>Changing the structure</strong> = changing the processing rules of the pipeline (architectural, frequently invisible to semantic filters)</li>
+</ul>
+<p>A prompt can sound perfectly friendly, respectful, and legitimate in tone — and simultaneously contain structural instructions that modify the processing pipeline’s behavior.</p>
+<p><strong>What to look for defensively?</strong></p>
+<ul>
+<li>🔍 Prompts where linguistic content passes all filters but formatting structure is unusually complex for the apparent request</li>
+<li>🔍 Requests that combine high-trust tone with high-complexity format structures</li>
+<li>🔍 Disparities between the semantic simplicity of the request and the structural complexity of the format employed</li>
+</ul>
+<p><strong>Academic reference:</strong> Countermind (arXiv, 2025) formally argued that “form-first” attacks — where attack success depends on the structure, encoding, or format of the input rather than its semantic content — target the model’s processing pipeline at a pre-semantic level.</p>
+<hr>
+<h3 id="-vector-5-structural-parallax">🟣 Vector 5: Structural Parallax</h3>
+<p><strong>What is it?</strong></p>
+<p>This is the most sophisticated vector in the S.E.F. and the one that best illustrates the difference between how a human reads a prompt and how a model processes it.</p>
+<p><strong>Structural Parallax</strong> describes the condition where the same input is “seen” in fundamentally different ways by: (a) a human reviewer, (b) a semantic guardrail classifier, and (c) the target model. This perceptual difference is not achieved through content obfuscation — it is achieved through <strong>structural superposition</strong>: layers of information that different systems process with different weights and priorities.</p>
+<p><strong>The visual analogy:</strong> An optical illusion painting doesn’t deceive by changing what’s painted — it deceives by exploiting how the visual system processes information. Structural Parallax is the optical illusion of defensive prompt engineering.</p>
+<p><strong>Why is it hard to defend against?</strong></p>
+<p>Because the defense requires the guardrail system to process the input with the same perceptual model as the target model — which creates a bootstrap problem: if the guardrail uses the same model to evaluate, it inherits the same perceptual vulnerabilities.</p>
+<p><strong>What to look for defensively?</strong></p>
+<ul>
+<li>🔍 Inputs with unusual spatial information density (use of whitespace, alignment, tabulation as structural semantic carriers)</li>
+<li>🔍 Disparities between input analysis by a small model vs. a large model (if they differ, there’s structure the small model isn’t processing)</li>
+<li>🔍 Inputs that produce different responses depending on the model’s attention level</li>
+</ul>
+<p><strong>Academic reference:</strong> The paper “Beyond Prompts: Space-Time Decoupling Control-Plane Jailbreaks in LLM Structured Output” (2025) introduced the Constrained Decoding Attack (CDA), demonstrating a control-plane attack surface orthogonal to traditional data-plane vulnerabilities, with 96.2% success rates across proprietary and open-weight models.</p>
+<hr>
+<h2 id="️-part-3-defensive-framework--how-to-audit-against-the-sef">🛡️ Part 3: Defensive Framework — How to Audit Against the S.E.F.</h2>
+<blockquote>
+<p>This is the most important section of the article. Characterizing the attack vector has value only if it enables better defenses. What follows is a practical guide for security teams that deploy or audit LLM systems in production.</p>
+</blockquote>
+<hr>
+<h3 id="️-the-required-paradigm-shift-from-content-moderation-to-architectural-defense">🏗️ The Required Paradigm Shift: From Content Moderation to Architectural Defense</h3>
+<p>The dominant security architecture for LLMs has been reactive, focused on post-hoc filtering of model outputs. This approach is fundamentally flawed because it attempts to treat symptoms — harmful outputs — rather than the root cause. It places defenders in a perpetual cat-and-mouse game where they must constantly react to new attack techniques.</p>
+<p>The S.E.F. makes this critique even sharper: if attacks occur on the control plane — in the architecture of the processing pipeline — filters that operate on the data plane will never see them, no matter how sophisticated they are.</p>
+<p>The defensive response requires a paradigm shift:</p>
+<p><strong>From:</strong> “Is this content safe?”
+<strong>To:</strong> “Is this structure valid for the context of this application?”</p>
+<hr>
+<h3 id="-the-5-layers-of-structural-defense">🔐 The 5 Layers of Structural Defense</h3>
+<h4 id="layer-1-structural-input-validation">Layer 1: Structural Input Validation</h4>
+<p>Before input reaches the model, it must pass structural validation — not just semantic:</p>
+<ul>
+<li>✅ <strong>Define a strict schema</strong> for what constitutes valid input in your application: maximum length, allowed formats, allowed Unicode characters</li>
+<li>✅ <strong>Reject inputs that don’t meet the schema</strong>, regardless of whether their semantic content appears innocuous</li>
+<li>✅ <strong>Normalize input structure</strong> before processing: eliminate unusual whitespace, normalize encoding, flatten unexpectedly nested formats</li>
+<li>✅ <strong>Monitor the statistical distribution</strong> of input structure: an input anomalously complex in structure for a simple task is a warning signal</li>
+</ul>
+<p><strong>Recommended tool:</strong> <a href="https://www.guardrailsai.com/"><strong>Guardrails AI</strong></a> — allows defining structural validators in addition to semantic ones, including schema validation for inputs and outputs.</p>
+<hr>
+<h4 id="layer-2-controldata-plane-separation">Layer 2: Control/Data Plane Separation</h4>
+<p>This is the most important defensive principle and the most frequently ignored:</p>
+<ul>
+<li>✅ <strong>System instructions and user data must be processed through architecturally separate channels</strong> when possible. This is what modern LLM APIs do with <code>system</code> and <code>user</code> fields — but many implementations collapse these boundaries in business logic.</li>
+<li>✅ <strong>Never construct the system prompt using unvalidated user data.</strong> Any user data injected into the system prompt collapses the plane separation.</li>
+<li>✅ <strong>Implement privilege separation</strong>: the model should operate with the minimum level of “instructional privilege” necessary for the task.</li>
+</ul>
+<p><strong>Reference:</strong> Countermind (arXiv, 2025) proposed that the robust solution requires redesigning the “operating system” in which the LLM functions to be secure by design — creating structural and verifiable separation between trusted instructions and untrusted user data payloads, a solution that cannot be achieved through simple content filtering alone.</p>
+<hr>
+<h4 id="layer-3-structural-guardrails">Layer 3: Structural Guardrails</h4>
+<p>Guardrails must extend beyond semantics to include structural validation:</p>
+<ul>
+<li>✅ <strong><a href="https://github.com/NVIDIA/NeMo-Guardrails">NeMo Guardrails</a></strong> — NVIDIA’s framework for dialogue control with conversational rails. Allows defining policies that control conversation flow at a structural level.</li>
+<li>✅ <strong><a href="https://llm-guard.com/">LLM Guard</a></strong> — comprehensive scanning of inputs and outputs. Includes prompt injection detectors that go beyond semantics.</li>
+<li>✅ <strong><a href="https://github.com/microsoft/guidance">Microsoft Guidance</a></strong> — token-by-token generation control. Instead of filtering after generation, it guides the model during generation so it can only produce outputs that satisfy a defined structural schema.</li>
+<li>✅ <strong><a href="https://github.com/protectai/rebuff">Rebuff</a></strong> — self-hardening system that learns from past attacks. Useful for detecting structural variations of known attacks.</li>
+</ul>
+<hr>
+<h4 id="layer-4-structural-anomaly-detection">Layer 4: Structural Anomaly Detection</h4>
+<p>Implement observability that monitors the <strong>structure</strong> of inputs, not just their content:</p>
+<ul>
+<li>✅ <strong>Structural complexity metrics:</strong> length, ratio of control tokens to content tokens, formatting nesting depth</li>
+<li>✅ <strong>Distribution detection:</strong> inputs whose structure deviates statistically from your application’s baseline deserve additional inspection</li>
+<li>✅ <strong>Control plane logging:</strong> record not just input content but structural characteristics for post-incident forensic analysis</li>
+<li>✅ <strong>Multi-model comparison:</strong> if the same input produces very different responses in models of different sizes/architectures, there is probable structure that’s not being processed uniformly</li>
+</ul>
+<p><strong>Recommended tool:</strong> <a href="https://www.datadoghq.com/product/llm-observability/"><strong>Datadog LLM Observability</strong></a> — offers input/output tracing with anomaly analysis capabilities.</p>
+<hr>
+<h4 id="layer-5-structural-red-teaming">Layer 5: Structural Red Teaming</h4>
+<p>Conventional LLM red teaming focuses on semantic attacks. Organizations must expand their red teaming to include structural testing:</p>
+<ul>
+<li>✅ <strong>Input fuzzing:</strong> send inputs with systematic structural variations to identify edge conditions in the processing pipeline</li>
+<li>✅ <strong>Plane separation testing:</strong> verify that user data cannot influence the system instruction context</li>
+<li>✅ <strong>Schema enforcement testing:</strong> attempt inputs that violate the expected structural schema and verify they are correctly rejected</li>
+<li>✅ <strong>Control token auditing:</strong> review which special or control tokens the model recognizes and whether they can be injected by users</li>
+</ul>
+<p><strong>Key resource:</strong> <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"><strong>OWASP Top 10 for LLM Applications 2025</strong></a> — LLM01:2025 covers Prompt Injection including indirect and structural vectors. Required reading for any team deploying LLMs in production.</p>
+<hr>
+<h3 id="-audit-checklist-sef-defensive-assessment">📋 Audit Checklist: S.E.F. Defensive Assessment</h3>
+<p>For teams wanting to audit their LLM systems against S.E.F. vectors, this checklist is a starting point:</p>
+<p><strong>Vector 1 — Parser Stress:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Does your system validate the Unicode encoding of inputs?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Does it reject inputs with anomalous delimitation structures?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Have you tested model behavior with inputs containing control tokens?</li>
+</ul>
+<p><strong>Vector 2 — Format Hijacking:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Is the permitted format schema defined and enforced in user inputs?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Are outputs validated against a structural schema before delivery?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Have you audited how the model behaves with inputs of different formats?</li>
+</ul>
+<p><strong>Vector 3 — Payload Fragmentation:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Do your guardrails analyze the full conversation context or only the last turn?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Do you have structural limits on the accumulated length and complexity of conversations?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Do you monitor instruction fragmentation patterns across multiple turns?</li>
+</ul>
+<p><strong>Vector 4 — Tone-Structure Decoupling:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Do your guardrails include structural validation in addition to semantic?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Do you have “expected vs. observed structural complexity” metrics per request type?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Has your team been trained on the difference between tone analysis and structural analysis?</li>
+</ul>
+<p><strong>Vector 5 — Structural Parallax:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Do you verify that guardrails evaluate input with the same perceptual model as the target model?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Have you tested differential behavior of the same input across different models/configurations?</li>
+<li class="task-list-item"><input type="checkbox" disabled> Does your system detect inputs with anomalously high structural information density?</li>
+</ul>
+<hr>
+<h2 id="-part-4-industry-context-and-the-path-forward">🌐 Part 4: Industry Context and the Path Forward</h2>
+<h3 id="-the-current-state-an-asymmetric-race">📊 The Current State: An Asymmetric Race</h3>
+<p>Prompt injection is the #1 AI security risk — ranked LLM01 by OWASP — with attack success rates of 50-84% depending on system configuration. No complete fix exists: even frontier models from OpenAI, Google, and Anthropic remain vulnerable after applying their best defenses, making defense in depth the only viable strategy.</p>
+<p>This statistic is revealing. If attack success rates are that high even after applying the best known defenses, the most parsimonious explanation is that known defenses have systematic blind spots. The S.E.F. proposes that one of those blind spots is the structural dimension.</p>
+<h3 id="-the-horizon-agentic-ai-and-the-expanding-structural-surface">🔮 The Horizon: Agentic AI and the Expanding Structural Surface</h3>
+<p>The problem becomes more urgent as LLMs evolve toward agentic systems. The rise of AI agent systems and the Model Context Protocol (MCP) has dramatically expanded attack surfaces, introducing vulnerabilities such as tool poisoning and credential theft.</p>
+<p>In an agentic system, the model doesn’t just generate text — it executes tools, accesses APIs, makes decisions with real-world effects. In this context, a successful structural attack doesn’t produce undesired text — it can produce <strong>undesired actions</strong>. The potential damage surface expands by orders of magnitude.</p>
+<h3 id="-resources-for-deeper-study">📖 Resources for Deeper Study</h3>
+<ul>
+<li>🏛️ <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"><strong>OWASP Top 10 for LLM Applications 2025</strong></a> — The industry standard for LLM security</li>
+<li>🔬 <a href="https://www.anthropic.com/research"><strong>Anthropic Research — AI Safety</strong></a> — Papers on alignment and safety</li>
+<li>📄 <a href="https://www.nist.gov/artificial-intelligence"><strong>NIST AI Risk Management Framework</strong></a> — Risk management framework for AI systems</li>
+<li>🛡️ <a href="https://atlas.mitre.org/"><strong>MITRE ATLAS</strong></a> — Knowledge base of adversarial tactics, techniques, and procedures against ML systems</li>
+<li>📚 <a href="https://arxiv.org/list/cs.CR/recent"><strong>arXiv cs.CR — Cryptography and Security</strong></a> — Recent LLM security research papers</li>
+<li>🔧 <a href="https://www.guardrailsai.com/docs"><strong>Guardrails AI Documentation</strong></a> — Practical implementation of structural guardrails</li>
+</ul>
+<hr>
+<h2 id="-conclusion-the-next-frontier-of-ai-security">🏁 Conclusion: The Next Frontier of AI Security</h2>
+<p>The AI security industry has built extraordinarily sophisticated defenses against semantic attacks. Modern guardrails understand context, detect intent, and recognize manipulative language with a precision that would have seemed impossible three years ago.</p>
+<p>But security is never static. Attackers always move toward the least defended vector. And academic research from 2025-2026 is documenting, with growing clarity, that this least-defended vector is the <strong>structural dimension</strong>.</p>
+<p>The Structural Exploitation Framework (S.E.F.) is not an alarm — it is a map. A map of a territory that defenders need to know to audit their systems completely. The distinction between tone and structure is not semantic — it is architectural, and it has architectural consequences for how we build and evaluate the security of LLM systems.</p>
+<blockquote>
+<p><strong>The next generation of AI defenses will not just ask “what does this text say?” — it will ask “how is this text constructed, and what does that construction do to the pipeline that processes it?”</strong></p>
+</blockquote>
+<p>The work of building those defenses starts now. 🔐</p>
+<hr>
+<p><em>Written by <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em></p>
+<p><em>This research synthesizes published academic papers, documented CVEs, and original analysis. All sources are referenced. For technical discussion, collaboration, or peer review, contact through the blog.</em></p>
+<p><em>Key academic references: GraphAttack (arXiv:2504.13052), SoK Taxonomy (arXiv:2510.15476), CDA/Constrained Decoding Attack (arXiv:2503.24191), Countermind (arXiv:2510.11837), BOOST Attack (USENIX Security 2025), OWASP LLM Top 10 2025.</em></p>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>

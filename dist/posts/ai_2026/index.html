@@ -1,0 +1,833 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="2026"><meta name="robots" content="index, follow"><meta name="author" content="Jafet Brito"><link rel="canonical" href="https://tu-dominio.com/posts/ai_2026/"><meta property="og:title" content="🤖 La Guia Definitiva para Aprender IA desde Cero en 2026 — Jafet Brito"><meta property="og:description" content="2026"><meta property="og:type" content="website"><meta property="og:url" content="https://tu-dominio.com/posts/ai_2026/"><meta property="og:image" content="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.eraspace.com%2Fpub%2Fmedia%2Fmageplaza%2Fblog%2Fpost%2Fr%2Fe%2Frekomendasitoolsai.jpg&f=1&nofb=1&ipt=4a4241b0180e484d44ef6277b29b943c7e3bc849f235e6ea48e26c9efb1e8b1c"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="🤖 La Guia Definitiva para Aprender IA desde Cero en 2026 — Jafet Brito"><meta name="twitter:description" content="2026"><meta name="twitter:image" content="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.eraspace.com%2Fpub%2Fmedia%2Fmageplaza%2Fblog%2Fpost%2Fr%2Fe%2Frekomendasitoolsai.jpg&f=1&nofb=1&ipt=4a4241b0180e484d44ef6277b29b943c7e3bc849f235e6ea48e26c9efb1e8b1c"><title>🤖 La Guia Definitiva para Aprender IA desde Cero en 2026 — Jafet Brito</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5501225442342959" crossorigin="anonymous"></script><!--
+      ① Tema  — Por defecto SIEMPRE light.
+                Solo dark si el usuario lo guardó explícitamente.
+      ② Idioma — Por defecto español. Cambia con el toggle del header.
+      ③ Traducciones — Se aplican tras el DOM, antes del primer frame.
+    --><script>
+    (function () {
+      /* ── tema ─────────────────────────────────────────── */
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        /* idioma — fija lang en <html> y activa bloque bilingüe CSS */
+        var lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.lang = lang;
+        window.__lang = lang;
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {
+        window.__lang = 'es';
+      }
+
+      /* ── traducciones ──────────────────────────────────── */
+      window.__ui = {
+        es: {
+          /* nav */
+          'nav.home':   'Inicio',
+          'nav.tags':   'Tags',
+          'nav.about':  'Sobre mí',
+          'nav.guide':  'Guía',
+          /* hero */
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Investigador en ciberseguridad. Escribo sobre seguridad ofensiva, CTFs, análisis de vulnerabilidades y técnicas de pentesting. Todo lo que aprendo, lo comparto aquí.',
+          'hero.posts': 'Posts publicados',
+          'hero.cats':  'Categorías',
+          'hero.active':'Investigando',
+          /* home */
+          'home.latest':    'Últimos posts',
+          'home.cta.title': '¿Tienes alguna pregunta?',
+          'home.cta.body':  'Estoy disponible para consultas, colaboraciones o simplemente para hablar de seguridad.',
+          /* posts */
+          'post.readmore':  'Leer más',
+          'post.minread':   'min de lectura',
+          'post.back':      'Volver al inicio',
+          'post.updated':   'Actualizado',
+          'post.author.cta': '¿Tienes preguntas sobre este post? Escríbeme.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Leer en español →',
+          /* footer */
+          'footer.desc':    'Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.',
+          'footer.nav':     'Navegación',
+          'footer.contact': 'Contacto',
+          'footer.reply':   'Respondo en menos de 48h',
+          /* tags */
+          'tags.title':  'Categorías',
+          'tags.sub':    'Filtra los posts por tema de seguridad.',
+          'tags.back':   'Todas las categorías',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          /* about */
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Apasionado por encontrar vulnerabilidades antes que los atacantes. Llevo años estudiando seguridad ofensiva de forma autodidacta, participando en CTFs internacionales y analizando malware en mi laboratorio.',
+          'about.bio.title': 'Mi historia',
+          'about.bio.p1':    'Empecé en la informática desarmando aparatos para ver cómo funcionaban por dentro. Esa misma curiosidad me llevó a la ciberseguridad: necesito entender <strong>exactamente</strong> cómo funciona algo para saber cómo romperlo.',
+          'about.bio.p2':    'Este blog es mi cuaderno de notas público. Aquí documento lo que aprendo — técnicas de pentesting, writeups de CTFs, análisis de vulnerabilidades reales — porque enseñar es la mejor forma de aprender.',
+          'about.bio.p3':    'Todo el contenido es con fines educativos y de investigación. Creo firmemente en la divulgación responsable y en usar el conocimiento de seguridad para proteger sistemas, no para dañarlos.',
+          'about.skills.title': 'Especialidades',
+          'about.skills.cat.1': 'Ofensiva',
+          'about.skills.cat.2': 'Análisis',
+          'about.skills.cat.3': 'Plataformas',
+          'about.skills.cat.4': 'Herramientas',
+          'about.skill.binex':    'Explotación de binarios',
+          'about.skill.re':       'Ingeniería inversa',
+          'about.skill.malware':  'Análisis de malware',
+          'about.skill.forensics':'Forense digital',
+          'about.topics': 'Temas del blog',
+          'about.setup':  'Mi setup',
+          'about.cta.title': 'Hablemos',
+          'about.cta.body': 'Disponible para consultas de seguridad, proyectos de pentesting o simplemente para intercambiar ideas sobre CTFs.',
+          /* home empty state */
+          'home.empty': '// sin posts todavía',
+          /* post breadcrumb */
+          'post.breadcrumb.home':  'Inicio',
+          'post.breadcrumb.posts': 'Posts',
+          /* buttons */
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          /* search */
+          'search.placeholder': 'Buscar posts...',
+          'search.title':       'Buscar',
+          'search.empty':       '// sin resultados',
+          'search.all':         'Ver todos los posts →',
+          /* guide */
+          'guide.title': 'Guía del blog',
+        },
+        en: {
+          'nav.home':   'Home',
+          'nav.tags':   'Tags',
+          'nav.about':  'About',
+          'nav.guide':  'Guide',
+          'hero.role':  'Security Researcher',
+          'hero.bio':   'Cybersecurity researcher. I write about offensive security, CTFs, vulnerability analysis and pentesting techniques. Everything I learn, I share here.',
+          'hero.posts': 'Published posts',
+          'hero.cats':  'Categories',
+          'hero.active':'Researching',
+          'home.latest':    'Latest posts',
+          'home.cta.title': 'Have a question?',
+          'home.cta.body':  'Available for security consultations, collaborations, or just to talk about security.',
+          'post.readmore':  'Read more',
+          'post.minread':   'min read',
+          'post.back':      'Back to home',
+          'post.updated':   'Updated',
+          'post.author.cta': 'Have questions about this post? Write to me.',
+          'post.read.en':   'Read in English →',
+          'post.read.es':   'Read in Spanish →',
+          'footer.desc':    'Cybersecurity researcher. Sharing knowledge on offensive security, CTFs and vulnerability analysis.',
+          'footer.nav':     'Navigation',
+          'footer.contact': 'Contact',
+          'footer.reply':   'I respond within 48h',
+          'tags.title':  'Categories',
+          'tags.sub':    'Filter posts by security topic.',
+          'tags.back':   'All categories',
+          'tags.posts':  'post',
+          'tags.postsp': 'posts',
+          'about.subtitle':  'Security Researcher · CTF Player',
+          'about.bio.short': 'Passionate about finding vulnerabilities before attackers do. I\'ve spent years studying offensive security self-taught, competing in international CTFs and analyzing malware in my home lab.',
+          'about.bio.title': 'My story',
+          'about.bio.p1':    'I started in computing by taking devices apart to see how they worked inside. That same curiosity led me to cybersecurity: I need to understand <strong>exactly</strong> how something works to know how to break it.',
+          'about.bio.p2':    'This blog is my public notebook. Here I document what I learn — pentesting techniques, CTF writeups, real vulnerability analysis — because teaching is the best way to learn.',
+          'about.bio.p3':    'All content is for educational and research purposes. I firmly believe in responsible disclosure and using security knowledge to protect systems, not harm them.',
+          'about.skills.title': 'Specialties',
+          'about.skills.cat.1': 'Offensive',
+          'about.skills.cat.2': 'Analysis',
+          'about.skills.cat.3': 'Platforms',
+          'about.skills.cat.4': 'Tools',
+          'about.skill.binex':    'Binary Exploitation',
+          'about.skill.re':       'Reverse Engineering',
+          'about.skill.malware':  'Malware Analysis',
+          'about.skill.forensics':'Digital Forensics',
+          'about.topics': 'Blog topics',
+          'about.setup':  'My setup',
+          'about.cta.title': "Let's talk",
+          'about.cta.body': 'Available for security consulting, pentesting projects, or just to exchange ideas about CTFs.',
+          'home.empty': '// no posts yet',
+          'post.breadcrumb.home':  'Home',
+          'post.breadcrumb.posts': 'Posts',
+          'btn.email':    'Email',
+          'btn.telegram': 'Telegram',
+          'search.placeholder': 'Search posts...',
+          'search.title':       'Search',
+          'search.empty':       '// no results',
+          'search.all':         'See all posts →',
+          'guide.title': 'Blog guide',
+        }
+      };
+
+      /* Aplica traducciones a todos los [data-t], [data-th], fechas y filtrado de posts */
+      function applyTranslations() {
+        var lang = window.__lang || 'es';
+        var dict = window.__ui[lang] || window.__ui['es'];
+
+        /* data-t  → textContent (seguro, sin HTML) */
+        document.querySelectorAll('[data-t]').forEach(function (el) {
+          var key = el.getAttribute('data-t');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+
+        /* data-th → innerHTML (para traducciones con <strong>, <em>, etc.) */
+        document.querySelectorAll('[data-th]').forEach(function (el) {
+          var key = el.getAttribute('data-th');
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
+        });
+
+        /* actualizar atributos aria/title */
+        document.querySelectorAll('[data-t-title]').forEach(function (el) {
+          var key = el.getAttribute('data-t-title');
+          if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+        });
+
+        /* reformatear fechas según idioma */
+        var locale = (lang === 'en') ? 'en-US' : 'es-ES';
+        document.querySelectorAll('[data-fmt-date]').forEach(function(el) {
+          var iso = el.getAttribute('data-fmt-date');
+          if (!iso) return;
+          try {
+            var fmt = el.getAttribute('data-fmt');
+            var opts = (fmt === 'long')
+              ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+              : { year: 'numeric', month: 'short', day: 'numeric' };
+            el.textContent = new Date(iso + 'T12:00:00').toLocaleDateString(locale, opts);
+          } catch(e) {}
+        });
+
+        /* intercambiar texto ES/EN (data-text-es / data-text-en) */
+        document.querySelectorAll('[data-text-es]').forEach(function(el) {
+          var text = lang === 'en'
+            ? (el.getAttribute('data-text-en') || el.getAttribute('data-text-es'))
+            : el.getAttribute('data-text-es');
+          if (text) el.textContent = text;
+        });
+
+        /* traducir placeholders de inputs */
+        document.querySelectorAll('[data-t-placeholder]').forEach(function(el) {
+          var key = el.getAttribute('data-t-placeholder');
+          if (dict[key] !== undefined) el.placeholder = dict[key];
+        });
+
+        /* activar clase CSS que muestra/oculta bloques .lang-es / .lang-en */
+        if (lang === 'en') {
+          document.documentElement.classList.add('lang-en');
+        } else {
+          document.documentElement.classList.remove('lang-en');
+        }
+      }
+
+      /* Ejecutar lo antes posible */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+      } else {
+        applyTranslations();
+      }
+      window.__applyTranslations = applyTranslations;
+    })();
+    </script><link rel="stylesheet" href="/_assets/_slug_.CP_X1EBk.css"><script type="module">const t=document.documentElement,a=document.getElementById("lang-toggle"),n=document.getElementById("lang-label"),s=document.getElementById("theme-toggle"),o=window.__lang||"es";n&&(n.textContent=o.toUpperCase());a?.addEventListener("click",()=>{const e=(window.__lang||"es")==="es"?"en":"es";try{localStorage.setItem("lang",e)}catch{}window.__lang=e,t.lang=e,e==="en"?t.classList.add("lang-en"):t.classList.remove("lang-en"),n&&(n.textContent=e.toUpperCase()),window.__applyTranslations&&window.__applyTranslations()});s?.addEventListener("click",()=>{const e=t.classList.toggle("dark");try{localStorage.setItem("theme",e?"dark":"light")}catch{}});
+</script></head> <body class="
+    bg-white              text-gray-900
+    dark:bg-terminal-bg   dark:text-zinc-100
+    font-sans min-h-screen flex flex-col
+    selection:bg-green-200 selection:text-green-900
+    dark:selection:bg-terminal-green dark:selection:text-black
+    antialiased transition-colors duration-200
+  "> <!-- Dark-mode CRT scan line --> <div aria-hidden="true" class="fixed inset-x-0 top-0 pointer-events-none z-50 h-screen overflow-hidden hidden dark:block"> <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-scan-line"></div> </div> <!-- Dark-mode vignette --> <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-40 hidden dark:block bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_55%,rgba(0,0,0,0.45)_100%)]"></div> <header class="sticky top-0 z-30
+  bg-white/90 dark:bg-terminal-bg/95
+  border-b border-gray-200 dark:border-terminal-border
+  backdrop-blur-md shadow-sm dark:shadow-none
+  transition-colors duration-200"> <div class="max-w-5xl mx-auto px-4 sm:px-6"> <div class="flex items-center justify-between h-14 gap-4"> <!-- Brand --> <a href="/" class="group flex items-center gap-2 flex-shrink-0"> <div class="w-8 h-8 rounded-lg bg-green-600 dark:bg-terminal-green flex items-center justify-center flex-shrink-0 transition-colors duration-200"> <span class="text-white dark:text-black font-bold font-mono text-sm leading-none">JB</span> </div> <div class="hidden sm:block"> <span class="font-display font-semibold text-base text-gray-900 dark:text-zinc-100 group-hover:text-green-700 dark:group-hover:text-terminal-green transition-colors leading-none">
+Jafet Brito
+</span> <span class="block text-[11px] text-gray-400 dark:text-zinc-500 leading-none mt-0.5 font-mono">
+security researcher
+</span> </div> </a> <!-- Nav --> <nav aria-label="Navegación" class="flex items-center gap-1"> <a href="/" data-t="nav.home" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Inicio </a><a href="/tags" data-t="nav.tags" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Tags </a><a href="/about" data-t="nav.about" class="px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/60"> Sobre mí </a> </nav> <!-- Right: search + contact + lang + theme --> <div class="flex items-center gap-1 flex-shrink-0"> <!-- Search --> <a href="/search" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors" title="Buscar"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Email --> <a href="mailto:hola@jafetbrito.com" class="p-2 rounded-lg text-gray-400 hover:text-green-700 hover:bg-green-50 dark:text-zinc-500 dark:hover:text-terminal-green dark:hover:bg-terminal-green/10 transition-colors hidden md:flex" title="Email"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg> </a> <!-- Telegram --> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg text-gray-400 hover:text-sky-600 hover:bg-sky-50 dark:text-zinc-500 dark:hover:text-sky-400 dark:hover:bg-sky-500/10 transition-colors hidden md:flex" title="Telegram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </a> <div class="hidden md:block w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Language toggle --> <button id="lang-toggle" type="button" aria-label="Cambiar idioma / Switch language" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold font-mono
+                 border border-gray-200 dark:border-zinc-700
+                 text-gray-500 dark:text-zinc-400
+                 hover:border-green-500 hover:text-green-700
+                 dark:hover:border-terminal-green dark:hover:text-terminal-green
+                 transition-colors duration-150"> <span id="lang-label">ES</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"> <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"></path> </svg> </button> <div class="w-px h-5 bg-gray-200 dark:bg-zinc-700 mx-1"></div> <!-- Theme toggle --> <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-150"> <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hidden dark:block"> <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 6.166a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.061L6.166 6.166z"></path> </svg> <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 block dark:hidden"> <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path> </svg> </button> </div> </div> </div> </header>  <main class="flex-1 w-full animate-fade-in">   <div class="w-full max-h-[480px] overflow-hidden bg-gray-100 dark:bg-zinc-900"> <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.eraspace.com%2Fpub%2Fmedia%2Fmageplaza%2Fblog%2Fpost%2Fr%2Fe%2Frekomendasitoolsai.jpg&f=1&nofb=1&ipt=4a4241b0180e484d44ef6277b29b943c7e3bc849f235e6ea48e26c9efb1e8b1c" alt="🤖 La Guia Definitiva para Aprender IA desde Cero en 2026" width="1200" height="630" loading="eager" decoding="async" class="w-full object-cover max-h-[480px]"> </div> <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10"> <!-- Breadcrumb --> <nav aria-label="Migas de pan" class="text-sm text-gray-400 dark:text-zinc-500 mb-6 flex items-center gap-1.5 font-mono"> <a data-t="post.breadcrumb.home" href="/" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a> <span>/</span> <a data-t="post.breadcrumb.posts" href="/tags" class="hover:text-green-700 dark:hover:text-terminal-green transition-colors">Posts</a> <span>/</span> <span class="text-gray-600 dark:text-zinc-400 truncate">-la-guia-definitiva-para-aprender-ia-desde-cero-en-2026</span> </nav> <!-- Post header --> <header class="mb-10"> <!-- Tags --> <div class="flex flex-wrap gap-2 mb-4"> <a href="/tags/AI" class="inline-flex items-center px-2 py-0.5 text-xs font-medium font-mono rounded-md ring-1 ring-inset bg-gray-100 text-gray-600 ring-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700 hover:opacity-80 transition-opacity">#AI</a> </div> <!-- Title with bilingual swap --> <h1 class="font-display font-bold text-4xl text-gray-900 dark:text-zinc-50 leading-tight mb-4" data-text-es="🤖 La Guia Definitiva para Aprender IA desde Cero en 2026" data-text-en="🤖 The Ultimate Guide to Learning AI from Scratch in 2026"> 🤖 La Guia Definitiva para Aprender IA desde Cero en 2026 </h1> <!-- Description with bilingual swap --> <p class="text-xl text-gray-500 dark:text-zinc-400 leading-relaxed" data-text-es="2026" data-text-en="2026"> 2026 </p> <!-- Author + date row --> <div class="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-gray-200 dark:border-zinc-800"> <div class="flex items-center gap-3"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="40" height="40" class="w-10 h-10 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30"> <div> <p class="text-sm font-semibold text-gray-900 dark:text-zinc-100">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono">Security Researcher</p> </div> </div> <div class="text-sm text-gray-400 dark:text-zinc-500 font-mono ml-auto flex flex-col items-end"> <time datetime="2026-06-11" data-fmt-date="2026-06-11" data-fmt="long">miércoles, 10 de junio de 2026</time>  </div> </div> </header> <!-- Post body --> <div class="prose prose-gray prose-lg max-w-none dark:prose-invert
+      prose-headings:font-display prose-headings:font-semibold prose-headings:scroll-mt-20
+      prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      prose-a:text-green-700 dark:prose-a:text-terminal-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+      prose-code:font-mono prose-code:text-green-700 dark:prose-code:text-terminal-cyan
+      prose-code:bg-green-50 dark:prose-code:bg-zinc-800
+      prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+      prose-pre:bg-gray-950 dark:prose-pre:bg-terminal-surface
+      prose-pre:border prose-pre:border-gray-800 dark:prose-pre:border-terminal-border
+      prose-pre:rounded-xl prose-pre:shadow-lg
+      prose-strong:text-gray-900 dark:prose-strong:text-zinc-50
+      prose-blockquote:border-l-4 prose-blockquote:border-green-500 dark:prose-blockquote:border-terminal-green
+      prose-blockquote:bg-green-50/50 dark:prose-blockquote:bg-terminal-green/5
+      prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r-lg
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-table:text-base
+      prose-th:bg-gray-50 dark:prose-th:bg-zinc-800/60 prose-th:font-semibold
+    ">  <div class="lang-es">
+## 🤖 La Guía Definitiva para Aprender IA desde Cero en 2026
+<p><strong>Por Jafet Brito</strong> · Security Researcher · <em>Publicado en 2026</em></p>
+<hr>
+<blockquote>
+<p>⚠️ <strong>Nota del autor:</strong> Esta guía fue diseñada bajo una filosofía de <strong>Zero Trust aplicada al aprendizaje</strong>: verifica cada herramienta que uses, cuestiona cada modelo que consultes, y nunca compartas datos sensibles con ninguna IA sin entender cómo se procesan. Aprender IA también significa aprender a usarla de forma <strong>segura y responsable</strong>.</p>
+</blockquote>
+<hr>
+<h3 id="️-para-quién-es-esta-guía">🗺️ ¿Para quién es esta guía?</h3>
+<p>Esta guía es para <strong>ti</strong>, sin importar tu punto de partida. No necesitas saber programar. No necesitas haber estudiado matemáticas avanzadas. No necesitas una computadora potente ni gastar un solo centavo. Si tienes <strong>curiosidad genuina</strong> y conexión a internet, estás listo para comenzar.</p>
+<p>En 2026, la Inteligencia Artificial no es el futuro: <strong>es el presente</strong>. Desde herramientas que escriben código, hasta modelos que analizan imágenes médicas, la IA está redefiniendo cada industria. Pero también está generando confusión, desinformación, y riesgos reales para quienes no entienden cómo funciona.</p>
+<p>Esta guía cubre:</p>
+<ul>
+<li>🧠 <strong>Fundamentos de ML y Deep Learning</strong> — sin fórmulas aterradoras</li>
+<li>💬 <strong>IA Generativa y LLMs</strong> — qué son y cómo funcionan realmente</li>
+<li>🛠️ <strong>Herramientas prácticas</strong> — las que sí vale la pena aprender</li>
+<li>👨‍💻 <strong>IA para desarrollo</strong> — cómo acelerar tu productividad como dev</li>
+<li>🔐 <strong>Ruta de aprendizaje seguro</strong> — porque el conocimiento sin criterio es peligroso</li>
+</ul>
+<hr>
+<h2 id="-parte-1-fundamentos--qué-es-la-ia-en-realidad">🧱 Parte 1: Fundamentos — ¿Qué es la IA en realidad?</h2>
+<h3 id="-desmitificando-la-inteligencia-artificial">🤔 Desmitificando la Inteligencia Artificial</h3>
+<p>Antes de entrar a tutoriales y cursos, necesitas tener <strong>claridad conceptual</strong>. Mucha gente fracasa en su aprendizaje de IA porque empieza por las herramientas sin entender el terreno.</p>
+<p>La <strong>Inteligencia Artificial (IA)</strong> es una rama de la informática que busca crear sistemas capaces de realizar tareas que normalmente requieren inteligencia humana: reconocer imágenes, entender texto, tomar decisiones, traducir idiomas.</p>
+<p>Dentro de la IA, existen subcampos clave:</p>
+<ul>
+<li>🔵 <strong>Machine Learning (ML):</strong> Los sistemas <em>aprenden</em> de datos en lugar de seguir reglas programadas manualmente.</li>
+<li>🟣 <strong>Deep Learning (DL):</strong> Un subcampo del ML que usa redes neuronales con muchas capas para aprender representaciones complejas.</li>
+<li>🟠 <strong>IA Generativa:</strong> Modelos capaces de <em>crear</em> contenido nuevo — texto, imágenes, audio, código — a partir de patrones aprendidos.</li>
+<li>🟢 <strong>LLMs (Large Language Models):</strong> Modelos de lenguaje masivos como GPT-4, Claude, o Gemini, entrenados con enormes cantidades de texto.</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Analogía clave:</strong> Si la IA es un edificio, el Machine Learning es su estructura, el Deep Learning son sus cimientos, y los LLMs son el piso más visible desde la calle.</p>
+</blockquote>
+<hr>
+<h3 id="-recursos-para-entender-los-fundamentos-sin-código">📚 Recursos para entender los fundamentos (sin código)</h3>
+<p>Empieza aquí. Estos recursos son gratuitos, accesibles, y no requieren experiencia previa:</p>
+<ul>
+<li>🎥 <a href="https://www.elementsofai.com/"><strong>Elements of AI</strong></a> — Curso interactivo gratuito de la Universidad de Helsinki. Es el mejor punto de partida absoluto para no técnicos. Disponible en español.</li>
+<li>🎥 <a href="https://www.coursera.org/learn/ai-for-everyone"><strong>AI for Everyone — Andrew Ng (Coursera)</strong></a> — Auditable gratis. Andrew Ng es uno de los educadores de IA más respetados del mundo. Este curso es para <em>todos</em>, no solo para ingenieros.</li>
+<li>📖 <a href="https://developers.google.com/machine-learning/crash-course"><strong>Google’s Machine Learning Crash Course</strong></a> — Gratuito, con visualizaciones interactivas. Cubre los conceptos esenciales de ML con ejemplos prácticos.</li>
+<li>🎧 <a href="https://lexfridman.com/podcast/"><strong>Lex Fridman Podcast</strong></a> — No es un curso, pero sus conversaciones con los investigadores más influyentes del mundo en IA te darán perspectiva profunda.</li>
+</ul>
+<hr>
+<h2 id="-parte-2-machine-learning-y-deep-learning-para-principiantes">🧠 Parte 2: Machine Learning y Deep Learning para Principiantes</h2>
+<h3 id="️-cómo-aprende-una-máquina">⚙️ ¿Cómo aprende una máquina?</h3>
+<p>Imagina que quieres enseñarle a un niño a reconocer gatos. No le das una lista de reglas (“cuatro patas, bigotes, ojos rasgados”). Le muestras <strong>miles de fotos de gatos</strong> hasta que su cerebro forma un patrón. Así funciona el Machine Learning.</p>
+<p>Un modelo de ML:</p>
+<ol>
+<li><strong>Recibe datos de entrada</strong> (imágenes, texto, números)</li>
+<li><strong>Hace una predicción</strong></li>
+<li><strong>Compara su predicción con la respuesta correcta</strong></li>
+<li><strong>Ajusta sus parámetros internos</strong> para mejorar</li>
+<li><strong>Repite millones de veces</strong> hasta volverse preciso
+Este proceso se llama <strong>entrenamiento</strong>, y el motor matemático detrás de él es el <strong>gradiente descendente</strong> — no te preocupes por los detalles todavía.</li>
+</ol>
+<h3 id="️-redes-neuronales--la-intuición-correcta">🕸️ Redes Neuronales — La intuición correcta</h3>
+<p>Una <strong>red neuronal</strong> es un sistema de nodos conectados (inspirado vagamente en el cerebro humano) donde cada capa transforma la información de la anterior. El <strong>Deep Learning</strong> usa redes con decenas o cientos de capas.</p>
+<blockquote>
+<p>🔍 <strong>Importante:</strong> Los modelos de Deep Learning NO “piensan” como humanos. Reconocen patrones estadísticos complejos. Esto es crucial para entender sus limitaciones — y no antropomorfizarlos.</p>
+</blockquote>
+<h3 id="-recursos-de-mldl-para-principiantes-gratuitos-y-open-source">📚 Recursos de ML/DL para principiantes (gratuitos y open source)</h3>
+<ul>
+<li>🎓 <a href="https://course.fast.ai/"><strong>fast.ai — Practical Deep Learning for Coders</strong></a> — El curso más recomendado para aprender Deep Learning de forma práctica. Empieza desde arriba y baja a los detalles. Completamente gratuito.</li>
+<li>📖 <a href="https://d2l.ai/"><strong>Dive into Deep Learning (d2l.ai)</strong></a> — Libro interactivo gratuito con código ejecutable en Python, PyTorch y JAX. Uno de los mejores recursos técnicos disponibles.</li>
+<li>🎥 <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"><strong>3Blue1Brown — Neural Networks playlist</strong></a> — Las mejores visualizaciones matemáticas de redes neuronales en internet. Completamente gratuito. Esencial.</li>
+<li>🎥 <a href="https://www.youtube.com/c/joshstarmer"><strong>StatQuest with Josh Starmer</strong></a> — Explica estadística y ML con claridad excepcional. Ideal para entender los conceptos matemáticos sin intimidación.</li>
+<li>🛠️ <a href="https://www.kaggle.com/learn"><strong>Kaggle Learn</strong></a> — Mini-cursos gratuitos de ML con entornos de código en la nube. No necesitas instalar nada.</li>
+</ul>
+<hr>
+<h2 id="-parte-3-ia-generativa-y-llms--el-corazón-del-2026">💬 Parte 3: IA Generativa y LLMs — El corazón del 2026</h2>
+<h3 id="-qué-son-los-llms-y-por-qué-son-tan-poderosos">🌐 ¿Qué son los LLMs y por qué son tan poderosos?</h3>
+<p>Los <strong>Large Language Models (LLMs)</strong> son el tipo de IA que más ha transformado el mundo en los últimos años. Son modelos entrenados con cantidades masivas de texto (libros, artículos, código, conversaciones) y aprenden a predecir la siguiente palabra en una secuencia con tal precisión que parecen “entender” el lenguaje.</p>
+<p>Modelos destacados en 2026:</p>
+<ul>
+<li>🟤 <strong>Claude (Anthropic)</strong> — Diseñado con énfasis en seguridad y utilidad responsable</li>
+<li>🔵 <strong>GPT-4o y GPT-5 (OpenAI)</strong> — Ampliamente usados en aplicaciones comerciales</li>
+<li>🟡 <strong>Gemini (Google DeepMind)</strong> — Integrado profundamente con el ecosistema Google</li>
+<li>🟢 <strong>LLaMA 3 y derivados (Meta / comunidad open source)</strong> — La familia de modelos abiertos más influyente</li>
+<li>🔴 <strong>Mistral (Mistral AI)</strong> — Modelos europeos eficientes y open source</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Alerta de seguridad:</strong> Los LLMs pueden <strong>alucinar</strong> — generar información falsa con total confianza. Nunca uses la salida de un LLM como verdad absoluta sin verificarla. Esto es especialmente crítico en contextos de salud, legal, o seguridad.</p>
+</blockquote>
+<h3 id="-cómo-funcionan-los-llms-internamente">🔬 ¿Cómo funcionan los LLMs internamente?</h3>
+<p>Sin entrar en matemáticas complejas, los LLMs funcionan con una arquitectura llamada <strong>Transformer</strong>, introducida por Google en 2017. La clave está en el mecanismo de <strong>atención</strong> (<em>attention</em>): el modelo aprende qué partes del texto son relevantes para predecir la siguiente palabra.</p>
+<ul>
+<li>📄 <a href="https://arxiv.org/abs/1706.03762"><strong>Attention Is All You Need (paper original)</strong></a> — El paper que cambió todo. Si llegas a nivel intermedio, léelo.</li>
+<li>🎥 <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY"><strong>Andrej Karpathy — Let’s build GPT from scratch</strong></a> — El mejor video para entender cómo funciona un LLM por dentro. Karpathy fue Director de IA en Tesla y cofundador de OpenAI.</li>
+</ul>
+<h3 id="-cómo-interactuar-bien-con-llms--prompt-engineering">🤝 Cómo interactuar bien con LLMs — Prompt Engineering</h3>
+<p>Saber <strong>hablar</strong> con un LLM es una habilidad real. El <strong>Prompt Engineering</strong> es el arte de formular instrucciones claras para obtener mejores resultados.</p>
+<p>Principios básicos:</p>
+<ul>
+<li>
+<p>✅ <strong>Sé específico:</strong> En lugar de “escribe un email”, di “escribe un email formal de 150 palabras para rechazar una propuesta de trabajo, manteniendo un tono respetuoso”.</p>
+</li>
+<li>
+<p>✅ <strong>Da contexto:</strong> Los LLMs no saben quién eres ni qué quieres a menos que se lo digas.</p>
+</li>
+<li>
+<p>✅ <strong>Pide razonamiento:</strong> Añade “explica tu razonamiento paso a paso” para mejorar la calidad de las respuestas.</p>
+</li>
+<li>
+<p>❌ <strong>No compartas datos sensibles:</strong> Contraseñas, datos personales, código propietario — nunca los ingreses en un LLM comercial sin leer su política de privacidad.
+Recursos de Prompt Engineering:</p>
+</li>
+<li>
+<p>📖 <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview"><strong>Anthropic’s Prompt Engineering Guide</strong></a> — La guía oficial de Anthropic para trabajar con Claude. Excelente y gratuita.</p>
+</li>
+<li>
+<p>📖 <a href="https://platform.openai.com/docs/guides/prompt-engineering"><strong>OpenAI Prompt Engineering Guide</strong></a> — Guía oficial de OpenAI con técnicas avanzadas.</p>
+</li>
+<li>
+<p>🎓 <a href="https://learnprompting.org/"><strong>Learn Prompting</strong></a> — Curso gratuito y open source dedicado exclusivamente a prompt engineering.</p>
+</li>
+</ul>
+<hr>
+<h2 id="️-parte-4-herramientas-prácticas-de-ia-que-debes-conocer">🛠️ Parte 4: Herramientas Prácticas de IA que Debes Conocer</h2>
+<h3 id="-el-ecosistema-de-herramientas-en-2026">🧰 El ecosistema de herramientas en 2026</h3>
+<p>El mundo de las herramientas de IA evoluciona rápido. En lugar de perseguir cada novedad, aquí tienes un mapa <strong>estable y curado</strong> de las categorías más importantes:</p>
+<h4 id="-asistentes-conversacionales-chat">💬 Asistentes conversacionales (chat)</h4>
+<ul>
+<li><a href="https://claude.ai"><strong>Claude.ai</strong></a> — Ideal para análisis, escritura técnica, y tareas que requieren razonamiento cuidadoso.</li>
+<li><a href="https://chat.openai.com"><strong>ChatGPT</strong></a> — El más popular, con capacidades multimodales robustas.</li>
+<li><a href="https://gemini.google.com"><strong>Gemini</strong></a> — Integración nativa con Google Workspace.</li>
+<li><a href="https://www.perplexity.ai/"><strong>Perplexity</strong></a> — LLM con búsqueda web en tiempo real. Excelente para investigación.</li>
+</ul>
+<h4 id="️-generación-de-imágenes">🖼️ Generación de imágenes</h4>
+<ul>
+<li><a href="https://openai.com/dall-e-3"><strong>DALL-E 3 (OpenAI)</strong></a> — Integrado en ChatGPT Plus.</li>
+<li><a href="https://stability.ai/"><strong>Stable Diffusion (open source)</strong></a> — Puedes ejecutarlo localmente. Total control y privacidad.</li>
+<li><a href="https://www.midjourney.com/"><strong>Midjourney</strong></a> — El estándar de calidad artística en generación de imágenes.</li>
+</ul>
+<h4 id="-ia-para-código">👨‍💻 IA para código</h4>
+<ul>
+<li><a href="https://github.com/features/copilot"><strong>GitHub Copilot</strong></a> — El asistente de código más usado. Integrado en VS Code.</li>
+<li><a href="https://cursor.sh/"><strong>Cursor</strong></a> — Editor de código con IA nativa. Muy popular entre desarrolladores en 2026.</li>
+<li><a href="https://claude.ai"><strong>Claude para código</strong></a> — Excelente para explicar, refactorizar y depurar código.</li>
+</ul>
+<h4 id="-audio-y-video">🔊 Audio y video</h4>
+<ul>
+<li><a href="https://elevenlabs.io/"><strong>ElevenLabs</strong></a> — Síntesis de voz de alta calidad.</li>
+<li><a href="https://github.com/openai/whisper"><strong>Whisper (OpenAI, open source)</strong></a> — Transcripción de audio de estado del arte. Gratuito y ejecutable localmente.</li>
+<li><a href="https://suno.ai/"><strong>Suno</strong></a> — Generación de música con IA.</li>
+</ul>
+<blockquote>
+<p>🔐 <strong>Regla de oro de seguridad:</strong> Antes de usar cualquier herramienta de IA, pregúntate: <em>¿Qué datos le estoy dando? ¿Dónde se almacenan? ¿Quién los puede ver?</em> Lee la política de privacidad, especialmente si trabajas con datos de clientes o información confidencial.</p>
+</blockquote>
+<hr>
+<h2 id="-parte-5-ia-para-desarrolladores--acelera-tu-productividad">👨‍💻 Parte 5: IA para Desarrolladores — Acelera tu Productividad</h2>
+<h3 id="-el-desarrollador-aumentado-por-ia">🚀 El desarrollador aumentado por IA</h3>
+<p>En 2026, la diferencia entre un desarrollador productivo y uno excepcional frecuentemente se reduce a <strong>qué tan bien sabe trabajar con herramientas de IA</strong>. No se trata de que la IA reemplace al desarrollador — se trata de multiplicar su capacidad.</p>
+<p>Casos de uso clave:</p>
+<ul>
+<li>🐛 <strong>Depuración:</strong> Pega tu error y el contexto relevante. Los LLMs son sorprendentemente buenos diagnosticando bugs.</li>
+<li>📝 <strong>Documentación:</strong> Genera docstrings, READMEs, y comentarios automáticamente.</li>
+<li>🧪 <strong>Testing:</strong> Pide que la IA genere casos de prueba para tu código.</li>
+<li>🔄 <strong>Refactorización:</strong> “Refactoriza esta función para que sea más legible y eficiente.”</li>
+<li>🌐 <strong>Traducción de lenguajes:</strong> Convierte código de Python a JavaScript, de SQL a Python, etc.</li>
+</ul>
+<h3 id="️-ruta-de-aprendizaje-para-desarrolladores-con-ia">🛤️ Ruta de aprendizaje para desarrolladores con IA</h3>
+<p>Si ya sabes algo de programación (o quieres aprender desde cero simultáneamente):</p>
+<ol>
+<li><strong>Aprende Python básico</strong> — El lenguaje de la IA. Recurso: <a href="https://www.py4e.com/"><strong>Python for Everybody (Dr. Chuck)</strong></a> — Completamente gratuito.</li>
+<li><strong>Domina Jupyter Notebooks</strong> — El entorno estándar para experimentar con IA. Recurso: <a href="https://jupyter.org/"><strong>JupyterLab</strong></a></li>
+<li><strong>Aprende las bibliotecas core:</strong> <a href="https://numpy.org/"><strong>NumPy</strong></a>, <a href="https://pandas.pydata.org/"><strong>Pandas</strong></a>, <a href="https://matplotlib.org/"><strong>Matplotlib</strong></a> — La tríada fundamental.</li>
+<li><strong>Entra a ML con Scikit-learn:</strong> <a href="https://scikit-learn.org/stable/"><strong>Scikit-learn Docs</strong></a> — La biblioteca de ML más amigable para principiantes.</li>
+<li><strong>Deep Learning con PyTorch:</strong> <a href="https://pytorch.org/tutorials/"><strong>PyTorch Tutorials</strong></a> — El framework más popular en investigación.</li>
+<li><strong>Explora el ecosistema de LLMs:</strong> <a href="https://python.langchain.com/"><strong>LangChain</strong></a>, <a href="https://huggingface.co/transformers/"><strong>Hugging Face Transformers</strong></a></li>
+</ol>
+<blockquote>
+<p>💡 <strong>Consejo práctico:</strong> No intentes aprender todo a la vez. Elige <strong>un proyecto pequeño</strong> que te importe (un clasificador de spam, un chatbot básico, un generador de resúmenes) y aprende lo que necesitas para construirlo. El aprendizaje basado en proyectos es el más efectivo.</p>
+</blockquote>
+<hr>
+<h2 id="-parte-6-ruta-de-aprendizaje-seguro--ia-bajo-mentalidad-zero-trust">🔐 Parte 6: Ruta de Aprendizaje Seguro — IA bajo Mentalidad Zero Trust</h2>
+<h3 id="️-por-qué-la-seguridad-es-parte-del-aprendizaje-de-ia">🛡️ ¿Por qué la seguridad es parte del aprendizaje de IA?</h3>
+<p>Aprender IA sin aprender sobre sus riesgos es como aprender a manejar sin entender las señales de tránsito. En 2026, las amenazas relacionadas con IA son reales y crecientes:</p>
+<ul>
+<li>🎭 <strong>Deepfakes</strong> — Contenido sintético hiperrealista usado para desinformación y fraude</li>
+<li>💉 <strong>Prompt Injection</strong> — Ataques donde texto malicioso manipula el comportamiento de un LLM</li>
+<li>🔓 <strong>Data Leakage</strong> — Filtración de datos sensibles a través de modelos mal configurados</li>
+<li>🤖 <strong>Model Poisoning</strong> — Envenenamiento de modelos durante el entrenamiento</li>
+<li>🎣 <strong>AI-powered phishing</strong> — Correos y mensajes fraudulentos generados con IA de alta calidad</li>
+</ul>
+<h3 id="-principios-de-zero-trust-aplicados-a-la-ia">🧭 Principios de Zero Trust aplicados a la IA</h3>
+<p>El modelo <strong>Zero Trust</strong> se basa en “nunca confíes, siempre verifica”. Aplicado al aprendizaje de IA:</p>
+<ul>
+<li>✅ <strong>Verifica las salidas:</strong> Nunca aceptes la respuesta de un LLM sin validación. Cruza con fuentes primarias.</li>
+<li>✅ <strong>Minimiza el acceso:</strong> Da al modelo solo la información que necesita. Principio de mínimo privilegio.</li>
+<li>✅ <strong>Audita las herramientas:</strong> Investiga qué hace cada herramienta con tus datos antes de usarla.</li>
+<li>✅ <strong>Segmenta los entornos:</strong> No uses la misma herramienta de IA para trabajo confidencial y personal.</li>
+<li>✅ <strong>Mantente actualizado:</strong> El panorama de riesgos en IA cambia cada mes.</li>
+</ul>
+<h3 id="-recursos-de-ia-segura-y-responsable">📚 Recursos de IA Segura y Responsable</h3>
+<ul>
+<li>🏛️ <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"><strong>OWASP Top 10 for LLM Applications</strong></a> — La referencia de seguridad para aplicaciones basadas en LLMs. Lectura obligatoria.</li>
+<li>🔬 <a href="https://www.anthropic.com/research"><strong>Anthropic’s Research on AI Safety</strong></a> — Los papers de Anthropic sobre seguridad en IA. Acceso gratuito.</li>
+<li>📖 <a href="https://aisafetyfundamentals.com/"><strong>AI Safety Fundamentals (BlueDot Impact)</strong></a> — Cursos gratuitos sobre seguridad en IA a nivel técnico y de política.</li>
+<li>🏛️ <a href="https://www.nist.gov/artificial-intelligence"><strong>NIST AI Risk Management Framework</strong></a> — El marco de gestión de riesgos de IA del gobierno de EE.UU. Referencia para profesionales.</li>
+<li>🌐 <a href="https://www.responsible.ai/"><strong>Responsible AI Institute</strong></a> — Recursos y estándares para el uso responsable de la IA en organizaciones.</li>
+</ul>
+<hr>
+<h2 id="️-parte-7-tu-hoja-de-ruta--6-meses-para-transformar-tu-conocimiento-de-ia">🗓️ Parte 7: Tu Hoja de Ruta — 6 Meses para Transformar tu Conocimiento de IA</h2>
+<h3 id="-mes-1-2-cimientos-conceptuales">📅 Mes 1-2: Cimientos Conceptuales</h3>
+<ul>
+<li>Completa <strong>Elements of AI</strong> (Helsinki)</li>
+<li>Ve toda la playlist de <strong>3Blue1Brown</strong> sobre redes neuronales</li>
+<li>Crea una cuenta en <a href="https://www.kaggle.com"><strong>Kaggle</strong></a> y completa el curso introductorio de ML</li>
+<li>Lee las primeras 3 secciones del <strong>OWASP Top 10 for LLMs</strong></li>
+</ul>
+<h3 id="-mes-2-3-primeros-pasos-técnicos">📅 Mes 2-3: Primeros Pasos Técnicos</h3>
+<ul>
+<li>Aprende Python básico con <strong>Python for Everybody</strong></li>
+<li>Completa el curso <strong>AI for Everyone</strong> de Andrew Ng en Coursera</li>
+<li>Experimenta con prompts en Claude, ChatGPT, y Perplexity</li>
+<li>Aprende <strong>Prompt Engineering</strong> con Learn Prompting</li>
+</ul>
+<h3 id="-mes-3-4-práctica-con-herramientas">📅 Mes 3-4: Práctica con Herramientas</h3>
+<ul>
+<li>Completa un mini-proyecto en Kaggle</li>
+<li>Aprende a usar la <strong>Hugging Face Hub</strong> — explora modelos open source</li>
+<li>Instala y experimenta con <strong>Stable Diffusion</strong> localmente</li>
+<li>Transcribe audio con <strong>Whisper</strong> de OpenAI</li>
+</ul>
+<h3 id="-mes-4-5-profundización-técnica">📅 Mes 4-5: Profundización Técnica</h3>
+<ul>
+<li>Toma el curso de <strong>fast.ai</strong></li>
+<li>Empieza a trabajar con <strong>PyTorch</strong> usando los tutoriales oficiales</li>
+<li>Construye un proyecto personal pequeño que use un LLM via API</li>
+<li>Lee el paper de <strong>Attention Is All You Need</strong></li>
+</ul>
+<h3 id="-mes-5-6-especialización-y-comunidad">📅 Mes 5-6: Especialización y Comunidad</h3>
+<ul>
+<li>Elige un área de profundización: visión computacional, NLP, generación de código, o seguridad en IA</li>
+<li>Únete a comunidades: <a href="https://discuss.huggingface.co/"><strong>Hugging Face Forums</strong></a>, <a href="https://www.reddit.com/r/MachineLearning/"><strong>Reddit r/MachineLearning</strong></a>, <a href="https://www.alignmentforum.org/"><strong>AI Alignment Forum</strong></a></li>
+<li>Contribuye a un proyecto open source en <a href="https://github.com/"><strong>GitHub</strong></a></li>
+<li>Comienza a construir tu portafolio público</li>
+</ul>
+<hr>
+<h2 id="-parte-8-comunidades-newsletters-y-podcasts-esenciales">🌐 Parte 8: Comunidades, Newsletters y Podcasts Esenciales</h2>
+<h3 id="-comunidades-open-source-y-foros">🤝 Comunidades Open Source y Foros</h3>
+<ul>
+<li><a href="https://huggingface.co/"><strong>Hugging Face</strong></a> — La plataforma central del ecosistema open source de IA</li>
+<li><a href="https://paperswithcode.com/"><strong>Papers With Code</strong></a> — Papers de investigación con código open source. Increíble recurso.</li>
+<li><a href="https://www.eleuther.ai/"><strong>EleutherAI</strong></a> — Comunidad de investigación en IA de acceso abierto</li>
+<li><a href="https://www.reddit.com/r/LocalLLaMA/"><strong>Reddit r/LocalLLaMA</strong></a> — La comunidad de LLMs locales y open source más activa</li>
+</ul>
+<h3 id="-newsletters-recomendadas">📰 Newsletters Recomendadas</h3>
+<ul>
+<li>📧 <a href="https://www.deeplearning.ai/the-batch/"><strong>The Batch (deeplearning.ai)</strong></a> — Newsletter semanal de Andrew Ng. Gratuita.</li>
+<li>📧 <a href="https://importai.substack.com/"><strong>Import AI (Jack Clark)</strong></a> — Análisis técnico y de política de IA. Gratuita.</li>
+<li>📧 <a href="https://www.alignmentobserver.com/"><strong>The Alignment Observer</strong></a> — Para seguir el tema de seguridad en IA.</li>
+</ul>
+<h3 id="️-podcasts">🎙️ Podcasts</h3>
+<ul>
+<li>🎧 <a href="https://lexfridman.com/podcast/"><strong>Lex Fridman Podcast</strong></a> — Entrevistas largas con los mejores investigadores del mundo</li>
+<li>🎧 <a href="https://changelog.com/practicalai"><strong>Practical AI</strong></a> — Episodios accesibles y aplicados sobre IA</li>
+<li>🎧 <a href="https://twimlai.com/"><strong>The TWIML AI Podcast</strong></a> — Para cuando quieras profundidad técnica real</li>
+</ul>
+<hr>
+<h2 id="-conclusión-el-mejor-momento-para-empezar-es-ahora">🏁 Conclusión: El Mejor Momento para Empezar es Ahora</h2>
+<p>El acceso a educación de IA de clase mundial <strong>nunca ha sido tan democrático</strong>. La mayoría de los recursos listados en esta guía son completamente gratuitos y open source. La barrera de entrada nunca ha sido tan baja.</p>
+<p>Pero con ese poder viene responsabilidad. 🧠</p>
+<blockquote>
+<p><strong>Aprender IA en 2026 no es solo aprender a usar herramientas poderosas. Es aprender a ser un actor responsable en un ecosistema que está redefiniendo la civilización humana. Hazlo con curiosidad, con criterio, y con conciencia.</strong></p>
+</blockquote>
+<p>El camino más peligroso no es el de quien aprende lento — es el de quien aprende rápido sin cuestionar. Sé curioso, verifica todo, comparte tu conocimiento, y construye con ética.</p>
+<p><strong>¡Bienvenido al viaje más interesante de nuestra era!</strong> 🚀</p>
+<hr>
+<p><em>Escrito por <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>¿Preguntas o sugerencias? Encuentra más contenido en el blog.</em></p>
+</div>
+---
+---
+<div class="lang-en">
+## 🤖 The Ultimate Guide to Learning AI from Scratch in 2026
+<p><strong>By Jafet Brito</strong> · Security Researcher · <em>Published 2026</em></p>
+<hr>
+<blockquote>
+<p>⚠️ <strong>Author’s note:</strong> This guide was designed under a <strong>Zero Trust applied to learning</strong> philosophy: verify every tool you use, question every model you consult, and never share sensitive data with any AI without understanding how it’s processed. Learning AI also means learning to use it <strong>safely and responsibly</strong>.</p>
+</blockquote>
+<hr>
+<h3 id="️-who-is-this-guide-for">🗺️ Who Is This Guide For?</h3>
+<p>This guide is for <strong>you</strong> — regardless of where you’re starting from. You don’t need to know how to code. You don’t need a background in advanced mathematics. You don’t need a powerful computer or to spend a single dollar. If you have <strong>genuine curiosity</strong> and an internet connection, you’re ready to begin.</p>
+<p>In 2026, Artificial Intelligence is not the future: <strong>it is the present</strong>. From tools that write code to models that analyze medical images, AI is redefining every industry. But it is also generating confusion, misinformation, and real risks for those who don’t understand how it works.</p>
+<p>This guide covers:</p>
+<ul>
+<li>🧠 <strong>ML &#x26; Deep Learning fundamentals</strong> — without scary formulas</li>
+<li>💬 <strong>Generative AI &#x26; LLMs</strong> — what they are and how they really work</li>
+<li>🛠️ <strong>Practical tools</strong> — the ones actually worth learning</li>
+<li>👨‍💻 <strong>AI for development</strong> — how to supercharge your productivity as a dev</li>
+<li>🔐 <strong>Safe learning path</strong> — because knowledge without judgment is dangerous</li>
+</ul>
+<hr>
+<h2 id="-part-1-foundations--what-is-ai-really">🧱 Part 1: Foundations — What Is AI, Really?</h2>
+<h3 id="-demystifying-artificial-intelligence">🤔 Demystifying Artificial Intelligence</h3>
+<p>Before diving into tutorials and courses, you need <strong>conceptual clarity</strong>. Many people fail in their AI learning journey because they start with tools before understanding the terrain.</p>
+<p><strong>Artificial Intelligence (AI)</strong> is a branch of computer science that seeks to create systems capable of performing tasks that normally require human intelligence: recognizing images, understanding text, making decisions, translating languages.</p>
+<p>Within AI, there are key subfields:</p>
+<ul>
+<li>🔵 <strong>Machine Learning (ML):</strong> Systems <em>learn</em> from data instead of following manually programmed rules.</li>
+<li>🟣 <strong>Deep Learning (DL):</strong> A subfield of ML that uses neural networks with many layers to learn complex representations.</li>
+<li>🟠 <strong>Generative AI:</strong> Models capable of <em>creating</em> new content — text, images, audio, code — from learned patterns.</li>
+<li>🟢 <strong>LLMs (Large Language Models):</strong> Massive language models like GPT-4, Claude, or Gemini, trained on enormous amounts of text.</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Key analogy:</strong> If AI is a building, Machine Learning is its structure, Deep Learning is its foundation, and LLMs are the most visible floor from the street.</p>
+</blockquote>
+<hr>
+<h3 id="-resources-to-understand-the-fundamentals-no-code-required">📚 Resources to Understand the Fundamentals (No Code Required)</h3>
+<p>Start here. These resources are free, accessible, and require no prior experience:</p>
+<ul>
+<li>🎥 <a href="https://www.elementsofai.com/"><strong>Elements of AI</strong></a> — Free interactive course from the University of Helsinki. The absolute best starting point for non-technical learners. Available in multiple languages.</li>
+<li>🎥 <a href="https://www.coursera.org/learn/ai-for-everyone"><strong>AI for Everyone — Andrew Ng (Coursera)</strong></a> — Free to audit. Andrew Ng is one of the most respected AI educators in the world. This course is for <em>everyone</em>, not just engineers.</li>
+<li>📖 <a href="https://developers.google.com/machine-learning/crash-course"><strong>Google’s Machine Learning Crash Course</strong></a> — Free, with interactive visualizations. Covers essential ML concepts with practical examples.</li>
+<li>🎧 <a href="https://lexfridman.com/podcast/"><strong>Lex Fridman Podcast</strong></a> — Not a course, but his conversations with the world’s most influential AI researchers will give you profound perspective.</li>
+</ul>
+<hr>
+<h2 id="-part-2-machine-learning--deep-learning-for-beginners">🧠 Part 2: Machine Learning &#x26; Deep Learning for Beginners</h2>
+<h3 id="️-how-does-a-machine-learn">⚙️ How Does a Machine Learn?</h3>
+<p>Imagine you want to teach a child to recognize cats. You don’t give them a list of rules (“four legs, whiskers, slanted eyes”). You show them <strong>thousands of photos of cats</strong> until their brain forms a pattern. That’s how Machine Learning works.</p>
+<p>An ML model:</p>
+<ol>
+<li><strong>Receives input data</strong> (images, text, numbers)</li>
+<li><strong>Makes a prediction</strong></li>
+<li><strong>Compares its prediction to the correct answer</strong></li>
+<li><strong>Adjusts its internal parameters</strong> to improve</li>
+<li><strong>Repeats millions of times</strong> until it becomes accurate
+This process is called <strong>training</strong>, and the mathematical engine behind it is <strong>gradient descent</strong> — don’t worry about the details just yet.</li>
+</ol>
+<h3 id="️-neural-networks--the-right-intuition">🕸️ Neural Networks — The Right Intuition</h3>
+<p>A <strong>neural network</strong> is a system of connected nodes (loosely inspired by the human brain) where each layer transforms the information from the previous one. <strong>Deep Learning</strong> uses networks with dozens or hundreds of layers.</p>
+<blockquote>
+<p>🔍 <strong>Important:</strong> Deep Learning models do NOT “think” like humans. They recognize complex statistical patterns. Understanding this is crucial to knowing their limitations — and avoiding anthropomorphizing them.</p>
+</blockquote>
+<h3 id="-free--open-source-mldl-resources-for-beginners">📚 Free &#x26; Open Source ML/DL Resources for Beginners</h3>
+<ul>
+<li>🎓 <a href="https://course.fast.ai/"><strong>fast.ai — Practical Deep Learning for Coders</strong></a> — The most recommended course for learning Deep Learning practically. Starts from the top and works down to the details. Completely free.</li>
+<li>📖 <a href="https://d2l.ai/"><strong>Dive into Deep Learning (d2l.ai)</strong></a> — Free interactive book with executable Python, PyTorch, and JAX code. One of the best technical resources available.</li>
+<li>🎥 <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"><strong>3Blue1Brown — Neural Networks playlist</strong></a> — The best mathematical visualizations of neural networks on the internet. Completely free. Essential.</li>
+<li>🎥 <a href="https://www.youtube.com/c/joshstarmer"><strong>StatQuest with Josh Starmer</strong></a> — Explains statistics and ML with exceptional clarity. Ideal for understanding mathematical concepts without intimidation.</li>
+<li>🛠️ <a href="https://www.kaggle.com/learn"><strong>Kaggle Learn</strong></a> — Free ML mini-courses with in-browser coding environments. No installation required.</li>
+</ul>
+<hr>
+<h2 id="-part-3-generative-ai--llms--the-heart-of-2026">💬 Part 3: Generative AI &#x26; LLMs — The Heart of 2026</h2>
+<h3 id="-what-are-llms-and-why-are-they-so-powerful">🌐 What Are LLMs and Why Are They So Powerful?</h3>
+<p><strong>Large Language Models (LLMs)</strong> are the type of AI that has most transformed the world in recent years. They are models trained on massive amounts of text (books, articles, code, conversations) and learn to predict the next word in a sequence with such precision that they appear to “understand” language.</p>
+<p>Notable models in 2026:</p>
+<ul>
+<li>🟤 <strong>Claude (Anthropic)</strong> — Designed with an emphasis on safety and responsible utility</li>
+<li>🔵 <strong>GPT-4o and GPT-5 (OpenAI)</strong> — Widely used in commercial applications</li>
+<li>🟡 <strong>Gemini (Google DeepMind)</strong> — Deeply integrated with the Google ecosystem</li>
+<li>🟢 <strong>LLaMA 3 and derivatives (Meta / open source community)</strong> — The most influential family of open models</li>
+<li>🔴 <strong>Mistral (Mistral AI)</strong> — Efficient European open source models</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Security alert:</strong> LLMs can <strong>hallucinate</strong> — generate false information with complete confidence. Never use the output of an LLM as absolute truth without verifying it. This is especially critical in health, legal, or security contexts.</p>
+</blockquote>
+<h3 id="-how-do-llms-work-internally">🔬 How Do LLMs Work Internally?</h3>
+<p>Without getting into complex mathematics, LLMs work with an architecture called the <strong>Transformer</strong>, introduced by Google in 2017. The key is the <strong>attention mechanism</strong>: the model learns which parts of the text are relevant for predicting the next word.</p>
+<ul>
+<li>📄 <a href="https://arxiv.org/abs/1706.03762"><strong>Attention Is All You Need (original paper)</strong></a> — The paper that changed everything. When you reach intermediate level, read it.</li>
+<li>🎥 <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY"><strong>Andrej Karpathy — Let’s build GPT from scratch</strong></a> — The best video for understanding how an LLM works from the inside. Karpathy was Director of AI at Tesla and co-founder of OpenAI.</li>
+</ul>
+<h3 id="-how-to-interact-well-with-llms--prompt-engineering">🤝 How to Interact Well with LLMs — Prompt Engineering</h3>
+<p>Knowing how to <strong>talk</strong> to an LLM is a real skill. <strong>Prompt Engineering</strong> is the art of formulating clear instructions to get better results.</p>
+<p>Basic principles:</p>
+<ul>
+<li>
+<p>✅ <strong>Be specific:</strong> Instead of “write an email,” say “write a 150-word formal email declining a job offer, maintaining a respectful tone.”</p>
+</li>
+<li>
+<p>✅ <strong>Give context:</strong> LLMs don’t know who you are or what you want unless you tell them.</p>
+</li>
+<li>
+<p>✅ <strong>Ask for reasoning:</strong> Add “explain your reasoning step by step” to improve response quality.</p>
+</li>
+<li>
+<p>❌ <strong>Don’t share sensitive data:</strong> Passwords, personal data, proprietary code — never enter these into a commercial LLM without reading its privacy policy.
+Prompt Engineering resources:</p>
+</li>
+<li>
+<p>📖 <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview"><strong>Anthropic’s Prompt Engineering Guide</strong></a> — Anthropic’s official guide for working with Claude. Excellent and free.</p>
+</li>
+<li>
+<p>📖 <a href="https://platform.openai.com/docs/guides/prompt-engineering"><strong>OpenAI Prompt Engineering Guide</strong></a> — OpenAI’s official guide with advanced techniques.</p>
+</li>
+<li>
+<p>🎓 <a href="https://learnprompting.org/"><strong>Learn Prompting</strong></a> — Free, open source course dedicated exclusively to prompt engineering.</p>
+</li>
+</ul>
+<hr>
+<h2 id="️-part-4-practical-ai-tools-you-need-to-know">🛠️ Part 4: Practical AI Tools You Need to Know</h2>
+<h3 id="-the-ai-tool-ecosystem-in-2026">🧰 The AI Tool Ecosystem in 2026</h3>
+<p>The world of AI tools evolves fast. Instead of chasing every new release, here’s a <strong>stable, curated map</strong> of the most important categories:</p>
+<h4 id="-conversational-assistants-chat">💬 Conversational assistants (chat)</h4>
+<ul>
+<li><a href="https://claude.ai"><strong>Claude.ai</strong></a> — Ideal for analysis, technical writing, and tasks requiring careful reasoning.</li>
+<li><a href="https://chat.openai.com"><strong>ChatGPT</strong></a> — The most popular, with robust multimodal capabilities.</li>
+<li><a href="https://gemini.google.com"><strong>Gemini</strong></a> — Native integration with Google Workspace.</li>
+<li><a href="https://www.perplexity.ai/"><strong>Perplexity</strong></a> — LLM with real-time web search. Excellent for research.</li>
+</ul>
+<h4 id="️-image-generation">🖼️ Image generation</h4>
+<ul>
+<li><a href="https://openai.com/dall-e-3"><strong>DALL-E 3 (OpenAI)</strong></a> — Integrated into ChatGPT Plus.</li>
+<li><a href="https://stability.ai/"><strong>Stable Diffusion (open source)</strong></a> — Can be run locally. Total control and privacy.</li>
+<li><a href="https://www.midjourney.com/"><strong>Midjourney</strong></a> — The quality standard for artistic image generation.</li>
+</ul>
+<h4 id="-ai-for-coding">👨‍💻 AI for coding</h4>
+<ul>
+<li><a href="https://github.com/features/copilot"><strong>GitHub Copilot</strong></a> — The most widely used code assistant. Integrated into VS Code.</li>
+<li><a href="https://cursor.sh/"><strong>Cursor</strong></a> — Code editor with native AI. Very popular among developers in 2026.</li>
+<li><a href="https://claude.ai"><strong>Claude for code</strong></a> — Excellent for explaining, refactoring, and debugging code.</li>
+</ul>
+<h4 id="-audio-and-video">🔊 Audio and video</h4>
+<ul>
+<li><a href="https://elevenlabs.io/"><strong>ElevenLabs</strong></a> — High-quality voice synthesis.</li>
+<li><a href="https://github.com/openai/whisper"><strong>Whisper (OpenAI, open source)</strong></a> — State-of-the-art audio transcription. Free and runnable locally.</li>
+<li><a href="https://suno.ai/"><strong>Suno</strong></a> — AI music generation.</li>
+</ul>
+<blockquote>
+<p>🔐 <strong>Golden security rule:</strong> Before using any AI tool, ask yourself: <em>What data am I giving it? Where is it stored? Who can see it?</em> Read the privacy policy, especially if you work with client data or confidential information.</p>
+</blockquote>
+<hr>
+<h2 id="-part-5-ai-for-developers--supercharge-your-productivity">👨‍💻 Part 5: AI for Developers — Supercharge Your Productivity</h2>
+<h3 id="-the-ai-augmented-developer">🚀 The AI-Augmented Developer</h3>
+<p>In 2026, the difference between a productive developer and an exceptional one often comes down to <strong>how well they know how to work with AI tools</strong>. It’s not about AI replacing the developer — it’s about multiplying their capacity.</p>
+<p>Key use cases:</p>
+<ul>
+<li>🐛 <strong>Debugging:</strong> Paste your error and relevant context. LLMs are surprisingly good at diagnosing bugs.</li>
+<li>📝 <strong>Documentation:</strong> Automatically generate docstrings, READMEs, and inline comments.</li>
+<li>🧪 <strong>Testing:</strong> Ask the AI to generate test cases for your code.</li>
+<li>🔄 <strong>Refactoring:</strong> “Refactor this function to be more readable and efficient.”</li>
+<li>🌐 <strong>Language translation:</strong> Convert code from Python to JavaScript, SQL to Python, etc.</li>
+</ul>
+<h3 id="️-learning-path-for-developers-with-ai">🛤️ Learning Path for Developers with AI</h3>
+<p>If you already know some programming (or want to learn from scratch simultaneously):</p>
+<ol>
+<li><strong>Learn basic Python</strong> — The language of AI. Resource: <a href="https://www.py4e.com/"><strong>Python for Everybody (Dr. Chuck)</strong></a> — Completely free.</li>
+<li><strong>Master Jupyter Notebooks</strong> — The standard environment for experimenting with AI. Resource: <a href="https://jupyter.org/"><strong>JupyterLab</strong></a></li>
+<li><strong>Learn the core libraries:</strong> <a href="https://numpy.org/"><strong>NumPy</strong></a>, <a href="https://pandas.pydata.org/"><strong>Pandas</strong></a>, <a href="https://matplotlib.org/"><strong>Matplotlib</strong></a> — The fundamental triad.</li>
+<li><strong>Enter ML with Scikit-learn:</strong> <a href="https://scikit-learn.org/stable/"><strong>Scikit-learn Docs</strong></a> — The most beginner-friendly ML library.</li>
+<li><strong>Deep Learning with PyTorch:</strong> <a href="https://pytorch.org/tutorials/"><strong>PyTorch Tutorials</strong></a> — The most popular framework in research.</li>
+<li><strong>Explore the LLM ecosystem:</strong> <a href="https://python.langchain.com/"><strong>LangChain</strong></a>, <a href="https://huggingface.co/transformers/"><strong>Hugging Face Transformers</strong></a></li>
+</ol>
+<blockquote>
+<p>💡 <strong>Practical tip:</strong> Don’t try to learn everything at once. Choose <strong>one small project</strong> that matters to you (a spam classifier, a basic chatbot, a summary generator) and learn what you need to build it. Project-based learning is the most effective.</p>
+</blockquote>
+<hr>
+<h2 id="-part-6-safe-learning-path--ai-under-a-zero-trust-mindset">🔐 Part 6: Safe Learning Path — AI Under a Zero Trust Mindset</h2>
+<h3 id="️-why-security-is-part-of-learning-ai">🛡️ Why Security Is Part of Learning AI</h3>
+<p>Learning AI without learning about its risks is like learning to drive without understanding traffic signs. In 2026, AI-related threats are real and growing:</p>
+<ul>
+<li>🎭 <strong>Deepfakes</strong> — Hyper-realistic synthetic content used for disinformation and fraud</li>
+<li>💉 <strong>Prompt Injection</strong> — Attacks where malicious text manipulates the behavior of an LLM</li>
+<li>🔓 <strong>Data Leakage</strong> — Leaking sensitive data through misconfigured models</li>
+<li>🤖 <strong>Model Poisoning</strong> — Poisoning models during training</li>
+<li>🎣 <strong>AI-powered phishing</strong> — Fraudulent emails and messages generated with high-quality AI</li>
+</ul>
+<h3 id="-zero-trust-principles-applied-to-ai">🧭 Zero Trust Principles Applied to AI</h3>
+<p>The <strong>Zero Trust</strong> model is based on “never trust, always verify.” Applied to AI learning:</p>
+<ul>
+<li>✅ <strong>Verify outputs:</strong> Never accept an LLM’s response without validation. Cross-check with primary sources.</li>
+<li>✅ <strong>Minimize access:</strong> Give the model only the information it needs. Principle of least privilege.</li>
+<li>✅ <strong>Audit tools:</strong> Research what each tool does with your data before using it.</li>
+<li>✅ <strong>Segment environments:</strong> Don’t use the same AI tool for confidential work and personal use.</li>
+<li>✅ <strong>Stay updated:</strong> The AI risk landscape changes every month.</li>
+</ul>
+<h3 id="-responsible-and-safe-ai-resources">📚 Responsible and Safe AI Resources</h3>
+<ul>
+<li>🏛️ <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"><strong>OWASP Top 10 for LLM Applications</strong></a> — The security reference for LLM-based applications. Required reading.</li>
+<li>🔬 <a href="https://www.anthropic.com/research"><strong>Anthropic’s Research on AI Safety</strong></a> — Anthropic’s papers on AI safety. Free access.</li>
+<li>📖 <a href="https://aisafetyfundamentals.com/"><strong>AI Safety Fundamentals (BlueDot Impact)</strong></a> — Free courses on AI safety at technical and policy levels.</li>
+<li>🏛️ <a href="https://www.nist.gov/artificial-intelligence"><strong>NIST AI Risk Management Framework</strong></a> — The U.S. government’s AI risk management framework. Reference for professionals.</li>
+<li>🌐 <a href="https://www.responsible.ai/"><strong>Responsible AI Institute</strong></a> — Resources and standards for responsible AI use in organizations.</li>
+</ul>
+<hr>
+<h2 id="️-part-7-your-roadmap--6-months-to-transform-your-ai-knowledge">🗓️ Part 7: Your Roadmap — 6 Months to Transform Your AI Knowledge</h2>
+<h3 id="-months-12-conceptual-foundations">📅 Months 1–2: Conceptual Foundations</h3>
+<ul>
+<li>Complete <strong>Elements of AI</strong> (Helsinki)</li>
+<li>Watch the entire <strong>3Blue1Brown</strong> neural networks playlist</li>
+<li>Create a <a href="https://www.kaggle.com"><strong>Kaggle</strong></a> account and complete the intro ML course</li>
+<li>Read the first 3 sections of the <strong>OWASP Top 10 for LLMs</strong></li>
+</ul>
+<h3 id="-months-23-first-technical-steps">📅 Months 2–3: First Technical Steps</h3>
+<ul>
+<li>Learn basic Python with <strong>Python for Everybody</strong></li>
+<li>Complete Andrew Ng’s <strong>AI for Everyone</strong> on Coursera</li>
+<li>Experiment with prompts on Claude, ChatGPT, and Perplexity</li>
+<li>Learn <strong>Prompt Engineering</strong> with Learn Prompting</li>
+</ul>
+<h3 id="-months-34-hands-on-with-tools">📅 Months 3–4: Hands-On With Tools</h3>
+<ul>
+<li>Complete a mini-project on Kaggle</li>
+<li>Learn to use the <strong>Hugging Face Hub</strong> — explore open source models</li>
+<li>Install and experiment with <strong>Stable Diffusion</strong> locally</li>
+<li>Transcribe audio with OpenAI’s <strong>Whisper</strong></li>
+</ul>
+<h3 id="-months-45-technical-deepening">📅 Months 4–5: Technical Deepening</h3>
+<ul>
+<li>Take the <strong>fast.ai</strong> course</li>
+<li>Start working with <strong>PyTorch</strong> using the official tutorials</li>
+<li>Build a small personal project that uses an LLM via API</li>
+<li>Read the <strong>Attention Is All You Need</strong> paper</li>
+</ul>
+<h3 id="-months-56-specialization--community">📅 Months 5–6: Specialization &#x26; Community</h3>
+<ul>
+<li>Choose a focus area: computer vision, NLP, code generation, or AI security</li>
+<li>Join communities: <a href="https://discuss.huggingface.co/"><strong>Hugging Face Forums</strong></a>, <a href="https://www.reddit.com/r/MachineLearning/"><strong>Reddit r/MachineLearning</strong></a>, <a href="https://www.alignmentforum.org/"><strong>AI Alignment Forum</strong></a></li>
+<li>Contribute to an open source project on <a href="https://github.com/"><strong>GitHub</strong></a></li>
+<li>Start building your public portfolio</li>
+</ul>
+<hr>
+<h2 id="-part-8-essential-communities-newsletters--podcasts">🌐 Part 8: Essential Communities, Newsletters &#x26; Podcasts</h2>
+<h3 id="-open-source-communities--forums">🤝 Open Source Communities &#x26; Forums</h3>
+<ul>
+<li><a href="https://huggingface.co/"><strong>Hugging Face</strong></a> — The central platform of the open source AI ecosystem</li>
+<li><a href="https://paperswithcode.com/"><strong>Papers With Code</strong></a> — Research papers with open source code. Incredible resource.</li>
+<li><a href="https://www.eleuther.ai/"><strong>EleutherAI</strong></a> — Open access AI research community</li>
+<li><a href="https://www.reddit.com/r/LocalLLaMA/"><strong>Reddit r/LocalLLaMA</strong></a> — The most active community for local and open source LLMs</li>
+</ul>
+<h3 id="-recommended-newsletters">📰 Recommended Newsletters</h3>
+<ul>
+<li>📧 <a href="https://www.deeplearning.ai/the-batch/"><strong>The Batch (deeplearning.ai)</strong></a> — Andrew Ng’s weekly newsletter. Free.</li>
+<li>📧 <a href="https://importai.substack.com/"><strong>Import AI (Jack Clark)</strong></a> — Technical and policy AI analysis. Free.</li>
+<li>📧 <a href="https://www.alignmentobserver.com/"><strong>The Alignment Observer</strong></a> — For following AI safety topics.</li>
+</ul>
+<h3 id="️-podcasts-1">🎙️ Podcasts</h3>
+<ul>
+<li>🎧 <a href="https://lexfridman.com/podcast/"><strong>Lex Fridman Podcast</strong></a> — Long-form interviews with the world’s top researchers</li>
+<li>🎧 <a href="https://changelog.com/practicalai"><strong>Practical AI</strong></a> — Accessible, applied episodes on AI</li>
+<li>🎧 <a href="https://twimlai.com/"><strong>The TWIML AI Podcast</strong></a> — For when you want real technical depth</li>
+</ul>
+<hr>
+<h2 id="-conclusion-the-best-time-to-start-is-now">🏁 Conclusion: The Best Time to Start Is Now</h2>
+<p>Access to world-class AI education <strong>has never been this democratic</strong>. The majority of resources listed in this guide are completely free and open source. The barrier to entry has never been lower.</p>
+<p>But with that power comes responsibility. 🧠</p>
+<blockquote>
+<p><strong>Learning AI in 2026 is not just learning to use powerful tools. It is learning to be a responsible actor in an ecosystem that is redefining human civilization. Do it with curiosity, with critical judgment, and with awareness.</strong></p>
+</blockquote>
+<p>The most dangerous path is not that of the slow learner — it’s the one who learns fast without questioning. Be curious, verify everything, share your knowledge, and build with ethics.</p>
+<p><strong>Welcome to the most interesting journey of our era!</strong> 🚀</p>
+<hr>
+<p><em>Written by <strong>Jafet Brito</strong> · Security Researcher · Zero Trust Mindset</em>
+<em>Questions or suggestions? Find more content on the blog.</em></p>
+</div>  </div> <!-- Post footer --> <footer class="mt-14 pt-8 border-t border-gray-200 dark:border-zinc-800"> <div class="bg-green-50 dark:bg-terminal-green/5 border border-green-200 dark:border-terminal-green/20 rounded-2xl p-6 text-center"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="64" height="64" class="w-16 h-16 rounded-full object-cover mx-auto mb-3 ring-2 ring-green-300 dark:ring-terminal-green/40"> <p class="font-display font-semibold text-gray-900 dark:text-zinc-100 mb-1">Jafet Brito</p> <p data-t="post.author.cta" class="text-sm text-gray-500 dark:text-zinc-400 mb-4">
+¿Tienes preguntas sobre este post? Escríbeme.
+</p> <div class="flex justify-center"> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-green-600 hover:bg-green-700 text-white
+  dark:bg-terminal-green dark:hover:bg-terminal-green-dim dark:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200 shadow-sm
+  bg-sky-500 hover:bg-sky-600 text-white
+  dark:bg-sky-600 dark:hover:bg-sky-700 px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> </div> </div> <div class="mt-6 flex items-center justify-between gap-4"> <a href="/" class="group flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors"> <span class="group-hover:-translate-x-0.5 transition-transform">←</span> <span data-t="post.back">Volver al inicio</span> </a> </div> </footer> </div>  </main> <footer class="border-t border-gray-200 dark:border-terminal-border mt-20
+               bg-gray-50 dark:bg-terminal-surface/30"> <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8"> <!-- Brand --> <div> <div class="flex items-center gap-3 mb-4"> <img src="https://avatars.githubusercontent.com/u/73570144?v=4" alt="Jafet Brito" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-green-200 dark:ring-terminal-green/30 flex-shrink-0"> <div> <p class="font-display font-semibold text-sm text-gray-900 dark:text-zinc-100 leading-tight">Jafet Brito</p> <p data-t="hero.role" class="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">Security Researcher</p> </div> </div> <p data-t="footer.desc" class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">
+Investigador en ciberseguridad. Compartiendo conocimiento sobre seguridad ofensiva, CTFs y análisis de vulnerabilidades.
+</p> </div> <!-- Nav links --> <div> <h3 data-t="footer.nav" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Navegación</h3> <ul class="space-y-2"> <li><a data-t="nav.home" href="/" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Inicio</a></li> <li><a data-t="nav.tags" href="/tags" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Tags</a></li> <li><a data-t="nav.about" href="/about" class="text-sm text-gray-500 dark:text-zinc-400 hover:text-green-700 dark:hover:text-terminal-green transition-colors">Sobre mí</a></li> </ul> </div> <!-- Contact --> <div> <h3 data-t="footer.contact" class="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Contacto</h3> <div class="flex flex-wrap items-center gap-3"> <a href="mailto:hola@jafetbrito.com" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-green-600 hover:bg-green-600 text-green-700 hover:text-white
+  dark:border-terminal-green dark:hover:bg-terminal-green dark:text-terminal-green dark:hover:text-black px-3.5 py-1.5 text-sm gap-1.5"> <!-- Mail icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"></path> <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"></path> </svg>
+Email
+</a> <a href="https://t.me/jafetbrito" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-semibold rounded-lg transition-all duration-200
+  border-2 border-sky-500 hover:bg-sky-500 text-sky-600 hover:text-white
+  dark:border-sky-500 dark:hover:bg-sky-500 dark:text-sky-400 dark:hover:text-white px-3.5 py-1.5 text-sm gap-1.5"> <!-- Telegram icon --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg>
+Telegram
+</a> </div> <p data-t="footer.reply" class="text-xs text-gray-400 dark:text-zinc-500 mt-3">Respondo en menos de 48h</p> </div> </div> <div class="pt-6 border-t border-gray-200 dark:border-terminal-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-400 dark:text-zinc-500"> <span>© 2026 Jafet Brito</span> <span class="flex items-center gap-1.5"> <span class="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-terminal-green animate-blink inline-block"></span>
+Astro + Tailwind CSS
+</span> </div> </div> </footer> </body></html>
